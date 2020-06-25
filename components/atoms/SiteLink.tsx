@@ -6,6 +6,7 @@ interface Props {
   height?: string;
   bgColor?: string;
   color?: string;
+  border?: string;
 }
 
 const SiteLink = styled.a<Props>`

@@ -8,7 +8,12 @@
 html {
   font-family: 'Montserrat', sans-serif;
 }
-
+/* .featPost {
+  height: 583px !important;
+} */
+.diybg {
+  background-color: #61ad2414;
+}
 body {
   @apply bg-white;
 }

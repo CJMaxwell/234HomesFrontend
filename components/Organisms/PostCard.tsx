@@ -1,6 +1,10 @@
 import React from 'react';
+interface Props {
+  imgUrl?: string;
+  height?: string;
+}
 const textPosition = {
-  top: '80%',
+  top: '65%',
   left: '5%',
 };
 const share = {
@@ -8,12 +12,15 @@ const share = {
   right: '2%',
 };
 
-const PostCard = () => {
+const PostCard = ({ imgUrl = '/Adora_NH_sink.png', height }: Props) => {
   return (
-    <div className="rounded overflow-hidden shadow-lg relative">
+    <div
+      className="rounded overflow-hidden shadow-lg relative text-white"
+      style={{ backgroundImage: `url(${imgUrl})`, height: `${height}` }}
+    >
       <img
-        className="w-full"
-        src="two-white-and-brown-armchairs.png"
+        className="w-full inline-block"
+        src={imgUrl}
         alt="Sunset in the mountains"
       />
       <div className="absolute" style={textPosition}>
@@ -25,8 +32,8 @@ const PostCard = () => {
             alt="Avatar of Jonathan Reinink"
           />
           <div className="text-sm">
-            <p className="text-gray-900 leading-none">Jonathan Reinink</p>
-            <p className="text-gray-600">Aug 18, 2020</p>
+            <p className="text-white leading-none">Jones Reinink</p>
+            <p className="text-white">Aug 18, 2020</p>
           </div>
         </div>
       </div>

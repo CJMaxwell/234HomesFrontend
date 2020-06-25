@@ -1,6 +1,10 @@
 import React from 'react';
+
+interface Props {
+  imgUrl?: string;
+}
 const textPosition = {
-  top: '80%',
+  top: '60%',
   left: '5%',
 };
 const share = {
@@ -8,14 +12,10 @@ const share = {
   right: '2%',
 };
 
-const DIYCard = () => {
+const DIYCard = ({ imgUrl = '' }: Props) => {
   return (
-    <div className="max-w-sm rounded overflow-hidden shadow-lg relative">
-      <img
-        className="w-full"
-        src="two-white-and-brown-armchairs.png"
-        alt="Sunset in the mountains"
-      />
+    <div className="max-w-sm rounded overflow-hidden shadow-lg relative text-white">
+      <img className="w-full" src={imgUrl} alt="Sunset in the mountains" />
       <div className="absolute" style={textPosition}>
         <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
         <div className="flex items-center">
@@ -25,13 +25,13 @@ const DIYCard = () => {
             alt="Avatar of Jonathan Reinink"
           />
           <div className="text-sm">
-            <p className="text-gray-900 leading-none">Jonathan Reinink</p>
-            <p className="text-gray-600">Aug 18, 2020</p>
+            <p className="text-white leading-none">Jonathan Reinink</p>
+            <p className="text-white">Aug 18, 2020</p>
           </div>
         </div>
       </div>
       <button className="absolute" style={share}>
-        <img className="h-8 w-8" src="/share.svg" alt="share" />
+        <img className="h-8 w-8" src="/Ellipse.svg" alt="share" />
       </button>
     </div>
   );

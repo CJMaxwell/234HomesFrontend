@@ -8,6 +8,7 @@ import SiteLink from '../atoms/SiteLink';
 import PostCard from '../Organisms/PostCard';
 import ProfessionalCard from '../Organisms/ProfessionalCard';
 import DIYCard from '../Organisms/DIYCard';
+import { theme } from '../../styles/theme';
 
 const LandingStyle = {
   top: '50%',
@@ -17,15 +18,19 @@ const LandingStyle = {
 const sectionStyle = {
   backgroundColor: '#F7681A',
 };
-// const imageStyle = {
-//   height: '300px',
-// };
+const connectStyle = {
+  color: theme.colors.green1,
+};
+const featPost = {
+  height: '581px',
+};
 
 const Home = () => {
   const theme = useContext(ThemeContext);
 
   return (
     <div>
+      <img src="/color-pattern.png" alt="+234Homes Colour pattern" />
       <Navbar />
       <section>
         <div className="relative">
@@ -101,19 +106,30 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section className="bg-gray-200 text-center">
-        <div>
+      <section className="bg-gray-200 text-center pt-24 pb-24">
+        <div style={connectStyle}>
           <span>Connect</span> | <span>Share</span> |{' '}
           <span>Live Authentic</span>
         </div>
-        <h1>The Contemporary African Home</h1>
-        <p>
+        <h1 className="pt-6 text-black font-semibold">
+          The Contemporary African Home
+        </h1>
+        <p className="pt-4">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora sunt
           <br />
           expedita alias repellendus reprehenderit architecto eos enim delectus
           optio libero.
         </p>
-        <button>Learn More About Us</button>
+        <div className="pt-16">
+          <button className="border-b-2 border-black">
+            Learn More About Us
+            <img
+              className="inline-block h-4 pl-4"
+              src="/left-arrow-button.svg"
+              alt="View more"
+            />
+          </button>
+        </div>
       </section>
       <section className="grid grid-cols-2">
         <div className="p-16 text-white" style={sectionStyle}>
@@ -138,60 +154,92 @@ const Home = () => {
           />
         </div>
       </section>
-      <section>
-        <div>
-          <h1>Stories</h1>
+      <section className="px-16 mb-24 container mx-auto mt-20 bg-white">
+        <div className="flex justify-between items-center">
+          <h1 className="font-semibold text-xl text-gray-700 uppercase">
+            Stories
+          </h1>
+          <a className="inline-block font-semibold uppercase text-sm px-3 py-3 leading-none border rounded-full bg-gray-800 text-white border-white">
+            View More
+          </a>
         </div>
-        <div className="flex mb-4">
-          <div className="w-1/4 pr-4">
-            <PostCard />
-            <PostCard />
+        <div className="grid grid-cols-4 mb-4 mt-12">
+          <div className="pr-4">
+            <div className="grid grid-rows-2 gap-4">
+              <PostCard />
+              <PostCard imgUrl={'/AH_dining.png'} />
+            </div>
           </div>
-          <div className="w-2/4">
-            <PostCard />
+          <div className="col-span-2">
+            <PostCard
+              imgUrl={'/two-white-and-brown-armchairs.png'}
+              height={'583px'}
+            />
           </div>
-          <div className="w-1/4 pl-4">
-            <PostCard />
-            <PostCard />
+          <div className="pl-4">
+            <div className="grid grid-rows-2 gap-4">
+              <PostCard imgUrl={'/Adora_NH_grid.png'} />
+              <PostCard imgUrl={'/Adora_NH_rope.png'} />
+            </div>
           </div>
         </div>
       </section>
-      <section>
-        <div className="grid grid-cols-3">
-          <div>
-            <DIYCard />
-          </div>
-          <div>
+      <section className="diybg pt-12 pb-12 mb-24">
+        <div className="px-16 container mx-auto mt-16 mb-20 ">
+          <div className="grid grid-cols-3 gap-4">
             <div>
-              <DIYCard />
+              <DIYCard imgUrl={'/EO_kitchen.png'} />
             </div>
-            <div>
-              <DIYCard />
+            <div className="grid grid-rows-2 gap-4">
+              <div>
+                <DIYCard imgUrl={'/EO_bedroom.png'} />
+              </div>
+              <div>
+                <DIYCard imgUrl={'/EO_sitting_room.png'} />
+              </div>
             </div>
-          </div>
-          <div>
-            <h4>DIY</h4>
-            <h1>Lorem Ipsum Dolor Sit Amet</h1>
-            <p>
-              Consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-              invidunt ut labore et dolore magna aliquyam erat, sed diam
-              voluptua.
-            </p>
-            <SiteLink>Get Started</SiteLink>
+            <div className="pl-8">
+              <h4 className="pt-12" style={connectStyle}>
+                DIY
+              </h4>
+              <h1 className="font-bold text-2xl pb-4 pt-4">
+                Lorem Ipsum <br />
+                Dolor Sit Amet
+              </h1>
+              <p className="pb-20">
+                Consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+                invidunt ut labore et dolore magna aliquyam erat, sed diam
+                voluptua.
+              </p>
+              <SiteLink>Get Started</SiteLink>
+            </div>
           </div>
         </div>
       </section>
-      <section>
-        <div>
-          <h1>Our Directory</h1>
+      <section className="container mx-auto pb-20">
+        <div className="px-16">
+          <div className="flex justify-between items-center">
+            <h1 className="font-semibold text-xl text-gray-700 uppercase">
+              Our Directory
+            </h1>
+            <a className="inline-block font-semibold uppercase text-sm px-3 py-3 leading-none border rounded-full bg-gray-800 text-white border-white">
+              View All
+            </a>
+          </div>
+          <h1 className="pt-8 pb-8 font-bold text-3xl">
+            Invidunt Labore Et Dolore
+          </h1>
+          <hr />
+          <ul className="pt-6 pb-6 text-gray-500 grid grid-cols-3 gap-4">
+            <li>Featured Professional</li>
+            <li>Most views Products</li>
+            <li>
+              <a className="border-gray-900 border-b-2 pb-2">
+                Top Rated Vendors
+              </a>
+            </li>
+          </ul>
         </div>
-        <h1>Invidunt Labore Et Dolore</h1>
-        <hr />
-        <ul>
-          <li>Featured Professional</li>
-          <li>Most views Products</li>
-          <li>Top Rated Vendors</li>
-        </ul>
         <div className="grid grid-cols-4 gap-4 mb-12">
           <ProfessionalCard />
           <ProfessionalCard />
