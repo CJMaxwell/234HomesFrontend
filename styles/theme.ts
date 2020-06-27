@@ -24,5 +24,7 @@ export const theme: DefaultTheme = {
     gray13: '#D0D0D0',
     gray14: '#CBC9C9',
     gray15: '#F8F8F8',
+    gray16: '#00000040',
+    gray17: '#D8D8D8',
   },
 };
