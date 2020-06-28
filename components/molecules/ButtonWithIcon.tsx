@@ -14,7 +14,7 @@ const ButtonWithIcon = () => {
   const theme = useContext(ThemeContext);
   return (
     <>
-      <SiteLink bgColor={theme.colors.gray1} className="text-center">
+      <SiteLink className="text-center">
         <img
           className="inline pr-1"
           style={iconStyle}
