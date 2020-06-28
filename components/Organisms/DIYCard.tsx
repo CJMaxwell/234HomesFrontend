@@ -1,18 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
+
 interface Props {
   imgUrl?: string;
   height?: string;
 }
-const textPosition = {
-  top: '60%',
-  left: '5%',
-};
-const share = {
-  top: '5%',
-  right: '2%',
-};
 
 const Wrapper = styled.div<Props>`
   border-radius: 20px;
@@ -27,6 +20,10 @@ const Wrapper = styled.div<Props>`
   .title-author {
     bottom: 45px;
     left: 32px;
+  }
+  .share {
+    top: 5%;
+  right: 2%
   }
 `;
 
@@ -48,7 +45,7 @@ const DIYCard: React.FC<Props> = ({ imgUrl = '', height }) => {
           </div>
         </div>
       </div>
-      <button className="absolute" style={share}>
+      <button className="absolute share">
         <img className="h-8 w-8" src="/Ellipse.svg" alt="share" />
       </button>
     </Wrapper>

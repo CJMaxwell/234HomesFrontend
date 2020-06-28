@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import Link from 'next/link';
+
 import Button from '../atoms/Button';
 import Navbar from '../Organisms/Navbar';
 import Footer from './Footer';
@@ -8,7 +9,6 @@ import SiteLink from '../atoms/SiteLink';
 import PostCard from '../Organisms/PostCard';
 import ProfessionalCard from '../Organisms/ProfessionalCard';
 import DIYCard from '../Organisms/DIYCard';
-import { theme } from '../../styles/theme';
 
 const HomeBannerBtn = styled(Button)`
   border-radius: 34px;
@@ -166,6 +166,9 @@ const DIY = styled.section`
   .get-started {
     background: ${({ theme }) => theme.colors.green1};
     border-radius: 36px;
+  };
+  .diy-title {
+    color: ${({ theme }) => theme.colors.green1};
   }
 `;
 
@@ -180,15 +183,6 @@ const Directory = styled.div`
   }
 `;
 
-const sectionStyle = {
-  backgroundColor: '#F7681A',
-};
-const connectStyle = {
-  color: theme.colors.green1,
-};
-const featPost = {
-  height: '581px',
-};
 
 const Home = () => {
   const theme = useContext(ThemeContext);
@@ -211,7 +205,7 @@ const Home = () => {
               <input
                 className="outline-none"
                 type="text"
-                placeholder="Blahsldjfdslf"
+                placeholder="Enter type"
               />
             </div>
             <div className="input-group">
@@ -219,7 +213,7 @@ const Home = () => {
               <input
                 className="outline-none"
                 type="text"
-                placeholder="Blahsldjfdslf"
+                placeholder="Enter style"
               />
             </div>
             <div className="input-group">
@@ -227,7 +221,7 @@ const Home = () => {
               <input
                 className="outline-none"
                 type="text"
-                placeholder="Blahsldjfdslf"
+                placeholder="Enter location"
               />
             </div>
             <div className="input-group">
@@ -235,7 +229,7 @@ const Home = () => {
               <input
                 className="outline-none"
                 type="text"
-                placeholder="Blahsldjfdslf"
+                placeholder="Enter year built"
               />
             </div>
             <HomeBannerBtn
@@ -327,7 +321,7 @@ const Home = () => {
           <div className="col-span-2">
             <PostCard
               imgUrl={'/two-white-and-brown-armchairs.png'}
-              height="740px"
+              height="724px"
             />
           </div>
           <div className="pl-4">
@@ -354,7 +348,7 @@ const Home = () => {
               </div>
             </div>
             <div className="pl-8">
-              <h4 className="pt-12" style={connectStyle}>
+              <h4 className="pt-12 diy-title">
                 DIY
               </h4>
               <h1 className="font-bold text-2xl pb-4 pt-4">
@@ -386,21 +380,32 @@ const Home = () => {
             Invidunt Labore Et Dolore
           </h1>
           <hr />
-          <ul className="pt-6 pb-6 text-gray-500 grid grid-cols-3 gap-4">
-            <li>Featured Professional</li>
-            <li>Most views Products</li>
-            <li>
-              <a className="border-gray-900 border-b-2 pb-2">
-                Top Rated Vendors
-              </a>
-            </li>
-          </ul>
+          <div className="flex justify-between items-center pb-16 pt-10">
+            {/* pt-6 pb-6 text-gray-500 grid grid-cols-3 gap-4 */}
+            <ul className="text-gray-500 flex">
+              <li className="pr-8">Featured Professional</li>
+              <li className="pr-8">Most views Products</li>
+              <li>
+                <a className="border-gray-900 border-b-2 pb-2">
+                  Top Rated Vendors
+                </a>
+              </li>
+            </ul>
+            <div className="inline-flex">
+              <button className="pr-4">
+                <img src="/chveron-left.svg" alt="Scroll left" />
+              </button>
+              <button>
+                <img src="/chveron-right.svg" alt="Scroll right" />
+              </button>
+            </div>
+          </div>
         </div>
         <div className="grid grid-cols-4 gap-4 mb-12">
-          <ProfessionalCard />
-          <ProfessionalCard />
-          <ProfessionalCard />
-          <ProfessionalCard />
+          <ProfessionalCard name="Babatunde Maxwell" />
+          <ProfessionalCard name="Alexandria Vladimir" />
+          <ProfessionalCard name="Micheal Jonna" />
+          <ProfessionalCard name="Wuraola Gbotemi" />
         </div>
       </Directory>
       <Footer />
