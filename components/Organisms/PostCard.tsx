@@ -1,29 +1,43 @@
 import React from 'react';
+import styled from 'styled-components';
+
 interface Props {
   imgUrl?: string;
   height?: string;
 }
-const textPosition = {
-  top: '65%',
-  left: '5%',
-};
-const share = {
-  top: '5%',
-  right: '2%',
-};
 
-const PostCard = ({ imgUrl = '/Adora_NH_sink.png', height }: Props) => {
+const Wrapper = styled.div<Props>`
+  background-image: url('${({ imgUrl }) => imgUrl}'), linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5));
+  background-blend-mode: overlay;
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position: center;
+  height: ${({ height }) => height};
+  overflow: hidden;
+  border-radius: 20px;
+
+  .title-author {
+    left:29px;
+    bottom: 44px;
+  }
+
+  .share {
+    right: 30px;
+    top: 54.46px;
+  }
+`;
+
+const PostCard: React.FC<Props> = ({
+  imgUrl = '/Adora_NH_sink.png',
+  height,
+}) => {
   return (
-    <div
+    <Wrapper
+      imgUrl={imgUrl}
+      height={height}
       className="rounded overflow-hidden shadow-lg relative text-white"
-      style={{ backgroundImage: `url(${imgUrl})`, height: `${height}` }}
     >
-      <img
-        className="w-full inline-block"
-        src={imgUrl}
-        alt="Sunset in the mountains"
-      />
-      <div className="absolute" style={textPosition}>
+      <div className="absolute title-author">
         <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
         <div className="flex items-center">
           <img
@@ -37,10 +51,10 @@ const PostCard = ({ imgUrl = '/Adora_NH_sink.png', height }: Props) => {
           </div>
         </div>
       </div>
-      <button className="absolute" style={share}>
+      <button className="absolute share">
         <img className="h-8 w-8" src="/share.svg" alt="share" />
       </button>
-    </div>
+    </Wrapper>
   );
 };
 

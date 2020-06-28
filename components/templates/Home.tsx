@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-
+import Link from 'next/link';
 import Button from '../atoms/Button';
 import Navbar from '../Organisms/Navbar';
 import Footer from './Footer';
@@ -121,7 +121,7 @@ const HouseTour = styled.section`
   }
 
   .prev-next {
-    margin-top: 454px;
+    margin-top: 433px;
   }
 `;
 
@@ -129,6 +129,55 @@ const LinkButton = styled(SiteLink)`
   background-color: ${({ theme }) => theme.colors.orange1};
   border: 1px solid ${({ theme }) => theme.colors.white};
   border-radius: 2.25rem;
+`;
+
+const PostGrid = styled.div`
+  height: 646px;
+`;
+
+const NextPrev = styled(Button)`
+  background: ${({ theme }) => theme.colors.white};
+  border-color: ${({ theme }) => theme.colors.white};
+  width: 97px;
+  height: 67px;
+
+  &:first-child {
+    border-right: 1px solid ${({ theme }) => theme.colors.gray6};
+    border-radius: 5px 0 0 5px;
+  }
+
+  &:last-child {
+    border-right: 1px solid ${({ theme }) => theme.colors.gray6};
+    border-radius: 0px 5px 5px 0px;
+  }
+`;
+
+const Stories = styled.section`
+  .view-more {
+    background: ${({ theme }) => theme.colors.orange2};
+    width: 185px;
+    height: 56px;
+  }
+`;
+
+const DIY = styled.section`
+  background: ${({ theme }) => theme.colors.gray9};
+
+  .get-started {
+    background: ${({ theme }) => theme.colors.green1};
+    border-radius: 36px;
+  }
+`;
+
+const Directory = styled.div`
+  
+
+  .view-all {
+    background: ${({ theme }) => theme.colors.gray5};
+    border-radius: 36px;
+    width: 185px;
+    height: 56px;
+  }
 `;
 
 const sectionStyle = {
@@ -241,8 +290,12 @@ const Home = () => {
           </div>
 
           <div className="z-50 w-1/2 prev-next flex justify-end">
-            <Button>Prev</Button>
-            <Button>Next</Button>
+            <NextPrev className="inline-flex justify-center items-center">
+              <img src="/arrow-left.svg" alt="Previous" />
+            </NextPrev>
+            <NextPrev className="inline-flex justify-center items-center">
+              <img src="/arrow-right.svg" alt="Next" />
+            </NextPrev>
           </div>
 
           <div className="explore absolute w-1/2 right-0">
@@ -255,48 +308,49 @@ const Home = () => {
         </div>
       </HouseTour>
 
-      <section className="px-16 mb-24 mt-20 bg-white">
+      <Stories className="container mx-auto mb-24 mt-20 bg-white">
         <div className="flex justify-between items-center">
-          <h1 className="font-semibold text-xl text-gray-700 uppercase">
-            Stories
-          </h1>
-          <a className="inline-block font-semibold uppercase text-sm px-3 py-3 leading-none border rounded-full bg-gray-800 text-white border-white">
-            View More
-          </a>
+          <h1 className="font-semibold text-xl text-gray-700">Stories</h1>
+          <Link href="#blah">
+            <a className="view-more inline-flex justify-center items-center font-semibold uppercase leading-none border rounded-full text-white border-white">
+              View More
+            </a>
+          </Link>
         </div>
-        <div className="grid grid-cols-4 mb-4 mt-12">
+        <PostGrid className="grid grid-cols-4 mb-4 mt-12">
           <div className="pr-4">
             <div className="grid grid-rows-2 gap-4">
-              <PostCard />
-              <PostCard imgUrl={'/AH_dining.png'} />
+              <PostCard height="354px" />
+              <PostCard imgUrl={'/AH_dining.png'} height="354px" />
             </div>
           </div>
           <div className="col-span-2">
             <PostCard
               imgUrl={'/two-white-and-brown-armchairs.png'}
-              height={'583px'}
+              height="740px"
             />
           </div>
           <div className="pl-4">
             <div className="grid grid-rows-2 gap-4">
-              <PostCard imgUrl={'/Adora_NH_grid.png'} />
-              <PostCard imgUrl={'/Adora_NH_rope.png'} />
+              <PostCard imgUrl={'/Adora_NH_grid.png'} height="354px" />
+              <PostCard imgUrl={'/Adora_NH_rope.png'} height="354px" />
             </div>
           </div>
-        </div>
-      </section>
-      <section className="diybg pt-12 pb-12 mb-24">
-        <div className="px-16 container mx-auto mt-16 mb-20 ">
+        </PostGrid>
+      </Stories>
+
+      <DIY className="pt-12 pb-12 mb-24">
+        <div className="mt-16  container mx-auto mb-20 ">
           <div className="grid grid-cols-3 gap-4">
             <div>
-              <DIYCard imgUrl={'/EO_kitchen.png'} />
+              <DIYCard imgUrl={'/EO_kitchen.png'} height="595px" />
             </div>
             <div className="grid grid-rows-2 gap-4">
               <div>
-                <DIYCard imgUrl={'/EO_bedroom.png'} />
+                <DIYCard imgUrl={'/EO_bedroom.png'} height="285px" />
               </div>
               <div>
-                <DIYCard imgUrl={'/EO_sitting_room.png'} />
+                <DIYCard imgUrl={'/EO_sitting_room.png'} height="285px" />
               </div>
             </div>
             <div className="pl-8">
@@ -312,18 +366,19 @@ const Home = () => {
                 invidunt ut labore et dolore magna aliquyam erat, sed diam
                 voluptua.
               </p>
-              <SiteLink>Get Started</SiteLink>
+              <SiteLink className="get-started text-white">Get Started</SiteLink>
             </div>
           </div>
         </div>
-      </section>
-      <section className="container mx-auto pb-20">
+      </DIY>
+
+      <Directory className="container mx-auto pb-20">
         <div className="px-16">
           <div className="flex justify-between items-center">
             <h1 className="font-semibold text-xl text-gray-700 uppercase">
               Our Directory
             </h1>
-            <a className="inline-block font-semibold uppercase text-sm px-3 py-3 leading-none border rounded-full bg-gray-800 text-white border-white">
+            <a className="inline-block font-semibold uppercase leading-none text-white view-all inline-flex justify-center items-center">
               View All
             </a>
           </div>
@@ -347,7 +402,7 @@ const Home = () => {
           <ProfessionalCard />
           <ProfessionalCard />
         </div>
-      </section>
+      </Directory>
       <Footer />
     </div>
   );

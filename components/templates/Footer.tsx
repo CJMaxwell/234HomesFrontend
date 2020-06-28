@@ -1,15 +1,21 @@
 import React from 'react';
+import styled from 'styled-components';
 
-const FormButton = {
-  top: '-57px',
-  left: '83%',
-};
+const FormButton = styled.button`
+  top: -57px;
+  left: 85%;
+  height: 45px;
+`;
+
+const P = styled.p`
+  margin-bottom: 35px;
+`;
 
 const Footer = () => {
   return (
     <>
       <div className="bg-black">
-        <div className="text-white grid grid-cols-4 gap-4 px-12 pt-16">
+        <div className="text-white grid grid-cols-4 gap-4 container mx-auto pt-16">
           <div>
             <img
               src="/234_Homes_footer_logo.png"
@@ -103,24 +109,23 @@ const Footer = () => {
           </div>
           <div>
             <h6 className="pb-16 font-bold">News Letter Subscription</h6>
-            <p>
+            <P>
               Subscribe to our newsletter and we will inform you of our latest
               nenwson directory and promotion.
-            </p>
-            <form>
+            </P>
+            <form className="relative">
               <input
                 type="text"
                 required
                 className="appearance-none block w-full bg-gray-700 text-white border border-gray-700 rounded-full py-3 px-3 mb-3 leading-tight focus:outline-none focus:bg-white"
                 placeholder="Enter email address"
               />
-              <button
+              <FormButton
                 type="submit"
                 className="relative bg-gray-400 text-white font-bold rounded-full py-3 px-3"
-                style={FormButton}
               >
                 <img src="/left-arrow-submit.svg" alt="Chevron right" />
-              </button>
+              </FormButton>
             </form>
           </div>
         </div>
