@@ -12,7 +12,7 @@ const Wrapper = styled.div`
 `;
 
 
-const ProfessionalCard: React.FC<Props> = ({ imgUrl = '/jonathan.jpg', name }) => {
+const ProfessionalCard: React.FC<Props> = ({ imgUrl = '/img/jonathan.jpg', name }) => {
   const theme = useContext(ThemeContext);
 
   return (

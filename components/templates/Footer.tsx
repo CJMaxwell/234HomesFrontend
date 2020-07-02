@@ -18,7 +18,7 @@ const Footer = () => {
         <div className="text-white grid grid-cols-4 gap-4 container mx-auto pt-16">
           <div>
             <img
-              src="/234_Homes_footer_logo.png"
+              src="/img/234_Homes_footer_logo.png"
               className="pb-12"
               alt="+234Homes logo"
             />
@@ -29,22 +29,22 @@ const Footer = () => {
             <ul className="flex justify-start pt-8">
               <li className="pr-3">
                 <a>
-                  <img src="/instagram.svg" alt="Link to Instagram page" />
+                  <img src="/img/instagram.svg" alt="Link to Instagram page" />
                 </a>
               </li>
               <li className="pr-3">
                 <a>
-                  <img src="/facebook.svg" alt="Link to Facebook page" />
+                  <img src="/img/facebook.svg" alt="Link to Facebook page" />
                 </a>
               </li>
               <li className="pr-3">
                 <a>
-                  <img src="/twitter.svg" alt="Link to Twitter page" />
+                  <img src="/img/twitter.svg" alt="Link to Twitter page" />
                 </a>
               </li>
               <li>
                 <a>
-                  <img src="/linkedin.svg" alt="Link to LinkedIn page" />
+                  <img src="/img/linkedin.svg" alt="Link to LinkedIn page" />
                 </a>
               </li>
             </ul>
@@ -124,13 +124,13 @@ const Footer = () => {
                 type="submit"
                 className="relative bg-gray-400 text-white font-bold rounded-full py-3 px-3"
               >
-                <img src="/left-arrow-submit.svg" alt="Chevron right" />
+                <img src="/img/left-arrow-submit.svg" alt="Chevron right" />
               </FormButton>
             </form>
           </div>
         </div>
         <div>
-          <img src="/footer_bg.svg" alt="Brand image" />
+          <img src="/img/footer_bg.svg" alt="Brand image" />
         </div>
       </div>
     </>

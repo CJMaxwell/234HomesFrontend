@@ -11,6 +11,9 @@ html {
 /* .featPost {
   height: 583px !important;
 } */
+a {
+  cursor: pointer;
+}
 
 body {
   @apply bg-white;

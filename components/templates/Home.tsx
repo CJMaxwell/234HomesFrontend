@@ -61,7 +61,7 @@ const HomeBannerBtn = styled(Button)`
 
 const HomeBanner = styled.section`
   height: 35.875rem;
-  background: url('/Adora_NH.png');
+  background: url('/img/Adora_NH.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -189,7 +189,7 @@ const Home = () => {
 
   return (
     <div>
-      <img src="/color-pattern.png" alt="+234Homes Colour pattern" />
+      <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />
       <Navbar />
       <HomeBanner className="flex justify-center items-center">
         <div>
@@ -236,7 +236,7 @@ const Home = () => {
               className="uppercase flex justify-center items-center"
               type="submit"
             >
-              <img src="/search.svg" alt="Search icon" /> Search
+              <img src="/img/search.svg" alt="Search icon" /> Search
             </HomeBannerBtn>
           </form>
         </div>
@@ -259,7 +259,7 @@ const Home = () => {
             Learn More About Us
             <img
               className="inline-block h-4 pl-4"
-              src="/left-arrow-button.svg"
+              src="/img/left-arrow-button.svg"
               alt="View more"
             />
           </button>
@@ -285,16 +285,16 @@ const Home = () => {
 
           <div className="z-50 w-1/2 prev-next flex justify-end">
             <NextPrev className="inline-flex justify-center items-center">
-              <img src="/arrow-left.svg" alt="Previous" />
+              <img src="/img/arrow-left.svg" alt="Previous" />
             </NextPrev>
             <NextPrev className="inline-flex justify-center items-center">
-              <img src="/arrow-right.svg" alt="Next" />
+              <img src="/img/arrow-right.svg" alt="Next" />
             </NextPrev>
           </div>
 
           <div className="explore absolute w-1/2 right-0">
             <img
-              src="/AH.png"
+              src="/img/AH.png"
               className="w-full h-full object-cover"
               alt="Sample house"
             />
@@ -315,19 +315,19 @@ const Home = () => {
           <div className="pr-4">
             <div className="grid grid-rows-2 gap-4">
               <PostCard height="354px" />
-              <PostCard imgUrl={'/AH_dining.png'} height="354px" />
+              <PostCard imgUrl={'/img/AH_dining.png'} height="354px" />
             </div>
           </div>
           <div className="col-span-2">
             <PostCard
-              imgUrl={'/two-white-and-brown-armchairs.png'}
+              imgUrl={'/img/two-white-and-brown-armchairs.png'}
               height="724px"
             />
           </div>
           <div className="pl-4">
             <div className="grid grid-rows-2 gap-4">
-              <PostCard imgUrl={'/Adora_NH_grid.png'} height="354px" />
-              <PostCard imgUrl={'/Adora_NH_rope.png'} height="354px" />
+              <PostCard imgUrl={'/img/Adora_NH_grid.png'} height="354px" />
+              <PostCard imgUrl={'/img/Adora_NH_rope.png'} height="354px" />
             </div>
           </div>
         </PostGrid>
@@ -337,14 +337,14 @@ const Home = () => {
         <div className="mt-16  container mx-auto mb-20 ">
           <div className="grid grid-cols-3 gap-4">
             <div>
-              <DIYCard imgUrl={'/EO_kitchen.png'} height="595px" />
+              <DIYCard imgUrl={'/img/EO_kitchen.png'} height="595px" />
             </div>
             <div className="grid grid-rows-2 gap-4">
               <div>
-                <DIYCard imgUrl={'/EO_bedroom.png'} height="285px" />
+                <DIYCard imgUrl={'/img/EO_bedroom.png'} height="285px" />
               </div>
               <div>
-                <DIYCard imgUrl={'/EO_sitting_room.png'} height="285px" />
+                <DIYCard imgUrl={'/img/EO_sitting_room.png'} height="285px" />
               </div>
             </div>
             <div className="pl-8">
@@ -393,10 +393,10 @@ const Home = () => {
             </ul>
             <div className="inline-flex">
               <button className="pr-4">
-                <img src="/chveron-left.svg" alt="Scroll left" />
+                <img src="/img/chveron-left.svg" alt="Scroll left" />
               </button>
               <button>
-                <img src="/chveron-right.svg" alt="Scroll right" />
+                <img src="/img/chveron-right.svg" alt="Scroll right" />
               </button>
             </div>
           </div>
