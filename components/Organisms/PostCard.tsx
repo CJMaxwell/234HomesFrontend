@@ -42,7 +42,7 @@ const PostCard: React.FC<Props> = ({
         <div className="flex items-center">
           <img
             className="w-10 h-10 rounded-full mr-4"
-            src="/jonathan.jpg"
+            src="/img/jonathan.jpg"
             alt="Avatar of Jonathan Reinink"
           />
           <div className="text-sm">
@@ -52,7 +52,7 @@ const PostCard: React.FC<Props> = ({
         </div>
       </div>
       <button className="absolute share">
-        <img className="h-8 w-8" src="/share.svg" alt="share" />
+        <img className="h-8 w-8" src="/img/share.svg" alt="share" />
       </button>
     </Wrapper>
   );
