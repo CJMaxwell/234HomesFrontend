@@ -16,7 +16,7 @@ const MainWrapper = styled.div`
     height: 7.7244rem;
   }
 `;
-const Wrapper = styled.section`
+const Wrapper = styled.section<Props>`
   height: 34rem;
   background: url('${({ imgUrl }) => imgUrl}'), linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5));
   background-position: center;
