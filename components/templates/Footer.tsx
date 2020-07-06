@@ -9,7 +9,6 @@ const FormButton = styled.button`
 const Logo = styled.a`
   img {
     width: 59.5px;
-    height: 120px;
     object-fit: cover;
   }
 `;

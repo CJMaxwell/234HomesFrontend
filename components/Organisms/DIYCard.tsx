@@ -18,7 +18,7 @@ const Wrapper = styled.div<Props>`
   height: ${({ height }) => height};
 
   .title-author {
-    bottom: 45px;
+    bottom: 20px;
     left: 32px;
   }
   .share {

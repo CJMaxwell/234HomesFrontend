@@ -18,7 +18,7 @@ const Wrapper = styled.div<Props>`
 
   .title-author {
     left:29px;
-    bottom: 44px;
+    bottom: 20px;
   }
 
   .share {
