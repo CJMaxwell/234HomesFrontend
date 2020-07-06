@@ -12,7 +12,7 @@ import DIYCard from '../Organisms/DIYCard';
 
 const HomeBannerBtn = styled(Button)`
   border-radius: 34px;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   font-weight: 600;
   text-transform: uppercase;
   min-width: 7rem;
