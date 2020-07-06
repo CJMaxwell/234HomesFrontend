@@ -359,7 +359,7 @@ const Home = () => {
                 Lorem Ipsum <br />
                 Dolor Sit Amet
               </h1>
-              <p className="pb-20 text-sm">
+              <p className="pb-16 text-sm">
                 Consetetur sadipscing elitr, sed diam nonumy eirmod tempor
                 invidunt ut labore et dolore magna aliquyam erat, sed diam
                 voluptua.
