@@ -308,7 +308,7 @@ const Home = () => {
 
       <Stories className="container mx-auto mb-16 mt-12 bg-white">
         <div className="flex justify-between items-center">
-          <h1 className="font-semibold text-xl text-gray-700">Stories</h1>
+          <h1 className="font-semibold text-gray-700">Stories</h1>
           <Link href="#blah">
             <a className="view-more inline-flex justify-center items-center font-semibold uppercase leading-none border rounded-full text-white border-white">
               View More
@@ -396,10 +396,10 @@ const Home = () => {
             </ul>
             <div className="inline-flex">
               <button className="pr-4">
-                <img src="/img/chveron-left.svg" alt="Scroll left" />
+                <img src="/img/chveron-left.svg" className="h-4" alt="Scroll left" />
               </button>
               <button>
-                <img src="/img/chveron-right.svg" alt="Scroll right" />
+                <img src="/img/chveron-right.svg" className="h-4" alt="Scroll right" />
               </button>
             </div>
           </div>
