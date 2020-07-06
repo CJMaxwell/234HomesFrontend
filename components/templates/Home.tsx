@@ -140,8 +140,12 @@ const PostGrid = styled.div`
 const NextPrev = styled(Button)`
   background: ${({ theme }) => theme.colors.white};
   border-color: ${({ theme }) => theme.colors.white};
-  width: 67.9px;
-  height: 46.9px;
+  width: 55px;
+  height: 40px;
+
+  img {
+    height: 20px;
+  }
 
   &:first-child {
     border-right: 1px solid ${({ theme }) => theme.colors.gray6};
