@@ -12,12 +12,11 @@ import DIYCard from '../Organisms/DIYCard';
 
 const HomeBannerBtn = styled(Button)`
   border-radius: 34px;
-  font-size: 1rem;
-  font-weight: bold;
-  margin-left: 35px;
+  font-size: 0.7rem;
+  font-weight: 600;
   text-transform: uppercase;
-  min-width: 9.8rem;
-  height: 4.25rem;
+  min-width: 7rem;
+  height: 3rem;
 
   img {
     margin-right: 5.74px;
@@ -34,28 +33,28 @@ const HomeBannerBtn = styled(Button)`
   &.house-tours {
     background: ${({ theme }) => theme.colors.orange1};
     border-radius: 7px 0px 0px 0px;
-    min-width: 11rem;
+    min-width: 8rem;
   }
 
   &.stories {
     background: ${({ theme }) => theme.colors.yellow1};
     border-color: ${({ theme }) => theme.colors.yellow1};
     border-radius: 0;
-    min-width: 8.2rem;
+    min-width: 5.74rem;
   }
 
   &.diy {
     background: ${({ theme }) => theme.colors.green1};
     border-color: ${({ theme }) => theme.colors.green1};
     border-radius: 0;
-    min-width: 5.94rem;
+    min-width: 4.158rem;
   }
 
   &.directory {
     background: ${({ theme }) => theme.colors.gray5};
     border-color: ${({ theme }) => theme.colors.gray5};
     border-radius: 0px 7px 0px 0px;
-    min-width: 8.875rem;
+    min-width: 6.2125rem;
   }
 `;
 
@@ -67,15 +66,16 @@ const HomeBanner = styled.section`
   background-size: cover;
 
   .home-banner-tabs {
-    height: 4.25rem;
+    height: 3rem;
   }
 
   .form {
-    width: 71rem;
+    width: 64rem;
     border-radius: 0px 7px 7px 7px;
     background: ${({ theme }) => theme.colors.white};
     box-shadow: 20px 20px 40px ${({ theme }) => theme.colors.gray16};
-    padding: 18px;
+    padding: 9px 12px;
+    box-sizing: border-box;
 
     .input-group {
       display: block;
@@ -83,11 +83,12 @@ const HomeBanner = styled.section`
       label {
         font-weight: 400;
         display: block;
+        font-size: 15px;
       }
 
       &:not(:first-child) {
         border-left: 1px solid ${({ theme }) => theme.colors.gray17};
-        padding-left: 23px;
+        padding-left: 12px;
       }
     }
   }
@@ -99,20 +100,21 @@ const Connect = styled.section`
   .title {
     color: ${({ theme }) => theme.colors.green1};
     text-transform: uppercase;
+    font-size: 13px;
   }
 `;
 
 const HouseTour = styled.section`
-  height: 610px;
+  height: 427px;
   background-color: ${({ theme }) => theme.colors.orange1};
 
   h1 {
-    font-size: 3.44rem;
+    font-size: 2.40rem;
     font-weight: 500;
   }
 
   .description {
-    padding: 7.8rem 7.8rem 0 0;
+    padding: 5.46rem 5.46rem 0 0;
   }
 
   .wrapper,
@@ -121,7 +123,7 @@ const HouseTour = styled.section`
   }
 
   .prev-next {
-    margin-top: 433px;
+    margin-top: 303.1px;
   }
 `;
 
@@ -138,8 +140,8 @@ const PostGrid = styled.div`
 const NextPrev = styled(Button)`
   background: ${({ theme }) => theme.colors.white};
   border-color: ${({ theme }) => theme.colors.white};
-  width: 97px;
-  height: 67px;
+  width: 67.9px;
+  height: 46.9px;
 
   &:first-child {
     border-right: 1px solid ${({ theme }) => theme.colors.gray6};
@@ -155,8 +157,9 @@ const NextPrev = styled(Button)`
 const Stories = styled.section`
   .view-more {
     background: ${({ theme }) => theme.colors.orange2};
-    width: 185px;
-    height: 56px;
+    width: 125px;
+    height: 39.2px;
+    font-size: 12px;
   }
 `;
 
@@ -178,8 +181,9 @@ const Directory = styled.div`
   .view-all {
     background: ${({ theme }) => theme.colors.gray5};
     border-radius: 36px;
-    width: 185px;
-    height: 56px;
+    width: 125px;
+    height: 39.2px;
+    font-size: 12px;
   }
 `;
 
@@ -236,26 +240,26 @@ const Home = () => {
               className="uppercase flex justify-center items-center"
               type="submit"
             >
-              <img src="/img/search.svg" alt="Search icon" /> Search
+              <img src="/img/search.svg" alt="Search icon" className="h-4" /> Search
             </HomeBannerBtn>
           </form>
         </div>
       </HomeBanner>
 
-      <Connect className="text-center pt-32 pb-32">
+      <Connect className="text-center pt-24 pb-24">
         <div className="title">
           <span>Connect</span> | <span>Share</span> |{' '}
           <span>Live Authentic</span>
         </div>
-        <h1 className="mt-8 text-black">The Contemporary African Home</h1>
-        <p className="mt-8 text-xl">
+        <h1 className="mt-6 text-black font-semibold">The Contemporary African Home</h1>
+        <p className="mt-6">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora sunt
           <br />
           expedita alias repellendus reprehenderit architecto eos enim delectus
           optio libero.
         </p>
-        <div className="mt-20">
-          <button className="border-b-2 border-black">
+        <div className="mt-12">
+          <button className="border-b-2 border-black text-base">
             Learn More About Us
             <img
               className="inline-block h-4 pl-4"
@@ -269,11 +273,11 @@ const Home = () => {
       <HouseTour className="relative">
         <div className="container mx-auto flex wrapper">
           <div className="text-white w-1/2 description">
-            <h3 className="pb-10">House Tour</h3>
-            <h1 className="font-bold leading-none pb-6">
-              Lorem ipsum dolor sit amet
+            <h3 className="pb-6">House Tour</h3>
+            <h1 className="font-bold text-xl leading-none pb-4">
+              Lorem ipsum dolor <br />sit amet
             </h1>
-            <p className="pb-16">
+            <p className="pb-16 text-sm">
               Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
               nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
               erat, sed diam voluptua.
@@ -302,7 +306,7 @@ const Home = () => {
         </div>
       </HouseTour>
 
-      <Stories className="container mx-auto mb-24 mt-20 bg-white">
+      <Stories className="container mx-auto mb-16 mt-12 bg-white">
         <div className="flex justify-between items-center">
           <h1 className="font-semibold text-xl text-gray-700">Stories</h1>
           <Link href="#blah">
@@ -311,51 +315,51 @@ const Home = () => {
             </a>
           </Link>
         </div>
-        <PostGrid className="grid grid-cols-4 mb-4 mt-12">
+        <PostGrid className="grid grid-cols-4 mb-4 mt-8">
           <div className="pr-4">
             <div className="grid grid-rows-2 gap-4">
-              <PostCard height="354px" />
-              <PostCard imgUrl={'/img/AH_dining.png'} height="354px" />
+              <PostCard height="248px" />
+              <PostCard imgUrl={'/img/AH_dining.png'} height="248px" />
             </div>
           </div>
           <div className="col-span-2">
             <PostCard
               imgUrl={'/img/two-white-and-brown-armchairs.png'}
-              height="724px"
+              height="507px"
             />
           </div>
           <div className="pl-4">
             <div className="grid grid-rows-2 gap-4">
-              <PostCard imgUrl={'/img/Adora_NH_grid.png'} height="354px" />
-              <PostCard imgUrl={'/img/Adora_NH_rope.png'} height="354px" />
+              <PostCard imgUrl={'/img/Adora_NH_grid.png'} height="248px" />
+              <PostCard imgUrl={'/img/Adora_NH_rope.png'} height="248px" />
             </div>
           </div>
         </PostGrid>
       </Stories>
 
-      <DIY className="pt-12 pb-12 mb-24">
+      <DIY className="pt-8 pb-8 mb-16">
         <div className="mt-16  container mx-auto mb-20 ">
           <div className="grid grid-cols-3 gap-4">
             <div>
-              <DIYCard imgUrl={'/img/EO_kitchen.png'} height="595px" />
+              <DIYCard imgUrl={'/img/EO_kitchen.png'} height="416.5px" />
             </div>
             <div className="grid grid-rows-2 gap-4">
               <div>
-                <DIYCard imgUrl={'/img/EO_bedroom.png'} height="285px" />
+                <DIYCard imgUrl={'/img/EO_bedroom.png'} height="199.5px" />
               </div>
               <div>
-                <DIYCard imgUrl={'/img/EO_sitting_room.png'} height="285px" />
+                <DIYCard imgUrl={'/img/EO_sitting_room.png'} height="199.5px" />
               </div>
             </div>
             <div className="pl-8">
               <h4 className="pt-12 diy-title">
                 DIY
               </h4>
-              <h1 className="font-bold text-2xl pb-4 pt-4">
+              <h1 className="font-bold text-xl pb-4 pt-4">
                 Lorem Ipsum <br />
                 Dolor Sit Amet
               </h1>
-              <p className="pb-20">
+              <p className="pb-20 text-sm">
                 Consetetur sadipscing elitr, sed diam nonumy eirmod tempor
                 invidunt ut labore et dolore magna aliquyam erat, sed diam
                 voluptua.
@@ -366,23 +370,22 @@ const Home = () => {
         </div>
       </DIY>
 
-      <Directory className="container mx-auto pb-20">
+      <Directory className="container mx-auto pb-12">
         <div className="px-16">
           <div className="flex justify-between items-center">
-            <h1 className="font-semibold text-xl text-gray-700 uppercase">
+            <h1 className="font-semibold text-gray-700 uppercase">
               Our Directory
             </h1>
-            <a className="inline-block font-semibold uppercase leading-none text-white view-all inline-flex justify-center items-center">
+            <a className="font-semibold uppercase leading-none text-white view-all inline-flex justify-center items-center">
               View All
             </a>
           </div>
-          <h1 className="pt-8 pb-8 font-bold text-3xl">
+          <h1 className="pt-6 pb-6 font-bold text-2xl">
             Invidunt Labore Et Dolore
           </h1>
           <hr />
-          <div className="flex justify-between items-center pb-16 pt-10">
-            {/* pt-6 pb-6 text-gray-500 grid grid-cols-3 gap-4 */}
-            <ul className="text-gray-500 flex">
+          <div className="flex justify-between items-center pb-10 pt-5">
+            <ul className="text-gray-500 flex text-sm">
               <li className="pr-8">Featured Professional</li>
               <li className="pr-8">Most views Products</li>
               <li>
