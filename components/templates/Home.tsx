@@ -105,7 +105,7 @@ const Connect = styled.section`
 `;
 
 const HouseTour = styled.section`
-  height: 427px;
+  height: 570px;
   background-color: ${({ theme }) => theme.colors.orange1};
 
   h1 {
@@ -343,16 +343,18 @@ const Home = () => {
 
       <DIY className="pt-8 pb-8 mb-16">
         <div className="mt-16  container mx-auto mb-20 ">
-          <div className="grid grid-cols-3 gap-4">
-            <div>
-              <DIYCard imgUrl={'/img/EO_kitchen.png'} height="416.5px" />
-            </div>
-            <div className="grid grid-rows-2 gap-4">
+          <div className="grid grid-cols-3 gap-10">
+            <div className="col-span-2 grid grid-cols-2 gap-4">
               <div>
-                <DIYCard imgUrl={'/img/EO_bedroom.png'} height="199.5px" />
+                <DIYCard imgUrl={'/img/EO_kitchen.png'} height="414.5px" />
               </div>
-              <div>
-                <DIYCard imgUrl={'/img/EO_sitting_room.png'} height="199.5px" />
+              <div className="grid grid-rows-2 gap-4">
+                <div>
+                  <DIYCard imgUrl={'/img/EO_bedroom.png'} height="199.5px" />
+                </div>
+                <div>
+                  <DIYCard imgUrl={'/img/EO_sitting_room.png'} height="199.5px" />
+                </div>
               </div>
             </div>
             <div className="pl-8">

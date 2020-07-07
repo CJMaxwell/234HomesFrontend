@@ -4,16 +4,16 @@ import styled from 'styled-components';
 
 const Logo = styled.a`
   img {
-    width: 3.71875rem;
-    height: 4.33125rem;
-    object-fit: cover;
+    width: 4.71875rem;
+    height: 5.33125rem;
+    /* object-fit: cover; */
   }
 `;
 
 const Wrapper = styled.nav`
 
   li{
-      font-size: 15px;
+      font-size: 14px;
   }
   
   .signupLink {
