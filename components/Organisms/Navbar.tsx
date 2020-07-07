@@ -47,9 +47,11 @@ const Navbar = () => {
           <a className="block lg:inline-block lg:mt-0 text-black mr-6">About</a>
         </li>
         <li>
-          <a className="block lg:inline-block lg:mt-0 text-black mr-6">
-            Log in
+          <Link href="/login">
+            <a className="block lg:inline-block lg:mt-0 text-black mr-6">
+              Log in
           </a>
+          </Link>
         </li>
         <li>
           <Link href="/signup">

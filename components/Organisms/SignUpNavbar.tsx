@@ -12,6 +12,13 @@ const LoginWrap = styled.div`
   }
 `;
 
+const Logo = styled.a`
+  img {
+    width: 59.5px;
+    object-fit: cover;
+  }
+`;
+
 
 const SignUpNavbar = () => {
 
@@ -20,9 +27,9 @@ const SignUpNavbar = () => {
   return (
     <nav className="container mx-auto flex items-center justify-between py-5">
       <Link href="/">
-        <a className="flex items-center text-white mr-6">
-          <img src="/img/234_Homes_final_logo.png" alt="+234Homes logo" className="h-20 w-16 object-cover" />
-        </a>
+        <Logo className="flex items-center text-white mr-6">
+          <img src="/img/234_Homes_final_logo.png" alt="+234Homes logo" />
+        </Logo>
       </Link>
       <LoginWrap>
         <span>Already Have An Account? </span>
