@@ -80,7 +80,7 @@ const Signup: React.FC<Props> = ({ imgUrl = '' }) => {
               <div>
                 <img src="/img/mailbox_icon.svg" className="inline-block px-2" alt="Sign up with Email" />
               </div>
-              <input className="appearance-none w-full py-4 leading-tight" id="email" type="email" required placeholder="Enter Your Email Address" />
+              <input className="appearance-none w-full py-4 leading-tight outline-none" id="email" type="email" required placeholder="Enter Your Email Address" />
             </div>
             <div className="text-center continue-email mt-4">
               <button type="submit" className="text-center text-white py-4">Continue with Email</button>

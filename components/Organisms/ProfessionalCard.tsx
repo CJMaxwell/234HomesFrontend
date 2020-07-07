@@ -68,8 +68,8 @@ const ProfessionalCard: React.FC<Props> = ({ imgUrl = '/img/jonathan.jpg', name 
         </div>
         <hr />
         <div className="pt-6">
-          <h6>I am the right person for the job</h6>
-          <p>
+          <h6 className="font-bold text-sm">I am the right person for the job:</h6>
+          <p className="text-xs pt-4">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis
             velit assumenda officia unde inventore dignissimos!
           </p>

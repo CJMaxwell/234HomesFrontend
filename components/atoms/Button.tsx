@@ -17,7 +17,7 @@ const Button = styled.button<Props>`
   font-size: 1rem;
   outline: none;
   height: ${({ height }) => (height ? height : '3rem')};
-  width: ${({ width }) => (width ? width : '7rem')};
+  width: ${({ width }) => (width ? width : '5rem')};
   border: ${({ border, theme }) =>
     border ? border : `2px solid ${theme.colors.orange1}`};
   border-radius: ${({ borderRadius }) =>
