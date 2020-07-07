@@ -14,8 +14,8 @@ const LoginWrap = styled.div`
 
 const Logo = styled.a`
   img {
-    width: 59.5px;
-    object-fit: cover;
+    width: 4.71875rem;
+    height: 5.33125rem;
   }
 `;
 

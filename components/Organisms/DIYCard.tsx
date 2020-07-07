@@ -30,7 +30,7 @@ const Wrapper = styled.div<Props>`
 
 const DIYCard: React.FC<Props> = ({ imgUrl = '', height }) => {
   return (
-    <Wrapper imgUrl={imgUrl} height={height} className="max-w-sm rounded overflow-hidden shadow-lg relative text-white">
+    <Wrapper imgUrl={imgUrl} height={height} className="rounded overflow-hidden shadow-lg relative text-white">
       <div className="absolute title-author">
         <div className="font-bold mb-2">The Coldest Sunset</div>
         <div className="flex items-center">
@@ -41,7 +41,7 @@ const DIYCard: React.FC<Props> = ({ imgUrl = '', height }) => {
           />
           <div className="text-xs">
             <p className="text-white leading-none">Jonathan Reinink</p>
-            <p className="text-white">Aug 18, 2020</p>
+            <p className="text-white">Sept., 18, 2020</p>
           </div>
         </div>
       </div>
