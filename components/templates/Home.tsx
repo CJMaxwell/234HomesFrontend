@@ -310,7 +310,7 @@ const Home = () => {
         </div>
       </HouseTour>
 
-      <Stories className="container mx-auto mb-16 mt-12 bg-white">
+      <Stories className="container mx-auto mt-12 bg-white">
         <div className="flex justify-between items-center">
           <h1 className="font-semibold text-gray-700">Stories</h1>
           <Link href="#blah">
