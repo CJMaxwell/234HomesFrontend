@@ -44,64 +44,49 @@ const Main = styled.section`
     color: ${({ theme }) => theme.colors.gray1};
     font-size: 1.3125rem;
   }
-  .general {
+  /* .general {
     color: ${({ theme }) => theme.colors.gray11};
+  } */
+  select:first-child, .edu-input input::placeholder {
+    color: ${({ theme }) => theme.colors.gray11};
+    font-size: 12px;
+    font-weight: normal;
+
   }
-  .input-label {
-    font-size: 0.7rem;
+  
+  input::placeholder, .input-label, select.select-first-custom:first-child {
+    font-size: 12px;
+    color: ${({ theme }) => theme.colors.gray5};
+    font-weight: 600;
+
   }
+  
   .input-wrapper {
     border-bottom: 1px solid ${({ theme }) => theme.colors.gray17};
   }
-  input::placeholder, textarea::placeholder {
-    font-size: 12px;
-    color: ${({ theme }) => theme.colors.gray1};
-    font-weight: 400;
-  }
-  textarea::placeholder {
-    padding-top: 1rem;
-  }
-  .without-placeholder {
-    color: ${({ theme }) => theme.colors.gray1};
-    font-weight: 400;
-  }
-  .custom-file-input {
-    color: transparent;
-  }
-  .custom-file-input::-webkit-file-upload-button {
-    visibility: hidden;
-  }
-  .custom-file-input::before {
-    content: url('/img/ar-camera.svg');
-    /* color: black; */
+
+  .input-border {
+    border: 1px solid ${({ theme }) => theme.colors.gray17};
     display: inline-block;
-    background-color: ${({ theme }) => theme.colors.gray11};
-    height: 5rem;
-    width: 5rem;
-    border: 1px solid ${({ theme }) => theme.colors.gray11};
-    border-radius: 50%;
-    text-align: center;
-    padding-top: 1rem;
-    cursor: pointer;
-    /* outline: none; */
-    
-    /* -webkit-user-select: none; */
-    /* background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3); */
-    /* border: 1px solid #999;
-    border-radius: 3px;
-    padding: 5px 8px; */
-    /* white-space: nowrap; */
-    
-    /* text-shadow: 1px 1px #fff;
-    font-weight: 700;
-    font-size: 10pt; */
+    height: 35px;
+
   }
+
+  
 `;
 
-const Desc = styled.div`
+const Legend = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.gray17};
-
 `;
+
+const Add = styled.button`
+  color: ${({ theme }) => theme.colors.gray2};
+  background-color: ${({ theme }) => theme.colors.gray17};
+  border: 1px solid ${({ theme }) => theme.colors.gray17};
+  height: 2.18rem;
+  width: 4.63rem;
+`;
+
 
 const Continue = styled.button`
   background-color: ${({ theme }) => theme.colors.orange1};
@@ -149,7 +134,7 @@ const ProfessionalProfile = () => {
             <div className="flex">
               <div className="w-1/2 px-3 mb-6 md:mb-0">
                 <div className="input-wrapper">
-                  <select name="occupation" id="occupation" className="w-full pb-2">
+                  <select name="occupation" id="occupation" className="w-full pb-2 select-first-custom">
                     <option value="Occupation">Your Occupation</option>
                     <option value="Interior Designer">Interior Designer</option>
                     <option value="Ui/UX Designer">UI/UX Designer</option>
@@ -159,7 +144,7 @@ const ProfessionalProfile = () => {
               </div>
               <div className="w-1/2 px-3 mb-6 md:mb-0">
                 <div className="input-wrapper">
-                  <select name="Experience" id="Experience" className="w-full pb-2">
+                  <select name="Experience" id="Experience" className="w-full pb-2 select-first-custom">
                     <option value="Experience Level">Experience Level</option>
                     <option value="Beginner">Beginner</option>
                     <option value="Intermediate">Intermediate</option>
@@ -171,7 +156,7 @@ const ProfessionalProfile = () => {
             <div className="w-full mb-6 md:mb-0 mt-8">
               <div className="px-3">
                 <div className="input-wrapper">
-                  <select name="Experience" id="Experience" className="w-full pb-2">
+                  <select name="Experience" id="Experience" className="w-full pb-2 select-first-custom">
                     <option value="Key Skills">Key Skills</option>
                     <option value="Trend identification">Trend identification</option>
                     <option value="Space Planning">Space Planning</option>
@@ -180,100 +165,119 @@ const ProfessionalProfile = () => {
                 </div>
               </div>
             </div>
+
             <div className="w-full mb-6 md:mb-0 mt-8">
               <div className="px-3">
-                <p className="block input-label uppercase text-gray-700 text-xs mb-2">
+                <p className="block input-label text-gray-700 text-xs mb-2">
                   Education <span className="text-red-600">&#42;</span>
                 </p>
-                <div className="border border-gray-600 flex">
-                  <div className="w-1/2 pr-3 mb-6 md:mb-0 mt-8">
-                    <div className="">
-                      <div className="border border-gray-600">
-                        <select name="Experience" id="Experience" className="w-full pb-2">
-                          <option value="Key Skills">Key Skills</option>
+                <Legend className="p-4">
+                  <div className=" flex">
+                    <div className="w-1/2 pr-3">
+                      <Legend>
+                        <select name="Experience" id="Experience" className="w-full p-2">
+                          <option value="Key Skills">Country Of College/University</option>
                           <option value="Trend identification">Trend identification</option>
                           <option value="Space Planning">Space Planning</option>
                           <option value="Trustworthy">Trustworthy</option>
                         </select>
-                      </div>
+                      </Legend>
                     </div>
-                  </div>
-                  <div className="w-1/2 mb-6 md:mb-0 mt-8">
-                    <div className="">
-                      <div className="border border-gray-600">
-                        <select name="Experience" id="Experience" className="w-full pb-2">
-                          <option value="Key Skills">Key Skills</option>
+                    <div className="w-1/2">
+                      <Legend>
+                        <select name="Experience" id="Experience" className="w-full p-2">
+                          <option value="Key Skills">College/University Name</option>
                           <option value="Trend identification">Trend identification</option>
                           <option value="Space Planning">Space Planning</option>
                           <option value="Trustworthy">Trustworthy</option>
                         </select>
-                      </div>
+                      </Legend>
                     </div>
                   </div>
-                </div>
+                  <div className="flex pt-4">
+                    <div className="w-1/6">
+                      <Legend>
+                        <select name="Experience" id="Experience" className="w-full p-2">
+                          <option value="Title">Title</option>
+                          <option value="BS">BS</option>
+                          <option value="BE">BE</option>
+                          <option value="BA">BA</option>
+                        </select>
+                      </Legend>
+                    </div>
+                    <div className="w-4/6 pr-3 edu-input">
+                      <input className="appearance-none bg-transparent input-border w-full text-gray-700 mr-3 p-2 leading-tight focus:outline-none" type="text" required placeholder="Major" aria-label="major" />
+                    </div>
+                    <div className="w-1/6">
+                      <Legend>
+                        <select name="Experience" id="Experience" className="w-full p-2">
+                          <option value="Key Skills">Year</option>
+                          <option value="Trend identification">2019</option>
+                          <option value="Space Planning">2018</option>
+                          <option value="Trustworthy">2017</option>
+                        </select>
+                      </Legend>
+                    </div>
+                  </div>
+                  <div className="w-full flex justify-end text-center pt-4">
+                    <Add type="submit" className="text-center uppercase">Add</Add>
+                  </div>
+                </Legend>
               </div>
             </div>
 
-            <div className="flex mt-8">
-              <div className="w-1/2 px-3 mb-6 md:mb-0">
-                <label className="block input-label general uppercase text-gray-700 text-xs mb-2" htmlFor="grid-first-name">
-                  Email <span className="text-red-600">&#42;</span>
-                </label>
-                <div className="input-wrapper">
-                  <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 px-2 leading-tight focus:outline-none" type="email" required placeholder="Email" aria-label="email" />
-                </div>
-              </div>
-              <div className="w-1/2 px-3 mb-6 md:mb-0">
-                <label className="block input-label general uppercase text-gray-700 text-xs  mb-2" htmlFor="grid-first-name">
-                  Phone <span className="text-red-600">&#42;</span>
-                </label>
-                <div className="input-wrapper">
-                  <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 px-2 leading-tight focus:outline-none" type="text" required placeholder="Phone Number" aria-label="Phone number" />
-                </div>
+            <div className="w-full mb-6 md:mb-0 mt-8">
+              <div className="px-3">
+                <p className="block input-label text-gray-700 text-xs mb-2">
+                  Certifications <span className="text-red-600">&#42;</span>
+                </p>
+                <Legend className="p-4">
+                  <div className=" flex">
+                    <div className="w-5/12 pr-3">
+                      <div className="">
+                        <Legend>
+                          <select name="Experience" id="Experience" className="w-full p-2">
+                            <option value="Key Skills">Country Of College/University</option>
+                            <option value="Trend identification">Trend identification</option>
+                            <option value="Space Planning">Space Planning</option>
+                            <option value="Trustworthy">Trustworthy</option>
+                          </select>
+                        </Legend>
+                      </div>
+                    </div>
+                    <div className="w-5/12 pr-3">
+                      <Legend>
+                        <select name="Experience" id="Experience" className="w-full p-2">
+                          <option value="Key Skills">College/University Name</option>
+                          <option value="Trend identification">Trend identification</option>
+                          <option value="Space Planning">Space Planning</option>
+                          <option value="Trustworthy">Trustworthy</option>
+                        </select>
+                      </Legend>
+                    </div>
+                    <div className="w-2/12">
+                      <Legend>
+                        <select name="Experience" id="Experience" className="w-full p-2">
+                          <option value="Key Skills">Year</option>
+                          <option value="Trend identification">2019</option>
+                          <option value="Space Planning">2018</option>
+                          <option value="Trustworthy">2017</option>
+                        </select>
+                      </Legend>
+                    </div>
+                  </div>
+                  <div className="w-full flex justify-end text-center pt-4">
+                    <Add type="submit" className="text-center uppercase">Add</Add>
+                  </div>
+                </Legend>
               </div>
             </div>
+
             <div className="w-full mb-6 md:mb-0 mt-8">
               <div className="px-3">
                 <div className="input-wrapper">
-                  <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 px-2 leading-tight focus:outline-none" type="text" required placeholder="Address" aria-label="Address" />
+                  <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 px-2 leading-tight focus:outline-none" type="text" required placeholder="Personal Website" aria-label="Personal Website" />
                 </div>
-              </div>
-            </div>
-            <div className="flex mt-8">
-              <div className="w-1/3 px-3 mb-6 md:mb-0">
-                <div className="input-wrapper">
-                  <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 px-2 leading-tight focus:outline-none" type="text" required placeholder="City" aria-label="email" />
-                </div>
-              </div>
-              <div className="w-1/3 px-3 mb-6 md:mb-0">
-                <div className="input-wrapper">
-                  <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 px-2 leading-tight focus:outline-none" type="text" required placeholder="State" aria-label="Phone number" />
-                </div>
-              </div>
-              <div className="w-1/3 px-3 mb-6 md:mb-0">
-                <div className="input-wrapper">
-                  <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 px-2 leading-tight focus:outline-none" type="text" required placeholder="LGA" aria-label="Phone number" />
-                </div>
-              </div>
-            </div>
-            <div className="w-full mb-6 md:mb-0 mt-8">
-              <div className="px-3 flex">
-                <label className="block mr-10 without-placeholder text-gray-700 text-xs  mb-2" htmlFor="grid-first-name">
-                  Profile Photo <span className="text-red-600">&#42;</span>
-                </label>
-                <div>
-                  <input className="custom-file-input appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 px-2 leading-tight focus:outline-none" type="file" accept="image/*" required placeholder="Address" aria-label="Address" />
-                </div>
-              </div>
-            </div>
-            <div className="w-full mb-6 md:mb-0 mt-8">
-              <div className="px-3">
-                <label className="block without-placeholder text-gray-700 text-xs  mb-2" htmlFor="grid-first-name">
-                  Description <span className="text-red-600">&#42;</span>
-                </label>
-                <Desc className="rounded-sm h-32">
-                  <textarea name="description" id="description" className="w-full text-gray-700 mr-3 pb-2 px-2 leading-tight focus:outline-none" placeholder="Share a bit about your work experience, cool projects you’ve completed and your area of expertise."></textarea>
-                </Desc>
               </div>
             </div>
             <div className="w-full flex justify-end text-center mt-16">
