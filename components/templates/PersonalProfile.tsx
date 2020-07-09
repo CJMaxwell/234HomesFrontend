@@ -44,7 +44,7 @@ const Main = styled.section`
     color: ${({ theme }) => theme.colors.gray1};
     font-size: 1.3125rem;
   }
-  .general {
+  .general, textarea::placeholder {
     color: ${({ theme }) => theme.colors.gray11};
   }
   .input-label {
@@ -53,18 +53,19 @@ const Main = styled.section`
   .input-wrapper {
     border-bottom: 1px solid ${({ theme }) => theme.colors.gray17};
   }
-  input::placeholder, textarea::placeholder {
+  input::placeholder,.without-placeholder {
     font-size: 12px;
-    color: ${({ theme }) => theme.colors.gray1};
-    font-weight: 400;
+    color: ${({ theme }) => theme.colors.gray5};
+    font-weight: 600;
   }
   textarea::placeholder {
     padding-top: 1rem;
+    font-size: 12px;
   }
-  .without-placeholder {
+  /* .without-placeholder {
     color: ${({ theme }) => theme.colors.gray1};
     font-weight: 400;
-  }
+  } */
   .custom-file-input {
     color: transparent;
   }
@@ -83,18 +84,7 @@ const Main = styled.section`
     text-align: center;
     padding-top: 1rem;
     cursor: pointer;
-    /* outline: none; */
-    
-    /* -webkit-user-select: none; */
-    /* background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3); */
-    /* border: 1px solid #999;
-    border-radius: 3px;
-    padding: 5px 8px; */
-    /* white-space: nowrap; */
-    
-    /* text-shadow: 1px 1px #fff;
-    font-weight: 700;
-    font-size: 10pt; */
+   
   }
 `;
 
