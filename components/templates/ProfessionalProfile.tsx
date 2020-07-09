@@ -44,9 +44,9 @@ const Main = styled.section`
     color: ${({ theme }) => theme.colors.gray1};
     font-size: 1.3125rem;
   }
-  /* .general {
+  .general {
     color: ${({ theme }) => theme.colors.gray11};
-  } */
+  }
   select:first-child, .edu-input input::placeholder {
     color: ${({ theme }) => theme.colors.gray11};
     font-size: 12px;
@@ -276,7 +276,7 @@ const ProfessionalProfile = () => {
             <div className="w-full mb-6 md:mb-0 mt-8">
               <div className="px-3">
                 <div className="input-wrapper">
-                  <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 px-2 leading-tight focus:outline-none" type="text" required placeholder="Personal Website" aria-label="Personal Website" />
+                  <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none" type="text" required placeholder="Personal Website" aria-label="Personal Website" />
                 </div>
               </div>
             </div>

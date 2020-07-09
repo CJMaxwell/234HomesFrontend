@@ -142,7 +142,7 @@ const PersonalProfile = () => {
                   First Name <span className="text-red-600">&#42;</span>
                 </label>
                 <div className="input-wrapper">
-                  <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 px-2 leading-tight focus:outline-none" type="text" required placeholder="First Name" aria-label="First Name" />
+                  <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none" type="text" required placeholder="First Name" aria-label="First Name" />
                 </div>
               </div>
               <div className="w-1/2 px-3 mb-6 md:mb-0">
@@ -150,7 +150,7 @@ const PersonalProfile = () => {
                   Last Name <span className="text-red-600">&#42;</span>
                 </label>
                 <div className="input-wrapper">
-                  <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 px-2 leading-tight focus:outline-none" type="text" required placeholder="Last Name" aria-label="Last Name" />
+                  <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none" type="text" required placeholder="Last Name" aria-label="Last Name" />
                 </div>
               </div>
             </div>
@@ -160,7 +160,7 @@ const PersonalProfile = () => {
                   Email <span className="text-red-600">&#42;</span>
                 </label>
                 <div className="input-wrapper">
-                  <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 px-2 leading-tight focus:outline-none" type="email" required placeholder="Email" aria-label="email" />
+                  <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none" type="email" required placeholder="Email" aria-label="email" />
                 </div>
               </div>
               <div className="w-1/2 px-3 mb-6 md:mb-0">
@@ -168,7 +168,7 @@ const PersonalProfile = () => {
                   Phone <span className="text-red-600">&#42;</span>
                 </label>
                 <div className="input-wrapper">
-                  <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 px-2 leading-tight focus:outline-none" type="text" required placeholder="Phone Number" aria-label="Phone number" />
+                  <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none" type="text" required placeholder="Phone Number" aria-label="Phone number" />
                 </div>
               </div>
             </div>
@@ -178,7 +178,7 @@ const PersonalProfile = () => {
                   Address<span className="text-red-600">&#42;</span>
                 </label> */}
                 <div className="input-wrapper">
-                  <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 px-2 leading-tight focus:outline-none" type="text" required placeholder="Address" aria-label="Address" />
+                  <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none" type="text" required placeholder="Address" aria-label="Address" />
                 </div>
               </div>
             </div>
@@ -188,7 +188,7 @@ const PersonalProfile = () => {
                   City<span className="text-red-600">&#42;</span>
                 </label> */}
                 <div className="input-wrapper">
-                  <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 px-2 leading-tight focus:outline-none" type="text" required placeholder="City" aria-label="email" />
+                  <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none" type="text" required placeholder="City" aria-label="email" />
                 </div>
               </div>
               <div className="w-1/3 px-3 mb-6 md:mb-0">
@@ -196,7 +196,7 @@ const PersonalProfile = () => {
                   State<span className="text-red-600">&#42;</span>
                 </label> */}
                 <div className="input-wrapper">
-                  <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 px-2 leading-tight focus:outline-none" type="text" required placeholder="State" aria-label="Phone number" />
+                  <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none" type="text" required placeholder="State" aria-label="Phone number" />
                 </div>
               </div>
               <div className="w-1/3 px-3 mb-6 md:mb-0">
@@ -204,7 +204,7 @@ const PersonalProfile = () => {
                   LGA<span className="text-red-600">&#42;</span>
                 </label> */}
                 <div className="input-wrapper">
-                  <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 px-2 leading-tight focus:outline-none" type="text" required placeholder="LGA" aria-label="Phone number" />
+                  <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none" type="text" required placeholder="LGA" aria-label="Phone number" />
                 </div>
               </div>
             </div>
@@ -214,7 +214,7 @@ const PersonalProfile = () => {
                   Profile Photo <span className="text-red-600">&#42;</span>
                 </label>
                 <div>
-                  <input className="custom-file-input appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 px-2 leading-tight focus:outline-none" type="file" accept="image/*" required placeholder="Address" aria-label="Address" />
+                  <input className="custom-file-input appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none" type="file" accept="image/*" required placeholder="Address" aria-label="Address" />
                 </div>
               </div>
             </div>
