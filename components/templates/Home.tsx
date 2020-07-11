@@ -135,7 +135,7 @@ const HouseTour = styled.section`
   }
 
   .prev-next {
-    margin-top: 303.1px;
+    margin-top: 358.1px;
   }
 `;
 
@@ -152,8 +152,8 @@ const PostGrid = styled.div`
 const NextPrev = styled(Button)`
   background: ${({ theme }) => theme.colors.white};
   border-color: ${({ theme }) => theme.colors.white};
-  width: 55px;
-  height: 40px;
+  width: 60px;
+  height: 45px;
 
   img {
     height: 20px;

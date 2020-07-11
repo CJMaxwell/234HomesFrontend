@@ -30,7 +30,7 @@ const Footer = () => {
                 alt="+234Homes logo"
               />
             </Logo>
-            <p className="text-sm">
+            <p className="text-sm leading-loose">
               Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam.
             </p>
             <ul className="flex justify-start pt-8">
