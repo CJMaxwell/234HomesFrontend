@@ -3,6 +3,7 @@ import styled, { ThemeContext } from 'styled-components';
 
 import ProfileNavbar from '../Organisms/ProfileNavbar';
 import Footer from './Footer';
+import Direction from '../atoms/Direction';
 
 const Main = styled.section`
   .progression.active {
@@ -97,7 +98,7 @@ const CompanyProfile = () => {
             <span className="progression active">1</span>
             <span className="leading-progression">Personal Profile</span>
             <span className="direction-arrow">
-              <img src="/img/direction.svg" alt="Direction arrow" />
+              <Direction />
             </span>
           </li>
           <li className="flex items-center">
