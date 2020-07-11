@@ -25,7 +25,7 @@ const SignUpNavbar = () => {
   const theme = useContext(ThemeContext);
 
   return (
-    <nav className="container mx-auto flex items-center justify-between py-5">
+    <nav className="container mx-auto general-padding flex items-center justify-between py-5">
       <Link href="/">
         <Logo className="flex items-center text-white mr-6">
           <img src="/img/234_Homes_final_logo.png" alt="+234Homes logo" />

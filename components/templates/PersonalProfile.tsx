@@ -109,7 +109,7 @@ const PersonalProfile = () => {
       <ProfileNavbar />
       <hr />
       <Main className="container mx-auto mb-24">
-        <ul className="flex text-sm py-2">
+        <ul className="flex text-sm py-2 mr-24 ml-12">
           <li className="flex items-center">
             <span className="progression active">1</span>
             <span className="leading-progression">Personal Profile</span>
@@ -129,7 +129,7 @@ const PersonalProfile = () => {
             <span className="leading-progression">Payment Info</span>
           </li>
         </ul>
-        <hr />
+        <hr className="mr-32 ml-12" />
         <div className="mt-20 px-64">
           <h1 className="heading font-semibold pb-4">Personal Info</h1>
           <p className="general pb-6">Tell us a bit about yourself. This information will appear on your public profile, <br />

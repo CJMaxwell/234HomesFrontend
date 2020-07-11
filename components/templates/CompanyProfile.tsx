@@ -91,8 +91,8 @@ const CompanyProfile = () => {
     <>
       <ProfileNavbar />
       <hr />
-      <Main className="container mx-auto mb-24">
-        <ul className="flex text-sm py-2">
+      <Main className="container  general-padding mx-auto mb-24">
+        <ul className="flex text-sm py-2 mr-10 -ml-8">
           <li className="flex items-center">
             <span className="progression active">1</span>
             <span className="leading-progression">Personal Profile</span>
@@ -112,7 +112,7 @@ const CompanyProfile = () => {
             <span className="leading-progression">Payment Info</span>
           </li>
         </ul>
-        <hr />
+        <hr className="mr-10 -ml-8" />
         <div className="mt-20 px-64">
           <h1 className="heading font-semibold pb-4">Business Information</h1>
           <p className="general pb-6">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy <br />
