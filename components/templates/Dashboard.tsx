@@ -4,22 +4,81 @@ import styled, { ThemeContext } from 'styled-components';
 import ProfileNavbar from '../Organisms/ProfileNavbar';
 import Footer from './Footer';
 import Favourite from '../molecules/Favourite';
+import Button from '../atoms/Button';
+
+
 const Hero = styled.section`
-  height: 12.425rem;
+  height: 16.425rem;
   background: url('/img/Hero.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+
+  h1 {
+    padding-top: 3.65rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding-bottom: 1.4rem;
+  }
+
+  .form-elements-wrap {
+    width: 30rem;
+    background: ${({ theme }) => theme.colors.white};
+    padding-left: 20px;
+    height: 3.15rem;
+    box-sizing: border-box; 
+  }
+  
+  .map-pin {
+    display: inline-block;
+    padding-right: 0.5rem;
+    height: 23px;
+  }
+`;
+const Search = styled(Button)`
+  border-radius: 0;
+  height: 3.15rem;
+  width: 7rem;
 `;
 
+
 const Dashboard = () => {
+
+  const theme = useContext(ThemeContext);
+
   return (
     <section>
       <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />
       <div className="general-padding container mx-auto">
         <ProfileNavbar />
       </div>
-      <Hero />
+      <Hero>
+        <h1 className="text-center">
+          Find A Professional For Your Project!
+        </h1>
+        <form className="flex items-center justify-center">
+          <div className="flex items-center form-elements-wrap">
+            <div className="border-r border-gray-400 w-8/12">
+              <input
+                className="outline-none w-full"
+                type="text"
+                placeholder="What Services Do You Need?"
+              />
+            </div>
+            <div className="w-4/12 pl-3">
+              <div className="flex items-center w-full">
+                <img src="/img/map-pin.svg" className="map-pin" alt="Map Pin" />
+                <input
+                  className="outline-none w-3/4"
+                  type="text"
+                  placeholder="Location"
+                />
+              </div>
+            </div>
+          </div>
+          <Search className="uppercase">Search </Search>
+        </form>
+      </Hero>
       <section className="container mx-auto general-padding mt-20 mb-32">
         <div className="flex justify-between items-center">
           <Favourite imgUrl={'/img/AH-fav.png'} height={'15rem'} width={'22rem'} title={'Interior Designers'} />
