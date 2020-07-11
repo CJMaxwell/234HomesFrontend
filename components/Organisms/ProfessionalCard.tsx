@@ -9,6 +9,9 @@ interface Props {
 
 const Wrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.gray15};
+  .heading-text {
+    font-size: 1.10rem;
+  }
 `;
 
 
@@ -27,7 +30,7 @@ const ProfessionalCard: React.FC<Props> = ({ imgUrl = '/img/jonathan.jpg', name 
         </div>
 
         <div className="text-sm mt-4 text-center">
-          <h1 className="font-bold">{name}</h1>
+          <h1 className="font-semibold heading-text">{name}</h1>
         </div>
         <div className="flex items-center justify-center pt-2  pb-6">
           <svg

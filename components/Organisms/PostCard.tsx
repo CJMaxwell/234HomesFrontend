@@ -38,7 +38,7 @@ const PostCard: React.FC<Props> = ({
       className="rounded overflow-hidden shadow-lg relative text-white"
     >
       <div className="absolute title-author">
-        <div className="font-bold mb-2">The Coldest Sunset</div>
+        <div className="font-bold mb-2 text-2xl">Dolor sit amet<br /> sed diam</div>
         <div className="flex items-center">
           <img
             className="w-10 h-10 rounded-full mr-4"

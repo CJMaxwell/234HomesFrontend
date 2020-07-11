@@ -12,11 +12,11 @@ import DIYCard from '../Organisms/DIYCard';
 
 const HomeBannerBtn = styled(Button)`
   border-radius: 34px;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   font-weight: 600;
   text-transform: uppercase;
   min-width: 7rem;
-  height: 3rem;
+  height: 3.4rem;
 
   img {
     margin-right: 5.74px;
@@ -33,14 +33,14 @@ const HomeBannerBtn = styled(Button)`
   &.house-tours {
     background: ${({ theme }) => theme.colors.orange1};
     border-radius: 7px 0px 0px 0px;
-    min-width: 8rem;
+    min-width: 8.95rem;
   }
 
   &.stories {
     background: ${({ theme }) => theme.colors.yellow1};
     border-color: ${({ theme }) => theme.colors.yellow1};
     border-radius: 0;
-    min-width: 5.74rem;
+    min-width: 6.74rem;
   }
 
   &.diy {
@@ -54,7 +54,7 @@ const HomeBannerBtn = styled(Button)`
     background: ${({ theme }) => theme.colors.gray5};
     border-color: ${({ theme }) => theme.colors.gray5};
     border-radius: 0px 7px 0px 0px;
-    min-width: 6.2125rem;
+    min-width: 8rem;
   }
 `;
 
@@ -66,7 +66,7 @@ const HomeBanner = styled.section`
   background-size: cover;
 
   .home-banner-tabs {
-    height: 3rem;
+    height: 3.4rem;
   }
 
   .form {
@@ -75,6 +75,7 @@ const HomeBanner = styled.section`
     background: ${({ theme }) => theme.colors.white};
     box-shadow: 20px 20px 40px ${({ theme }) => theme.colors.gray16};
     padding: 9px 12px;
+    height: 4.85rem;
     box-sizing: border-box;
 
     .input-group {
@@ -100,7 +101,18 @@ const Connect = styled.section`
   .title {
     color: ${({ theme }) => theme.colors.green1};
     text-transform: uppercase;
-    font-size: 13px;
+    font-size: 0.8rem;
+  }
+  h1 {
+    font-size: 1.75rem;
+    color: ${({ theme }) => theme.colors.gray1}
+  }
+  p {
+    color: ${({ theme }) => theme.colors.gray5};
+  }
+  button {
+    color: ${({ theme }) => theme.colors.gray2};
+    border-color: ${({ theme }) => theme.colors.gray2};
   }
 `;
 
@@ -109,7 +121,7 @@ const HouseTour = styled.section`
   background-color: ${({ theme }) => theme.colors.orange1};
 
   h1 {
-    font-size: 2.40rem;
+    font-size: 2.75rem;
     font-weight: 500;
   }
 
@@ -165,6 +177,9 @@ const Stories = styled.section`
     height: 39.2px;
     font-size: 12px;
   }
+  h1 {
+    font-size: 1.5rem;
+  }
 `;
 
 const DIY = styled.section`
@@ -176,6 +191,10 @@ const DIY = styled.section`
   };
   .diy-title {
     color: ${({ theme }) => theme.colors.green1};
+  }
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
   }
 `;
 
@@ -255,7 +274,7 @@ const Home = () => {
           <span>Connect</span> | <span>Share</span> |{' '}
           <span>Live Authentic</span>
         </div>
-        <h1 className="mt-6 text-black font-semibold">The Contemporary African Home</h1>
+        <h1 className="mt-6 font-semibold">The Contemporary African Home</h1>
         <p className="mt-6">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora sunt
           <br />
@@ -263,7 +282,7 @@ const Home = () => {
           optio libero.
         </p>
         <div className="mt-12">
-          <button className="border-b-2 border-black text-base">
+          <button className="border-b-2">
             Learn More About Us
             <img
               className="inline-block h-4 pl-4"
@@ -278,7 +297,7 @@ const Home = () => {
         <div className="container mx-auto general-padding flex wrapper">
           <div className="text-white w-1/2 description">
             <h3 className="pb-6">House Tour</h3>
-            <h1 className="font-bold text-xl leading-none pb-4">
+            <h1 className="font-bold text-4xl leading-none pb-4">
               Lorem ipsum dolor <br />sit amet
             </h1>
             <p className="pb-16 text-sm">
@@ -361,7 +380,7 @@ const Home = () => {
               <h4 className="pt-12 diy-title">
                 DIY
               </h4>
-              <h1 className="font-bold text-xl pb-4 pt-4">
+              <h1 className="font-bold pb-4 pt-4">
                 Lorem Ipsum <br />
                 Dolor Sit Amet
               </h1>
