@@ -14,7 +14,12 @@ html {
 a {
   cursor: pointer;
 }
+.general-padding {
+  padding-left: 5rem;
+  padding-right: 5rem;
+}
 
 body {
   @apply bg-white;
+  -webkit-font-smoothing: antialiased;
 }

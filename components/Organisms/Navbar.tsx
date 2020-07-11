@@ -23,7 +23,7 @@ const Wrapper = styled.nav`
 
 const Navbar = () => {
   return (
-    <Wrapper className="container mx-auto flex items-center justify-between py-6">
+    <Wrapper className="container mx-auto flex items-center justify-between py-6 general-padding">
       <Link href="/">
         <Logo className="flex items-center text-white mr-6">
           <img src="/img/234_Homes_final_logo.png" className="cursor-pointer" alt="+234Homes logo" />

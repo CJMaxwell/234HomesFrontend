@@ -70,7 +70,7 @@ const HomeBanner = styled.section`
   }
 
   .form {
-    width: 64rem;
+    width: 69rem;
     border-radius: 0px 7px 7px 7px;
     background: ${({ theme }) => theme.colors.white};
     box-shadow: 20px 20px 40px ${({ theme }) => theme.colors.gray16};
@@ -275,7 +275,7 @@ const Home = () => {
       </Connect>
 
       <HouseTour className="relative">
-        <div className="container mx-auto flex wrapper">
+        <div className="container mx-auto general-padding flex wrapper">
           <div className="text-white w-1/2 description">
             <h3 className="pb-6">House Tour</h3>
             <h1 className="font-bold text-xl leading-none pb-4">
@@ -310,7 +310,7 @@ const Home = () => {
         </div>
       </HouseTour>
 
-      <Stories className="container mx-auto mt-12 bg-white">
+      <Stories className="container mx-auto general-padding mt-12 bg-white">
         <div className="flex justify-between items-center">
           <h1 className="font-semibold text-gray-700">Stories</h1>
           <Link href="#blah">
@@ -342,7 +342,7 @@ const Home = () => {
       </Stories>
 
       <DIY className="pt-8 pb-8 mb-16">
-        <div className="mt-16  container mx-auto mb-20 ">
+        <div className="mt-16 container mx-auto general-padding mb-20 ">
           <div className="grid grid-cols-3 gap-10">
             <div className="col-span-2 grid grid-cols-2 gap-4">
               <div>

@@ -103,8 +103,8 @@ const ProfessionalProfile = () => {
     <>
       <ProfileNavbar />
       <hr />
-      <Main className="container mx-auto mb-24">
-        <ul className="flex text-sm py-2">
+      <Main className="container mx-auto  general-padding  mb-24">
+        <ul className="flex text-sm py-2 -ml-8 mr-8">
           <li className="flex items-center">
             <span className="progression active">1</span>
             <span className="leading-progression">Personal Profile</span>
@@ -124,7 +124,7 @@ const ProfessionalProfile = () => {
             <span className="leading-progression">Payment Info</span>
           </li>
         </ul>
-        <hr />
+        <hr className="-ml-8 mr-8" />
         <div className="mt-20 px-64">
           <h1 className="heading font-semibold pb-4">Professional Info</h1>
           <p className="general pb-6">This is your time to shine. Let potential buyers know what you do best and <br />

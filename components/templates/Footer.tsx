@@ -21,7 +21,7 @@ const Footer = () => {
   return (
     <>
       <div className="bg-black">
-        <div className="text-white grid grid-cols-4 gap-4 container mx-auto pt-16">
+        <div className="text-white grid grid-cols-4 gap-4 container mx-auto pt-16 general-padding">
           <div>
             <Logo>
               <img
@@ -104,7 +104,7 @@ const Footer = () => {
                 <a>House Tour</a>
               </li>
               <li>
-                <a>Galllery</a>
+                <a>Gallery</a>
               </li>
               <li>
                 <a>Advertise</a>
@@ -136,7 +136,7 @@ const Footer = () => {
             </form>
           </div>
         </div>
-        <div>
+        <div className="mt-12">
           <img src="/img/footer_bg.svg" alt="Brand image" />
         </div>
       </div>
