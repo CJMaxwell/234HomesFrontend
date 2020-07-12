@@ -6,7 +6,6 @@ const Logo = styled.a`
   img {
     width: 4.71875rem;
     height: 5.33125rem;
-    /* object-fit: cover; */
   }
 `;
 
@@ -30,7 +29,7 @@ const ProfileNavbar = () => {
   const theme = useContext(ThemeContext);
 
   return (
-    <Wrapper className="flex items-center justify-between container max-auto general-padding py-6">
+    <Wrapper className="flex items-center justify-between container mx-auto general-padding py-6">
       <Link href="/">
         <Logo className="flex items-center text-white mr-6">
           <img src="/img/234_Homes_final_logo.png" className="cursor-pointer" alt="+234Homes logo" />
@@ -64,7 +63,7 @@ const ProfileNavbar = () => {
           <Link href="/signup">
             <a className="">
               <img
-                className="h-8 w-8 rounded-full inline-block mr-2"
+                className="h-10 w-10 rounded-full inline-block mr-2"
                 src="/img/profileImg.jpg"
                 alt="User Profile Picture"
               />

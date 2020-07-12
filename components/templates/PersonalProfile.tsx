@@ -44,9 +44,7 @@ const Main = styled.section`
     color: ${({ theme }) => theme.colors.gray1};
     font-size: 1.3125rem;
   }
-  .general, textarea::placeholder {
-    color: ${({ theme }) => theme.colors.gray11};
-  }
+ 
   .input-label {
     font-size: 0.7rem;
   }
@@ -58,10 +56,17 @@ const Main = styled.section`
     color: ${({ theme }) => theme.colors.gray5};
     font-weight: 600;
   }
-  textarea::placeholder {
-    padding-top: 1rem;
-    font-size: 12px;
+  .general {
+    font-size: 0.8rem;
+    color: ${({ theme }) => theme.colors.gray11};
   }
+
+  textarea, textarea::placeholder {
+    padding-top: 5px;
+    font-size: 12px;
+    color: ${({ theme }) => theme.colors.gray11};
+  }
+
   /* .without-placeholder {
     color: ${({ theme }) => theme.colors.gray1};
     font-weight: 400;
@@ -108,8 +113,8 @@ const PersonalProfile = () => {
     <>
       <ProfileNavbar />
       <hr />
-      <Main className="container mx-auto mb-24">
-        <ul className="flex text-sm py-2 mr-24 ml-12">
+      <Main className="container mx-auto mb-24 general-padding">
+        <ul className="flex text-sm py-2">
           <li className="flex items-center">
             <span className="progression active">1</span>
             <span className="leading-progression">Personal Profile</span>
@@ -129,7 +134,7 @@ const PersonalProfile = () => {
             <span className="leading-progression">Payment Info</span>
           </li>
         </ul>
-        <hr className="mr-32 ml-12" />
+        <hr />
         <div className="mt-20 px-64">
           <h1 className="heading font-semibold pb-4">Personal Info</h1>
           <p className="general pb-6">Tell us a bit about yourself. This information will appear on your public profile, <br />
@@ -137,7 +142,7 @@ const PersonalProfile = () => {
           <hr />
           <form className="w-full mt-12">
             <div className="flex">
-              <div className="w-1/2 px-3 mb-6 md:mb-0">
+              <div className="w-1/2 mb-6 pr-6 md:mb-0">
                 <label className="block input-label general uppercase text-gray-700 text-xs mb-2" htmlFor="grid-first-name">
                   First Name <span className="text-red-600">&#42;</span>
                 </label>
@@ -145,7 +150,7 @@ const PersonalProfile = () => {
                   <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none" type="text" required placeholder="First Name" aria-label="First Name" />
                 </div>
               </div>
-              <div className="w-1/2 px-3 mb-6 md:mb-0">
+              <div className="w-1/2 mb-6 md:mb-0">
                 <label className="block input-label general uppercase text-gray-700 text-xs  mb-2" htmlFor="grid-first-name">
                   Last Name <span className="text-red-600">&#42;</span>
                 </label>
@@ -155,7 +160,7 @@ const PersonalProfile = () => {
               </div>
             </div>
             <div className="flex mt-8">
-              <div className="w-1/2 px-3 mb-6 md:mb-0">
+              <div className="w-1/2 mb-6 pr-6 md:mb-0">
                 <label className="block input-label general uppercase text-gray-700 text-xs mb-2" htmlFor="grid-first-name">
                   Email <span className="text-red-600">&#42;</span>
                 </label>
@@ -163,7 +168,7 @@ const PersonalProfile = () => {
                   <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none" type="email" required placeholder="Email" aria-label="email" />
                 </div>
               </div>
-              <div className="w-1/2 px-3 mb-6 md:mb-0">
+              <div className="w-1/2 mb-6 md:mb-0">
                 <label className="block input-label general uppercase text-gray-700 text-xs  mb-2" htmlFor="grid-first-name">
                   Phone <span className="text-red-600">&#42;</span>
                 </label>
@@ -173,43 +178,31 @@ const PersonalProfile = () => {
               </div>
             </div>
             <div className="w-full mb-6 md:mb-0 mt-8">
-              <div className="px-3">
-                {/* <label className="block uppercase text-gray-700 text-xs  mb-2" htmlFor="grid-first-name">
-                  Address<span className="text-red-600">&#42;</span>
-                </label> */}
+              <div>
                 <div className="input-wrapper">
                   <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none" type="text" required placeholder="Address" aria-label="Address" />
                 </div>
               </div>
             </div>
             <div className="flex mt-8">
-              <div className="w-1/3 px-3 mb-6 md:mb-0">
-                {/* <label className="block uppercase text-gray-700 text-xs mb-2" htmlFor="grid-first-name">
-                  City<span className="text-red-600">&#42;</span>
-                </label> */}
+              <div className="w-1/3 pr-6 mb-6 md:mb-0">
                 <div className="input-wrapper">
                   <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none" type="text" required placeholder="City" aria-label="email" />
                 </div>
               </div>
-              <div className="w-1/3 px-3 mb-6 md:mb-0">
-                {/* <label className="block uppercase text-gray-700 text-xs  mb-2" htmlFor="grid-first-name">
-                  State<span className="text-red-600">&#42;</span>
-                </label> */}
+              <div className="w-1/3 pr-6 mb-6 md:mb-0">
                 <div className="input-wrapper">
                   <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none" type="text" required placeholder="State" aria-label="Phone number" />
                 </div>
               </div>
-              <div className="w-1/3 px-3 mb-6 md:mb-0">
-                {/* <label className="block uppercase text-gray-700 text-xs  mb-2" htmlFor="grid-first-name">
-                  LGA<span className="text-red-600">&#42;</span>
-                </label> */}
+              <div className="w-1/3 mb-6 md:mb-0">
                 <div className="input-wrapper">
                   <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none" type="text" required placeholder="LGA" aria-label="Phone number" />
                 </div>
               </div>
             </div>
             <div className="w-full mb-6 md:mb-0 mt-8">
-              <div className="px-3 flex">
+              <div className="flex">
                 <label className="block mr-10 without-placeholder text-gray-700 text-xs  mb-2" htmlFor="grid-first-name">
                   Profile Photo <span className="text-red-600">&#42;</span>
                 </label>
@@ -219,17 +212,17 @@ const PersonalProfile = () => {
               </div>
             </div>
             <div className="w-full mb-6 md:mb-0 mt-8">
-              <div className="px-3">
+              <div>
                 <label className="block without-placeholder text-gray-700 text-xs  mb-2" htmlFor="grid-first-name">
                   Description <span className="text-red-600">&#42;</span>
                 </label>
-                <Desc className="rounded-sm h-32">
-                  <textarea name="description" id="description" className="w-full text-gray-700 mr-3 pb-2 px-2 leading-tight focus:outline-none" placeholder="Share a bit about your work experience, cool projects you’ve completed and your area of expertise."></textarea>
+                <Desc className="rounded-md h-32 overflow-hidden">
+                  <textarea name="description" id="description" className="w-full h-full text-gray-700 mr-3 pb-2 px-2 leading-tight focus:outline-none" placeholder="Share a bit about your work experience, cool projects you’ve completed and your area of expertise."></textarea>
                 </Desc>
               </div>
             </div>
             <div className="w-full flex justify-end text-center mt-16">
-              <Continue type="submit" className="mx-3 text-center text-white">Continue</Continue>
+              <Continue type="submit" className="mx-3 text-center text-white font-semibold">Continue</Continue>
             </div>
           </form>
         </div>

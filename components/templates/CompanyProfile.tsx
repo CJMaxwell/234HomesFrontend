@@ -47,6 +47,7 @@ const Main = styled.section`
   }
   .general {
     color: ${({ theme }) => theme.colors.gray11};
+    font-size: 0.8rem;
   }
   
   input::placeholder {
@@ -93,7 +94,7 @@ const CompanyProfile = () => {
       <ProfileNavbar />
       <hr />
       <Main className="container  general-padding mx-auto mb-24">
-        <ul className="flex text-sm py-2 mr-10 -ml-8">
+        <ul className="flex text-sm py-2">
           <li className="flex items-center">
             <span className="progression active">1</span>
             <span className="leading-progression">Personal Profile</span>
@@ -113,7 +114,7 @@ const CompanyProfile = () => {
             <span className="leading-progression">Payment Info</span>
           </li>
         </ul>
-        <hr className="mr-10 -ml-8" />
+        <hr />
         <div className="mt-20 px-64">
           <h1 className="heading font-semibold pb-4">Business Information</h1>
           <p className="general pb-6">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy <br />
@@ -122,55 +123,55 @@ const CompanyProfile = () => {
           <form className="w-full mt-12">
 
             <div className="w-full mb-6 md:mb-0 mt-8">
-              <div className="px-3">
+              <div>
                 <div className="input-wrapper">
                   <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none" type="text" required placeholder="Company Name" aria-label="Company Name" />
                 </div>
               </div>
             </div>
             <div className="w-full mb-6 md:mb-0 mt-8">
-              <div className="px-3">
+              <div>
                 <div className="input-wrapper">
                   <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none" type="text" required placeholder="Company Address" aria-label="Company Address" />
                 </div>
               </div>
             </div>
             <div className="flex mt-8">
-              <div className="w-1/3 px-3 mb-6 md:mb-0">
+              <div className="w-1/3 mb-6 md:mb-0">
                 <div className="input-wrapper">
                   <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none" type="text" required placeholder="City" aria-label="email" />
                 </div>
               </div>
-              <div className="w-1/3 px-3 mb-6 md:mb-0">
+              <div className="w-1/3 mb-6 md:mb-0">
                 <div className="input-wrapper">
                   <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none" type="text" required placeholder="State" aria-label="Phone number" />
                 </div>
               </div>
-              <div className="w-1/3 px-3 mb-6 md:mb-0">
+              <div className="w-1/3 mb-6 md:mb-0">
                 <div className="input-wrapper">
                   <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none" type="text" required placeholder="LGA" aria-label="Phone number" />
                 </div>
               </div>
             </div>
             <div className="flex mt-8">
-              <div className="w-1/2 px-3 mb-6 md:mb-0">
+              <div className="w-1/2 mb-6 md:mb-0">
                 <div className="input-wrapper">
                   <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none" type="text" required placeholder="Business Number" aria-label="Business Number" />
                 </div>
               </div>
-              <div className="w-1/2 px-3 mb-6 md:mb-0">
+              <div className="w-1/2 mb-6 md:mb-0">
                 <div className="input-wrapper">
                   <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none" type="text" required placeholder="Business Email" aria-label="Business Email" />
                 </div>
               </div>
             </div>
             <div className="flex mt-8">
-              <div className="w-1/2 px-3 mb-6 md:mb-0">
+              <div className="w-1/2 mb-6 md:mb-0">
                 <div className="input-wrapper">
                   <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none" type="text" required placeholder="Business Type" aria-label="Business Type" />
                 </div>
               </div>
-              <div className="w-1/2 px-3 mb-6 md:mb-0">
+              <div className="w-1/2 mb-6 md:mb-0">
                 <div className="input-wrapper">
                   <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none" type="text" required placeholder="Business Category" aria-label="Business Category" />
                 </div>
@@ -178,18 +179,18 @@ const CompanyProfile = () => {
             </div>
 
             <div className="w-full mb-6 md:mb-0 mt-8">
-              <div className="px-3">
+              <div>
                 <label className="block without-placeholder text-gray-700 text-xs  mb-2" htmlFor="grid-first-name">
                   Description <span className="text-red-600">&#42;</span>
                 </label>
-                <Desc className="rounded-sm h-32">
+                <Desc className="rounded-md overflow-hidden h-32">
                   <textarea name="description" id="description" className="w-full text-gray-700 mr-3 pb-2 px-2 leading-tight focus:outline-none" placeholder="Share a bit about your work experience, cool projects you’ve completed and your area of expertise."></textarea>
                 </Desc>
               </div>
             </div>
 
             <div className="w-full flex justify-end text-center mt-16">
-              <Continue type="submit" className="mx-3 text-center text-white">Continue</Continue>
+              <Continue type="submit" className="mx-3 text-center font-semibold text-white">Continue</Continue>
             </div>
           </form>
         </div>

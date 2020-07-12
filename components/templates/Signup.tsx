@@ -17,7 +17,7 @@ const MainWrapper = styled.div`
   }
 `;
 const Wrapper = styled.section<Props>`
-  height: 34rem;
+  height: 38rem;
   background: url('${({ imgUrl }) => imgUrl}'), linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5));
   background-position: center;
   background-repeat: no-repeat;
@@ -40,7 +40,7 @@ const Wrapper = styled.section<Props>`
     img {
       padding-top: 5px;
       padding-bottom: 5px;
-      height: auto;
+      /* height: auto; */
     }
   }
 
@@ -64,7 +64,7 @@ const Signup: React.FC<Props> = ({ imgUrl = '' }) => {
     <MainWrapper>
       <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />
       <div className="signup-nav">
-        <SignUpNavbar />
+        <SignUpNavbar type="register" />
       </div>
       <Wrapper className="relative" imgUrl={'/img/square-glass-top-coffee-table-and-two-white-leather-2-seat.png'}>
 
@@ -72,7 +72,7 @@ const Signup: React.FC<Props> = ({ imgUrl = '' }) => {
           <h1 className="text-2xl font-semibold text-center my-12">Get Your Free Account</h1>
           <div className="px-8">
             <div className="continue-google mt-6 h-12 flex items-center">
-              <img src="/img/google_logo.svg" className="inline-block h-12 w-12 px-2 bg-white" alt="Sign up with Google" />
+              <img src="/img/google_logo.svg" className="inline-block h-full w-12 px-2 bg-white" alt="Sign up with Google" />
               <button className="px-32 text-white">Continue with Google</button>
             </div>
             <div className="text-center my-8 flex items-center">
@@ -86,7 +86,7 @@ const Signup: React.FC<Props> = ({ imgUrl = '' }) => {
               <div>
                 <img src="/img/mailbox_icon.svg" className="inline-block w-10 h-8 px-2" alt="Sign up with Email" />
               </div>
-              <input className="appearance-none outline-none w-full h-full leading-tight" id="email" type="email" required placeholder="Enter Your Email Address" />
+              <input className="appearance-none pr-2 outline-none w-full h-full leading-tight" id="email" type="email" required placeholder="Enter Your Email Address" />
             </div>
             <div className="text-center continue-email mt-4 h-12">
               <button type="submit" className="text-center h-full text-white">Continue with Email</button>

@@ -16,7 +16,7 @@ const MainWrapper = styled.div`
   }
 `;
 const Wrapper = styled.section<Props>`
-  height: 34rem;
+  height: 38rem;
   background: url('${({ imgUrl }) => imgUrl}'), linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5));
   background-position: center;
   background-repeat: no-repeat;
@@ -32,19 +32,14 @@ const Wrapper = styled.section<Props>`
     max-width: 37.3rem;
     max-height: 28.6rem;
   }
-  /* .continue-google {
-    border: 1px solid ${({ theme }) => theme.colors.blue1};
-    background-color: ${({ theme }) => theme.colors.blue1};
-  }  */
+  
 
   .signIn {
     border: 1px solid ${({ theme }) => theme.colors.orange1};
     background-color: ${({ theme }) => theme.colors.orange1};
   } 
 
-  /* .btn-google {
-    background-color: ${({ theme }) => theme.colors.blue1};
-  }  */
+ 
 `;
 
 const Login: React.FC<Props> = ({ imgUrl = '' }) => {
@@ -55,7 +50,7 @@ const Login: React.FC<Props> = ({ imgUrl = '' }) => {
     <MainWrapper>
       <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />
       <div className="signup-nav">
-        <SignUpNavbar />
+        <SignUpNavbar type="login" />
       </div>
       <Wrapper className="relative" imgUrl={'/img/square-glass-top-coffee-table-and-two-white-leather-2-seat.png'}>
 

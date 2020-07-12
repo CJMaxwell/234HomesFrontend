@@ -47,6 +47,7 @@ const Main = styled.section`
   }
   .general {
     color: ${({ theme }) => theme.colors.gray11};
+    font-size: 0.8rem;
   }
   select:first-child, .edu-input input::placeholder {
     color: ${({ theme }) => theme.colors.gray11};
@@ -78,6 +79,10 @@ const Main = styled.section`
 
 const Legend = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.gray17};
+
+  &.title {
+    border-right-width: 0;
+  }
 `;
 
 const Add = styled.button`
@@ -104,8 +109,8 @@ const ProfessionalProfile = () => {
     <>
       <ProfileNavbar />
       <hr />
-      <Main className="container mx-auto  general-padding  mb-24">
-        <ul className="flex text-sm py-2 -ml-8 mr-8">
+      <Main className="container mx-auto general-padding  mb-24">
+        <ul className="flex text-sm py-2">
           <li className="flex items-center">
             <span className="progression active">1</span>
             <span className="leading-progression">Personal Profile</span>
@@ -125,7 +130,7 @@ const ProfessionalProfile = () => {
             <span className="leading-progression">Payment Info</span>
           </li>
         </ul>
-        <hr className="-ml-8 mr-8" />
+        <hr />
         <div className="mt-20 px-64">
           <h1 className="heading font-semibold pb-4">Professional Info</h1>
           <p className="general pb-6">This is your time to shine. Let potential buyers know what you do best and <br />
@@ -133,7 +138,7 @@ const ProfessionalProfile = () => {
           <hr />
           <form className="w-full mt-12">
             <div className="flex">
-              <div className="w-1/2 px-3 mb-6 md:mb-0">
+              <div className="w-1/2 pr-6 mb-6 md:mb-0">
                 <div className="input-wrapper">
                   <select name="occupation" id="occupation" className="w-full pb-2 select-first-custom">
                     <option value="Occupation">Your Occupation</option>
@@ -143,7 +148,7 @@ const ProfessionalProfile = () => {
                   </select>
                 </div>
               </div>
-              <div className="w-1/2 px-3 mb-6 md:mb-0">
+              <div className="w-1/2 mb-6 md:mb-0">
                 <div className="input-wrapper">
                   <select name="Experience" id="Experience" className="w-full pb-2 select-first-custom">
                     <option value="Experience Level">Experience Level</option>
@@ -155,7 +160,7 @@ const ProfessionalProfile = () => {
               </div>
             </div>
             <div className="w-full mb-6 md:mb-0 mt-8">
-              <div className="px-3">
+              <div>
                 <div className="input-wrapper">
                   <select name="Experience" id="Experience" className="w-full pb-2 select-first-custom">
                     <option value="Key Skills">Key Skills</option>
@@ -168,7 +173,7 @@ const ProfessionalProfile = () => {
             </div>
 
             <div className="w-full mb-6 md:mb-0 mt-8">
-              <div className="px-3">
+              <div>
                 <p className="block input-label text-gray-700 text-xs mb-2">
                   Education <span className="text-red-600">&#42;</span>
                 </p>
@@ -197,7 +202,7 @@ const ProfessionalProfile = () => {
                   </div>
                   <div className="flex pt-4">
                     <div className="w-1/6">
-                      <Legend>
+                      <Legend className="title">
                         <select name="Experience" id="Experience" className="w-full p-2">
                           <option value="Title">Title</option>
                           <option value="BS">BS</option>
@@ -228,7 +233,7 @@ const ProfessionalProfile = () => {
             </div>
 
             <div className="w-full mb-6 md:mb-0 mt-8">
-              <div className="px-3">
+              <div>
                 <p className="block input-label text-gray-700 text-xs mb-2">
                   Certifications <span className="text-red-600">&#42;</span>
                 </p>
@@ -275,14 +280,14 @@ const ProfessionalProfile = () => {
             </div>
 
             <div className="w-full mb-6 md:mb-0 mt-8">
-              <div className="px-3">
+              <div>
                 <div className="input-wrapper">
                   <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none" type="text" required placeholder="Personal Website" aria-label="Personal Website" />
                 </div>
               </div>
             </div>
             <div className="w-full flex justify-end text-center mt-16">
-              <Continue type="submit" className="mx-3 text-center text-white">Continue</Continue>
+              <Continue type="submit" className="mx-3 text-center font-semibold text-white">Continue</Continue>
             </div>
           </form>
         </div>
