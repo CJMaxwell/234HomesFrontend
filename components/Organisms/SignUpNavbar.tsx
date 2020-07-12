@@ -2,6 +2,9 @@ import React, { useContext } from 'react';
 import Link from 'next/link';
 import styled, { ThemeContext } from 'styled-components';
 
+interface Props {
+  type?: 'login' | 'register';
+}
 const SignIn = styled.a`
   color: ${({ theme }) => theme.colors.yellow2};
 `;
@@ -20,7 +23,7 @@ const Logo = styled.a`
 `;
 
 
-const SignUpNavbar = () => {
+const SignUpNavbar: React.FC<Props> = ({ type }) => {
 
   const theme = useContext(ThemeContext);
 
@@ -32,10 +35,13 @@ const SignUpNavbar = () => {
         </Logo>
       </Link>
       <LoginWrap>
-        <span>Already Have An Account? </span>
-        <Link href="/login">
-          <SignIn>Sign In</SignIn>
-        </Link>
+        {type === 'login' && <span>Don't Have An Account?</span>}
+        {type === 'register' && <span>Already Have An Account?</span>}
+
+        {' '}
+
+        {type === 'login' && <Link href="/signup"><SignIn>Sign Up</SignIn></Link>}
+        {type === 'register' && <Link href="/login"><SignIn>Log In</SignIn></Link>}
       </LoginWrap>
     </nav>
   )
