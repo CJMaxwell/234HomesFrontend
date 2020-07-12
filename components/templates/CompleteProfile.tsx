@@ -34,8 +34,7 @@ const Wrapper = styled.section<Props>`
   }
 
   [type="checkbox"]:checked {
-    ${({ theme }) => theme.colors.orange1};
-    
+    border: 1px solid ${({ theme }) => theme.colors.orange1};
   }
 
   .agreement {
@@ -55,6 +54,7 @@ const Category = styled.div`
     background: ${({ theme }) => theme.colors.gray18};
     padding: 0.75rem 2.5rem;
     cursor: pointer;
+    border: 1px solid ${({ theme }) => theme.colors.gray18};
   }
 
   .visually-hidden {
