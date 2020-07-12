@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import Link from 'next/link';
+import Router from 'next/router';
 import styled, { ThemeContext } from 'styled-components';
 
 import SignUpNavbar from '../Organisms/SignUpNavbar';
@@ -60,6 +60,11 @@ const Signup: React.FC<Props> = ({ imgUrl = '' }) => {
 
   const theme = useContext(ThemeContext);
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    Router.push('/complete-your-profile')
+  }
+
   return (
     <MainWrapper>
       <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />
@@ -81,7 +86,7 @@ const Signup: React.FC<Props> = ({ imgUrl = '' }) => {
               <hr className="w-1/2" />
             </div>
           </div>
-          <form className="px-8 mt-auto">
+          <form onSubmit={handleSubmit} className="px-8 mt-auto">
             <div className="border border-gray-500  h-12 justify-between flex items-center">
               <div>
                 <img src="/img/mailbox_icon.svg" className="inline-block w-10 h-8 px-2" alt="Sign up with Email" />
@@ -89,7 +94,7 @@ const Signup: React.FC<Props> = ({ imgUrl = '' }) => {
               <input className="appearance-none pr-2 outline-none w-full h-full leading-tight" id="email" type="email" required placeholder="Enter Your Email Address" />
             </div>
             <div className="text-center continue-email mt-4 h-12">
-              <button type="submit" className="text-center h-full text-white">Continue with Email</button>
+              <button type="submit" className="text-center w-full h-full text-white">Sign up</button>
             </div>
           </form>
         </div>
