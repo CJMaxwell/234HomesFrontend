@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import Link from 'next/link';
+
 
 const FormButton = styled.button`
   top: -57px;
@@ -85,9 +87,11 @@ const Footer = () => {
               <li>
                 <a>Register As A Professional</a>
               </li>
-              <li>
-                <a>Professional</a>
-              </li>
+              <Link href="/professionals">
+                <li>
+                  <a>Professional</a>
+                </li>
+              </Link>
               <li>
                 <a>Vendors</a>
               </li>

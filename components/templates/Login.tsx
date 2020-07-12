@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import Link from 'next/link';
+import Router from 'next/router';
 import styled, { ThemeContext } from 'styled-components';
 
 import SignUpNavbar from '../Organisms/SignUpNavbar';
@@ -46,6 +46,11 @@ const Login: React.FC<Props> = ({ imgUrl = '' }) => {
 
   const theme = useContext(ThemeContext);
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    Router.push('/dashboard')
+  }
+
   return (
     <MainWrapper>
       <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />
@@ -56,7 +61,7 @@ const Login: React.FC<Props> = ({ imgUrl = '' }) => {
 
         <div className="w-full signup bg-white rounded pb-16">
           <h1 className="text-2xl font-semibold text-center my-10">Sign In</h1>
-          <form className="px-8 mt-auto">
+          <form onSubmit={handleSubmit} className="px-8 mt-auto">
             <div className="border border-gray-500  h-12 justify-between flex items-center">
               <div>
                 <img src="/img/mailbox_icon.svg" className="inline-block w-10 h-8 px-2" alt="Sign up with Email" />
@@ -70,7 +75,7 @@ const Login: React.FC<Props> = ({ imgUrl = '' }) => {
               <input className="appearance-none outline-none w-full h-full leading-tight" id="password" type="password" required placeholder="Enter Your Password Address" />
             </div>
             <div className="text-center signIn mt-8 h-12">
-              <button type="submit" className="text-center h-full text-white">Sign In</button>
+              <button type="submit" className="text-center w-full h-full text-white">Sign In</button>
             </div>
             <div className="bg-white border border-gray-500 mt-6 h-12 flex items-center">
               <img src="/img/google_logo.svg" className="inline-block h-12 w-12 px-2 border-r border-gray-500" alt="Sign up with Google" />

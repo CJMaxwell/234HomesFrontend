@@ -1,5 +1,7 @@
 import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
+import Router from 'next/router';
+
 
 import ProfileNavbar from '../Organisms/ProfileNavbar';
 import Footer from './Footer';
@@ -222,7 +224,7 @@ const PersonalProfile = () => {
               </div>
             </div>
             <div className="w-full flex justify-end text-center mt-16">
-              <Continue type="submit" className="mx-3 text-center text-white font-semibold">Continue</Continue>
+              <Continue onClick={() => Router.push('/dashboard')} type="submit" className="mx-3 text-center text-white font-semibold">Continue</Continue>
             </div>
           </form>
         </div>

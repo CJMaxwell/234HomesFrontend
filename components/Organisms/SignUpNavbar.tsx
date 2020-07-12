@@ -23,7 +23,7 @@ const Logo = styled.a`
 `;
 
 
-const SignUpNavbar: React.FC<Props> = ({ type }) => {
+const SignUpNavbar: React.FC<Props> = ({ type = "register" }) => {
 
   const theme = useContext(ThemeContext);
 

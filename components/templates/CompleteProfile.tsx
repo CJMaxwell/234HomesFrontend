@@ -1,6 +1,7 @@
-import React, { useContext } from 'react';
-import Link from 'next/link';
+import React, { useContext, useState } from 'react';
 import styled, { ThemeContext } from 'styled-components';
+import Router from 'next/router'
+
 
 import SignUpNavbar from '../Organisms/SignUpNavbar';
 import Footer from '../templates/Footer';
@@ -68,6 +69,25 @@ const Category = styled.div`
 `;
 
 const CompleteProfile = () => {
+
+  const theme = useContext(ThemeContext);
+
+  const [category, setCategory] = useState('user');
+
+  const handleCategory = (e: React.ChangeEvent<HTMLInputElement>) => setCategory(e.target.value);
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (category === 'user') {
+      Router.push('/profile')
+    } else if (category === 'professional') {
+      Router.push('/profession')
+
+    } else if (category === 'vendor') {
+      Router.push('/company')
+    }
+  }
+
   return (
     <div>
       <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />
@@ -78,7 +98,7 @@ const CompleteProfile = () => {
 
         <div className="w-full signup bg-white rounded pb-16">
           <h1 className="text-xl font-semibold text-center my-10">Complete Your Profile Setup</h1>
-          <form className="px-8 mt-auto pb-12">
+          <form className="px-8 mt-auto pb-12" onSubmit={handleSubmit}>
             <div className="border border-gray-200 justify-between flex items-center">
               <div>
                 <img src="/img/mailbox_icon.svg" className="inline-block px-2 icon" alt="Email icon" />
@@ -116,15 +136,15 @@ const CompleteProfile = () => {
             <p className="mt-10 mb-6 text-center">I Want To Register As A:</p>
             <div className="flex justify-between">
               <Category className="mr-2">
-                <input type="radio" id="user" className="visually-hidden" name="category" value="User" required />
+                <input onChange={handleCategory} checked={category === 'user'} type="radio" id="user" className="visually-hidden" name="category" value="user" required />
                 <label htmlFor="user">User</label>
               </Category>
               <Category className="mr-2">
-                <input type="radio" id="professional" className="visually-hidden" name="category" value="Professional" />
+                <input onChange={handleCategory} checked={category === 'professional'} type="radio" id="professional" className="visually-hidden" name="category" value="professional" />
                 <label htmlFor="professional">Professional</label>
               </Category>
               <Category>
-                <input type="radio" id="vendor" className="visually-hidden" name="category" value="Vendor" />
+                <input onChange={handleCategory} checked={category === 'vendor'} type="radio" id="vendor" className="visually-hidden" name="category" value="vendor" />
                 <label htmlFor="vendor">Vendor</label>
               </Category>
             </div>
@@ -137,7 +157,7 @@ const CompleteProfile = () => {
               <label htmlFor="termsandconditions" className="inline-block text-xs">Yes, I understand and agree to the <span className="agreement">+234Homes Terms of Service,</span> including the <span className="agreement">User Agreement</span> and <span>Privacy Policy.</span></label>
             </div>
             <div className="text-center continue-email mt-8">
-              <button type="submit" className="text-center text-white my-3">Create My Account</button>
+              <button type="submit" className="text-center w-full text-white my-3">Create My Account</button>
             </div>
           </form>
         </div>
