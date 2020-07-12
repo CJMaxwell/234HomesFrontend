@@ -19,12 +19,20 @@ const Wrapper = styled.div`
   .breadcrumb {
     margin-top: 3.175rem;
     margin-bottom: 2.35rem;
+    color: ${({ theme }) => theme.colors.gray5};
+    font-size: 0.7rem;
+    text-transform: uppercase;
   }
   .listing li {
-    padding-right: 3rem;
     font-size: 0.8rem;
     color: ${({ theme }) => theme.colors.gray11};
     font-weight: 600;
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+
+    /* &:not(:first-child) {
+      padding: 0 1.5rem;
+    } */
   }
   .listing li.active {
     color: ${({ theme }) => theme.colors.gray5}
@@ -34,12 +42,31 @@ const Wrapper = styled.div`
     select {
       border: 1px solid ${({ theme }) => theme.colors.gray17};
       padding: 0.25rem 0.5rem;
+      font-size: 0.8rem;
     }
     select:not(:last-child) {
       margin-right: 1.35rem;
     }
   }
-  
+  .desc, .search-result, .sort-by,.recommended {
+    font-size: 0.8rem;
+    color: ${({ theme }) => theme.colors.gray5}
+  }
+  .recommended {
+    font-weight: 600;
+  }
+  .house-tours{
+    border-bottom: 3px solid ${({ theme }) => theme.colors.orange1};
+  }
+  .stories {
+    border-bottom: 3px solid ${({ theme }) => theme.colors.yellow1};
+  }
+  .diy {
+    border-bottom: 3px solid ${({ theme }) => theme.colors.green1};
+  }
+  .directory {
+    border-bottom: 3px solid ${({ theme }) => theme.colors.gray5};
+  }
 `;
 
 const Professionals = () => {
@@ -51,12 +78,12 @@ const Professionals = () => {
       <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />
       <ProfileNavbar />
       <hr />
-      <div className="general-padding">
-        <ul className="border-b border-gray-300 flex items-center listing uppercase py-3">
-          <li className="pl-6">House Tours</li>
-          <li>Stories</li>
-          <li>DIY</li>
-          <li className="active">Directory</li>
+      <div className="general-padding container mx-auto mb-48">
+        <ul className="border-b border-gray-300 flex items-center listing uppercase">
+          <li className="pl-6 house-tours h-full">House Tours</li>
+          <li className="stories">Stories</li>
+          <li className="diy">DIY</li>
+          <li className="directory active">Directory</li>
         </ul>
         <ul className="breadcrumb flex items-center">
           <li>Directory</li>
@@ -68,7 +95,7 @@ const Professionals = () => {
         <section className="flex justify-between items-center">
           <div>
             <h1 className="heading">Professionals</h1>
-            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr sed diam.</p>
+            <p className="desc">Lorem ipsum dolor sit amet, consetetur sadipscing elitr sed diam.</p>
           </div>
           <div className="filter">
             <select>
@@ -90,15 +117,23 @@ const Professionals = () => {
           </div>
         </section>
         <div className="flex justify-between items-center mt-8 mb-6">
-          <p>10,127 Services available</p>
+          <p className="search-result">10,127 Services available</p>
           <div className="flex items-center">
-            <span>Sort By</span>
-            <select>
+            <span className="sort-by">Sort By</span>
+            <select className="recommended">
               <option value="Recommended">Recommended</option>
             </select>
           </div>
         </div>
         <section className="grid grid-cols-4 gap-6">
+          <ProfessionalCard />
+          <ProfessionalCard />
+          <ProfessionalCard />
+          <ProfessionalCard />
+          <ProfessionalCard />
+          <ProfessionalCard />
+          <ProfessionalCard />
+          <ProfessionalCard />
           <ProfessionalCard />
           <ProfessionalCard />
           <ProfessionalCard />
