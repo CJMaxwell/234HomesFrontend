@@ -28,6 +28,8 @@ export const theme: DefaultTheme = {
     gray17: '#D8D8D8',
     yellow2: '#CFD123',
     blue1: '#3C79E6',
-    gray18: '#EDEDED'
+    gray18: '#EDEDED',
+    gray19: '#808080',
+    blue2: '#009DFF'
   },
 };

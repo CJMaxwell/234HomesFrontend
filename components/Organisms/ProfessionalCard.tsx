@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
+import Router from 'next/router';
 
 
 interface Props {
@@ -77,7 +78,7 @@ const ProfessionalCard: React.FC<Props> = ({ imgUrl = '/img/jonathan.jpg', name 
             velit assumenda officia unde inventore dignissimos!
           </p>
         </div>
-        <button className="uppercase border-gray-600 text-gray-600 mt-4 w-full bg-white rounded-sm block text-center mb-10">
+        <button onClick={() => Router.push('/professional-about')} className="uppercase border-gray-600 text-gray-600 mt-4 w-full bg-white rounded-sm block text-center mb-10">
           Hire me
         </button>
       </div>
