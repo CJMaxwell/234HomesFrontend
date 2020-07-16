@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import Link from 'next/link';
 
+
 import Button from '../atoms/Button';
 import Navbar from '../Organisms/Navbar';
 import Footer from './Footer';
@@ -401,9 +402,11 @@ const Home = () => {
             <h1 className="font-semibold text-gray-700 uppercase">
               Our Directory
             </h1>
-            <a className="font-semibold uppercase leading-none text-white view-all inline-flex justify-center items-center">
-              View All
-            </a>
+            <Link href="/directory">
+              <a className="font-semibold uppercase leading-none text-white view-all inline-flex justify-center items-center">
+                View All
+              </a>
+            </Link>
           </div>
           <h1 className="pt-6 pb-6 font-bold text-2xl">
             Invidunt Labore Et Dolore

@@ -48,7 +48,7 @@ const Login: React.FC<Props> = ({ imgUrl = '' }) => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    Router.push('/dashboard')
+    //Router.push('/dashboard')
   }
 
   return (

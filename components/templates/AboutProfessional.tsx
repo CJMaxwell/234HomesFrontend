@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
+import Link from 'next/link';
 
 
 import ProfileNavbar from '../Organisms/ProfileNavbar';
@@ -200,10 +201,12 @@ const AboutProfessional = () => {
       <hr />
       <div className="general-padding container mx-auto mb-48">
         <ul className="border-b border-gray-300 flex items-center listing uppercase">
-          <li className="pl-6 house-tours h-full">House Tours</li>
-          <li className="stories">Stories</li>
-          <li className="diy">DIY</li>
-          <li className="directory active">Directory</li>
+          <li className="pl-6 house-tours h-full cursor-pointer">House Tours</li>
+          <li className="stories cursor-pointer">Stories</li>
+          <li className="diy cursor-pointer">DIY</li>
+          <Link href="/directory">
+            <li className="directory cursor-pointer active">Directory</li>
+          </Link>
         </ul>
         <ul className="breadcrumb flex items-center">
           <li>Directory</li>
