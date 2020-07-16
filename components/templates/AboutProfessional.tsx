@@ -8,6 +8,7 @@ import Footer from './Footer';
 import Button from '../atoms/Button';
 import ProjectCard from '../Organisms/ProjectCard';
 import ReviewCard from '../Organisms/ReviewCard';
+import Offering from '../Organisms/Offering';
 
 
 const Wrapper = styled.div`
@@ -21,30 +22,6 @@ const Wrapper = styled.div`
     color: ${({ theme }) => theme.colors.gray5};
     font-size: 0.7rem;
     text-transform: uppercase;
-  }
-  .listing li {
-    font-size: 0.8rem;
-    color: ${({ theme }) => theme.colors.gray11};
-    font-weight: 600;
-    display: inline-block;
-    padding: 0.75rem 1.5rem;
-  }
-  .listing li.active {
-    color: ${({ theme }) => theme.colors.gray5}
-  }
-  
-  
-  .house-tours{
-    border-bottom: 3px solid ${({ theme }) => theme.colors.orange1};
-  }
-  .stories {
-    border-bottom: 3px solid ${({ theme }) => theme.colors.yellow1};
-  }
-  .diy {
-    border-bottom: 3px solid ${({ theme }) => theme.colors.green1};
-  }
-  .directory {
-    border-bottom: 3px solid ${({ theme }) => theme.colors.gray5};
   }
   .about {
     h1, .short-desc, .break-down-title {
@@ -200,14 +177,7 @@ const AboutProfessional = () => {
       <ProfileNavbar />
       <hr />
       <div className="general-padding container mx-auto mb-48">
-        <ul className="border-b border-gray-300 flex items-center listing uppercase">
-          <li className="pl-6 house-tours h-full cursor-pointer">House Tours</li>
-          <li className="stories cursor-pointer">Stories</li>
-          <li className="diy cursor-pointer">DIY</li>
-          <Link href="/directory">
-            <li className="directory cursor-pointer active">Directory</li>
-          </Link>
-        </ul>
+        <Offering />
         <ul className="breadcrumb flex items-center">
           <li>Directory</li>
           <li>
