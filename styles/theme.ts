@@ -30,6 +30,8 @@ export const theme: DefaultTheme = {
     blue1: '#3C79E6',
     gray18: '#EDEDED',
     gray19: '#808080',
-    blue2: '#009DFF'
+    blue2: '#009DFF',
+    gray20: '#60605F',
+    gray21: '#F2F2F2'
   },
 };
