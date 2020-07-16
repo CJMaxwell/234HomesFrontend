@@ -1,5 +1,7 @@
 import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
+import Link from 'next/link';
+
 
 
 interface Props {
@@ -7,6 +9,7 @@ interface Props {
   height?: string;
   title?: string;
   width?: string;
+  path?: string
 }
 
 const ImgContainer = styled.div<Props>`
@@ -26,15 +29,20 @@ const Title = styled.h1`
   margin-top: 1.4rem;
 `;
 
-const Favourite: React.FC<Props> = ({ imgUrl = '', height, width, title }) => {
+const Favourite: React.FC<Props> = ({ imgUrl = '', height = '',
+  width = '', title = '', path = '/professionals'
+}) => {
 
   const theme = useContext(ThemeContext);
 
   return (
-    <div>
-      <ImgContainer imgUrl={imgUrl} height={height} width={width} />
-      <Title>{title}</Title>
-    </div>
+    <Link href={path}>
+      <div className="cursor-pointer">
+        <ImgContainer imgUrl={imgUrl} height={height} width={width} />
+        <Title>{title}</Title>
+      </div>
+    </Link>
+
   )
 }
 

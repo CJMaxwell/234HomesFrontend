@@ -92,9 +92,11 @@ const Footer = () => {
                   <a>Professional</a>
                 </li>
               </Link>
-              <li>
-                <a>Vendors</a>
-              </li>
+              <Link href="/vendors">
+                <li>
+                  <a>Vendors</a>
+                </li>
+              </Link>
               <li>
                 <a>Blog Stories</a>
               </li>

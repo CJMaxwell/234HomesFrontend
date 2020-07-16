@@ -289,7 +289,7 @@ const ProfessionalProfile = () => {
               </div>
             </div>
             <div className="w-full flex justify-end text-center mt-16">
-              <Continue onClick={() => Router.push('/dashboard')} type="submit" className="mx-3 text-center font-semibold text-white">Continue</Continue>
+              <Continue onClick={() => Router.push('/profession')} type="submit" className="mx-3 text-center font-semibold text-white">Continue</Continue>
             </div>
           </form>
         </div>

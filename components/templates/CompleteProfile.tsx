@@ -157,7 +157,7 @@ const CompleteProfile = () => {
               <label htmlFor="termsandconditions" className="inline-block text-xs">Yes, I understand and agree to the <span className="agreement">+234Homes Terms of Service,</span> including the <span className="agreement">User Agreement</span> and <span>Privacy Policy.</span></label>
             </div>
             <div className="text-center continue-email mt-8">
-              <button type="submit" className="text-center w-full text-white my-3">Create My Account</button>
+              <button onClick={() => Router.push('/profile')} type="submit" className="text-center w-full text-white my-3">Create My Account</button>
             </div>
           </form>
         </div>
