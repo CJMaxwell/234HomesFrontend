@@ -35,7 +35,9 @@ const Offering = () => {
   return (
     <Wrapper>
       <ul className="cursor-pointer border-b border-gray-300 flex items-center listing uppercase">
-        <li className="cursor-pointer pl-6 house-tours h-full">House Tours</li>
+        <Link href="/house-tours">
+          <li className="cursor-pointer pl-6 house-tours h-full">House Tours</li>
+        </Link>
         <Link href="/stories">
           <li className="cursor-pointer stories">Stories</li>
         </Link>

@@ -308,7 +308,7 @@ const Home = () => {
               erat, sed diam voluptua.
             </p>
             <div className="pb-32">
-              <LinkButton>Get Inspired</LinkButton>
+              <LinkButton onClick={() => Router.push('/house-tours')}>Get Inspired</LinkButton>
             </div>
           </div>
 
