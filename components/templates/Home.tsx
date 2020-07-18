@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import Link from 'next/link';
+import Router from 'next/router';
 
 
 import Button from '../atoms/Button';
@@ -333,7 +334,7 @@ const Home = () => {
       <Stories className="container mx-auto general-padding mt-12 bg-white">
         <div className="flex justify-between items-center">
           <h1 className="font-semibold text-gray-700">Stories</h1>
-          <Link href="#blah">
+          <Link href="/stories">
             <a className="view-more inline-flex justify-center items-center font-semibold uppercase leading-none border rounded-full text-white border-white">
               View More
             </a>
@@ -346,7 +347,7 @@ const Home = () => {
               <PostCard imgUrl={'/img/AH_dining.png'} height="248px" />
             </div>
           </div>
-          <div className="col-span-2">
+          <div className="col-span-2 cursor-pointer" onClick={() => Router.push('/single-story')}>
             <PostCard
               imgUrl={'/img/two-white-and-brown-armchairs.png'}
               height="507px"
