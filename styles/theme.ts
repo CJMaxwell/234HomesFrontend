@@ -32,6 +32,9 @@ export const theme: DefaultTheme = {
     gray19: '#808080',
     blue2: '#009DFF',
     gray20: '#60605F',
-    gray21: '#F2F2F2'
+    gray21: '#F2F2F2',
+    yellow3: '#B4B50F',
+    pink1: '#CFD12312',
+    yellow4: '#8D8E03'
   },
 };
