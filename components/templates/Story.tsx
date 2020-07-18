@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import Link from 'next/link';
+import Router from 'next/router';
 
 
 import ProfileNavbar from '../Organisms/ProfileNavbar';
@@ -137,7 +137,7 @@ const Story = () => {
               <p className="pt-5 featured-desc text-white pb-8">
                 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
               </p>
-              <FeatButton className="featured-button uppercase">Read Story</FeatButton>
+              <FeatButton onClick={() => Router.push('/single-story')} className="featured-button uppercase">Read Story</FeatButton>
             </FeaturedWrapper>
           </ImgBanner>
         </div>

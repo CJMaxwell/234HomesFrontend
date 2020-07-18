@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import Link from 'next/link';
 
 
 import ProfileNavbar from '../Organisms/ProfileNavbar';
