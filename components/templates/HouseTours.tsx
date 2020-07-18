@@ -138,7 +138,7 @@ const HouseTours = () => {
               <p className="pt-5 featured-desc pb-8">
                 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
               </p>
-              <FeatButton onClick={() => Router.push('/single-story')} className="featured-button uppercase">Read Story</FeatButton>
+              <FeatButton onClick={() => Router.push('/single-house-tour')} className="featured-button uppercase">Read Story</FeatButton>
             </FeaturedWrapper>
           </ImgBanner>
         </div>
