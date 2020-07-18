@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import Router from 'next/router';
 import styled, { ThemeContext } from 'styled-components';
 
 import SignUpNavbar from '../Organisms/SignUpNavbar';
