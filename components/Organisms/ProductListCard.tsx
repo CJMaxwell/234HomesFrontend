@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
+import Link from 'next/link';
 
 interface Props {
   imgUrl?: string;
@@ -10,6 +11,7 @@ interface Props {
 }
 
 const Wrapper = styled.section`
+  cursor: pointer;
   .title {
     color: ${({ theme }) => theme.colors.gray1};
     font-size: 1.2rem;
@@ -75,38 +77,40 @@ const ProductListCard: React.FC<Props> = ({
   const theme = useContext(ThemeContext);
 
   return (
-    <Wrapper className="w-full flex">
-      <ProductImg imgUrl={imgUrl} height={height} width={width}>
-        {
-          ad ? <div className="ad text-white relative py-2 px-4">Top Ad</div> : <div></div>
-        }
+    <Link href="/single-product">
+      <Wrapper className="w-full flex">
+        <ProductImg imgUrl={imgUrl} height={height} width={width}>
+          {
+            ad ? <div className="ad text-white relative py-2 px-4">Top Ad</div> : <div></div>
+          }
 
-      </ProductImg>
-      <div className="pl-8 pr-32">
-        <div>
-          <h1 className="title font-semibold capitalize text-xl">
-            Lorem ipsum dolor sit amet, consetetur
+        </ProductImg>
+        <div className="pl-8 pr-32">
+          <div>
+            <h1 className="title font-semibold capitalize text-xl">
+              Lorem ipsum dolor sit amet, consetetur
           </h1>
-          <p className="pt-6 description">
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem <br />accusantium doloremque totam rem aperiam….
+            <p className="pt-6 description">
+              Sed ut perspiciatis unde omnis iste natus error sit voluptatem <br />accusantium doloremque totam rem aperiam….
           </p>
-        </div>
-        <div className="pt-16 flex items-center">
-          <div className="flex items-center pr-8">
-            <img src="/img/pro-loc-sign.svg" className="loc-pin" alt="Location pin" />
-            <p className="pl-2 vendor-loc">Shomolu, Home Accessories</p>
           </div>
-          <div className="flex items-center">
-            <img src="/img/views.svg" className="view" alt="Location pin" />
-            <p className="pl-2 view-num">345</p>
+          <div className="pt-16 flex items-center">
+            <div className="flex items-center pr-8">
+              <img src="/img/pro-loc-sign.svg" className="loc-pin" alt="Location pin" />
+              <p className="pl-2 vendor-loc">Shomolu, Home Accessories</p>
+            </div>
+            <div className="flex items-center">
+              <img src="/img/views.svg" className="view" alt="Location pin" />
+              <p className="pl-2 view-num">345</p>
+            </div>
           </div>
         </div>
-      </div>
-      <div>
-        <p className="price font-semibold">&#8358;146,000</p>
-        <img src={logo} className="logo mt-12" alt="Vendor Logo" />
-      </div>
-    </Wrapper>
+        <div>
+          <p className="price font-semibold">&#8358;146,000</p>
+          <img src={logo} className="logo mt-12" alt="Vendor Logo" />
+        </div>
+      </Wrapper>
+    </Link>
   )
 }
 

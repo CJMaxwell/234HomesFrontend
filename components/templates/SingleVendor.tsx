@@ -115,7 +115,7 @@ const SingleVendor: React.FC<Props> = ({ imgUrl = '' }) => {
       </div>
       <UserBanner imgUrl="/img/vendor-profile-banner.png" />
       <section className="container mx-auto general-padding mb-24">
-        <ProfileCard className="flex items-center border border-gray-500 rounded-md bg-white -mt-40 p-8">
+        <ProfileCard className="flex items-center border border-gray-200 rounded-md bg-white -mt-40 p-8">
           <div className="w-1/4">
             <img src="/img/vendor-logo.png" className="logo" alt="Vendor Logo" />
             <p className="registered">Member since 2019</p>
