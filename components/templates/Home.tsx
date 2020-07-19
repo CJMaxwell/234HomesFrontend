@@ -391,7 +391,7 @@ const Home = () => {
                 invidunt ut labore et dolore magna aliquyam erat, sed diam
                 voluptua.
               </p>
-              <SiteLink className="get-started text-white">Get Started</SiteLink>
+              <SiteLink onClick={() => Router.push('/diy')} className="get-started text-white">Get Started</SiteLink>
             </div>
           </div>
         </div>

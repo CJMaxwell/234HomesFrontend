@@ -41,7 +41,9 @@ const Offering = () => {
         <Link href="/stories">
           <li className="cursor-pointer stories">Stories</li>
         </Link>
-        <li className="cursor-pointer diy">DIY</li>
+        <Link href="/diy">
+          <li className="cursor-pointer diy">DIY</li>
+        </Link>
         <Link href="/directory">
           <li className="cursor-pointer directory active">Directory</li>
         </Link>
