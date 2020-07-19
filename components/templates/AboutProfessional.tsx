@@ -42,7 +42,7 @@ const Wrapper = styled.div`
   .bar-5 {
     width: 100%;
     height: 0.3rem;
-    background-color: ${({ theme }) => theme.colors.orange3};
+    background-color: ${({ theme }) => theme.colors.orange1};
   }
   .show-more {
     color: ${({ theme }) => theme.colors.orange1};
@@ -73,7 +73,7 @@ const Wrapper = styled.div`
     font-size: 0.95rem;
   }
   .rating-count {
-    color: ${({ theme }) => theme.colors.orange3};
+    color: ${({ theme }) => theme.colors.orange1};
   }
   .star-listing span {
     padding-right: 4px;
@@ -240,19 +240,19 @@ const AboutProfessional = () => {
               <h3 className="aside-title">Rating</h3>
               <div className="pt-3 flex items-center">
                 <span className="pr-1 h-4 w-4">
-                  <img src="img/star-about.svg" alt="Rating" />
+                  <img src="img/star-vendor.svg" alt="Rating" />
                 </span>
                 <span className="pr-1 h-4 w-4">
-                  <img src="img/star-about.svg" alt="Rating" />
+                  <img src="img/star-vendor.svg" alt="Rating" />
                 </span>
                 <span className="pr-1 h-4 w-4">
-                  <img src="img/star-about.svg" alt="Rating" />
+                  <img src="img/star-vendor.svg" alt="Rating" />
                 </span>
                 <span className="pr-1 h-4 w-4">
-                  <img src="img/star-about.svg" alt="Rating" />
+                  <img src="img/star-vendor.svg" alt="Rating" />
                 </span>
                 <span className="h-4 w-4 pr-1">
-                  <img src="img/star-about.svg" alt="Rating" />
+                  <img src="img/star-vendor.svg" alt="Rating" />
                 </span>
               </div>
             </div>
@@ -323,11 +323,11 @@ const AboutProfessional = () => {
               <div className="flex items-center">
                 <div className="customer-review font-semibold pr-2">15 Customer Reviews</div>
                 <div className="flex justify-between items-center star-listing">
-                  <span className="h-4 w-4"><img src="/img/star-about.svg" alt="star rating" /></span>
-                  <span className="h-4 w-4"><img src="/img/star-about.svg" alt="star rating" /></span>
-                  <span className="h-4 w-4"><img src="/img/star-about.svg" alt="star rating" /></span>
-                  <span className="h-4 w-4"><img src="/img/star-about.svg" alt="star rating" /></span>
-                  <span className="h-4 w-4"><img src="/img/star-about.svg" alt="star rating" /></span>
+                  <span className="h-4 w-4"><img src="/img/star-vendor.svg" alt="star rating" /></span>
+                  <span className="h-4 w-4"><img src="/img/star-vendor.svg" alt="star rating" /></span>
+                  <span className="h-4 w-4"><img src="/img/star-vendor.svg" alt="star rating" /></span>
+                  <span className="h-4 w-4"><img src="/img/star-vendor.svg" alt="star rating" /></span>
+                  <span className="h-4 w-4"><img src="/img/star-vendor.svg" alt="star rating" /></span>
                 </div>
                 <span className="rating-count pl-1">5</span>
               </div>
@@ -376,21 +376,21 @@ const AboutProfessional = () => {
                   <h1>Communication Level</h1>
                   <div className="flex items-center justify-between pl-4">
                     <span className="pr-1 rating-value">4.9</span>
-                    <img src="img/star-about.svg" className="h-4 w-4" alt="Stars" />
+                    <img src="img/star-vendor.svg" className="h-4 w-4" alt="Stars" />
                   </div>
                 </div>
                 <div className="flex justify-between items-center pt-4">
                   <h1>Recommend to a friend</h1>
                   <div className="flex justify-between items-center pl-4">
                     <span className="pr-1 rating-value">5.0</span>
-                    <img src="img/star-about.svg" className="h-4 w-4" alt="Stars" />
+                    <img src="img/star-vendor.svg" className="h-4 w-4" alt="Stars" />
                   </div>
                 </div>
                 <div className="flex justify-between items-center pt-4">
                   <h1>Service as described</h1>
                   <div className="flex justify-between items-center pl-4">
                     <span className="pr-1 rating-value">5.0</span>
-                    <img src="img/star-about.svg" className="h-4 w-4" alt="Stars" />
+                    <img src="img/star-vendor.svg" className="h-4 w-4" alt="Stars" />
                   </div>
                 </div>
               </div>

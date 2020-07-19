@@ -16,7 +16,7 @@ const Wrapper = styled.section`
     font-weight: 600;
   }
   .rating {
-    color: ${({ theme }) => theme.colors.orange3};
+    color: ${({ theme }) => theme.colors.orange1};
   }
   .location {
     font-size: 0.8rem;
@@ -50,7 +50,7 @@ const ReviewCard: React.FC<Props> = ({
             </div>
             <div className="pl-4 flex items-center">
               <span className="pr-1 rating">{rating}</span>
-              <img className="inline-block rating-img" src="/img/star-about.svg" alt="Star rating" />
+              <img className="inline-block rating-img" src="/img/star-vendor.svg" alt="Star rating" />
             </div>
           </div>
         </div>
