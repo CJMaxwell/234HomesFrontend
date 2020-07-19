@@ -5,7 +5,6 @@ import Router from 'next/router';
 
 import ProfileNavbar from '../Organisms/ProfileNavbar';
 import Offering from '../Organisms/Offering';
-import StoryCard from '../Organisms/StoryCard';
 import Button from '../atoms/Button';
 import Footer from './Footer';
 import DIYPostCard from '../Organisms/DIYPostCard';
@@ -133,7 +132,7 @@ const DIY = () => {
             <FeaturedWrapper className="px-8 py-10">
               <h4 className="uppercase featured text-white font-semibold text-center py-2">featured</h4>
               <h3 className="featured-heading font-semibold pt-8 text-white capitalize">elitr sed diam nonumy eirmod tempor invidunt ut labore et</h3>
-              <FeatButton onClick={() => Router.push('/single-story')} className="featured-button uppercase mt-10">WAtch Now</FeatButton>
+              <FeatButton onClick={() => Router.push('/single-diy')} className="featured-button uppercase mt-10">WAtch Now</FeatButton>
             </FeaturedWrapper>
           </ImgBanner>
         </div>
