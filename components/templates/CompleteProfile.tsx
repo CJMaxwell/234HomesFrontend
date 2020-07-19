@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import Router from 'next/router'
+import Router from 'next/router';
 
 
 import SignUpNavbar from '../Organisms/SignUpNavbar';
