@@ -87,6 +87,11 @@ const Desc = styled.div`
 
 `;
 
+const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  Router.push('/single-vendor')
+}
+
 
 const CompanyProfile = () => {
   const theme = useContext(ThemeContext);
@@ -122,7 +127,7 @@ const CompanyProfile = () => {
           <p className="general pb-6">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy <br />
           eirmod tempor invidunt ut labore et dolore.</p>
           <hr />
-          <form className="w-full mt-12">
+          <form className="w-full mt-12" onSubmit={handleSubmit}>
 
             <div className="w-full mb-6 md:mb-0 mt-8">
               <div>

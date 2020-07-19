@@ -37,6 +37,7 @@ export const theme: DefaultTheme = {
     pink1: '#CFD12312',
     yellow4: '#8D8E03',
     pink2: '#F7681A12',
-    blue3: '#F2F9ED'
+    blue3: '#F2F9ED',
+    blue4: '#EFEFEF'
   },
 };
