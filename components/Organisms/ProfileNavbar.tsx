@@ -47,9 +47,7 @@ const ProfileNavbar = () => {
           </a>
         </li>
         <li>
-          <Link href="/productlist">
-            <a className="block lg:inline-block lg:mt-0 text-black mr-6">Shop</a>
-          </Link>
+          <a className="block lg:inline-block lg:mt-0 text-black mr-6">Shop</a>
         </li>
         <li>
           <a className="block lg:inline-block lg:mt-0 text-black mr-6">About</a>
