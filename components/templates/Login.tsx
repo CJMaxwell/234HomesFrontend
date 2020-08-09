@@ -28,16 +28,36 @@ const Wrapper = styled.section<Props>`
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    max-width: 37.3rem;
-    max-height: 28.6rem;
+    max-width: 28.9rem;
+    max-height: 35.3rem;
   }
-  
 
   .signIn {
     border: 1px solid ${({ theme }) => theme.colors.orange1};
     background-color: ${({ theme }) => theme.colors.orange1};
   } 
 
+  .form-wrap {
+    border-radius: 32px;
+  }
+  .input-addon {
+    padding-left: 0.95rem;
+    color: ${({theme}) => theme.colors.gray1};
+    font-weight: 600
+  }
+  input::placeholder {
+    text-align: center;
+  }
+  .reset-password {
+    color: ${({ theme }) => theme.colors.orange1};
+    font-size: 0.7rem;
+    padding-top: 0.5rem;
+  }
+  .social-icons {
+    /* padding: 1.05rem 0.85rem; */
+    padding: 0.8rem 0.5rem;
+
+  }
  
 `;
 
@@ -60,27 +80,38 @@ const Login: React.FC<Props> = ({ imgUrl = '' }) => {
 
         <div className="w-full signup bg-white rounded pb-16">
           <h1 className="text-2xl font-semibold text-center my-10">Sign In</h1>
+          <hr className="mb-20"/>
           <form onSubmit={handleSubmit} className="px-8 mt-auto">
-            <div className="border border-gray-500  h-12 justify-between flex items-center">
-              <div>
-                <img src="/img/mailbox_icon.svg" className="inline-block w-10 h-8 px-2" alt="Sign up with Email" />
+            <div className="border border-gray-500 form-wrap h-12 pr-4 justify-between flex items-center">
+              <div className="input-addon">
+                <p>+234</p>
               </div>
-              <input className="appearance-none outline-none w-full h-full leading-tight" id="email" type="email" required placeholder="Enter Your Email Address" />
+              <input className="appearance-none outline-none w-full h-full leading-tight" id="phone" type="text" required placeholder="Enter Your Phone Number" />
             </div>
-            <div className="border border-gray-500 h-12 mt-5 justify-between flex items-center">
-              <div>
-                <img src="/img/lock.svg" className="inline-block w-8 h-10 px-2" alt="Sign up with Email" />
+            <div className="border border-gray-500 form-wrap h-12 mt-5 pr-4 justify-between flex items-center">
+              <div className="input-addon">
+                <img src="/img/password-phone.svg" className="inline-block w-4 h-6" alt="Sign up with phone" />
               </div>
-              <input className="appearance-none outline-none w-full h-full leading-tight" id="password" type="password" required placeholder="Enter Your Password Address" />
+              <input className="appearance-none outline-none w-full h-full leading-tight" id="password" type="password" required placeholder="Password" />
             </div>
-            <div className="text-center signIn mt-8 h-12">
-              <button type="submit" className="text-center w-full h-full text-white">Sign In</button>
-            </div>
-            <div className="bg-white border border-gray-500 mt-6 h-12 flex items-center">
-              <img src="/img/google_logo.svg" className="inline-block h-12 w-12 px-2 border-r border-gray-500" alt="Sign up with Google" />
-              <button className="px-32 text-gray-600">Continue with Google</button>
+            <p className="flex justify-end reset-password">
+              <a>Reset password</a>
+            </p>
+            <div className="text-center form-wrap signIn mt-8 h-12">
+              <button type="submit" className="text-center uppercase w-full h-full text-white">Sign In</button>
             </div>
           </form>
+          <ul className="flex items-center justify-center mt-12">
+            <li className="border border-gray-500 rounded-full social-icons h-12 w-12 mr-10">
+              <img src="/img/email-icon.svg" className="h-full w-full" alt="Email" />
+            </li>
+            <li className="border border-gray-500 rounded-full social-icons h-12 w-12 mr-10">
+              <img src="/img/google-logo.svg" className="h-full w-full" alt="Gmail" />
+            </li>
+            <li className="border border-gray-500 rounded-full social-icons h-12 w-12">
+              <img src="/img/facebook-logo.svg" className="h-full w-full" alt="Facebook" />
+            </li>
+          </ul>
         </div>
       </Wrapper>
       <Footer />

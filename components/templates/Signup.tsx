@@ -30,27 +30,27 @@ const Wrapper = styled.section<Props>`
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    max-width: 37.3rem;
-    max-height: 28.6rem;
+    max-width: 28.9rem;
+    max-height: 36.7rem;
   }
-  .continue-google {
-    border: 1px solid ${({ theme }) => theme.colors.blue1};
-    background-color: ${({ theme }) => theme.colors.blue1};
-
-    img {
-      padding-top: 5px;
-      padding-bottom: 5px;
-      /* height: auto; */
-    }
-  }
-
-  .continue-email {
+  .bg-signup {
     border: 1px solid ${({ theme }) => theme.colors.orange1};
     background-color: ${({ theme }) => theme.colors.orange1};
+  } 
+  .form-wrap {
+    border-radius: 32px;
   }
-
-  .btn-google {
-    background-color: ${({ theme }) => theme.colors.blue1};
+  .input-addon {
+    padding-left: 0.95rem;
+    color: ${({theme}) => theme.colors.gray1};
+    font-weight: 600
+  }
+  input::placeholder {
+    text-align: center;
+  }
+  .continue-btn {
+    color: ${({theme}) => theme.colors.gray11};
+    font-size: 0.8rem;
   }
 `;
 
@@ -75,28 +75,44 @@ const Signup: React.FC<Props> = ({ imgUrl = '' }) => {
 
         <div className="w-full signup bg-white rounded pb-16">
           <h1 className="text-2xl font-semibold text-center my-12">Get Your Free Account</h1>
-          <div className="px-8">
-            <div className="continue-google mt-6 h-12 flex items-center">
-              <img src="/img/google_logo.svg" className="inline-block h-full w-12 px-2 bg-white" alt="Sign up with Google" />
-              <button className="px-32 text-white">Continue with Google</button>
+          
+          <form onSubmit={handleSubmit} className="px-8 mt-auto">
+            <div className="border border-gray-500 form-wrap h-12 justify-between pr-4 flex items-center">
+              <div className="input-addon">
+                <p>+234</p>
+              </div>
+              <input className="appearance-none outline-none w-full h-full leading-tight" id="phone" type="text" required placeholder="Enter Your Phone Number" />
             </div>
-            <div className="text-center my-8 flex items-center">
+            <div className="text-center form-wrap bg-signup mt-8 h-12">
+              <button type="submit" className="text-center uppercase w-full h-full text-white">Sign Up</button>
+            </div>
+          </form>
+          <div className="px-8">
+          <div className="text-center my-8 flex items-center">
               <hr className="w-1/2" />
               <span className="px-1">or</span>
               <hr className="w-1/2" />
             </div>
-          </div>
-          <form onSubmit={handleSubmit} className="px-8 mt-auto">
-            <div className="border border-gray-500  h-12 justify-between flex items-center">
-              <div>
-                <img src="/img/mailbox_icon.svg" className="inline-block w-10 h-8 px-2" alt="Sign up with Email" />
+            <div className="mt-6 h-12 flex items-center border border-gray-500 form-wrap">
+              <div className="input-addon">
+                <img src="/img/email-icon.svg" className="inline-block h-full w-12 p-2 bg-white" alt="Sign up with Google" />
               </div>
-              <input className="appearance-none pr-2 outline-none w-full h-full leading-tight" id="email" type="email" required placeholder="Enter Your Email Address" />
+              <button className="continue-btn h-full w-full outline-none">Continue with Email</button>
             </div>
-            <div className="text-center continue-email mt-4 h-12">
-              <button type="submit" className="text-center w-full h-full text-white">Sign up</button>
+            <div className="mt-6 h-12 flex items-center border border-gray-500 form-wrap">
+              <div className="input-addon">
+                <img src="/img/google-logo.svg" className="inline-block h-full w-12 p-2 bg-white" alt="Sign up with Google" />
+              </div>
+              <button className="continue-btn h-full w-full outline-none">Continue with Google</button>
             </div>
-          </form>
+            <div className="mt-6 h-12 flex items-center border border-gray-500 form-wrap">
+              <div className="input-addon">
+                <img src="/img/facebook-logo.svg" className="inline-block h-full w-12 p-2 bg-white" alt="Sign up with Google" />
+              </div>
+              <button className="continue-btn h-full w-full outline-none">Continue with Facebook</button>
+            </div>
+          </div>
+          
         </div>
       </Wrapper>
       <Footer />

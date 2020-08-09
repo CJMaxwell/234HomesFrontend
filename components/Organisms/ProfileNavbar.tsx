@@ -36,10 +36,24 @@ const ProfileNavbar = () => {
         </Logo>
       </Link>
       <ul className="flex items-center mt-4 font-semibold uppercase">
-        <li>
+        {/* <li>
           <a className="block lg:inline-block lg:mt-0 text-black hover:text-white mr-6">
             <img src="/img/plus.svg" className="h-5 w-5" alt="More menu Items" />
           </a>
+        </li> */}
+        <li>
+          <Link href="/directory">
+            <a className="block lg:inline-block lg:mt-0 text-black mr-6">
+              Professionals
+            </a>
+          </Link>
+        </li>
+        <li>
+          <Link href="/vendors">
+            <a className="block lg:inline-block lg:mt-0 text-black mr-6">
+              Vendors
+            </a>
+          </Link>
         </li>
         <li>
           <a className="block lg:inline-block lg:mt-0 text-black mr-6">
@@ -47,7 +61,9 @@ const ProfileNavbar = () => {
           </a>
         </li>
         <li>
-          <a className="block lg:inline-block lg:mt-0 text-black mr-6">Shop</a>
+          <Link href="/products">
+            <a className="block lg:inline-block lg:mt-0 text-black mr-6">Shop</a>
+          </Link>
         </li>
         <li>
           <a className="block lg:inline-block lg:mt-0 text-black mr-6">About</a>
@@ -56,7 +72,7 @@ const ProfileNavbar = () => {
           <Link href="/">
             <a className="block lg:inline-block lg:mt-0 text-black mr-6">
               Log out
-              </a>
+            </a>
           </Link>
         </li>
         <li>
