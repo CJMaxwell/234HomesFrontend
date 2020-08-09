@@ -77,7 +77,7 @@ const Signup: React.FC<Props> = ({ imgUrl = '' }) => {
           <h1 className="text-2xl font-semibold text-center my-12">Get Your Free Account</h1>
           
           <form onSubmit={handleSubmit} className="px-8 mt-auto">
-          <div className="border border-gray-500 form-wrap h-12 justify-between flex items-center">
+            <div className="border border-gray-500 form-wrap h-12 justify-between pr-4 flex items-center">
               <div className="input-addon">
                 <p>+234</p>
               </div>
@@ -94,16 +94,22 @@ const Signup: React.FC<Props> = ({ imgUrl = '' }) => {
               <hr className="w-1/2" />
             </div>
             <div className="mt-6 h-12 flex items-center border border-gray-500 form-wrap">
-              <img src="/img/email-icon.svg" className="inline-block h-full w-12 p-2 bg-white" alt="Sign up with Google" />
-              <button className="continue-btn">Continue with Email</button>
+              <div className="input-addon">
+                <img src="/img/email-icon.svg" className="inline-block h-full w-12 p-2 bg-white" alt="Sign up with Google" />
+              </div>
+              <button className="continue-btn h-full w-full outline-none">Continue with Email</button>
             </div>
             <div className="mt-6 h-12 flex items-center border border-gray-500 form-wrap">
-              <img src="/img/google-logo.svg" className="inline-block h-full w-12 p-2 bg-white" alt="Sign up with Google" />
-              <button className="continue-btn">Continue with Google</button>
+              <div className="input-addon">
+                <img src="/img/google-logo.svg" className="inline-block h-full w-12 p-2 bg-white" alt="Sign up with Google" />
+              </div>
+              <button className="continue-btn h-full w-full outline-none">Continue with Google</button>
             </div>
             <div className="mt-6 h-12 flex items-center border border-gray-500 form-wrap">
-              <img src="/img/facebook-logo.svg" className="inline-block h-full w-12 p-2 bg-white" alt="Sign up with Google" />
-              <button className="continue-btn">Continue with Facebook</button>
+              <div className="input-addon">
+                <img src="/img/facebook-logo.svg" className="inline-block h-full w-12 p-2 bg-white" alt="Sign up with Google" />
+              </div>
+              <button className="continue-btn h-full w-full outline-none">Continue with Facebook</button>
             </div>
           </div>
           

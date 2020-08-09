@@ -82,13 +82,13 @@ const Login: React.FC<Props> = ({ imgUrl = '' }) => {
           <h1 className="text-2xl font-semibold text-center my-10">Sign In</h1>
           <hr className="mb-20"/>
           <form onSubmit={handleSubmit} className="px-8 mt-auto">
-            <div className="border border-gray-500 form-wrap h-12 justify-between flex items-center">
+            <div className="border border-gray-500 form-wrap h-12 pr-4 justify-between flex items-center">
               <div className="input-addon">
                 <p>+234</p>
               </div>
               <input className="appearance-none outline-none w-full h-full leading-tight" id="phone" type="text" required placeholder="Enter Your Phone Number" />
             </div>
-            <div className="border border-gray-500 form-wrap h-12 mt-5 justify-between flex items-center">
+            <div className="border border-gray-500 form-wrap h-12 mt-5 pr-4 justify-between flex items-center">
               <div className="input-addon">
                 <img src="/img/password-phone.svg" className="inline-block w-4 h-6" alt="Sign up with phone" />
               </div>
