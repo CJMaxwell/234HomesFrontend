@@ -6,6 +6,9 @@ import Router from 'next/router';
 interface Props {
   imgUrl?: string;
   name?: string;
+  occupation?: string;
+  location?:string;
+  phone?:string
 };
 
 const Wrapper = styled.div`
@@ -16,7 +19,7 @@ const Wrapper = styled.div`
 `;
 
 
-const ProfessionalCard: React.FC<Props> = ({ imgUrl = '/img/jonathan.jpg', name }) => {
+const ProfessionalCard: React.FC<Props> = ({ imgUrl = '/img/jonathan.jpg', name, occupation, location,phone }) => {
   const theme = useContext(ThemeContext);
 
   return (
@@ -71,12 +74,16 @@ const ProfessionalCard: React.FC<Props> = ({ imgUrl = '/img/jonathan.jpg', name 
           </svg>
         </div>
         <hr />
-        <div className="pt-6">
-          <h6 className="font-bold text-sm">I am the right person for the job:</h6>
-          <p className="text-xs pt-4">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis
-            velit assumenda officia unde inventore dignissimos!
-          </p>
+        <div className="pt-6 text-center">
+          <h6 className="text-sm">{occupation}</h6>
+          <div className="text-xs pt-4 flex items-center justify-center">
+            <img src="/img/home-professional-phone.svg" alt="phone"/>
+            <span className="pl-2">{phone}</span>
+          </div>
+          <div className="text-xs pt-4 flex items-center justify-center">
+            <img src="/img/home-professional-location.svg" alt="Location"/>
+            <span className="pl-2">{location}</span>
+          </div>
         </div>
         <button onClick={() => Router.push('/professional-about')} className="uppercase border-gray-600 text-gray-600 mt-4 w-full bg-white rounded-sm block text-center mb-10">
           Hire me

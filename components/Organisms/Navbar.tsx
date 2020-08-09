@@ -31,9 +31,19 @@ const Navbar = () => {
       </Link>
       <ul className="flex items-center mt-4 font-semibold uppercase">
         <li>
-          <a className="block lg:inline-block lg:mt-0 text-black hover:text-white mr-6">
-            <img src="/img/plus.svg" className="h-5 w-5" alt="More menu Items" />
+        <Link href="/directory">
+          <a className="block lg:inline-block lg:mt-0 text-black mr-6">
+            Professionals
+            {/* <img src="/img/plus.svg" className="h-5 w-5" alt="More menu Items" /> */}
           </a>
+          </Link>
+        </li>
+        <li>
+          <Link href="/vendors">
+            <a className="block lg:inline-block lg:mt-0 text-black mr-6">
+              Vendors
+            </a>
+          </Link>
         </li>
         <li>
           <a className="block lg:inline-block lg:mt-0 text-black mr-6">
@@ -41,7 +51,9 @@ const Navbar = () => {
           </a>
         </li>
         <li>
+        <Link href="/products">
           <a className="block lg:inline-block lg:mt-0 text-black mr-6">Shop</a>
+          </Link>
         </li>
         <li>
           <a className="block lg:inline-block lg:mt-0 text-black mr-6">About</a>

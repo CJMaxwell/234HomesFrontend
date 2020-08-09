@@ -110,18 +110,18 @@ const Professionals = () => {
           </div>
         </div>
         <section className="grid grid-cols-4 gap-6">
-          <ProfessionalCard />
-          <ProfessionalCard />
-          <ProfessionalCard />
-          <ProfessionalCard />
-          <ProfessionalCard />
-          <ProfessionalCard />
-          <ProfessionalCard />
-          <ProfessionalCard />
-          <ProfessionalCard />
-          <ProfessionalCard />
-          <ProfessionalCard />
-          <ProfessionalCard />
+          <ProfessionalCard  name="Babatunde Maxwell" occupation="Interior Designer" location="Ikeja, Lagos" phone="0803 456 7890"/>
+          <ProfessionalCard name="Alexandria Vladimir" occupation="Painter" location="Barnawa, Kaduna" phone="0809 053 4405" />
+          <ProfessionalCard name="Babatunde Maxwell" occupation="Interior Designer" location="Ikeja, Lagos" phone="0803 456 7890" />
+          <ProfessionalCard name="Alexandria Vladimir" occupation="Painter" location="Barnawa, Kaduna" phone="0809 053 4405" />
+          <ProfessionalCard name="Micheal Jonna" occupation="Carpenter" location="Wuse, Abuja" phone="0812 456 8900" />
+          <ProfessionalCard name="Wuraola Gbotemi" occupation="Plumber" location="Maitama, Abuja" phone="0809 053 4405" />
+          <ProfessionalCard  name="Babatunde Maxwell" occupation="Interior Designer" location="Ikeja, Lagos" phone="0803 456 7890"/>
+          <ProfessionalCard name="Alexandria Vladimir" occupation="Painter" location="Barnawa, Kaduna" phone="0809 053 4405" />
+          <ProfessionalCard name="Babatunde Maxwell" occupation="Interior Designer" location="Ikeja, Lagos" phone="0803 456 7890" />
+          <ProfessionalCard name="Alexandria Vladimir" occupation="Painter" location="Barnawa, Kaduna" phone="0809 053 4405" />
+          <ProfessionalCard name="Micheal Jonna" occupation="Carpenter" location="Wuse, Abuja" phone="0812 456 8900" />
+          <ProfessionalCard name="Wuraola Gbotemi" occupation="Plumber" location="Maitama, Abuja" phone="0809 053 4405" />
         </section>
       </div>
       <Footer />

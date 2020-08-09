@@ -11,6 +11,8 @@ import SiteLink from '../atoms/SiteLink';
 import PostCard from '../Organisms/PostCard';
 import ProfessionalCard from '../Organisms/ProfessionalCard';
 import DIYCard from '../Organisms/DIYCard';
+import MostViewedProducts from '../Organisms/MostViewedProducts';
+import TopRatedVendor from '../Organisms/TopRatedVendor';
 
 const HomeBannerBtn = styled(Button)`
   border-radius: 34px;
@@ -209,6 +211,11 @@ const Directory = styled.div`
     width: 125px;
     height: 39.2px;
     font-size: 12px;
+  }
+  .active-link {
+    border-bottom: 2px solid ${({ theme }) => theme.colors.gray4};
+    padding-bottom: 0.5rem;
+    
   }
 `;
 
@@ -415,10 +422,14 @@ const Home = () => {
           <hr />
           <div className="flex justify-between items-center pb-10 pt-5">
             <ul className="text-gray-500 flex text-sm">
-              <li className="pr-8">Featured Professional</li>
-              <li className="pr-8">Most views Products</li>
+              <li className="pr-8">
+                <a className="active-link">Featured Professional</a>
+              </li>
+              <li className="pr-8">
+                <a>Most views Products</a>
+              </li>
               <li>
-                <a className="border-gray-900 border-b-2 pb-2">
+                <a>
                   Top Rated Vendors
                 </a>
               </li>
@@ -434,10 +445,20 @@ const Home = () => {
           </div>
         </div>
         <div className="grid grid-cols-4 gap-4 mb-12">
-          <ProfessionalCard name="Babatunde Maxwell" />
-          <ProfessionalCard name="Alexandria Vladimir" />
-          <ProfessionalCard name="Micheal Jonna" />
-          <ProfessionalCard name="Wuraola Gbotemi" />
+          <ProfessionalCard name="Babatunde Maxwell" occupation="Interior Designer" location="Ikeja, Lagos" phone="0803 456 7890" />
+          <ProfessionalCard name="Alexandria Vladimir" occupation="Painter" location="Barnawa, Kaduna" phone="0809 053 4405" />
+          <ProfessionalCard name="Micheal Jonna" occupation="Carpenter" location="Wuse, Abuja" phone="0812 456 8900" />
+          <ProfessionalCard name="Wuraola Gbotemi" occupation="Plumber" location="Maitama, Abuja" phone="0809 053 4405" />
+        </div>
+        <div className="grid grid-cols-2 gap-4">
+          <MostViewedProducts  imgUrl='/img/BArt.png' />
+          <MostViewedProducts   imgUrl='/img/B-18-B.png' />
+        </div>
+        <div className="grid grid-cols-4 gap-4 mt-4">
+          <TopRatedVendor imgUrl='/img/vendors/sidekix-media-I_QC1JICzA0-unsplash.png' height='15rem' name="Nick Interior LTD" location="77, Central Park South, Ikeja, Lagos" phone="0812 456 8900, 0812 456 8900" />
+          <TopRatedVendor imgUrl='/img/vendors/francesca-tosolini-tHkJAMcO3QE-unsplash.png' height='15rem' name="Lorem Furniture" location="77, Central Park South, Ikeja, Lagos" phone="0812 456 8900, 0812 456 8900" />
+          <TopRatedVendor imgUrl='/img/vendors/francesca-tosolini-w1RE0lBbREo-unsplash.png' height='15rem' name="Chuma & Sons LTD" location="77, Central Park South, Ikeja, Lagos" phone="0812 456 8900, 0812 456 8900" />
+          <TopRatedVendor imgUrl='/img/vendors/two-white-rod-pocket-curtains-910458.png' height='15rem' name="Consetetur Designs" location="77, Central Park South, Ikeja, Lagos" phone="0812 456 8900, 0812 456 8900" />
         </div>
       </Directory>
       <Footer />
