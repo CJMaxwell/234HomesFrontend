@@ -83,22 +83,22 @@ const Login: React.FC<Props> = ({ imgUrl = '' }) => {
           <hr className="mb-20"/>
           <form onSubmit={handleSubmit} className="px-8 mt-auto">
             <div className="border border-gray-500 form-wrap h-12 pr-4 justify-between flex items-center">
-              <div className="input-addon">
+              <div className="input-addon pr-4">
                 <p>+234</p>
               </div>
-              <input className="appearance-none outline-none w-full h-full leading-tight" id="phone" type="text" required placeholder="Enter Your Phone Number" />
+              <input className="appearance-none outline-none w-full h-full leading-tight pr-4" id="phone" type="text" required placeholder="Enter Your Phone Number" />
             </div>
             <div className="border border-gray-500 form-wrap h-12 mt-5 pr-4 justify-between flex items-center">
-              <div className="input-addon">
+              <div className="input-addon pr-4">
                 <img src="/img/password-phone.svg" className="inline-block w-4 h-6" alt="Sign up with phone" />
               </div>
-              <input className="appearance-none outline-none w-full h-full leading-tight" id="password" type="password" required placeholder="Password" />
+              <input className="appearance-none outline-none w-full h-full leading-tight pr-4" id="password" type="password" required placeholder="Password" />
             </div>
             <p className="flex justify-end reset-password">
               <a>Reset password</a>
             </p>
             <div className="text-center form-wrap signIn mt-8 h-12">
-              <button type="submit" className="text-center uppercase w-full h-full text-white">Sign In</button>
+              <button type="submit" className="text-center font-semibold uppercase w-full h-full text-white">Sign In</button>
             </div>
           </form>
           <ul className="flex items-center justify-center mt-12">
