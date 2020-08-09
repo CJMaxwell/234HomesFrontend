@@ -74,7 +74,7 @@ const Verify: React.FC<Props> = ({ imgUrl = '' }) => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    Router.push('/professional-about')
+    Router.push('/verify-success')
   }
 
   return (
