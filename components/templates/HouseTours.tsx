@@ -55,14 +55,8 @@ const TopBanner = styled.div`
     font-size: 2.25rem;
     color: ${({ theme }) => theme.colors.gray1};
     padding-top: 2.3rem;
-    /* max-width: 37.3rem;
-    margin: auto; */
   }
-  /* .para-intro {
-    max-width: 37.3rem;
-    margin: auto;
-    color: ${({ theme }) => theme.colors.gray5};
-  } */
+  
 `;
 
 const ImgBanner = styled.div`

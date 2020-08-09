@@ -56,7 +56,9 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          <a className="block lg:inline-block lg:mt-0 text-black mr-6">About</a>
+          <Link href="/about-us">
+            <a className="block lg:inline-block lg:mt-0 text-black mr-6">About</a>
+          </Link>
         </li>
         <li>
           <Link href="/login">
