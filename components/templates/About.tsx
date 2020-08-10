@@ -87,7 +87,8 @@ const Wrapper = styled.section`
     background-size: cover;
   }
   .about-people {
-    padding: 4.55rem 0;
+    padding-top: 4.55rem;
+    padding-bottom: 4.55rem;
   }
   .idea-desc {
     padding-left: 4.45rem;
@@ -129,7 +130,7 @@ const About = () => {
         </div>
       </section>
       <section className="promise-and-culture text-white">
-        <div className="container mx-auto flex about-people">
+        <div className="general-padding container mx-auto flex about-people">
           <div className="pr-32">
             <h1 className="font-semibold title">Our Promise</h1>
             <p className="pt-8">Justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing.</p>
