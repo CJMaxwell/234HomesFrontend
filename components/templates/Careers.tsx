@@ -7,7 +7,7 @@ import Navbar from '../Organisms/Navbar';
 import Footer from './Footer';
 
 const Wrapper = styled.section`
-
+  position: relative;
 
   .breadcrumb li:not(:last-child) {
       padding-right: 0.8rem;
@@ -60,6 +60,16 @@ const Wrapper = styled.section`
     font-size: 1.75rem;
     width: 25rem;
   }
+  .bg-input {
+    background-color: ${({ theme }) => theme.colors.gray21};
+  }
+  .apply {
+    width: 43.9rem;
+    position: absolute;
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
 `;
 
 const Careers = () => {
@@ -105,7 +115,7 @@ const Careers = () => {
           </div>
         </div>
       </section>
-      <section className="text-center">
+      <section className="apply text-center">
         <section>
           <h1>Apply Today</h1>
           <p>
@@ -115,17 +125,17 @@ const Careers = () => {
         </section>
         <form>
           <div>
-            <input type="text" name="firstName" className="bg-gray-400"/>
-            <input type="text" name="LastName" className="bg-gray-400"/>
+            <input type="text" name="firstName" className="bg-input"/>
+            <input type="text" name="LastName" className="bg-input"/>
           </div>
-          <div>
-            <input type="text" name="phoneNumber" className="bg-gray-400"/>
-            <input type="email" name="Email" className="bg-gray-400"/>
+          <div className="pt-5">
+            <input type="text" name="phoneNumber" className="bg-input"/>
+            <input type="email" name="email" className="bg-input"/>
           </div>
-          <div>
-            <input type="text" name="desiredPosition" className="bg-gray-400"/>
+          <div className="pt-5">
+            <input type="text" name="desiredPosition" className="bg-input"/>
           </div>
-          <div>
+          <div className="pt-5">
             <input type="file" name="resume" className=""/>
           </div>
           <button type="submit">Submit</button>
