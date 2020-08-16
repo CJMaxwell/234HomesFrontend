@@ -64,11 +64,14 @@ const Wrapper = styled.section`
     background-color: ${({ theme }) => theme.colors.gray21};
   }
   .apply {
-    width: 43.9rem;
-    position: absolute;
+    /* width: 43.9rem; */
+    /* position: absolute;
     top: 50%; 
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%); */
+  }
+  .apply-intro, .apply-form {
+    width: 43.9rem;
   }
 `;
 
@@ -115,31 +118,33 @@ const Careers = () => {
           </div>
         </div>
       </section>
-      <section className="apply text-center">
-        <section>
+      <section className="apply flex justify-center items-center">
+        <div>
+        <section className="text-center">
           <h1>Apply Today</h1>
-          <p>
+          <p className="apply-intro">
             We’re looking for success driven candidates! Feeling up to the challenge? 
             Please fill out the form below &amp; upload your resume and cover letter.
           </p>
         </section>
-        <form>
-          <div>
+        <form className="apply-form">
+          <div className="flex justify-between items-center">
             <input type="text" name="firstName" className="bg-input"/>
             <input type="text" name="LastName" className="bg-input"/>
           </div>
-          <div className="pt-5">
+          <div className="pt-5 flex justify-between items-center">
             <input type="text" name="phoneNumber" className="bg-input"/>
             <input type="email" name="email" className="bg-input"/>
           </div>
-          <div className="pt-5">
-            <input type="text" name="desiredPosition" className="bg-input"/>
+          <div className="pt-5 apply-form">
+            <input type="text" name="desiredPosition" className="bg-input w-full"/>
           </div>
           <div className="pt-5">
             <input type="file" name="resume" className=""/>
           </div>
           <button type="submit">Submit</button>
         </form>
+        </div>
       </section>
       <Footer />
     </Wrapper>
