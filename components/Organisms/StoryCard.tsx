@@ -9,14 +9,11 @@ interface Props {
   user?: string;
   PostDate?: string;
   sponsored?: boolean;
-
 }
-
-
 
 const Wrapper = styled.section`
   margin-bottom: 2.85rem;
-  
+
   .title {
     width: 33.2rem;
   }
@@ -24,7 +21,8 @@ const Wrapper = styled.section`
     color: ${({ theme }) => theme.colors.yellow3};
     font-size: 0.7rem;
   }
-  .postdate, .user {
+  .postdate,
+  .user {
     font-size: 0.7rem;
     color: ${({ theme }) => theme.colors.gray1};
   }
@@ -77,9 +75,13 @@ const StoryImg = styled.div<Props>`
 `;
 
 const StoryCard: React.FC<Props> = ({
-  imgUrl = '', height = '', user = '',
-  title = '', category = '',
-  PostDate = '', sponsored = ''
+  imgUrl = '',
+  height = '',
+  user = '',
+  title = '',
+  category = '',
+  PostDate = '',
+  sponsored = '',
 }) => {
   return (
     <Wrapper>
@@ -89,26 +91,28 @@ const StoryCard: React.FC<Props> = ({
       <div className="flex justify-between">
         <div>
           <h6 className="uppercase category">{category}</h6>
-          <h1 className="capitalize title text-black text-2xl font-semibold pt-4">Gonsetetur sadipscing elitr, sed diam nonumy eirmod
-        </h1>
+          <h1 className="capitalize title text-black text-2xl font-semibold pt-4">
+            Gonsetetur sadipscing elitr, sed diam nonumy eirmod
+          </h1>
           <p className="desc">
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore…
-        </p>
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+            invidunt ut labore…
+          </p>
           <div className="">
             <span className="user font-semibold">by {user}</span> |
-          <span className="postdate"> {PostDate}</span>
+            <span className="postdate"> {PostDate}</span>
           </div>
         </div>
         <StoryImg imgUrl={imgUrl}>
-          {
-            sponsored ? <div className="sponsored text-white relative py-2 px-4">Sponsored</div> : <div></div>
-          }
+          {sponsored ? (
+            <div className="sponsored text-white relative py-2 px-4">Sponsored</div>
+          ) : (
+            <div />
+          )}
         </StoryImg>
       </div>
-
-
     </Wrapper>
-  )
-}
+  );
+};
 
-export default StoryCard
+export default StoryCard;

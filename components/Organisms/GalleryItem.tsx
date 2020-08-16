@@ -21,14 +21,8 @@ const Wrapper = styled.div<Props>`
   
 `;
 
+const GalleryItem: React.FC<Props> = ({ imgUrl = '', height, width }) => {
+  return <Wrapper imgUrl={imgUrl} height={height} width={width} className="bg-gallery-item" />;
+};
 
-
-const GalleryItem: React.FC<Props> = ({ imgUrl = '', height,width }) => {
-  return (
-    <Wrapper  imgUrl={imgUrl} height={height} width={width} className="bg-gallery-item">
-      
-    </Wrapper>
-  )
-}
-
-export default GalleryItem
+export default GalleryItem;

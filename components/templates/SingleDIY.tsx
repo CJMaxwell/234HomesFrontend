@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 
-import ProfileNavbar from '../Organisms/ProfileNavbar'
-import Offering from '../Organisms/Offering'
+import ProfileNavbar from '../Organisms/ProfileNavbar';
+import Offering from '../Organisms/Offering';
 import UserCard from '../molecules/UserCard';
 import MostTalkedDIY from '../Organisms/MostTalkedDIY';
 import Footer from './Footer';
@@ -16,13 +16,12 @@ const DIYBanner = styled.div`
   position: relative;
   border-radius: 10px;
 
-  .playBtn{
+  .playBtn {
     position: absolute;
-    top: 50%; 
+    top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
   }
-  
 `;
 
 const Main = styled.section`
@@ -38,7 +37,8 @@ const Main = styled.section`
     font-weight: 600;
     padding-bottom: 1.05rem;
   }
-  .inline-desc, .signup-comment {
+  .inline-desc,
+  .signup-comment {
     font-size: 0.8rem;
     color: ${({ theme }) => theme.colors.gray5};
   }
@@ -46,14 +46,14 @@ const Main = styled.section`
     font-size: 1.4rem;
     font-weight: 600;
   }
-  textarea::placeholder, .number-comments {
+  textarea::placeholder,
+  .number-comments {
     color: ${({ theme }) => theme.colors.gray11};
     font-size: 0.8rem;
   }
 `;
 
 const MainWrap = styled.div`
-
   .breadcrumb {
     color: ${({ theme }) => theme.colors.gray5};
     font-size: 0.7rem;
@@ -68,7 +68,6 @@ const MainWrap = styled.div`
 `;
 
 const SingleDIY = () => {
-
   const theme = useContext(ThemeContext);
 
   return (
@@ -97,13 +96,22 @@ const SingleDIY = () => {
       </section>
 
       <Main className="container mx-auto mb-16">
-        <h1 className="capitalize main-title text-4xl font-semibold py-12">Lorem ipsum dolor sit amet, consetetur sadipscing elitr sed diam nonumy</h1>
+        <h1 className="capitalize main-title text-4xl font-semibold py-12">
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr sed diam nonumy
+        </h1>
         <div className="pb-12">
           <UserCard />
         </div>
         <article>
           <p className="inline-desc">
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+            invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+            accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+            sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
+            sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
+            aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
+            rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
+            amet.
           </p>
         </article>
         <section className="flex items-center mt-16">
@@ -115,7 +123,12 @@ const SingleDIY = () => {
             <h1 className="conversation uppercase pr-1">CONVERSATION</h1>
             <span className="number-comments">(0) Comments</span>
           </div>
-          <textarea className="border border-gray-200 mt-5 outline-none w-full h-20 pt-4 pl-6 rounded-md" name="discussion" id="discussion" placeholder="Join the discussion…"></textarea>
+          <textarea
+            className="border border-gray-200 mt-5 outline-none w-full h-20 pt-4 pl-6 rounded-md"
+            name="discussion"
+            id="discussion"
+            placeholder="Join the discussion…"
+          />
         </section>
       </Main>
       <hr />
@@ -130,7 +143,7 @@ const SingleDIY = () => {
       </section>
       <Footer />
     </MainWrap>
-  )
-}
+  );
+};
 
-export default SingleDIY
+export default SingleDIY;

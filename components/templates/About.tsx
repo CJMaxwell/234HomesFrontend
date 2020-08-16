@@ -1,6 +1,5 @@
-import React, { useContext } from 'react';
-import styled, { ThemeContext } from 'styled-components';
-import Router from 'next/router';
+import React from 'react';
+import styled from 'styled-components';
 
 import Offering from '../Organisms/Offering';
 import Navbar from '../Organisms/Navbar';
@@ -18,7 +17,8 @@ const Wrapper = styled.section`
     font-size: 0.7rem;
     text-transform: uppercase;
   }
-  .who-we-are,.bg-big-idea {
+  .who-we-are,
+  .bg-big-idea {
     background-color: ${({ theme }) => theme.colors.gray15};
   }
   .promise-and-culture {
@@ -52,7 +52,10 @@ const Wrapper = styled.section`
   .title {
     font-size: 1.75rem;
   }
-  .about-title, .the-idea,.team-title,.name {
+  .about-title,
+  .the-idea,
+  .team-title,
+  .name {
     color: ${({ theme }) => theme.colors.gray1};
   }
   .big-idea {
@@ -65,21 +68,21 @@ const Wrapper = styled.section`
   .big-idea-desc {
     width: 25.6rem;
   }
-  .team-mate-one{
+  .team-mate-one {
     height: 33.95rem;
     background: url('/img/woman-wearing-gray-notch-lapel-suit-jacket-2381069.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
   }
-  .team-mate-two{
+  .team-mate-two {
     height: 33.95rem;
     background: url('/img/man-leaning-on-beige-post-3206078.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
   }
-  .team-mate-three{
+  .team-mate-three {
     height: 33.95rem;
     background: url('/img/woman-in-blue-blazer-while-standing-3727461.png');
     background-position: center;
@@ -114,18 +117,19 @@ const About = () => {
       <section className="who-we-are">
         <div className="general-padding container mx-auto grid grid-cols-2 gap-4 py-20">
           <div>
-           <h1 className="about-title title font-semibold">Who We are</h1>
-           <p className="description">
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
-           </p>
+            <h1 className="about-title title font-semibold">Who We are</h1>
+            <p className="description">
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+              invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+              accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+              sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
+              sadipscing
+            </p>
           </div>
           <div className="grid grid-cols-2 grid-rows-2 gap-4">
-            <div className="we-are-one row-span-2">
-            </div>
-            <div className="we-are-two">
-            </div>
-            <div className="we-are-three">
-            </div>
+            <div className="we-are-one row-span-2" />
+            <div className="we-are-two" />
+            <div className="we-are-three" />
           </div>
         </div>
       </section>
@@ -133,23 +137,36 @@ const About = () => {
         <div className="general-padding container mx-auto flex about-people">
           <div className="pr-32">
             <h1 className="font-semibold title">Our Promise</h1>
-            <p className="pt-8">Justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing.</p>
+            <p className="pt-8">
+              Justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
+              Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing.
+            </p>
           </div>
           <div className="pr-32">
-           <h1 className="font-semibold title">Our Culture</h1>
-           <p className="pt-8">Sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing</p>
+            <h1 className="font-semibold title">Our Culture</h1>
+            <p className="pt-8">
+              Sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
+              kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum
+              dolor sit amet, consetetur sadipscing
+            </p>
           </div>
         </div>
       </section>
 
       <section className="bg-big-idea">
         <div className="w-full flex">
-          <div className="big-idea w-1/2">
-          </div>
+          <div className="big-idea w-1/2" />
           <div className="w-1/2  pt-20 idea-desc">
             <h1 className="the-idea title font-semibold">The Big Idea</h1>
             <p className="big-idea-desc pt-8">
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+              invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+              accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+              sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
+              sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
+              aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
+              rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
+              amet.
             </p>
           </div>
         </div>
@@ -159,21 +176,21 @@ const About = () => {
           <h1 className="team-title title  mb-12 font-semibold">Our Team</h1>
           <div className="grid grid-cols-3 gap-8">
             <div>
-              <div className="team-mate-one"></div>
+              <div className="team-mate-one" />
               <div>
                 <h4 className="name font-semibold pt-6 pb-2">Adora John Doe</h4>
                 <p className="role">Founder / CEO</p>
               </div>
             </div>
             <div>
-              <div className="team-mate-two"></div>
+              <div className="team-mate-two" />
               <div>
                 <h4 className="name font-semibold pt-6 pb-2">Chuma Anagbado</h4>
                 <p className="role">Managing Partner</p>
               </div>
             </div>
             <div>
-              <div className="team-mate-three"></div>
+              <div className="team-mate-three" />
               <div>
                 <h4 className="name font-semibold pt-6 pb-2">Anita Okoro</h4>
                 <p className="role">Chief Financial Officer</p>
@@ -184,7 +201,7 @@ const About = () => {
       </section>
       <Footer />
     </Wrapper>
-  )
-}
+  );
+};
 
-export default About
+export default About;

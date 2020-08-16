@@ -1,10 +1,10 @@
-import { NextPage } from "next";
+import { NextPage } from 'next';
 
-import Signup from "../components/templates/Signup";
-import withApollo from "../lib/withApollo";
+import Signup from '../components/templates/Signup';
+import withApollo from '../lib/withApollo';
 
 const SignupPage: NextPage = () => {
-  //const theme = useContext(ThemeContext);
+  // const theme = useContext(ThemeContext);
   return (
     <>
       <Signup />

@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-
 interface Props {
   imgUrl?: string;
 }
@@ -39,19 +38,28 @@ const HouseTourImage: React.FC<Props> = ({ imgUrl = '' }) => {
       </Wrapper>
       <Indicators className="flex items-center justify-between pt-8">
         <div className="num font-semibold">
-          <span>2/</span><span>14</span>
+          <span>2/</span>
+          <span>14</span>
         </div>
         <div className="flex items-center">
           <div className="h-10 w-10 border border-gray-400 mr-6">
-            <img src="/img/image-left-arrow.svg" className="inline-block bg-white img h-full w-full" alt="Left arrow" />
+            <img
+              src="/img/image-left-arrow.svg"
+              className="inline-block bg-white img h-full w-full"
+              alt="Left arrow"
+            />
           </div>
           <div className="h-10 w-10 border border-gray-400">
-            <img src="/img/image-right-arrow.svg" className="inline-block bg-white img h-full w-full" alt="Left arrow" />
+            <img
+              src="/img/image-right-arrow.svg"
+              className="inline-block bg-white img h-full w-full"
+              alt="Left arrow"
+            />
           </div>
         </div>
       </Indicators>
     </>
-  )
-}
+  );
+};
 
-export default HouseTourImage
+export default HouseTourImage;

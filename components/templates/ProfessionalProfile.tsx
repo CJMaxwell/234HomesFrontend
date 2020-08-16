@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import Router from 'next/router';
 
-
 import ProfileNavbar from '../Organisms/ProfileNavbar';
 import Footer from './Footer';
 import Direction from '../atoms/Direction';
@@ -13,14 +12,13 @@ const Main = styled.section`
     height: 1.356rem;
     width: 1.356rem;
     background-color: ${({ theme }) => theme.colors.orange1};
-    color: #FFFFFF;
+    color: #ffffff;
     border-radius: 50%;
     border: 1px solid ${({ theme }) => theme.colors.orange1};
     text-align: center;
   }
   .progression.active + span {
     color: ${({ theme }) => theme.colors.orange1};
-    
   }
   .progression {
     display: inline-block;
@@ -51,20 +49,21 @@ const Main = styled.section`
     color: ${({ theme }) => theme.colors.gray11};
     font-size: 0.8rem;
   }
-  select:first-child, .edu-input input::placeholder {
+  select:first-child,
+  .edu-input input::placeholder {
     color: ${({ theme }) => theme.colors.gray11};
     font-size: 12px;
     font-weight: normal;
-
   }
-  
-  input::placeholder, .input-label, select.select-first-custom:first-child {
+
+  input::placeholder,
+  .input-label,
+  select.select-first-custom:first-child {
     font-size: 12px;
     color: ${({ theme }) => theme.colors.gray5};
     font-weight: 600;
-
   }
-  
+
   .input-wrapper {
     border-bottom: 1px solid ${({ theme }) => theme.colors.gray17};
   }
@@ -73,10 +72,7 @@ const Main = styled.section`
     border: 1px solid ${({ theme }) => theme.colors.gray17};
     display: inline-block;
     height: 35px;
-
   }
-
-  
 `;
 
 const Legend = styled.div`
@@ -95,14 +91,12 @@ const Add = styled.button`
   width: 4.63rem;
 `;
 
-
 const Continue = styled.button`
   background-color: ${({ theme }) => theme.colors.orange1};
   border: 1px solid ${({ theme }) => theme.colors.orange1};
   width: 9.5rem;
   height: 2.57rem;
 `;
-
 
 const ProfessionalProfile = () => {
   const theme = useContext(ThemeContext);
@@ -135,14 +129,20 @@ const ProfessionalProfile = () => {
         <hr />
         <div className="mt-20 px-64">
           <h1 className="heading font-semibold pb-4">Professional Info</h1>
-          <p className="general pb-6">This is your time to shine. Let potential buyers know what you do best and <br />
-          how you gained your skills, certifications and experience.</p>
+          <p className="general pb-6">
+            This is your time to shine. Let potential buyers know what you do best and <br />
+            how you gained your skills, certifications and experience.
+          </p>
           <hr />
           <form className="w-full mt-12">
             <div className="flex">
               <div className="w-1/2 pr-6 mb-6 md:mb-0">
                 <div className="input-wrapper">
-                  <select name="occupation" id="occupation" className="w-full pb-2 select-first-custom">
+                  <select
+                    name="occupation"
+                    id="occupation"
+                    className="w-full pb-2 select-first-custom"
+                  >
                     <option value="Occupation">Your Occupation</option>
                     <option value="Interior Designer">Interior Designer</option>
                     <option value="Ui/UX Designer">UI/UX Designer</option>
@@ -152,7 +152,11 @@ const ProfessionalProfile = () => {
               </div>
               <div className="w-1/2 mb-6 md:mb-0">
                 <div className="input-wrapper">
-                  <select name="Experience" id="Experience" className="w-full pb-2 select-first-custom">
+                  <select
+                    name="Experience"
+                    id="Experience"
+                    className="w-full pb-2 select-first-custom"
+                  >
                     <option value="Experience Level">Experience Level</option>
                     <option value="Beginner">Beginner</option>
                     <option value="Intermediate">Intermediate</option>
@@ -164,7 +168,11 @@ const ProfessionalProfile = () => {
             <div className="w-full mb-6 md:mb-0 mt-8">
               <div>
                 <div className="input-wrapper">
-                  <select name="Experience" id="Experience" className="w-full pb-2 select-first-custom">
+                  <select
+                    name="Experience"
+                    id="Experience"
+                    className="w-full pb-2 select-first-custom"
+                  >
                     <option value="Key Skills">Key Skills</option>
                     <option value="Trend identification">Trend identification</option>
                     <option value="Space Planning">Space Planning</option>
@@ -214,7 +222,13 @@ const ProfessionalProfile = () => {
                       </Legend>
                     </div>
                     <div className="w-4/6 pr-3 edu-input">
-                      <input className="appearance-none bg-transparent input-border w-full text-gray-700 mr-3 p-2 leading-tight focus:outline-none" type="text" required placeholder="Major" aria-label="major" />
+                      <input
+                        className="appearance-none bg-transparent input-border w-full text-gray-700 mr-3 p-2 leading-tight focus:outline-none"
+                        type="text"
+                        required
+                        placeholder="Major"
+                        aria-label="major"
+                      />
                     </div>
                     <div className="w-1/6">
                       <Legend>
@@ -228,7 +242,9 @@ const ProfessionalProfile = () => {
                     </div>
                   </div>
                   <div className="w-full flex justify-end text-center pt-4">
-                    <Add type="submit" className="text-center uppercase">Add</Add>
+                    <Add type="submit" className="text-center uppercase">
+                      Add
+                    </Add>
                   </div>
                 </Legend>
               </div>
@@ -275,7 +291,9 @@ const ProfessionalProfile = () => {
                     </div>
                   </div>
                   <div className="w-full flex justify-end text-center pt-4">
-                    <Add type="submit" className="text-center uppercase">Add</Add>
+                    <Add type="submit" className="text-center uppercase">
+                      Add
+                    </Add>
                   </div>
                 </Legend>
               </div>
@@ -284,19 +302,31 @@ const ProfessionalProfile = () => {
             <div className="w-full mb-6 md:mb-0 mt-8">
               <div>
                 <div className="input-wrapper">
-                  <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none" type="text" required placeholder="Personal Website" aria-label="Personal Website" />
+                  <input
+                    className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none"
+                    type="text"
+                    required
+                    placeholder="Personal Website"
+                    aria-label="Personal Website"
+                  />
                 </div>
               </div>
             </div>
             <div className="w-full flex justify-end text-center mt-16">
-              <Continue onClick={() => Router.push('/profession')} type="submit" className="mx-3 text-center font-semibold text-white">Continue</Continue>
+              <Continue
+                onClick={() => Router.push('/profession')}
+                type="submit"
+                className="mx-3 text-center font-semibold text-white"
+              >
+                Continue
+              </Continue>
             </div>
           </form>
         </div>
       </Main>
       <Footer />
     </>
-  )
-}
+  );
+};
 
-export default ProfessionalProfile
+export default ProfessionalProfile;

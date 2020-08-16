@@ -8,15 +8,12 @@ interface Props {
 }
 
 const Badge = styled.div<Props>`
-  background-color: ${({ bgColor, theme }) =>
-    bgColor ? bgColor : theme.colors.green1};
-  height: ${({ height }) => (height ? height : '20px')};
-  width: ${({ width }) => (width ? width : '20px')};
-  border-color: ${({ borderColor, theme }) =>
-    borderColor ? borderColor : theme.colors.green1};
+  background-color: ${({ bgColor, theme }) => bgColor || theme.colors.green1};
+  height: ${({ height }) => height || '20px'};
+  width: ${({ width }) => width || '20px'};
+  border-color: ${({ borderColor, theme }) => borderColor || theme.colors.green1};
   border-width: 1px solid;
   border-radius: 50%;
 `;
-
 
 export default Badge;

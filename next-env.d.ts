@@ -1,4 +1,5 @@
 /// <reference types="next" />
 /// <reference types="next/types/global" />
 
-declare module "next-apollo";
+declare module 'next-apollo';
+declare module 'country-telephone-data';

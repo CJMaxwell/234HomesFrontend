@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
-import styled, { ThemeContext } from 'styled-components';
+import React from 'react';
+import styled from 'styled-components';
 
-import ProfileNavbar from '../Organisms/ProfileNavbar'
-import Offering from '../Organisms/Offering'
+import ProfileNavbar from '../Organisms/ProfileNavbar';
+import Offering from '../Organisms/Offering';
 import UserCard from '../molecules/UserCard';
 import MostTalkedHouseTours from '../Organisms/MostTalkedHouseTours';
 import HouseTourImage from '../atoms/HouseTourImage';
@@ -16,13 +16,12 @@ const HouseTourBanner = styled.div`
   background-size: cover;
   position: relative;
 
-  .carousel-indicators{
+  .carousel-indicators {
     position: absolute;
-    top: 80%; 
+    top: 80%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
   }
-  
 `;
 
 const Main = styled.section`
@@ -38,7 +37,8 @@ const Main = styled.section`
     font-weight: 600;
     padding-bottom: 1.05rem;
   }
-  .inline-desc, .signup-comment {
+  .inline-desc,
+  .signup-comment {
     font-size: 0.8rem;
     color: ${({ theme }) => theme.colors.gray5};
   }
@@ -46,7 +46,8 @@ const Main = styled.section`
     font-size: 1.4rem;
     font-weight: 600;
   }
-  textarea::placeholder, .number-comments {
+  textarea::placeholder,
+  .number-comments {
     color: ${({ theme }) => theme.colors.gray11};
     font-size: 0.8rem;
   }
@@ -60,7 +61,6 @@ const Main = styled.section`
 `;
 
 const MainWrap = styled.div`
-
   .breadcrumb {
     color: ${({ theme }) => theme.colors.gray5};
     font-size: 0.7rem;
@@ -75,9 +75,6 @@ const MainWrap = styled.div`
 `;
 
 const SingleHouseTour = () => {
-
-  const theme = useContext(ThemeContext);
-
   return (
     <MainWrap>
       <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />
@@ -100,60 +97,89 @@ const SingleHouseTour = () => {
       <HouseTourBanner>
         <div className="flex items-center pt-4 carousel-indicators">
           <div className="h-16 w-16 mr-6">
-            <img src="/img/down-arrow_ss-right.svg" className="inline-block bg-white py-1 px-6 h-full w-full" alt="Left arrow" />
+            <img
+              src="/img/down-arrow_ss-right.svg"
+              className="inline-block bg-white py-1 px-6 h-full w-full"
+              alt="Left arrow"
+            />
           </div>
           <div className="h-16 w-16">
-            <img src="/img/down-arrow__s-s-left.svg" className="inline-block bg-white py-1 px-6 h-full w-full" alt="Left arrow" />
+            <img
+              src="/img/down-arrow__s-s-left.svg"
+              className="inline-block bg-white py-1 px-6 h-full w-full"
+              alt="Left arrow"
+            />
           </div>
         </div>
       </HouseTourBanner>
       <Main className="container mx-auto mb-16">
-        <h1 className="capitalize main-title text-4xl font-semibold py-12">Lorem ipsum dolor sit amet, consetetur sadipscing elitr sed diam nonumy</h1>
+        <h1 className="capitalize main-title text-4xl font-semibold py-12">
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr sed diam nonumy
+        </h1>
         <div className="pb-12">
           <UserCard />
         </div>
         <section>
           <div>
-            <span className="designer-title">Name:</span><span className="designer-info"> India, Harry, and Lily the Russian blue kitten</span>
+            <span className="designer-title">Name:</span>
+            <span className="designer-info"> India, Harry, and Lily the Russian blue kitten</span>
           </div>
           <div className="pt-2">
-            <span className="designer-title">Location:</span><span className="designer-info"> Edinburgh, Scotland</span>
+            <span className="designer-title">Location:</span>
+            <span className="designer-info"> Edinburgh, Scotland</span>
           </div>
           <div className="pt-2">
-            <span className="designer-title">Size:</span><span className="designer-info"> 465 square feet</span>
+            <span className="designer-title">Size:</span>
+            <span className="designer-info"> 465 square feet</span>
           </div>
           <div className="pt-2">
-            <span className="designer-title">Years lived in:</span><span className="designer-info"> 1 year, owned</span>
+            <span className="designer-title">Years lived in:</span>
+            <span className="designer-info"> 1 year, owned</span>
           </div>
         </section>
         <article className="pt-8">
-          <h1 className="capitalize inline-title">
-            Living Room
-          </h1>
+          <h1 className="capitalize inline-title">Living Room</h1>
           <p className="inline-desc">
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+            invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+            accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+            sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
+            sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
+            aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
+            rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
+            amet.
           </p>
           <div className="pt-16">
             <HouseTourImage imgUrl="/img/AH-inner-one.png" />
           </div>
         </article>
         <article className="pt-16">
-          <h1 className="capitalize inline-title">
-            Bedroom
-          </h1>
+          <h1 className="capitalize inline-title">Bedroom</h1>
           <p className="inline-desc">
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+            invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+            accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+            sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
+            sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
+            aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
+            rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
+            amet.
           </p>
           <div className="pt-16">
             <HouseTourImage imgUrl="/img/AH--inner-two.png" />
           </div>
         </article>
         <article className="pt-16">
-          <h1 className="capitalize inline-title">
-            Kitchen
-          </h1>
+          <h1 className="capitalize inline-title">Kitchen</h1>
           <p className="inline-desc">
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+            invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+            accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+            sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
+            sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
+            aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
+            rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
+            amet.
           </p>
           <div className="pt-16">
             <HouseTourImage imgUrl="/img/AH--inner-three.png" />
@@ -168,7 +194,12 @@ const SingleHouseTour = () => {
             <h1 className="conversation uppercase pr-1">CONVERSATION</h1>
             <span className="number-comments">(0) Comments</span>
           </div>
-          <textarea className="border border-gray-200 mt-5 outline-none w-full h-20 pt-4 pl-6 rounded-md" name="discussion" id="discussion" placeholder="Join the discussion…"></textarea>
+          <textarea
+            className="border border-gray-200 mt-5 outline-none w-full h-20 pt-4 pl-6 rounded-md"
+            name="discussion"
+            id="discussion"
+            placeholder="Join the discussion…"
+          />
         </section>
       </Main>
       <hr />
@@ -183,7 +214,7 @@ const SingleHouseTour = () => {
       </section>
       <Footer />
     </MainWrap>
-  )
-}
+  );
+};
 
-export default SingleHouseTour
+export default SingleHouseTour;

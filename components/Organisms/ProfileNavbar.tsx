@@ -11,8 +11,8 @@ const Logo = styled.a`
 
 const Wrapper = styled.nav`
   height: 7rem;
-  li{
-      font-size: 14px;
+  li {
+    font-size: 14px;
   }
   .signupLink {
     width: 7rem;
@@ -20,19 +20,22 @@ const Wrapper = styled.nav`
 `;
 const MainWrapper = styled.div`
   hr {
-    color: ${({ theme }) => theme.colors.gray17}
+    color: ${({ theme }) => theme.colors.gray17};
   }
 `;
 
 const ProfileNavbar = () => {
-
   const theme = useContext(ThemeContext);
 
   return (
     <Wrapper className="flex items-center justify-between container mx-auto general-padding py-6">
       <Link href="/">
         <Logo className="flex items-center text-white mr-6">
-          <img src="/img/234_Homes_final_logo.png" className="cursor-pointer" alt="+234Homes logo" />
+          <img
+            src="/img/234_Homes_final_logo.png"
+            className="cursor-pointer"
+            alt="+234Homes logo"
+          />
         </Logo>
       </Link>
       <ul className="flex items-center mt-4 font-semibold uppercase">
@@ -43,24 +46,18 @@ const ProfileNavbar = () => {
         </li> */}
         <li>
           <Link href="/directory">
-            <a className="block lg:inline-block lg:mt-0 text-black mr-6">
-              Professionals
-            </a>
+            <a className="block lg:inline-block lg:mt-0 text-black mr-6">Professionals</a>
           </Link>
         </li>
         <li>
           <Link href="/vendors">
-            <a className="block lg:inline-block lg:mt-0 text-black mr-6">
-              Vendors
-            </a>
+            <a className="block lg:inline-block lg:mt-0 text-black mr-6">Vendors</a>
           </Link>
         </li>
         <li>
-        <Link href="/gallery">
-          <a className="block lg:inline-block lg:mt-0 text-black mr-6">
-            Gallery
-          </a>
-        </Link>
+          <Link href="/gallery">
+            <a className="block lg:inline-block lg:mt-0 text-black mr-6">Gallery</a>
+          </Link>
         </li>
         <li>
           <Link href="/products">
@@ -74,9 +71,7 @@ const ProfileNavbar = () => {
         </li>
         <li>
           <Link href="/">
-            <a className="block lg:inline-block lg:mt-0 text-black mr-6">
-              Log out
-            </a>
+            <a className="block lg:inline-block lg:mt-0 text-black mr-6">Log out</a>
           </Link>
         </li>
         <li>

@@ -1,7 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
-import { useContext } from 'react';
-import { ThemeContext } from 'styled-components';
+import React, { useContext } from 'react';
+import styled, { ThemeContext } from 'styled-components';
 
 import SiteLink from '../atoms/SiteLink';
 
@@ -15,12 +13,7 @@ const ButtonWithIcon = () => {
   return (
     <>
       <SiteLink className="text-center">
-        <img
-          className="inline pr-1"
-          style={iconStyle}
-          src="/user.svg"
-          alt="Sign up"
-        />
+        <img className="inline pr-1" style={iconStyle} src="/user.svg" alt="Sign up" />
         Sign up
       </SiteLink>
     </>

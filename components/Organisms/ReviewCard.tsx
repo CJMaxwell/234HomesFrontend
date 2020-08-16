@@ -27,15 +27,18 @@ const Wrapper = styled.section`
   }
   .comment {
     font-size: 0.8rem;
-    color: ${({ theme }) => theme.colors.gray5}
+    color: ${({ theme }) => theme.colors.gray5};
   }
 `;
 
 const ReviewCard: React.FC<Props> = ({
-  userName = '', userImg = '', padding = '',
-  location = '', rating = '', projectUrl = ''
+  userName = '',
+  userImg = '',
+  padding = '',
+  location = '',
+  rating = '',
+  projectUrl = '',
 }) => {
-
   const theme = useContext(ThemeContext);
 
   return (
@@ -50,19 +53,29 @@ const ReviewCard: React.FC<Props> = ({
             </div>
             <div className="pl-4 flex items-center">
               <span className="pr-1 rating">{rating}</span>
-              <img className="inline-block rating-img" src="/img/star-vendor.svg" alt="Star rating" />
+              <img
+                className="inline-block rating-img"
+                src="/img/star-vendor.svg"
+                alt="Star rating"
+              />
             </div>
           </div>
         </div>
         <div>
-          <img className="inline-block h-12 w-16 rounded-md" src={projectUrl} alt="Bathroom Cabinet" />
+          <img
+            className="inline-block h-12 w-16 rounded-md"
+            src={projectUrl}
+            alt="Bathroom Cabinet"
+          />
         </div>
       </div>
-      <p className="mt-5 comment w-full text-justify">Tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+      <p className="mt-5 comment w-full text-justify">
+        Tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+        accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus
+        est Lorem ipsum dolor sit amet.
       </p>
-
     </Wrapper>
-  )
-}
+  );
+};
 
-export default ReviewCard
+export default ReviewCard;

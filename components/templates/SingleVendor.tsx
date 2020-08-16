@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 
-
 import ProfileNavbar from '../Organisms/ProfileNavbar';
 import Offering from '../Organisms/Offering';
 import Button from '../atoms/Button';
@@ -57,9 +56,8 @@ const UserBanner = styled.div<Props>`
 `;
 
 const ProfileCard = styled.section`
-
   .logo {
-    border: 1.45rem solid ${({ theme }) => theme.colors.blue4}
+    border: 1.45rem solid ${({ theme }) => theme.colors.blue4};
   }
   .registered {
     font-size: 0.7rem;
@@ -95,7 +93,6 @@ const MessageBtn = styled(Button)`
 `;
 
 const SingleVendor: React.FC<Props> = ({ imgUrl = '' }) => {
-
   const theme = useContext(ThemeContext);
 
   return (
@@ -129,25 +126,19 @@ const SingleVendor: React.FC<Props> = ({ imgUrl = '' }) => {
                     <span className="pr-3">
                       <img src="/img/vendor-loc.svg" alt="Vendor location" />
                     </span>
-                    <span>
-                      No. 4 Idrissu Abdulmalik Street, Shomolu, Lagos
-                    </span>
+                    <span>No. 4 Idrissu Abdulmalik Street, Shomolu, Lagos</span>
                   </div>
                   <div className="flex items-center pt-4">
                     <span className="pr-3">
                       <img src="/img/phone.svg" alt="vendor's phone number" />
                     </span>
-                    <span>
-                      +234 809 053 4405, 812 234 6780
-                </span>
+                    <span>+234 809 053 4405, 812 234 6780</span>
                   </div>
                   <div className="flex items-center pt-4">
                     <span className="pr-3">
                       <img src="/img/www.svg" alt="vendor's website" />
                     </span>
-                    <span>
-                      www.mcityventures.com
-                  </span>
+                    <span>www.mcityventures.com</span>
                   </div>
                 </div>
               </div>
@@ -163,8 +154,11 @@ const SingleVendor: React.FC<Props> = ({ imgUrl = '' }) => {
               </div>
             </div>
             <p className="desc">
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est.
-          </p>
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+              invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+              accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+              sanctus est.
+            </p>
           </div>
         </ProfileCard>
 
@@ -181,34 +175,39 @@ const SingleVendor: React.FC<Props> = ({ imgUrl = '' }) => {
         </section>
         <section className="product-list border border-gray-200 mt-6">
           <div className="px-8 pt-8 pb-3">
-            <ProductListCard imgUrl='/img/BArt.png' logo='/img/Image-11.png' />
+            <ProductListCard imgUrl="/img/BArt.png" logo="/img/Image-11.png" />
           </div>
           <hr />
           <div className="px-8 py-3">
-            <ProductListCard imgUrl='/img/B-18-B.png' logo='/img/Image 16.png' ad={true} />
+            <ProductListCard imgUrl="/img/B-18-B.png" logo="/img/Image 16.png" ad />
           </div>
           <hr />
           <div className="px-8 py-3">
-            <ProductListCard imgUrl='/img/brown-and-black-wooden-box-3889740.png' logo='/img/Image14er.png' />
+            <ProductListCard
+              imgUrl="/img/brown-and-black-wooden-box-3889740.png"
+              logo="/img/Image14er.png"
+            />
           </div>
           <hr />
           <div className="px-8 py-3">
-            <ProductListCard imgUrl='/img/B-7.png' logo='/img/Image-11.png' ad={true} />
+            <ProductListCard imgUrl="/img/B-7.png" logo="/img/Image-11.png" ad />
           </div>
           <hr />
           <div className="px-8 py-3">
-            <ProductListCard imgUrl='/img/Bullish.png' logo='/img/Image17.png' ad={true} />
+            <ProductListCard imgUrl="/img/Bullish.png" logo="/img/Image17.png" ad />
           </div>
           <hr />
           <div className="px-8 pt-3 pb-8">
-            <ProductListCard imgUrl='/img/prince-abid-pEvPkPmuHzo-unsplash.png' logo='/img/Image-11.png' />
+            <ProductListCard
+              imgUrl="/img/prince-abid-pEvPkPmuHzo-unsplash.png"
+              logo="/img/Image-11.png"
+            />
           </div>
         </section>
-
       </section>
       <Footer />
     </Wrapper>
-  )
-}
+  );
+};
 
-export default SingleVendor
+export default SingleVendor;

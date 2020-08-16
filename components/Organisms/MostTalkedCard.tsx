@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-
 interface Props {
   imgUrl?: string;
   height?: string;
@@ -39,9 +38,9 @@ const MostTalkedCard: React.FC<Props> = ({ imgUrl = '' }) => {
       </Wrapper>
       <Title className="capitalize">
         elitr sed diam nonumy eirmod tempor invidunt ut labore et
-    </Title>
+      </Title>
     </div>
-  )
-}
+  );
+};
 
-export default MostTalkedCard
+export default MostTalkedCard;

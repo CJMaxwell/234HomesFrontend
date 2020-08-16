@@ -2,14 +2,12 @@ import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import Link from 'next/link';
 
-
 import ProfileNavbar from '../Organisms/ProfileNavbar';
-import ProductListCard from '../Organisms/ProductListCard'
+import ProductListCard from '../Organisms/ProductListCard';
 import Offering from '../Organisms/Offering';
 import Footer from './Footer';
 
 const Wrapper = styled.div`
-
   .htitle {
     color: ${({ theme }) => theme.colors.gray1};
     font-weight: 600;
@@ -25,7 +23,7 @@ const Wrapper = styled.div`
     font-size: 0.7rem;
     text-transform: uppercase;
   }
-  
+
   .filter {
     color: ${({ theme }) => theme.colors.gray5};
     select {
@@ -37,14 +35,16 @@ const Wrapper = styled.div`
       margin-right: 1.35rem;
     }
   }
-  .desc, .search-result, .sort-by,.recommended {
+  .desc,
+  .search-result,
+  .sort-by,
+  .recommended {
     font-size: 0.8rem;
-    color: ${({ theme }) => theme.colors.gray5}
+    color: ${({ theme }) => theme.colors.gray5};
   }
   .recommended {
     font-weight: 600;
   }
-  
 `;
 
 const ProductList = () => {
@@ -65,7 +65,9 @@ const ProductList = () => {
         <section className="flex justify-between items-center">
           <div>
             <h1 className="htitle">Arts & Crafts</h1>
-            <p className="desc pt-2">Lorem ipsum dolor sit amet, consetetur sadipscing elitr sed diam.</p>
+            <p className="desc pt-2">
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr sed diam.
+            </p>
           </div>
           <div className="filter">
             <select>
@@ -93,34 +95,39 @@ const ProductList = () => {
         </div>
         <div className="product-list border border-gray-200">
           <div className="px-8 pt-8 pb-3">
-            <ProductListCard imgUrl='/img/BArt.png' logo='/img/Image-11.png' />
+            <ProductListCard imgUrl="/img/BArt.png" logo="/img/Image-11.png" />
           </div>
           <hr />
           <div className="px-8 py-3">
-            <ProductListCard imgUrl='/img/B-18-B.png' logo='/img/Image 16.png' ad={true} />
+            <ProductListCard imgUrl="/img/B-18-B.png" logo="/img/Image 16.png" ad />
           </div>
           <hr />
           <div className="px-8 py-3">
-            <ProductListCard imgUrl='/img/brown-and-black-wooden-box-3889740.png' logo='/img/Image14er.png' />
+            <ProductListCard
+              imgUrl="/img/brown-and-black-wooden-box-3889740.png"
+              logo="/img/Image14er.png"
+            />
           </div>
           <hr />
           <div className="px-8 py-3">
-            <ProductListCard imgUrl='/img/B-7.png' logo='/img/Image-11.png' ad={true} />
+            <ProductListCard imgUrl="/img/B-7.png" logo="/img/Image-11.png" ad />
           </div>
           <hr />
           <div className="px-8 py-3">
-            <ProductListCard imgUrl='/img/Bullish.png' logo='/img/Image17.png' ad={true} />
+            <ProductListCard imgUrl="/img/Bullish.png" logo="/img/Image17.png" ad />
           </div>
           <hr />
           <div className="px-8 pt-3 pb-8">
-            <ProductListCard imgUrl='/img/prince-abid-pEvPkPmuHzo-unsplash.png' logo='/img/Image-11.png' />
+            <ProductListCard
+              imgUrl="/img/prince-abid-pEvPkPmuHzo-unsplash.png"
+              logo="/img/Image-11.png"
+            />
           </div>
         </div>
       </div>
       <Footer />
     </Wrapper>
+  );
+};
 
-  )
-}
-
-export default ProductList
+export default ProductList;

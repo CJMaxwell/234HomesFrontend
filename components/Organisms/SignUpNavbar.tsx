@@ -22,9 +22,7 @@ const Logo = styled.a`
   }
 `;
 
-
-const SignUpNavbar: React.FC<Props> = ({ type = "register" }) => {
-
+const SignUpNavbar: React.FC<Props> = ({ type = 'register' }) => {
   const theme = useContext(ThemeContext);
 
   return (
@@ -36,15 +34,20 @@ const SignUpNavbar: React.FC<Props> = ({ type = "register" }) => {
       </Link>
       <LoginWrap>
         {type === 'login' && <span>Don't Have An Account?</span>}
-        {type === 'register' && <span>Already Have An Account?</span>}
-
-        {' '}
-
-        {type === 'login' && <Link href="/signup"><SignIn>Sign Up</SignIn></Link>}
-        {type === 'register' && <Link href="/login"><SignIn>Log In</SignIn></Link>}
+        {type === 'register' && <span>Already Have An Account?</span>}{' '}
+        {type === 'login' && (
+          <Link href="/signup">
+            <SignIn>Sign Up</SignIn>
+          </Link>
+        )}
+        {type === 'register' && (
+          <Link href="/login">
+            <SignIn>Log In</SignIn>
+          </Link>
+        )}
       </LoginWrap>
     </nav>
-  )
-}
+  );
+};
 
-export default SignUpNavbar
+export default SignUpNavbar;

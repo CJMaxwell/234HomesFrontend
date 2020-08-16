@@ -10,4 +10,4 @@ const completeprofile: NextPage = () => {
   );
 };
 
-export default completeprofile
+export default completeprofile;

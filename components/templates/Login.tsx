@@ -2,14 +2,13 @@ import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 
 import SignUpNavbar from '../Organisms/SignUpNavbar';
-import Footer from '../templates/Footer';
+import Footer from './Footer';
 
 interface Props {
   imgUrl?: string;
 }
 
 const MainWrapper = styled.div`
-
   .signup-nav {
     height: 7.7244rem;
   }
@@ -42,7 +41,7 @@ const Wrapper = styled.section<Props>`
   }
   .input-addon {
     padding-left: 0.95rem;
-    color: ${({theme}) => theme.colors.gray1};
+    color: ${({ theme }) => theme.colors.gray1};
     font-weight: 600
   }
   input::placeholder {
@@ -62,13 +61,12 @@ const Wrapper = styled.section<Props>`
 `;
 
 const Login: React.FC<Props> = ({ imgUrl = '' }) => {
-
   const theme = useContext(ThemeContext);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    //Router.push('/dashboard')
-  }
+    // Router.push('/dashboard')
+  };
 
   return (
     <MainWrapper>
@@ -76,29 +74,52 @@ const Login: React.FC<Props> = ({ imgUrl = '' }) => {
       <div className="signup-nav">
         <SignUpNavbar type="login" />
       </div>
-      <Wrapper className="relative" imgUrl={'/img/square-glass-top-coffee-table-and-two-white-leather-2-seat.png'}>
-
+      <Wrapper
+        className="relative"
+        imgUrl="/img/square-glass-top-coffee-table-and-two-white-leather-2-seat.png"
+      >
         <div className="w-full signup bg-white rounded pb-16">
           <h1 className="text-2xl font-semibold text-center my-10">Sign In</h1>
-          <hr className="mb-20"/>
+          <hr className="mb-20" />
           <form onSubmit={handleSubmit} className="px-8 mt-auto">
             <div className="border border-gray-500 form-wrap h-12 pr-4 justify-between flex items-center">
               <div className="input-addon pr-4">
                 <p>+234</p>
               </div>
-              <input className="appearance-none outline-none w-full h-full leading-tight pr-4" id="phone" type="text" required placeholder="Enter Your Phone Number" />
+              <input
+                className="appearance-none outline-none w-full h-full leading-tight pr-4"
+                id="phone"
+                type="text"
+                required
+                placeholder="Enter Your Phone Number"
+              />
             </div>
             <div className="border border-gray-500 form-wrap h-12 mt-5 pr-4 justify-between flex items-center">
               <div className="input-addon pr-4">
-                <img src="/img/password-phone.svg" className="inline-block w-4 h-6" alt="Sign up with phone" />
+                <img
+                  src="/img/password-phone.svg"
+                  className="inline-block w-4 h-6"
+                  alt="Sign up with phone"
+                />
               </div>
-              <input className="appearance-none outline-none w-full h-full leading-tight pr-4" id="password" type="password" required placeholder="Password" />
+              <input
+                className="appearance-none outline-none w-full h-full leading-tight pr-4"
+                id="password"
+                type="password"
+                required
+                placeholder="Password"
+              />
             </div>
             <p className="flex justify-end reset-password">
               <a>Reset password</a>
             </p>
             <div className="text-center form-wrap signIn mt-8 h-12">
-              <button type="submit" className="text-center font-semibold uppercase w-full h-full text-white">Sign In</button>
+              <button
+                type="submit"
+                className="text-center font-semibold uppercase w-full h-full text-white"
+              >
+                Sign In
+              </button>
             </div>
           </form>
           <ul className="flex items-center justify-center mt-12">
@@ -116,7 +137,7 @@ const Login: React.FC<Props> = ({ imgUrl = '' }) => {
       </Wrapper>
       <Footer />
     </MainWrapper>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;
