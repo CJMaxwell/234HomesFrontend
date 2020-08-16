@@ -3,23 +3,22 @@ import styled, { ThemeContext } from 'styled-components';
 import Router from 'next/router';
 import Link from 'next/link';
 
-
 interface Props {
   imgUrl?: string;
   name?: string;
   occupation?: string;
-  location?:string;
-  phone?:string
+  location?: string;
+  phone?: string;
   height?: string;
   title?: string;
   width?: string;
-  path?: string
-};
+  path?: string;
+}
 
 const Main = styled.div`
   background-color: ${({ theme }) => theme.colors.gray15};
   .heading-text {
-    font-size: 1.10rem;
+    font-size: 1.1rem;
   }
 `;
 const Wrapper = styled.div`
@@ -36,8 +35,15 @@ const ImgContainer = styled.div<Props>`
   border-radius: 5px 5px 0 0;
 `;
 
-
-const SingleVendorCard: React.FC<Props> = ({ imgUrl, name,height, width, location,phone, path = '/single-vendor' }) => {
+const SingleVendorCard: React.FC<Props> = ({
+  imgUrl,
+  name,
+  height,
+  width,
+  location,
+  phone,
+  path = '/single-vendor',
+}) => {
   const theme = useContext(ThemeContext);
 
   return (
@@ -52,15 +58,18 @@ const SingleVendorCard: React.FC<Props> = ({ imgUrl, name,height, width, locatio
           </div>
           <div>
             <div className="text-xs pt-2 flex items-center">
-              <img src="/img/home-professional-location.svg" alt="Location"/>
+              <img src="/img/home-professional-location.svg" alt="Location" />
               <span className="pl-2">{location}</span>
             </div>
             <div className="text-xs pt-2 flex items-center">
-              <img src="/img/home-professional-phone.svg" alt="phone"/>
+              <img src="/img/home-professional-phone.svg" alt="phone" />
               <span className="pl-2">{phone}</span>
             </div>
           </div>
-          <button onClick={() => Router.push('/professional-about')} className="uppercase border-gray-600 text-gray-600 py-1 mt-4 w-full bg-white rounded-sm block text-center">
+          <button
+            onClick={() => Router.push('/professional-about')}
+            className="uppercase border-gray-600 text-gray-600 py-1 mt-4 w-full bg-white rounded-sm block text-center"
+          >
             Send A Message
           </button>
         </Wrapper>

@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 // import Router from 'next/router';
 
-
 import ProfileNavbar from '../Organisms/ProfileNavbar';
 import Footer from './Footer';
 
@@ -97,7 +96,6 @@ const Main = styled.section`
 
 const Desc = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.gray17};
-
 `;
 
 const Continue = styled.button`
@@ -106,7 +104,6 @@ const Continue = styled.button`
   width: 9.5rem;
   height: 2.57rem;
 `;
-
 
 const PersonalProfile = () => {
   const theme = useContext(ThemeContext);
@@ -139,99 +136,182 @@ const PersonalProfile = () => {
         <hr />
         <div className="mt-20 px-64">
           <h1 className="heading font-semibold pb-4">Personal Info</h1>
-          <p className="general pb-6">Tell us a bit about yourself. This information will appear on your public profile, <br />
-          so that potential buyers can get to know you better.</p>
+          <p className="general pb-6">
+            Tell us a bit about yourself. This information will appear on your public profile,{' '}
+            <br />
+            so that potential buyers can get to know you better.
+          </p>
           <hr />
           <form className="w-full mt-12">
             <div className="flex">
               <div className="w-1/2 mb-6 pr-6 md:mb-0">
-                <label className="block input-label general uppercase text-gray-700 text-xs mb-2" htmlFor="grid-first-name">
+                <label
+                  className="block input-label general uppercase text-gray-700 text-xs mb-2"
+                  htmlFor="grid-first-name"
+                >
                   First Name <span className="text-red-600">&#42;</span>
                 </label>
                 <div className="input-wrapper">
-                  <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none" type="text" required placeholder="First Name" aria-label="First Name" />
+                  <input
+                    className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none"
+                    type="text"
+                    required
+                    placeholder="First Name"
+                    aria-label="First Name"
+                  />
                 </div>
               </div>
               <div className="w-1/2 mb-6 md:mb-0">
-                <label className="block input-label general uppercase text-gray-700 text-xs  mb-2" htmlFor="grid-first-name">
+                <label
+                  className="block input-label general uppercase text-gray-700 text-xs  mb-2"
+                  htmlFor="grid-first-name"
+                >
                   Last Name <span className="text-red-600">&#42;</span>
                 </label>
                 <div className="input-wrapper">
-                  <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none" type="text" required placeholder="Last Name" aria-label="Last Name" />
+                  <input
+                    className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none"
+                    type="text"
+                    required
+                    placeholder="Last Name"
+                    aria-label="Last Name"
+                  />
                 </div>
               </div>
             </div>
             <div className="flex mt-8">
               <div className="w-1/2 mb-6 pr-6 md:mb-0">
-                <label className="block input-label general uppercase text-gray-700 text-xs mb-2" htmlFor="grid-first-name">
+                <label
+                  className="block input-label general uppercase text-gray-700 text-xs mb-2"
+                  htmlFor="grid-first-name"
+                >
                   Email <span className="text-red-600">&#42;</span>
                 </label>
                 <div className="input-wrapper">
-                  <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none" type="email" required placeholder="Email" aria-label="email" />
+                  <input
+                    className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none"
+                    type="email"
+                    required
+                    placeholder="Email"
+                    aria-label="email"
+                  />
                 </div>
               </div>
               <div className="w-1/2 mb-6 md:mb-0">
-                <label className="block input-label general uppercase text-gray-700 text-xs  mb-2" htmlFor="grid-first-name">
+                <label
+                  className="block input-label general uppercase text-gray-700 text-xs  mb-2"
+                  htmlFor="grid-first-name"
+                >
                   Phone <span className="text-red-600">&#42;</span>
                 </label>
                 <div className="input-wrapper">
-                  <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none" type="text" required placeholder="Phone Number" aria-label="Phone number" />
+                  <input
+                    className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none"
+                    type="text"
+                    required
+                    placeholder="Phone Number"
+                    aria-label="Phone number"
+                  />
                 </div>
               </div>
             </div>
             <div className="w-full mb-6 md:mb-0 mt-8">
               <div>
                 <div className="input-wrapper">
-                  <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none" type="text" required placeholder="Address" aria-label="Address" />
+                  <input
+                    className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none"
+                    type="text"
+                    required
+                    placeholder="Address"
+                    aria-label="Address"
+                  />
                 </div>
               </div>
             </div>
             <div className="flex mt-8">
               <div className="w-1/3 pr-6 mb-6 md:mb-0">
                 <div className="input-wrapper">
-                  <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none" type="text" required placeholder="City" aria-label="email" />
+                  <input
+                    className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none"
+                    type="text"
+                    required
+                    placeholder="City"
+                    aria-label="email"
+                  />
                 </div>
               </div>
               <div className="w-1/3 pr-6 mb-6 md:mb-0">
                 <div className="input-wrapper">
-                  <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none" type="text" required placeholder="State" aria-label="Phone number" />
+                  <input
+                    className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none"
+                    type="text"
+                    required
+                    placeholder="State"
+                    aria-label="Phone number"
+                  />
                 </div>
               </div>
               <div className="w-1/3 mb-6 md:mb-0">
                 <div className="input-wrapper">
-                  <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none" type="text" required placeholder="LGA" aria-label="Phone number" />
+                  <input
+                    className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none"
+                    type="text"
+                    required
+                    placeholder="LGA"
+                    aria-label="Phone number"
+                  />
                 </div>
               </div>
             </div>
             <div className="w-full mb-6 md:mb-0 mt-8">
               <div className="flex">
-                <label className="block mr-10 without-placeholder text-gray-700 text-xs  mb-2" htmlFor="grid-first-name">
+                <label
+                  className="block mr-10 without-placeholder text-gray-700 text-xs  mb-2"
+                  htmlFor="grid-first-name"
+                >
                   Profile Photo <span className="text-red-600">&#42;</span>
                 </label>
                 <div>
-                  <input className="custom-file-input appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none" type="file" accept="image/*" required placeholder="Address" aria-label="Address" />
+                  <input
+                    className="custom-file-input appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none"
+                    type="file"
+                    accept="image/*"
+                    required
+                    placeholder="Address"
+                    aria-label="Address"
+                  />
                 </div>
               </div>
             </div>
             <div className="w-full mb-6 md:mb-0 mt-8">
               <div>
-                <label className="block without-placeholder text-gray-700 text-xs  mb-2" htmlFor="grid-first-name">
+                <label
+                  className="block without-placeholder text-gray-700 text-xs  mb-2"
+                  htmlFor="grid-first-name"
+                >
                   Description <span className="text-red-600">&#42;</span>
                 </label>
                 <Desc className="rounded-md h-32 overflow-hidden">
-                  <textarea name="description" id="description" className="w-full h-full text-gray-700 mr-3 pb-2 px-2 leading-tight focus:outline-none" placeholder="Share a bit about your work experience, cool projects you’ve completed and your area of expertise."></textarea>
+                  <textarea
+                    name="description"
+                    id="description"
+                    className="w-full h-full text-gray-700 mr-3 pb-2 px-2 leading-tight focus:outline-none"
+                    placeholder="Share a bit about your work experience, cool projects you’ve completed and your area of expertise."
+                  />
                 </Desc>
               </div>
             </div>
             <div className="w-full flex justify-end text-center mt-16">
-              <Continue type="submit" className="mx-3 text-center text-white font-semibold">Continue</Continue>
+              <Continue type="submit" className="mx-3 text-center text-white font-semibold">
+                Continue
+              </Continue>
             </div>
           </form>
         </div>
       </Main>
       <Footer />
     </>
-  )
-}
+  );
+};
 
-export default PersonalProfile
+export default PersonalProfile;

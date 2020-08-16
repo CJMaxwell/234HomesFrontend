@@ -9,7 +9,7 @@ import Offering from '../Organisms/Offering';
 import ProfessionalCard from '../Organisms/ProfessionalCard';
 
 const Categories = styled.section`
-  background-color:  ${({theme}) => theme.colors.orange4};
+  background-color: ${({ theme }) => theme.colors.orange4};
 `;
 
 const Main = styled.main`
@@ -24,9 +24,12 @@ const Main = styled.main`
       margin-right: 1.35rem;
     }
   }
-  .desc, .search-result, .sort-by,.recommended {
+  .desc,
+  .search-result,
+  .sort-by,
+  .recommended {
     font-size: 0.8rem;
-    color: ${({ theme }) => theme.colors.gray5}
+    color: ${({ theme }) => theme.colors.gray5};
   }
   .recommended {
     font-weight: 600;
@@ -34,7 +37,6 @@ const Main = styled.main`
 `;
 
 const Directory = () => {
-
   const theme = useContext(ThemeContext);
 
   return (
@@ -47,7 +49,10 @@ const Directory = () => {
       <div className="general-padding container mx-auto">
         <Offering />
       </div>
-      <Hero title='Find A Professional For Your Project!' placeholder="What Services Do You Need?" />
+      <Hero
+        title="Find A Professional For Your Project!"
+        placeholder="What Services Do You Need?"
+      />
       <Categories className="py-3">
         <ul className="container mx-auto general-padding flex items-center justify-between text-white">
           <li className="flex items-center uppercase">
@@ -85,23 +90,83 @@ const Directory = () => {
           </div>
         </div>
         <section className="grid grid-cols-4 gap-6">
-          <ProfessionalCard  name="Babatunde Maxwell" occupation="Interior Designer" location="Ikeja, Lagos" phone="0803 456 7890"/>
-          <ProfessionalCard name="Alexandria Vladimir" occupation="Painter" location="Barnawa, Kaduna" phone="0809 053 4405" />
-          <ProfessionalCard name="Babatunde Maxwell" occupation="Interior Designer" location="Ikeja, Lagos" phone="0803 456 7890" />
-          <ProfessionalCard name="Alexandria Vladimir" occupation="Painter" location="Barnawa, Kaduna" phone="0809 053 4405" />
-          <ProfessionalCard name="Micheal Jonna" occupation="Carpenter" location="Wuse, Abuja" phone="0812 456 8900" />
-          <ProfessionalCard name="Wuraola Gbotemi" occupation="Plumber" location="Maitama, Abuja" phone="0809 053 4405" />
-          <ProfessionalCard  name="Babatunde Maxwell" occupation="Interior Designer" location="Ikeja, Lagos" phone="0803 456 7890"/>
-          <ProfessionalCard name="Alexandria Vladimir" occupation="Painter" location="Barnawa, Kaduna" phone="0809 053 4405" />
-          <ProfessionalCard name="Babatunde Maxwell" occupation="Interior Designer" location="Ikeja, Lagos" phone="0803 456 7890" />
-          <ProfessionalCard name="Alexandria Vladimir" occupation="Painter" location="Barnawa, Kaduna" phone="0809 053 4405" />
-          <ProfessionalCard name="Micheal Jonna" occupation="Carpenter" location="Wuse, Abuja" phone="0812 456 8900" />
-          <ProfessionalCard name="Wuraola Gbotemi" occupation="Plumber" location="Maitama, Abuja" phone="0809 053 4405" />
+          <ProfessionalCard
+            name="Babatunde Maxwell"
+            occupation="Interior Designer"
+            location="Ikeja, Lagos"
+            phone="0803 456 7890"
+          />
+          <ProfessionalCard
+            name="Alexandria Vladimir"
+            occupation="Painter"
+            location="Barnawa, Kaduna"
+            phone="0809 053 4405"
+          />
+          <ProfessionalCard
+            name="Babatunde Maxwell"
+            occupation="Interior Designer"
+            location="Ikeja, Lagos"
+            phone="0803 456 7890"
+          />
+          <ProfessionalCard
+            name="Alexandria Vladimir"
+            occupation="Painter"
+            location="Barnawa, Kaduna"
+            phone="0809 053 4405"
+          />
+          <ProfessionalCard
+            name="Micheal Jonna"
+            occupation="Carpenter"
+            location="Wuse, Abuja"
+            phone="0812 456 8900"
+          />
+          <ProfessionalCard
+            name="Wuraola Gbotemi"
+            occupation="Plumber"
+            location="Maitama, Abuja"
+            phone="0809 053 4405"
+          />
+          <ProfessionalCard
+            name="Babatunde Maxwell"
+            occupation="Interior Designer"
+            location="Ikeja, Lagos"
+            phone="0803 456 7890"
+          />
+          <ProfessionalCard
+            name="Alexandria Vladimir"
+            occupation="Painter"
+            location="Barnawa, Kaduna"
+            phone="0809 053 4405"
+          />
+          <ProfessionalCard
+            name="Babatunde Maxwell"
+            occupation="Interior Designer"
+            location="Ikeja, Lagos"
+            phone="0803 456 7890"
+          />
+          <ProfessionalCard
+            name="Alexandria Vladimir"
+            occupation="Painter"
+            location="Barnawa, Kaduna"
+            phone="0809 053 4405"
+          />
+          <ProfessionalCard
+            name="Micheal Jonna"
+            occupation="Carpenter"
+            location="Wuse, Abuja"
+            phone="0812 456 8900"
+          />
+          <ProfessionalCard
+            name="Wuraola Gbotemi"
+            occupation="Plumber"
+            location="Maitama, Abuja"
+            phone="0809 053 4405"
+          />
         </section>
       </Main>
       <Footer />
     </section>
-  )
-}
+  );
+};
 
-export default Directory
+export default Directory;

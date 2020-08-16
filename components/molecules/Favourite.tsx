@@ -2,14 +2,12 @@ import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import Link from 'next/link';
 
-
-
 interface Props {
   imgUrl?: string;
   height?: string;
   title?: string;
   width?: string;
-  path?: string
+  path?: string;
 }
 
 const ImgContainer = styled.div<Props>`
@@ -29,10 +27,13 @@ const Title = styled.h1`
   margin-top: 1.4rem;
 `;
 
-const Favourite: React.FC<Props> = ({ imgUrl = '', height = '',
-  width = '', title = '', path = '/professionals'
+const Favourite: React.FC<Props> = ({
+  imgUrl = '',
+  height = '',
+  width = '',
+  title = '',
+  path = '/professionals',
 }) => {
-
   const theme = useContext(ThemeContext);
 
   return (
@@ -42,8 +43,7 @@ const Favourite: React.FC<Props> = ({ imgUrl = '', height = '',
         <Title>{title}</Title>
       </div>
     </Link>
+  );
+};
 
-  )
-}
-
-export default Favourite
+export default Favourite;

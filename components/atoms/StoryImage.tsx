@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-
 interface Props {
   imgUrl?: string;
 }
@@ -16,9 +15,7 @@ const Wrapper = styled.div<Props>`
 `;
 
 const StoryImage: React.FC<Props> = ({ imgUrl = '' }) => {
-  return (
-    <Wrapper imgUrl={imgUrl} />
-  )
-}
+  return <Wrapper imgUrl={imgUrl} />;
+};
 
-export default StoryImage
+export default StoryImage;

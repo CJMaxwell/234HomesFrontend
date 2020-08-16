@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-
 interface Props {
   imgUrl?: string;
   height?: string;
@@ -10,7 +9,8 @@ interface Props {
 const Wrapper = styled.div<Props>`
   border-radius: 20px;
   overflow: hidden;
-  background-image: url('${({ imgUrl }) => imgUrl}'), linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5));
+  background-image: url('${({ imgUrl }) =>
+    imgUrl}'), linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5));
   background-blend-mode: overlay;
   background-repeat: no-repeat;
   background-size:cover;
@@ -27,10 +27,13 @@ const Wrapper = styled.div<Props>`
   }
 `;
 
-
 const DIYCard: React.FC<Props> = ({ imgUrl = '', height }) => {
   return (
-    <Wrapper imgUrl={imgUrl} height={height} className="rounded overflow-hidden shadow-lg relative text-white">
+    <Wrapper
+      imgUrl={imgUrl}
+      height={height}
+      className="rounded overflow-hidden shadow-lg relative text-white"
+    >
       <div className="absolute title-author">
         <div className="font-bold mb-2">The Coldest Sunset</div>
         <div className="flex items-center">

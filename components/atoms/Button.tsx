@@ -11,17 +11,14 @@ interface Props {
 }
 
 const Button = styled.button<Props>`
-  background-color: ${({ bgColor, theme }) =>
-    bgColor ? bgColor : theme.colors.orange1};
-  color: ${({ color, theme }) => (color ? color : theme.colors.white)};
+  background-color: ${({ bgColor, theme }) => bgColor || theme.colors.orange1};
+  color: ${({ color, theme }) => color || theme.colors.white};
   font-size: 1rem;
   outline: none;
-  height: ${({ height }) => (height ? height : '3rem')};
-  width: ${({ width }) => (width ? width : '5rem')};
-  border: ${({ border, theme }) =>
-    border ? border : `2px solid ${theme.colors.orange1}`};
-  border-radius: ${({ borderRadius }) =>
-    borderRadius ? borderRadius : '0.25rem 0 0 0'};
+  height: ${({ height }) => height || '3rem'};
+  width: ${({ width }) => width || '5rem'};
+  border: ${({ border, theme }) => border || `2px solid ${theme.colors.orange1}`};
+  border-radius: ${({ borderRadius }) => borderRadius || '0.25rem 0 0 0'};
   &:focus {
     outline: 0;
   }

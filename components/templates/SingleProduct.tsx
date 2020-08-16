@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 
-
 import ProfileNavbar from '../Organisms/ProfileNavbar';
 import Offering from '../Organisms/Offering';
 import Button from '../atoms/Button';
@@ -9,7 +8,6 @@ import Footer from './Footer';
 import ReviewCard from '../Organisms/ReviewCard';
 
 const Wrapper = styled.div`
-
   .breadcrumb li:not(:last-child) {
     padding-right: 0.8rem;
   }
@@ -27,7 +25,6 @@ const Wrapper = styled.div`
     text-align: center;
     color: white;
     height: 0.3rem;
-
   }
   .bar-5 {
     width: 100%;
@@ -38,8 +35,10 @@ const Wrapper = styled.div`
     color: ${({ theme }) => theme.colors.orange1};
     font-size: 0.7rem;
   }
-  .project, .load-more-projects, 
-  .review-title, .leave-review,
+  .project,
+  .load-more-projects,
+  .review-title,
+  .leave-review,
   .customer-review {
     color: ${({ theme }) => theme.colors.gray2};
   }
@@ -107,7 +106,8 @@ const Wrapper = styled.div`
     margin-top: 1.6rem;
   }
 
-  textarea,input {
+  textarea,
+  input {
     width: 14.7rem;
     border-radius: 5px;
   }
@@ -115,9 +115,10 @@ const Wrapper = styled.div`
     padding: 0.85rem 0.85rem;
   }
   textarea {
-    padding: 0.75rem 0.95rem
+    padding: 0.75rem 0.95rem;
   }
-  input::placeholder,textarea::placeholder {
+  input::placeholder,
+  textarea::placeholder {
     color: ${({ theme }) => theme.colors.gray11};
     font-size: 0.7rem;
   }
@@ -150,7 +151,9 @@ const Wrapper = styled.div`
     width: 0.65rem;
     /* height: 1.15rem; */
   }
-  .web,.loc-pin,.phone {
+  .web,
+  .loc-pin,
+  .phone {
     padding-top: 0.25rem;
   }
 `;
@@ -174,7 +177,6 @@ const MsgBtn = styled(Button)`
 `;
 
 const SingleProduct = () => {
-
   const theme = useContext(ThemeContext);
 
   return (
@@ -204,9 +206,7 @@ const SingleProduct = () => {
             <img src="/img/star-vendor.svg" alt="" />
             <img src="/img/star-vendor.svg" alt="" />
           </div>
-          <span>
-            23 Reviews
-          </span>
+          <span>23 Reviews</span>
         </div>
         <section className="grid grid-cols-4 gap-6">
           <main className="mt-8 col-span-3">
@@ -229,8 +229,13 @@ const SingleProduct = () => {
                   <img src="/img/product-down-arrow.svg" className="h-2" alt="Product arrow" />
                 </div>
                 <p className="accordion-content">
-                  Sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et.
-                <div className="flex items-center pt-4">
+                  Sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+                  sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+                  clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+                  tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
+                  vero eos et accusam et justo duo dolores et.
+                  <div className="flex items-center pt-4">
                     <span className="show-more pr-1">Show more</span>
                     <img src="/img/show-more.svg" alt="Show More" />
                   </div>
@@ -283,11 +288,21 @@ const SingleProduct = () => {
               <div className="flex items-center">
                 <div className="customer-review font-semibold pr-2">15 Customer Reviews</div>
                 <div className="flex justify-between items-center star-listing">
-                  <span className="h-4 w-4"><img src="/img/star-vendor.svg" alt="star rating" /></span>
-                  <span className="h-4 w-4"><img src="/img/star-vendor.svg" alt="star rating" /></span>
-                  <span className="h-4 w-4"><img src="/img/star-vendor.svg" alt="star rating" /></span>
-                  <span className="h-4 w-4"><img src="/img/star-vendor.svg" alt="star rating" /></span>
-                  <span className="h-4 w-4"><img src="/img/star-vendor.svg" alt="star rating" /></span>
+                  <span className="h-4 w-4">
+                    <img src="/img/star-vendor.svg" alt="star rating" />
+                  </span>
+                  <span className="h-4 w-4">
+                    <img src="/img/star-vendor.svg" alt="star rating" />
+                  </span>
+                  <span className="h-4 w-4">
+                    <img src="/img/star-vendor.svg" alt="star rating" />
+                  </span>
+                  <span className="h-4 w-4">
+                    <img src="/img/star-vendor.svg" alt="star rating" />
+                  </span>
+                  <span className="h-4 w-4">
+                    <img src="/img/star-vendor.svg" alt="star rating" />
+                  </span>
                 </div>
                 <span className="rating-count pl-1">5</span>
               </div>
@@ -297,35 +312,35 @@ const SingleProduct = () => {
                 <div className="grid grid-cols-12 gap-2 items-center pb-2">
                   <div className="col-span-2 top-rated">5 Stars</div>
                   <div className="bar-container col-span-8">
-                    <div className="bar-5"></div>
+                    <div className="bar-5" />
                   </div>
                   <div className="col-span-2 top-rated">(15)</div>
                 </div>
                 <div className="grid grid-cols-12 gap-2 items-center pb-2 sec-rating">
                   <div className="col-span-2">4 Stars</div>
                   <div className="bar-container col-span-8">
-                    <div className="bar-4"></div>
+                    <div className="bar-4" />
                   </div>
                   <div className="col-span-2">(12)</div>
                 </div>
                 <div className="grid grid-cols-12 gap-2 items-center pb-2 sec-rating">
                   <div className="col-span-2">3 Stars</div>
                   <div className="bar-container col-span-8">
-                    <div className="bar-3"></div>
+                    <div className="bar-3" />
                   </div>
                   <div className="col-span-2">(0)</div>
                 </div>
                 <div className="grid grid-cols-12 gap-2 items-center pb-2 sec-rating">
                   <div className="col-span-2">2 Stars</div>
                   <div className="bar-container col-span-8">
-                    <div className="bar-2"></div>
+                    <div className="bar-2" />
                   </div>
                   <div className="col-span-2">(0)</div>
                 </div>
                 <div className="grid grid-cols-12 gap-2 items-center sec-rating">
                   <div className="col-span-2">1 Star</div>
                   <div className="bar-container col-span-8">
-                    <div className="bar-1"></div>
+                    <div className="bar-1" />
                   </div>
                   <div className="col-span-2">(0)</div>
                 </div>
@@ -356,33 +371,65 @@ const SingleProduct = () => {
               </div>
             </section>
             <section className="comment-reviews mb-20">
-              <ReviewCard padding="pb-12" userName="Arinola Thompson" userImg="/img/arinola-thompson.jpg" rating="4.9"
-                location="Magodo, Lagos" projectUrl="/img/projects/bathroom-cabinet-candles-faucet.png" />
+              <ReviewCard
+                padding="pb-12"
+                userName="Arinola Thompson"
+                userImg="/img/arinola-thompson.jpg"
+                rating="4.9"
+                location="Magodo, Lagos"
+                projectUrl="/img/projects/bathroom-cabinet-candles-faucet.png"
+              />
               <hr className="pb-12" />
-              <ReviewCard padding="pb-12" userName="Arinola Thompson" userImg="/img/arinola-thompson.jpg" rating="5.0"
-                location="Magodo, Lagos" projectUrl="/img/projects/bathroom-cabinet-candles-faucet.png" />
+              <ReviewCard
+                padding="pb-12"
+                userName="Arinola Thompson"
+                userImg="/img/arinola-thompson.jpg"
+                rating="5.0"
+                location="Magodo, Lagos"
+                projectUrl="/img/projects/bathroom-cabinet-candles-faucet.png"
+              />
               <hr className="pb-12" />
-              <ReviewCard userName="Arinola Thompson" userImg="/img/arinola-thompson.jpg" rating="4.5"
-                location="Magodo, Lagos" projectUrl="/img/projects/bathroom-cabinet-candles-faucet.png" />
+              <ReviewCard
+                userName="Arinola Thompson"
+                userImg="/img/arinola-thompson.jpg"
+                rating="4.5"
+                location="Magodo, Lagos"
+                projectUrl="/img/projects/bathroom-cabinet-candles-faucet.png"
+              />
 
               <div className="w-full text-center">
-                <button className="uppercase my-8 load-more-projects font-semibold">Load more Reviews</button>
+                <button className="uppercase my-8 load-more-projects font-semibold">
+                  Load more Reviews
+                </button>
               </div>
             </section>
           </main>
           <aside className="col-span-1">
             <div className="border border-gray-200 px-4 py-8 aside-content rounded-md">
               <h1 className="contractor font-semibold">Contact Vendor</h1>
-              <p className="contact-seller">Please contact the seller directly to learn about specific precautions.</p>
+              <p className="contact-seller">
+                Please contact the seller directly to learn about specific precautions.
+              </p>
               <div>
                 <VendorBtn>Hi, I’m interested, please contact me.</VendorBtn>
                 <VendorBtn className="v-btn">Hi, when can I come see the item?</VendorBtn>
                 <VendorBtn className="v-btn">Tell me about the special offers you have</VendorBtn>
               </div>
               <form>
-                <textarea className="border border-gray-200 outline-none mt-8" name="message" id="message" placeholder="Write a message"></textarea>
+                <textarea
+                  className="border border-gray-200 outline-none mt-8"
+                  name="message"
+                  id="message"
+                  placeholder="Write a message"
+                />
                 <div>
-                  <input className="border border-gray-200 outline-none" type="text" name="phone" id="phone" placeholder="Your Phone Number" />
+                  <input
+                    className="border border-gray-200 outline-none"
+                    type="text"
+                    name="phone"
+                    id="phone"
+                    placeholder="Your Phone Number"
+                  />
                 </div>
                 <MsgBtn className="uppercase font-semibold mt-6">Send Message</MsgBtn>
               </form>
@@ -398,25 +445,19 @@ const SingleProduct = () => {
                     <span className="loc-pin">
                       <img src="/img/vendor-loc.svg" alt="Vendor location" />
                     </span>
-                    <span className="ml-3">
-                      No. 4 Idrissu Abdulmalik Street, Shomolu, Lagos
-                    </span>
+                    <span className="ml-3">No. 4 Idrissu Abdulmalik Street, Shomolu, Lagos</span>
                   </div>
                   <div className="flex items-start pt-4">
                     <span className="phone">
                       <img src="/img/phone.svg" alt="vendor's phone number" />
                     </span>
-                    <span className="ml-3">
-                      +234 809 053 4405, 812 234 6780
-                </span>
+                    <span className="ml-3">+234 809 053 4405, 812 234 6780</span>
                   </div>
                   <div className="flex items-start pt-4">
                     <span className="web">
                       <img src="/img/www.svg" alt="vendor's website" />
                     </span>
-                    <span className="ml-3">
-                      www.mcityventures.com
-                  </span>
+                    <span className="ml-3">www.mcityventures.com</span>
                   </div>
                 </div>
               </div>
@@ -426,7 +467,7 @@ const SingleProduct = () => {
       </section>
       <Footer />
     </Wrapper>
-  )
-}
+  );
+};
 
-export default SingleProduct
+export default SingleProduct;

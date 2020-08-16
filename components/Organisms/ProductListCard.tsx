@@ -20,7 +20,8 @@ const Wrapper = styled.section`
     color: ${({ theme }) => theme.colors.gray11};
     font-size: 0.8rem;
   }
-  .view-num, .vendor-loc {
+  .view-num,
+  .vendor-loc {
     font-size: 0.8rem;
     color: ${({ theme }) => theme.colors.gray20};
   }
@@ -70,29 +71,29 @@ const ProductImg = styled.div<Props>`
 `;
 
 const ProductListCard: React.FC<Props> = ({
-  imgUrl = '', height = '', width = '', logo = '',
-  ad = false
+  imgUrl = '',
+  height = '',
+  width = '',
+  logo = '',
+  ad = false,
 }) => {
-
   const theme = useContext(ThemeContext);
 
   return (
     <Link href="/single-product">
       <Wrapper className="w-full flex">
         <ProductImg imgUrl={imgUrl} height={height} width={width}>
-          {
-            ad ? <div className="ad text-white relative py-2 px-4">Top Ad</div> : <div></div>
-          }
-
+          {ad ? <div className="ad text-white relative py-2 px-4">Top Ad</div> : <div />}
         </ProductImg>
         <div className="pl-8 pr-32">
           <div>
             <h1 className="title font-semibold capitalize text-xl">
               Lorem ipsum dolor sit amet, consetetur
-          </h1>
+            </h1>
             <p className="pt-6 description">
-              Sed ut perspiciatis unde omnis iste natus error sit voluptatem <br />accusantium doloremque totam rem aperiam….
-          </p>
+              Sed ut perspiciatis unde omnis iste natus error sit voluptatem <br />
+              accusantium doloremque totam rem aperiam….
+            </p>
           </div>
           <div className="pt-16 flex items-center">
             <div className="flex items-center pr-8">
@@ -111,7 +112,7 @@ const ProductListCard: React.FC<Props> = ({
         </div>
       </Wrapper>
     </Link>
-  )
-}
+  );
+};
 
-export default ProductListCard
+export default ProductListCard;

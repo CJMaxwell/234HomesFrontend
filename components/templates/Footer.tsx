@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 
-
 const FormButton = styled.button`
   top: -57px;
   left: 85%;
@@ -26,14 +25,11 @@ const Footer = () => {
         <div className="text-white grid grid-cols-4 gap-4 container mx-auto pt-16 general-padding">
           <div>
             <Logo>
-              <img
-                src="/img/234_Homes_footer_logo.png"
-                className="pb-8"
-                alt="+234Homes logo"
-              />
+              <img src="/img/234_Homes_footer_logo.png" className="pb-8" alt="+234Homes logo" />
             </Logo>
             <p className="text-sm leading-loose">
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam.
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+              invidunt ut labore et dolore magna aliquyam.
             </p>
             <ul className="flex justify-start pt-8">
               <li className="pr-3">
@@ -125,8 +121,8 @@ const Footer = () => {
           <div>
             <h6 className="pb-12 font-bold">News Letter Subscription</h6>
             <p className="text-sm">
-              Subscribe to our newsletter and we will inform you of our latest
-              nenwson directory and promotion.
+              Subscribe to our newsletter and we will inform you of our latest nenwson directory and
+              promotion.
             </p>
             <form className="relative pt-6">
               <input

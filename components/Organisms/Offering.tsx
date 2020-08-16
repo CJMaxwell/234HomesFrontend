@@ -3,7 +3,6 @@ import styled, { ThemeContext } from 'styled-components';
 import Link from 'next/link';
 
 const Wrapper = styled.div`
-
   .listing li {
     font-size: 0.8rem;
     color: ${({ theme }) => theme.colors.gray11};
@@ -12,9 +11,9 @@ const Wrapper = styled.div`
     padding: 0.75rem 1.5rem;
   }
   .listing li.active {
-    color: ${({ theme }) => theme.colors.gray5}
+    color: ${({ theme }) => theme.colors.gray5};
   }
-  .house-tours{
+  .house-tours {
     border-bottom: 3px solid ${({ theme }) => theme.colors.orange1};
   }
   .stories {
@@ -29,7 +28,6 @@ const Wrapper = styled.div`
 `;
 
 const Offering = () => {
-
   const theme = useContext(ThemeContext);
 
   return (
@@ -49,7 +47,7 @@ const Offering = () => {
         </Link>
       </ul>
     </Wrapper>
-  )
-}
+  );
+};
 
-export default Offering
+export default Offering;

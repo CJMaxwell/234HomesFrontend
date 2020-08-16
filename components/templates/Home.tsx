@@ -3,7 +3,6 @@ import styled, { ThemeContext } from 'styled-components';
 import Link from 'next/link';
 import Router from 'next/router';
 
-
 import Button from '../atoms/Button';
 import Navbar from '../Organisms/Navbar';
 import Footer from './Footer';
@@ -109,7 +108,7 @@ const Connect = styled.section`
   }
   h1 {
     font-size: 1.75rem;
-    color: ${({ theme }) => theme.colors.gray1}
+    color: ${({ theme }) => theme.colors.gray1};
   }
   p {
     color: ${({ theme }) => theme.colors.gray5};
@@ -192,7 +191,7 @@ const DIY = styled.section`
   .get-started {
     background: ${({ theme }) => theme.colors.green1};
     border-radius: 36px;
-  };
+  }
   .diy-title {
     color: ${({ theme }) => theme.colors.green1};
   }
@@ -203,8 +202,6 @@ const DIY = styled.section`
 `;
 
 const Directory = styled.div`
-  
-
   .view-all {
     background: ${({ theme }) => theme.colors.gray5};
     border-radius: 36px;
@@ -215,10 +212,8 @@ const Directory = styled.div`
   .active-link {
     border-bottom: 2px solid ${({ theme }) => theme.colors.gray4};
     padding-bottom: 0.5rem;
-    
   }
 `;
-
 
 const Home = () => {
   const theme = useContext(ThemeContext);
@@ -238,40 +233,21 @@ const Home = () => {
           <form className="flex justify-between items-center bg-white form">
             <div className="input-group">
               <label>Type</label>
-              <input
-                className="outline-none"
-                type="text"
-                placeholder="Enter type"
-              />
+              <input className="outline-none" type="text" placeholder="Enter type" />
             </div>
             <div className="input-group">
               <label>Style</label>
-              <input
-                className="outline-none"
-                type="text"
-                placeholder="Enter style"
-              />
+              <input className="outline-none" type="text" placeholder="Enter style" />
             </div>
             <div className="input-group">
               <label>Location</label>
-              <input
-                className="outline-none"
-                type="text"
-                placeholder="Enter location"
-              />
+              <input className="outline-none" type="text" placeholder="Enter location" />
             </div>
             <div className="input-group">
               <label>Year Built</label>
-              <input
-                className="outline-none"
-                type="text"
-                placeholder="Enter year built"
-              />
+              <input className="outline-none" type="text" placeholder="Enter year built" />
             </div>
-            <HomeBannerBtn
-              className="uppercase flex justify-center items-center"
-              type="submit"
-            >
+            <HomeBannerBtn className="uppercase flex justify-center items-center" type="submit">
               <img src="/img/search.svg" alt="Search icon" className="h-4" /> Search
             </HomeBannerBtn>
           </form>
@@ -280,15 +256,13 @@ const Home = () => {
 
       <Connect className="text-center pt-24 pb-24">
         <div className="title">
-          <span>Connect</span> | <span>Share</span> |{' '}
-          <span>Live Authentic</span>
+          <span>Connect</span> | <span>Share</span> | <span>Live Authentic</span>
         </div>
         <h1 className="mt-6 font-semibold">The Contemporary African Home</h1>
         <p className="mt-6">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora sunt
           <br />
-          expedita alias repellendus reprehenderit architecto eos enim delectus
-          optio libero.
+          expedita alias repellendus reprehenderit architecto eos enim delectus optio libero.
         </p>
         <div className="mt-12">
           <button className="border-b-2">
@@ -307,12 +281,12 @@ const Home = () => {
           <div className="text-white w-1/2 description">
             <h3 className="pb-6">House Tour</h3>
             <h1 className="font-bold text-4xl leading-none pb-4">
-              Lorem ipsum dolor <br />sit amet
+              Lorem ipsum dolor <br />
+              sit amet
             </h1>
             <p className="pb-16 text-sm">
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-              nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-              erat, sed diam voluptua.
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+              invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
             </p>
             <div className="pb-32">
               <LinkButton onClick={() => Router.push('/house-tours')}>Get Inspired</LinkButton>
@@ -329,11 +303,7 @@ const Home = () => {
           </div>
 
           <div className="explore absolute w-1/2 right-0">
-            <img
-              src="/img/AH.png"
-              className="w-full h-full object-cover"
-              alt="Sample house"
-            />
+            <img src="/img/AH.png" className="w-full h-full object-cover" alt="Sample house" />
           </div>
         </div>
       </HouseTour>
@@ -351,19 +321,16 @@ const Home = () => {
           <div className="pr-4">
             <div className="grid grid-rows-2 gap-4">
               <PostCard height="248px" />
-              <PostCard imgUrl={'/img/AH_dining.png'} height="248px" />
+              <PostCard imgUrl="/img/AH_dining.png" height="248px" />
             </div>
           </div>
           <div className="col-span-2 cursor-pointer" onClick={() => Router.push('/single-story')}>
-            <PostCard
-              imgUrl={'/img/two-white-and-brown-armchairs.png'}
-              height="507px"
-            />
+            <PostCard imgUrl="/img/two-white-and-brown-armchairs.png" height="507px" />
           </div>
           <div className="pl-4">
             <div className="grid grid-rows-2 gap-4">
-              <PostCard imgUrl={'/img/Adora_NH_grid.png'} height="248px" />
-              <PostCard imgUrl={'/img/Adora_NH_rope.png'} height="248px" />
+              <PostCard imgUrl="/img/Adora_NH_grid.png" height="248px" />
+              <PostCard imgUrl="/img/Adora_NH_rope.png" height="248px" />
             </div>
           </div>
         </PostGrid>
@@ -374,31 +341,30 @@ const Home = () => {
           <div className="grid grid-cols-3 gap-10">
             <div className="col-span-2 grid grid-cols-2 gap-4">
               <div>
-                <DIYCard imgUrl={'/img/EO_kitchen.png'} height="414.5px" />
+                <DIYCard imgUrl="/img/EO_kitchen.png" height="414.5px" />
               </div>
               <div className="grid grid-rows-2 gap-4">
                 <div>
-                  <DIYCard imgUrl={'/img/EO_bedroom.png'} height="199.5px" />
+                  <DIYCard imgUrl="/img/EO_bedroom.png" height="199.5px" />
                 </div>
                 <div>
-                  <DIYCard imgUrl={'/img/EO_sitting_room.png'} height="199.5px" />
+                  <DIYCard imgUrl="/img/EO_sitting_room.png" height="199.5px" />
                 </div>
               </div>
             </div>
             <div className="pl-8">
-              <h4 className="pt-12 diy-title">
-                DIY
-              </h4>
+              <h4 className="pt-12 diy-title">DIY</h4>
               <h1 className="font-bold pb-4 pt-4">
                 Lorem Ipsum <br />
                 Dolor Sit Amet
               </h1>
               <p className="pb-16 text-sm">
-                Consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-                invidunt ut labore et dolore magna aliquyam erat, sed diam
-                voluptua.
+                Consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+                dolore magna aliquyam erat, sed diam voluptua.
               </p>
-              <SiteLink onClick={() => Router.push('/diy')} className="get-started text-white">Get Started</SiteLink>
+              <SiteLink onClick={() => Router.push('/diy')} className="get-started text-white">
+                Get Started
+              </SiteLink>
             </div>
           </div>
         </div>
@@ -407,18 +373,14 @@ const Home = () => {
       <Directory className="container mx-auto pb-12">
         <div className="px-16">
           <div className="flex justify-between items-center">
-            <h1 className="font-semibold text-gray-700 uppercase">
-              Our Directory
-            </h1>
+            <h1 className="font-semibold text-gray-700 uppercase">Our Directory</h1>
             <Link href="/directory">
               <a className="font-semibold uppercase leading-none text-white view-all inline-flex justify-center items-center">
                 View All
               </a>
             </Link>
           </div>
-          <h1 className="pt-6 pb-6 font-bold text-2xl">
-            Invidunt Labore Et Dolore
-          </h1>
+          <h1 className="pt-6 pb-6 font-bold text-2xl">Invidunt Labore Et Dolore</h1>
           <hr />
           <div className="flex justify-between items-center pb-10 pt-5">
             <ul className="text-gray-500 flex text-sm">
@@ -429,9 +391,7 @@ const Home = () => {
                 <a>Most views Products</a>
               </li>
               <li>
-                <a>
-                  Top Rated Vendors
-                </a>
+                <a>Top Rated Vendors</a>
               </li>
             </ul>
             <div className="inline-flex">
@@ -445,20 +405,64 @@ const Home = () => {
           </div>
         </div>
         <div className="grid grid-cols-4 gap-4 mb-12">
-          <ProfessionalCard name="Babatunde Maxwell" occupation="Interior Designer" location="Ikeja, Lagos" phone="0803 456 7890" />
-          <ProfessionalCard name="Alexandria Vladimir" occupation="Painter" location="Barnawa, Kaduna" phone="0809 053 4405" />
-          <ProfessionalCard name="Micheal Jonna" occupation="Carpenter" location="Wuse, Abuja" phone="0812 456 8900" />
-          <ProfessionalCard name="Wuraola Gbotemi" occupation="Plumber" location="Maitama, Abuja" phone="0809 053 4405" />
+          <ProfessionalCard
+            name="Babatunde Maxwell"
+            occupation="Interior Designer"
+            location="Ikeja, Lagos"
+            phone="0803 456 7890"
+          />
+          <ProfessionalCard
+            name="Alexandria Vladimir"
+            occupation="Painter"
+            location="Barnawa, Kaduna"
+            phone="0809 053 4405"
+          />
+          <ProfessionalCard
+            name="Micheal Jonna"
+            occupation="Carpenter"
+            location="Wuse, Abuja"
+            phone="0812 456 8900"
+          />
+          <ProfessionalCard
+            name="Wuraola Gbotemi"
+            occupation="Plumber"
+            location="Maitama, Abuja"
+            phone="0809 053 4405"
+          />
         </div>
         <div className="grid grid-cols-2 gap-4">
-          <MostViewedProducts  imgUrl='/img/BArt.png' />
-          <MostViewedProducts   imgUrl='/img/B-18-B.png' />
+          <MostViewedProducts imgUrl="/img/BArt.png" />
+          <MostViewedProducts imgUrl="/img/B-18-B.png" />
         </div>
         <div className="grid grid-cols-4 gap-4 mt-4">
-          <TopRatedVendor imgUrl='/img/vendors/sidekix-media-I_QC1JICzA0-unsplash.png' height='15rem' name="Nick Interior LTD" location="77, Central Park South, Ikeja, Lagos" phone="0812 456 8900, 0812 456 8900" />
-          <TopRatedVendor imgUrl='/img/vendors/francesca-tosolini-tHkJAMcO3QE-unsplash.png' height='15rem' name="Lorem Furniture" location="77, Central Park South, Ikeja, Lagos" phone="0812 456 8900, 0812 456 8900" />
-          <TopRatedVendor imgUrl='/img/vendors/francesca-tosolini-w1RE0lBbREo-unsplash.png' height='15rem' name="Chuma & Sons LTD" location="77, Central Park South, Ikeja, Lagos" phone="0812 456 8900, 0812 456 8900" />
-          <TopRatedVendor imgUrl='/img/vendors/two-white-rod-pocket-curtains-910458.png' height='15rem' name="Consetetur Designs" location="77, Central Park South, Ikeja, Lagos" phone="0812 456 8900, 0812 456 8900" />
+          <TopRatedVendor
+            imgUrl="/img/vendors/sidekix-media-I_QC1JICzA0-unsplash.png"
+            height="15rem"
+            name="Nick Interior LTD"
+            location="77, Central Park South, Ikeja, Lagos"
+            phone="0812 456 8900, 0812 456 8900"
+          />
+          <TopRatedVendor
+            imgUrl="/img/vendors/francesca-tosolini-tHkJAMcO3QE-unsplash.png"
+            height="15rem"
+            name="Lorem Furniture"
+            location="77, Central Park South, Ikeja, Lagos"
+            phone="0812 456 8900, 0812 456 8900"
+          />
+          <TopRatedVendor
+            imgUrl="/img/vendors/francesca-tosolini-w1RE0lBbREo-unsplash.png"
+            height="15rem"
+            name="Chuma & Sons LTD"
+            location="77, Central Park South, Ikeja, Lagos"
+            phone="0812 456 8900, 0812 456 8900"
+          />
+          <TopRatedVendor
+            imgUrl="/img/vendors/two-white-rod-pocket-curtains-910458.png"
+            height="15rem"
+            name="Consetetur Designs"
+            location="77, Central Park South, Ikeja, Lagos"
+            phone="0812 456 8900, 0812 456 8900"
+          />
         </div>
       </Directory>
       <Footer />

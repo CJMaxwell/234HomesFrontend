@@ -3,25 +3,30 @@ import styled, { ThemeContext } from 'styled-components';
 import Router from 'next/router';
 import Link from 'next/link';
 
-
 interface Props {
   imgUrl?: string;
   name?: string;
   occupation?: string;
-  location?:string;
-  phone?:string
-  path?: string
-};
+  location?: string;
+  phone?: string;
+  path?: string;
+}
 
 const Wrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.gray15};
   .heading-text {
-    font-size: 1.10rem;
+    font-size: 1.1rem;
   }
 `;
 
-
-const ProfessionalCard: React.FC<Props> = ({ imgUrl = '/img/jonathan.jpg', name, occupation, location,phone,path = '/professional-about' }) => {
+const ProfessionalCard: React.FC<Props> = ({
+  imgUrl = '/img/jonathan.jpg',
+  name,
+  occupation,
+  location,
+  phone,
+  path = '/professional-about',
+}) => {
   const theme = useContext(ThemeContext);
 
   return (
@@ -29,11 +34,7 @@ const ProfessionalCard: React.FC<Props> = ({ imgUrl = '/img/jonathan.jpg', name,
       <Wrapper className="max-w-sm rounded-sm px-4 cursor-pointer">
         <div className="w-full">
           <div className="text-center pt-8">
-            <img
-              className="w-20 h-20 rounded-full inline-block"
-              src={imgUrl}
-              alt={name}
-            />
+            <img className="w-20 h-20 rounded-full inline-block" src={imgUrl} alt={name} />
           </div>
 
           <div className="text-sm mt-4 text-center">
@@ -80,15 +81,18 @@ const ProfessionalCard: React.FC<Props> = ({ imgUrl = '/img/jonathan.jpg', name,
           <div className="pt-6 text-center">
             <h6 className="text-sm">{occupation}</h6>
             <div className="text-xs pt-4 flex items-center justify-center">
-              <img src="/img/home-professional-phone.svg" alt="phone"/>
+              <img src="/img/home-professional-phone.svg" alt="phone" />
               <span className="pl-2">{phone}</span>
             </div>
             <div className="text-xs pt-4 flex items-center justify-center">
-              <img src="/img/home-professional-location.svg" alt="Location"/>
+              <img src="/img/home-professional-location.svg" alt="Location" />
               <span className="pl-2">{location}</span>
             </div>
           </div>
-          <button onClick={() => Router.push('/professional-about')} className="uppercase border-gray-600 text-gray-600 mt-4 w-full bg-white rounded-sm block text-center mb-10">
+          <button
+            onClick={() => Router.push('/professional-about')}
+            className="uppercase border-gray-600 text-gray-600 mt-4 w-full bg-white rounded-sm block text-center mb-10"
+          >
             Hire me
           </button>
         </div>

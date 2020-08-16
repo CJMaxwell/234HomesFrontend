@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import Masonry from 'react-masonry-css'
+import Masonry from 'react-masonry-css';
 
 import Offering from '../Organisms/Offering';
 import Navbar from '../Organisms/Navbar';
@@ -8,8 +8,6 @@ import GalleryItem from '../Organisms/GalleryItem';
 import Footer from './Footer';
 
 const Wrapper = styled.section`
-
-
   .masonry-grid {
     display: -webkit-box; /* Not needed if autoprefixing */
     display: -ms-flexbox; /* Not needed if autoprefixing */
@@ -21,7 +19,8 @@ const Wrapper = styled.section`
     padding-left: 1.05rem; /* gutter size */
     background-clip: padding-box;
   }
-  .masonry-grid_column > div { /* change div to reference your elements you put in <Masonry> */
+  .masonry-grid_column > div {
+    /* change div to reference your elements you put in <Masonry> */
     padding-top: 1.05rem;
     &.ad {
       flex-grow: 2;
@@ -38,9 +37,12 @@ const Wrapper = styled.section`
       margin-right: 1.35rem;
     }
   }
-  .desc, .search-result, .sort-by,.recommended {
+  .desc,
+  .search-result,
+  .sort-by,
+  .recommended {
     font-size: 0.8rem;
-    color: ${({ theme }) => theme.colors.gray5}
+    color: ${({ theme }) => theme.colors.gray5};
   }
   .recommended {
     font-weight: 600;
@@ -65,8 +67,8 @@ const Gallery = () => {
         <div className="flex justify-between items-center mb-6 mt-16">
           <div className="filter">
             <select>
-                <option value="Category">Room Type</option>
-                <option value="">Room Type</option>
+              <option value="Category">Room Type</option>
+              <option value="">Room Type</option>
             </select>
             <select>
               <option value="style">Style</option>
@@ -75,10 +77,12 @@ const Gallery = () => {
             <select>
               <option value="cut">Cut</option>
               <option value="">Cut</option>
-            </select><select>
+            </select>
+            <select>
               <option value="colour">Colour</option>
               <option value="">Colour</option>
-            </select><select>
+            </select>
+            <select>
               <option value="location">Location</option>
               <option value="">Location</option>
             </select>
@@ -92,22 +96,26 @@ const Gallery = () => {
         </div>
 
         <Masonry
-          breakpointCols={
-            {
-              default: 4,
-              1100: 3,
-              700: 2,
-              500: 1
-            }
-          }
+          breakpointCols={{
+            default: 4,
+            1100: 3,
+            700: 2,
+            500: 1,
+          }}
           className="masonry-grid"
           columnClassName="masonry-grid_column"
         >
           <div className="">
-            <GalleryItem imgUrl="/img/gallery/sidekix-media-I_QC1JICzA0-unsplash.png" height="20.65rem" />
+            <GalleryItem
+              imgUrl="/img/gallery/sidekix-media-I_QC1JICzA0-unsplash.png"
+              height="20.65rem"
+            />
           </div>
           <div className="">
-            <GalleryItem imgUrl="/img/gallery/francesca-tosolini-tHkJAMcO3QE-unsplash.png" height="16.95rem" />
+            <GalleryItem
+              imgUrl="/img/gallery/francesca-tosolini-tHkJAMcO3QE-unsplash.png"
+              height="16.95rem"
+            />
           </div>
           <div className="">
             <GalleryItem imgUrl="/img/gallery/AH-31.png" height="20.65rem" />
@@ -131,19 +139,31 @@ const Gallery = () => {
             <GalleryItem imgUrl="/img/gallery/B-8.png" height="20.65rem" />
           </div>
           <div className="">
-            <GalleryItem imgUrl="/img/gallery/francesca-tosolini-w1RE0lBbREo-unsplash.png" height="16.95rem" />
+            <GalleryItem
+              imgUrl="/img/gallery/francesca-tosolini-w1RE0lBbREo-unsplash.png"
+              height="16.95rem"
+            />
           </div>
           <div className="ad">
             <GalleryItem imgUrl="/img/gallery/AH-18-3.png" height="24.1rem" />
           </div>
           <div className="">
-            <GalleryItem imgUrl="/img/gallery/two-white-rod-pocket-curtains-910458.png" height="16.95rem" />
+            <GalleryItem
+              imgUrl="/img/gallery/two-white-rod-pocket-curtains-910458.png"
+              height="16.95rem"
+            />
           </div>
           <div className="">
-            <GalleryItem imgUrl="/img/gallery/2-seat-orange-leather-sofa-beside-wall-1866149.png" height="20.65rem" />
+            <GalleryItem
+              imgUrl="/img/gallery/2-seat-orange-leather-sofa-beside-wall-1866149.png"
+              height="20.65rem"
+            />
           </div>
           <div className="">
-            <GalleryItem imgUrl="/img/gallery/interior-design-of-a-house-1571460.png" height="16.95rem" />
+            <GalleryItem
+              imgUrl="/img/gallery/interior-design-of-a-house-1571460.png"
+              height="16.95rem"
+            />
           </div>
           <div className="">
             <GalleryItem imgUrl="/img/gallery/B-18-1.png" height="16.95rem" />
@@ -152,16 +172,25 @@ const Gallery = () => {
             <GalleryItem imgUrl="/img/gallery/AH-18-2.png" height="16.95rem" />
           </div>
           <div className="">
-            <GalleryItem imgUrl="/img/gallery/two-assorted-color-padded-chairs-near-side-table-1350789-1.png"  height="20.65rem" />
+            <GalleryItem
+              imgUrl="/img/gallery/two-assorted-color-padded-chairs-near-side-table-1350789-1.png"
+              height="20.65rem"
+            />
           </div>
           <div className="">
-            <GalleryItem imgUrl="/img/gallery/B-6-1.png"  height="20.65rem" />
+            <GalleryItem imgUrl="/img/gallery/B-6-1.png" height="20.65rem" />
           </div>
           <div className="">
-            <GalleryItem imgUrl="/img/gallery/bathroom-cabinet-candles-faucet-342800.png" height="16.95rem" />
+            <GalleryItem
+              imgUrl="/img/gallery/bathroom-cabinet-candles-faucet-342800.png"
+              height="16.95rem"
+            />
           </div>
           <div className="">
-            <GalleryItem imgUrl="/img/gallery/two-white-rod-pocket-curtains-910458.png" height="16.95rem" />
+            <GalleryItem
+              imgUrl="/img/gallery/two-white-rod-pocket-curtains-910458.png"
+              height="16.95rem"
+            />
           </div>
           {/* <GalleryItem imgUrl="/img/gallery/sidekix-media-I_QC1JICzA0-unsplash.png" height="29.65rem" />
           <GalleryItem imgUrl="/img/gallery/francesca-tosolini-tHkJAMcO3QE-unsplash.png" height="20.95rem" />
@@ -189,7 +218,7 @@ const Gallery = () => {
       </div>
       <Footer />
     </Wrapper>
-  )
-}
+  );
+};
 
-export default Gallery
+export default Gallery;

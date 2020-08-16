@@ -2,15 +2,14 @@ import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 
 const User = styled.div`
-
-  .name, .postDate {
+  .name,
+  .postDate {
     color: ${({ theme }) => theme.colors.gray1};
     font-size: 0.8rem;
   }
 `;
 
 const UserCard = () => {
-
   const theme = useContext(ThemeContext);
 
   return (
@@ -19,7 +18,7 @@ const UserCard = () => {
       <span className="name font-semibold px-4">Mohammed Ismail</span>
       <span className="postDate">June 11, 2020</span>
     </User>
-  )
-}
+  );
+};
 
-export default UserCard
+export default UserCard;

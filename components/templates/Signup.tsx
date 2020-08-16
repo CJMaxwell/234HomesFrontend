@@ -1,11 +1,15 @@
-import React, { useContext } from "react";
-import { useMutation } from "@apollo/react-hooks";
-import Router from "next/router";
-import styled, { ThemeContext } from "styled-components";
+import React, { useContext } from 'react';
+import { useMutation } from '@apollo/react-hooks';
+import Router from 'next/router';
+import styled, { ThemeContext } from 'styled-components';
+import { notify } from 'react-notify-toast';
+import { Formik } from 'formik';
+import Loader from 'react-loader-spinner';
 
-import SignUpNavbar from "../Organisms/SignUpNavbar";
-import Footer from "../templates/Footer";
-import { SEND_PHONE_VERIFICATION } from "../../graphql/mutations/register";
+import SignUpNavbar from '../Organisms/SignUpNavbar';
+import Footer from './Footer';
+import { SEND_PHONE_VERIFICATION } from '../../graphql/mutations/register';
+import useCountries from '../../hooks/useCountries';
 
 interface Props {
   imgUrl?: string;
@@ -17,20 +21,13 @@ const MainWrapper = styled.div`
   }
 `;
 const Wrapper = styled.section<Props>`
-  height: 38rem;
-  background: url('${({ imgUrl }) =>
-    imgUrl}'), linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5));
+  background: url('${({ imgUrl }) => imgUrl}'), linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5));
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 
   .signup {
-    position: absolute;
     margin: 0;
-    top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
     max-width: 28.9rem;
     max-height: 36.7rem;
   }
@@ -55,25 +52,10 @@ const Wrapper = styled.section<Props>`
   }
 `;
 
-// url('/img/square-glass-top-coffee-table-and-two-white-leather-2-seat.png');
-
-const Signup: React.FC<Props> = ({ imgUrl = "" }) => {
+const Signup: React.FC<Props> = () => {
   const theme = useContext(ThemeContext);
-  const [sendPhoneVerification, { data, loading, error }] = useMutation(
-    SEND_PHONE_VERIFICATION
-  );
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    sendPhoneVerification({
-      variables: {
-        phoneNumber: "+2348127740427",
-      },
-    });
-    // Router.push("/verify");
-  };
-
-  console.log({ data, loading, error });
+  const { dialCodes } = useCountries();
+  const [sendPhoneVerification, { loading }] = useMutation(SEND_PHONE_VERIFICATION);
 
   return (
     <MainWrapper>
@@ -82,38 +64,79 @@ const Signup: React.FC<Props> = ({ imgUrl = "" }) => {
         <SignUpNavbar type="register" />
       </div>
       <Wrapper
-        className="relative"
-        imgUrl={
-          "/img/square-glass-top-coffee-table-and-two-white-leather-2-seat.png"
-        }
+        className="flex justify-center py-16"
+        imgUrl="/img/square-glass-top-coffee-table-and-two-white-leather-2-seat.png"
       >
         <div className="w-full signup bg-white rounded pb-16">
-          <h1 className="text-2xl font-semibold text-center my-8">
-            Get Your Free Account
-          </h1>
+          <h1 className="text-2xl font-semibold text-center my-8">Get Your Free Account</h1>
           <hr />
-          <form onSubmit={handleSubmit} className="px-8 mt-12">
-            <div className="border border-gray-500 form-wrap h-12 justify-between pr-4 flex items-center">
-              <div className="input-addon pr-4">
-                <p>+234</p>
-              </div>
-              <input
-                className="appearance-none outline-none w-full h-full leading-tight pr-4"
-                id="phone"
-                type="text"
-                required
-                placeholder="Enter Your Phone Number"
-              />
-            </div>
-            <div className="text-center form-wrap bg-signup mt-4 h-12">
-              <button
-                type="submit"
-                className="text-center font-semibold uppercase w-full h-full text-white"
-              >
-                Send me Code
-              </button>
-            </div>
-          </form>
+          <Formik
+            initialValues={{
+              phone: '',
+              dialCode: '+234',
+            }}
+            onSubmit={(values) => {
+              sendPhoneVerification({
+                variables: {
+                  phoneNumber: `${values.dialCode}${values.phone}`,
+                },
+              })
+                .then(() =>
+                  Router.push(
+                    `/verify?phone=${encodeURIComponent(values.dialCode + values.phone)}`,
+                  ),
+                )
+                .catch((err) => {
+                  notify.show(err.graphQLErrors?.[0].message, 'error');
+                });
+            }}
+          >
+            {({ values, handleChange, handleBlur, handleSubmit }) => (
+              <form onSubmit={handleSubmit} className="px-8 mt-12">
+                <div className="border border-gray-500 form-wrap h-12 justify-between pr-4 flex items-center overflow-hidden">
+                  <div className="input-addon pr-4">
+                    <select
+                      value={values.dialCode}
+                      name="dialCode"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    >
+                      {dialCodes.map((dialCode) => (
+                        <option key={`dialCode${dialCode}`} value={dialCode}>
+                          {dialCode}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  <input
+                    className="appearance-none outline-none w-full h-full leading-tight pr-4"
+                    id="phone"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.phone}
+                    name="phone"
+                    type="number"
+                    required
+                    placeholder="Enter Your Phone Number"
+                  />
+                </div>
+                <div className="text-center form-wrap bg-signup mt-4 h-12">
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    className="font-semibold uppercase w-full h-full text-white flex items-center justify-center"
+                  >
+                    {loading ? (
+                      <Loader type="ThreeDots" color={theme.colors.white} height={20} width={60} />
+                    ) : (
+                      'Send me Code'
+                    )}
+                  </button>
+                </div>
+              </form>
+            )}
+          </Formik>
+
           <div className="px-8">
             <div className="text-center my-8 flex items-center">
               <hr className="w-1/2" />
@@ -128,7 +151,7 @@ const Signup: React.FC<Props> = ({ imgUrl = "" }) => {
                   alt="Sign up with Google"
                 />
               </div>
-              <button className="continue-btn h-full w-full outline-none">
+              <button type="button" className="continue-btn h-full w-full outline-none">
                 Continue with Email
               </button>
             </div>
@@ -140,7 +163,7 @@ const Signup: React.FC<Props> = ({ imgUrl = "" }) => {
                   alt="Sign up with Google"
                 />
               </div>
-              <button className="continue-btn h-full w-full outline-none">
+              <button type="button" className="continue-btn h-full w-full outline-none">
                 Continue with Google
               </button>
             </div>
@@ -152,7 +175,7 @@ const Signup: React.FC<Props> = ({ imgUrl = "" }) => {
                   alt="Sign up with Google"
                 />
               </div>
-              <button className="continue-btn h-full w-full outline-none">
+              <button type="button" className="continue-btn h-full w-full outline-none">
                 Continue with Facebook
               </button>
             </div>

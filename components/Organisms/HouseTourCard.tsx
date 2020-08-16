@@ -9,23 +9,21 @@ interface Props {
   user?: string;
   PostDate?: string;
   sponsored?: boolean;
-
 }
-
-
 
 const Wrapper = styled.section`
   margin-bottom: 2.85rem;
-  
+
   .title {
     width: 33.2rem;
-    color: ${({ theme }) => theme.colors.gray5}
+    color: ${({ theme }) => theme.colors.gray5};
   }
   .category {
     color: ${({ theme }) => theme.colors.orange1};
     font-size: 0.7rem;
   }
-  .postdate, .user {
+  .postdate,
+  .user {
     font-size: 0.7rem;
     color: ${({ theme }) => theme.colors.gray1};
   }
@@ -78,9 +76,13 @@ const HouseTourImg = styled.div<Props>`
 `;
 
 const StoryCard: React.FC<Props> = ({
-  imgUrl = '', height = '', user = '',
-  title = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr sed diam', category = '',
-  PostDate = '', sponsored = ''
+  imgUrl = '',
+  height = '',
+  user = '',
+  title = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr sed diam',
+  category = '',
+  PostDate = '',
+  sponsored = '',
 }) => {
   return (
     <Wrapper>
@@ -92,23 +94,24 @@ const StoryCard: React.FC<Props> = ({
           <h6 className="uppercase category">{category}</h6>
           <h1 className="capitalize title text-2xl font-semibold pt-4">{title}</h1>
           <p className="desc">
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore…
-        </p>
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+            invidunt ut labore…
+          </p>
           <div className="">
             <span className="user font-semibold">by {user}</span> |
-          <span className="postdate"> {PostDate}</span>
+            <span className="postdate"> {PostDate}</span>
           </div>
         </div>
         <HouseTourImg imgUrl={imgUrl}>
-          {
-            sponsored ? <div className="sponsored text-white relative py-2 px-4">Sponsored</div> : <div></div>
-          }
+          {sponsored ? (
+            <div className="sponsored text-white relative py-2 px-4">Sponsored</div>
+          ) : (
+            <div />
+          )}
         </HouseTourImg>
       </div>
-
-
     </Wrapper>
-  )
-}
+  );
+};
 
-export default StoryCard
+export default StoryCard;

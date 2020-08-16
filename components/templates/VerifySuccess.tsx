@@ -3,15 +3,13 @@ import styled, { ThemeContext } from 'styled-components';
 import Link from 'next/link';
 
 import SignUpNavbar from '../Organisms/SignUpNavbar';
-import Footer from '../templates/Footer';
-
+import Footer from './Footer';
 
 interface Props {
   imgUrl?: string;
 }
 
 const MainWrapper = styled.div`
-
   .signup-nav {
     height: 7.7244rem;
   }
@@ -42,15 +40,15 @@ const Wrapper = styled.section<Props>`
   }
   
   .congrats {
-    color: ${({theme}) => theme.colors.gray1};
+    color: ${({ theme }) => theme.colors.gray1};
     font-size: 1.75rem;
   }
   .registered {
-    color: ${({theme}) => theme.colors.gray5};
+    color: ${({ theme }) => theme.colors.gray5};
     font-size: 0.8rem;
   }
   .cta {
-    color: ${({theme}) => theme.colors.gray11};
+    color: ${({ theme }) => theme.colors.gray11};
     font-size: 0.8rem;
   }
 `;
@@ -58,7 +56,6 @@ const Wrapper = styled.section<Props>`
 // url('/img/square-glass-top-coffee-table-and-two-white-leather-2-seat.png');
 
 const VerifySuccess: React.FC<Props> = ({ imgUrl = '' }) => {
-
   const theme = useContext(ThemeContext);
 
   return (
@@ -67,11 +64,13 @@ const VerifySuccess: React.FC<Props> = ({ imgUrl = '' }) => {
       <div className="signup-nav">
         <SignUpNavbar type="register" />
       </div>
-      <Wrapper className="relative" imgUrl={'/img/square-glass-top-coffee-table-and-two-white-leather-2-seat.png'}>
-
+      <Wrapper
+        className="relative"
+        imgUrl="/img/square-glass-top-coffee-table-and-two-white-leather-2-seat.png"
+      >
         <div className="w-full signup bg-white rounded pb-16">
           <h1 className="text-2xl font-semibold text-center my-6">Registration Successful</h1>
-          <hr/>
+          <hr />
           <section className="text-center">
             <div className="flex justify-center items-center py-6">
               <img src="/img/success.svg" className="h-16 w-16" alt="success" />
@@ -89,7 +88,9 @@ const VerifySuccess: React.FC<Props> = ({ imgUrl = '' }) => {
               <hr className="w-1/2" />
             </div>
             <div className="mt-4 h-10 flex items-center border border-gray-500 form-wrap">
-              <button className="cta h-full w-full outline-none">FIND IDEAS FOR YOUR NEXT HOUSE</button>
+              <button className="cta h-full w-full outline-none">
+                FIND IDEAS FOR YOUR NEXT HOUSE
+              </button>
             </div>
             <div className="mt-4 h-10 flex items-center border border-gray-500 form-wrap">
               <button className="cta h-full w-full outline-none">HIRE PROFESSIONALS</button>
@@ -98,12 +99,11 @@ const VerifySuccess: React.FC<Props> = ({ imgUrl = '' }) => {
               <button className="cta h-full w-full outline-none">SHOP PRODUCTS</button>
             </div>
           </div>
-          
         </div>
       </Wrapper>
       <Footer />
     </MainWrapper>
-  )
-}
+  );
+};
 
-export default VerifySuccess
+export default VerifySuccess;

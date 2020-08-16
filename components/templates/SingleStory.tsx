@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 
-import ProfileNavbar from '../Organisms/ProfileNavbar'
-import Offering from '../Organisms/Offering'
+import ProfileNavbar from '../Organisms/ProfileNavbar';
+import Offering from '../Organisms/Offering';
 import UserCard from '../molecules/UserCard';
 import MostTalkedCard from '../Organisms/MostTalkedCard';
 import StoryImage from '../atoms/StoryImage';
@@ -16,13 +16,12 @@ const StoryBanner = styled.div`
   background-size: cover;
   position: relative;
 
-  .carousel-indicators{
+  .carousel-indicators {
     position: absolute;
-    top: 80%; 
+    top: 80%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
   }
-  
 `;
 
 const Main = styled.section`
@@ -38,7 +37,8 @@ const Main = styled.section`
     font-weight: 600;
     padding-bottom: 1.05rem;
   }
-  .inline-desc, .signup-comment {
+  .inline-desc,
+  .signup-comment {
     font-size: 0.8rem;
     color: ${({ theme }) => theme.colors.gray5};
   }
@@ -46,14 +46,14 @@ const Main = styled.section`
     font-size: 1.4rem;
     font-weight: 600;
   }
-  textarea::placeholder, .number-comments {
+  textarea::placeholder,
+  .number-comments {
     color: ${({ theme }) => theme.colors.gray11};
     font-size: 0.8rem;
   }
 `;
 
 const MainWrap = styled.div`
-
   .breadcrumb {
     color: ${({ theme }) => theme.colors.gray5};
     font-size: 0.7rem;
@@ -68,7 +68,6 @@ const MainWrap = styled.div`
 `;
 
 const SingleStory = () => {
-
   const theme = useContext(ThemeContext);
 
   return (
@@ -93,54 +92,84 @@ const SingleStory = () => {
       <StoryBanner>
         <div className="flex items-center pt-4 carousel-indicators">
           <div className="h-16 w-16 mr-6">
-            <img src="/img/down-arrow_ss-right.svg" className="inline-block bg-white py-1 px-6 h-full w-full" alt="Left arrow" />
+            <img
+              src="/img/down-arrow_ss-right.svg"
+              className="inline-block bg-white py-1 px-6 h-full w-full"
+              alt="Left arrow"
+            />
           </div>
           <div className="h-16 w-16">
-            <img src="/img/down-arrow__s-s-left.svg" className="inline-block bg-white py-1 px-6 h-full w-full" alt="Left arrow" />
+            <img
+              src="/img/down-arrow__s-s-left.svg"
+              className="inline-block bg-white py-1 px-6 h-full w-full"
+              alt="Left arrow"
+            />
           </div>
         </div>
       </StoryBanner>
       <Main className="container mx-auto mb-16">
-        <h1 className="capitalize main-title text-4xl font-semibold py-12">Lorem ipsum dolor sit amet, consetetur sadipscing elitr sed diam nonumy</h1>
+        <h1 className="capitalize main-title text-4xl font-semibold py-12">
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr sed diam nonumy
+        </h1>
         <div className="pb-12">
           <UserCard />
         </div>
         <article>
-          <h1 className="capitalize inline-title">
-            Find a Style That You Love
-          </h1>
+          <h1 className="capitalize inline-title">Find a Style That You Love</h1>
           <p className="inline-desc">
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+            invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+            accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+            sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
+            sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
+            aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
+            rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
+            amet.
           </p>
         </article>
         <article className="pt-8">
-          <h1 className="capitalize inline-title">
-            Hang a gallery wall
-          </h1>
+          <h1 className="capitalize inline-title">Hang a gallery wall</h1>
           <p className="inline-desc">
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+            invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+            accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+            sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
+            sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
+            aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
+            rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
+            amet.
           </p>
           <div className="pt-16">
             <StoryImage imgUrl="/img/Image__Sss__9.png" />
           </div>
         </article>
         <article className="pt-16">
-          <h1 className="capitalize inline-title">
-            Create your own art
-          </h1>
+          <h1 className="capitalize inline-title">Create your own art</h1>
           <p className="inline-desc">
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+            invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+            accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+            sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
+            sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
+            aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
+            rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
+            amet.
           </p>
           <div className="pt-16">
             <StoryImage imgUrl="/img/AH_ss.png" />
           </div>
         </article>
         <article className="pt-16">
-          <h1 className="capitalize inline-title">
-            Give your furniture new life
-          </h1>
+          <h1 className="capitalize inline-title">Give your furniture new life</h1>
           <p className="inline-desc">
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+            invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+            accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+            sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
+            sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
+            aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
+            rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
+            amet.
           </p>
         </article>
         <section className="flex items-center mt-16">
@@ -152,7 +181,12 @@ const SingleStory = () => {
             <h1 className="conversation uppercase pr-1">CONVERSATION</h1>
             <span className="number-comments">(0) Comments</span>
           </div>
-          <textarea className="border border-gray-200 mt-5 outline-none w-full h-20 pt-4 pl-6 rounded-md" name="discussion" id="discussion" placeholder="Join the discussion…"></textarea>
+          <textarea
+            className="border border-gray-200 mt-5 outline-none w-full h-20 pt-4 pl-6 rounded-md"
+            name="discussion"
+            id="discussion"
+            placeholder="Join the discussion…"
+          />
         </section>
       </Main>
       <hr />
@@ -167,7 +201,7 @@ const SingleStory = () => {
       </section>
       <Footer />
     </MainWrap>
-  )
-}
+  );
+};
 
-export default SingleStory
+export default SingleStory;

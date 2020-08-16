@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import Router from 'next/router';
 
-
 import ProfileNavbar from '../Organisms/ProfileNavbar';
 import Footer from './Footer';
 import Direction from '../atoms/Direction';
@@ -13,14 +12,13 @@ const Main = styled.section`
     height: 1.356rem;
     width: 1.356rem;
     background-color: ${({ theme }) => theme.colors.orange1};
-    color: #FFFFFF;
+    color: #ffffff;
     border-radius: 50%;
     border: 1px solid ${({ theme }) => theme.colors.orange1};
     text-align: center;
   }
   .progression.active + span {
     color: ${({ theme }) => theme.colors.orange1};
-    
   }
   .progression {
     display: inline-block;
@@ -51,14 +49,13 @@ const Main = styled.section`
     color: ${({ theme }) => theme.colors.gray11};
     font-size: 0.8rem;
   }
-  
+
   input::placeholder {
     font-size: 12px;
     color: ${({ theme }) => theme.colors.gray5};
     font-weight: 600;
-
   }
-  
+
   .input-wrapper {
     border-bottom: 1px solid ${({ theme }) => theme.colors.gray17};
   }
@@ -72,7 +69,6 @@ const Main = styled.section`
     padding-top: 1rem;
     font-size: 12px;
   }
-  
 `;
 
 const Continue = styled.button`
@@ -84,14 +80,12 @@ const Continue = styled.button`
 
 const Desc = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.gray17};
-
 `;
 
 const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
-  Router.push('/single-vendor')
-}
-
+  Router.push('/single-vendor');
+};
 
 const CompanyProfile = () => {
   const theme = useContext(ThemeContext);
@@ -124,87 +118,152 @@ const CompanyProfile = () => {
         <hr />
         <div className="mt-20 px-64">
           <h1 className="heading font-semibold pb-4">Business Information</h1>
-          <p className="general pb-6">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy <br />
-          eirmod tempor invidunt ut labore et dolore.</p>
+          <p className="general pb-6">
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy <br />
+            eirmod tempor invidunt ut labore et dolore.
+          </p>
           <hr />
           <form className="w-full mt-12" onSubmit={handleSubmit}>
+            <div className="w-full mb-6 md:mb-0 mt-8">
+              <div>
+                <div className="input-wrapper">
+                  <input
+                    className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none"
+                    type="text"
+                    required
+                    placeholder="Company Name"
+                    aria-label="Company Name"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="w-full mb-6 md:mb-0 mt-8">
+              <div>
+                <div className="input-wrapper">
+                  <input
+                    className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none"
+                    type="text"
+                    required
+                    placeholder="Company Address"
+                    aria-label="Company Address"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="flex mt-8">
+              <div className="w-1/3 mb-6 md:mb-0">
+                <div className="input-wrapper">
+                  <input
+                    className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none"
+                    type="text"
+                    required
+                    placeholder="City"
+                    aria-label="email"
+                  />
+                </div>
+              </div>
+              <div className="w-1/3 mb-6 md:mb-0">
+                <div className="input-wrapper">
+                  <input
+                    className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none"
+                    type="text"
+                    required
+                    placeholder="State"
+                    aria-label="Phone number"
+                  />
+                </div>
+              </div>
+              <div className="w-1/3 mb-6 md:mb-0">
+                <div className="input-wrapper">
+                  <input
+                    className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none"
+                    type="text"
+                    required
+                    placeholder="LGA"
+                    aria-label="Phone number"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="flex mt-8">
+              <div className="w-1/2 mb-6 md:mb-0">
+                <div className="input-wrapper">
+                  <input
+                    className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none"
+                    type="text"
+                    required
+                    placeholder="Business Number"
+                    aria-label="Business Number"
+                  />
+                </div>
+              </div>
+              <div className="w-1/2 mb-6 md:mb-0">
+                <div className="input-wrapper">
+                  <input
+                    className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none"
+                    type="text"
+                    required
+                    placeholder="Business Email"
+                    aria-label="Business Email"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="flex mt-8">
+              <div className="w-1/2 mb-6 md:mb-0">
+                <div className="input-wrapper">
+                  <input
+                    className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none"
+                    type="text"
+                    required
+                    placeholder="Business Type"
+                    aria-label="Business Type"
+                  />
+                </div>
+              </div>
+              <div className="w-1/2 mb-6 md:mb-0">
+                <div className="input-wrapper">
+                  <input
+                    className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none"
+                    type="text"
+                    required
+                    placeholder="Business Category"
+                    aria-label="Business Category"
+                  />
+                </div>
+              </div>
+            </div>
 
             <div className="w-full mb-6 md:mb-0 mt-8">
               <div>
-                <div className="input-wrapper">
-                  <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none" type="text" required placeholder="Company Name" aria-label="Company Name" />
-                </div>
-              </div>
-            </div>
-            <div className="w-full mb-6 md:mb-0 mt-8">
-              <div>
-                <div className="input-wrapper">
-                  <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none" type="text" required placeholder="Company Address" aria-label="Company Address" />
-                </div>
-              </div>
-            </div>
-            <div className="flex mt-8">
-              <div className="w-1/3 mb-6 md:mb-0">
-                <div className="input-wrapper">
-                  <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none" type="text" required placeholder="City" aria-label="email" />
-                </div>
-              </div>
-              <div className="w-1/3 mb-6 md:mb-0">
-                <div className="input-wrapper">
-                  <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none" type="text" required placeholder="State" aria-label="Phone number" />
-                </div>
-              </div>
-              <div className="w-1/3 mb-6 md:mb-0">
-                <div className="input-wrapper">
-                  <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none" type="text" required placeholder="LGA" aria-label="Phone number" />
-                </div>
-              </div>
-            </div>
-            <div className="flex mt-8">
-              <div className="w-1/2 mb-6 md:mb-0">
-                <div className="input-wrapper">
-                  <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none" type="text" required placeholder="Business Number" aria-label="Business Number" />
-                </div>
-              </div>
-              <div className="w-1/2 mb-6 md:mb-0">
-                <div className="input-wrapper">
-                  <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none" type="text" required placeholder="Business Email" aria-label="Business Email" />
-                </div>
-              </div>
-            </div>
-            <div className="flex mt-8">
-              <div className="w-1/2 mb-6 md:mb-0">
-                <div className="input-wrapper">
-                  <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none" type="text" required placeholder="Business Type" aria-label="Business Type" />
-                </div>
-              </div>
-              <div className="w-1/2 mb-6 md:mb-0">
-                <div className="input-wrapper">
-                  <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 pb-2 leading-tight focus:outline-none" type="text" required placeholder="Business Category" aria-label="Business Category" />
-                </div>
-              </div>
-            </div>
-
-            <div className="w-full mb-6 md:mb-0 mt-8">
-              <div>
-                <label className="block without-placeholder text-gray-700 text-xs  mb-2" htmlFor="grid-first-name">
+                <label
+                  className="block without-placeholder text-gray-700 text-xs  mb-2"
+                  htmlFor="grid-first-name"
+                >
                   Description <span className="text-red-600">&#42;</span>
                 </label>
                 <Desc className="rounded-md overflow-hidden h-32">
-                  <textarea name="description" id="description" className="w-full text-gray-700 mr-3 pb-2 px-2 leading-tight focus:outline-none" placeholder="Share a bit about your work experience, cool projects you’ve completed and your area of expertise."></textarea>
+                  <textarea
+                    name="description"
+                    id="description"
+                    className="w-full text-gray-700 mr-3 pb-2 px-2 leading-tight focus:outline-none"
+                    placeholder="Share a bit about your work experience, cool projects you’ve completed and your area of expertise."
+                  />
                 </Desc>
               </div>
             </div>
 
             <div className="w-full flex justify-end text-center mt-16">
-              <Continue type="submit" className="mx-3 text-center font-semibold text-white">Continue</Continue>
+              <Continue type="submit" className="mx-3 text-center font-semibold text-white">
+                Continue
+              </Continue>
             </div>
           </form>
         </div>
       </Main>
       <Footer />
     </>
-  )
-}
+  );
+};
 
-export default CompanyProfile
+export default CompanyProfile;
