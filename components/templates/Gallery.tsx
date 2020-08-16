@@ -108,6 +108,9 @@ const Gallery = () => {
           <div className="">
             <GalleryItem imgUrl="/img/gallery/bathroom-cabinet-candles-faucet-342800.png" height="20.95rem" />
           </div>
+          <div className="">
+            <GalleryItem imgUrl="/img/gallery/two-white-rod-pocket-curtains-910458.png" height="20.95rem" />
+          </div>
           {/* <GalleryItem imgUrl="/img/gallery/sidekix-media-I_QC1JICzA0-unsplash.png" height="29.65rem" />
           <GalleryItem imgUrl="/img/gallery/francesca-tosolini-tHkJAMcO3QE-unsplash.png" height="20.95rem" />
           <GalleryItem imgUrl="/img/gallery/AH-31.png" height="29.65rem" />
@@ -128,66 +131,6 @@ const Gallery = () => {
           <GalleryItem imgUrl="/img/gallery/B-6-1.png" height="29.65rem" />
           <GalleryItem imgUrl="/img/gallery/bathroom-cabinet-candles-faucet-342800.png" height="29.65rem" /> */}
         </Masonry>
-        <h1>Grid</h1>
-        <section className="grid grid-cols-4 mt-20">
-        <div className="">
-            <GalleryItem imgUrl="/img/gallery/sidekix-media-I_QC1JICzA0-unsplash.png" height="29.65rem" />
-          </div>
-          <div className="">
-            <GalleryItem imgUrl="/img/gallery/francesca-tosolini-tHkJAMcO3QE-unsplash.png" height="20.95rem" />
-          </div>
-          <div className="">
-            <GalleryItem imgUrl="/img/gallery/AH-31.png" height="29.65rem" />
-          </div>
-          <div className="">
-            <GalleryItem imgUrl="/img/gallery/AH-42.png" height="20.95rem" />
-          </div>
-          <div className="">
-            <GalleryItem imgUrl="/img/gallery/Adora_NH.png" height="20.95rem" />
-          </div>
-          <div className="">
-            <GalleryItem imgUrl="/img/gallery/AH-30.png" height="20.95rem" />
-          </div>
-          <div className="">
-            <GalleryItem imgUrl="/img/gallery/B-25-1.png" height="20.95rem" />
-          </div>
-          <div className="">
-            <GalleryItem imgUrl="/img/gallery/Adora_NH-42.png" height="29.65rem" />
-          </div>
-          <div className="">
-            <GalleryItem imgUrl="/img/gallery/B-8.png" height="29.65rem" />
-          </div>
-          <div className="">
-            <GalleryItem imgUrl="/img/gallery/francesca-tosolini-w1RE0lBbREo-unsplash.png" height="20.95rem" />
-          </div>
-          <div className="row-span-2">
-            <GalleryItem imgUrl="/img/gallery/AH-18-3.png" height="24.1rem" />
-          </div>
-          <div className="">
-            <GalleryItem imgUrl="/img/gallery/two-white-rod-pocket-curtains-910458.png" height="20.95rem" />
-          </div>
-          <div className="">
-            <GalleryItem imgUrl="/img/gallery/2-seat-orange-leather-sofa-beside-wall-1866149.png" height="29.65rem" />
-          </div>
-          <div className="">
-            <GalleryItem imgUrl="/img/gallery/interior-design-of-a-house-1571460.png" height="20.95rem" />
-          </div>
-          <div className="">
-            <GalleryItem imgUrl="/img/gallery/B-18-1.png" height="20.95rem" />
-          </div>
-          <div className="">
-            <GalleryItem imgUrl="/img/gallery/AH-18-2.png" height="20.95rem" />
-          </div>
-          <div className="">
-            <GalleryItem imgUrl="/img/gallery/two-assorted-color-padded-chairs-near-side-table-1350789-1.png"  height="29.65rem" />
-          </div>
-          <div className="">
-            <GalleryItem imgUrl="/img/gallery/B-6-1.png"  height="29.65rem" />
-          </div>
-          <div className="">
-            <GalleryItem imgUrl="/img/gallery/bathroom-cabinet-candles-faucet-342800.png" height="20.95rem" />
-          </div>
-        </section>
       </div>
       <Footer />
     </Wrapper>
