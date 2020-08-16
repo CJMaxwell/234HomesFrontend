@@ -1,6 +1,7 @@
-import { NextPage } from 'next';
+import { NextPage } from "next";
 
-import Signup from '../components/templates/Signup';
+import Signup from "../components/templates/Signup";
+import withApollo from "../lib/withApollo";
 
 const SignupPage: NextPage = () => {
   //const theme = useContext(ThemeContext);
@@ -11,4 +12,5 @@ const SignupPage: NextPage = () => {
   );
 };
 
-export default SignupPage;
+// export default SignupPage;
+export default withApollo()(SignupPage);
