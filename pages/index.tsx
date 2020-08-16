@@ -1,6 +1,7 @@
-import { NextPage } from 'next';
+import { NextPage } from "next";
+import withApollo from "../lib/withApollo";
 
-import Home from '../components/templates/Home';
+import Home from "../components/templates/Home";
 
 const IndexPage: NextPage = () => {
   //const theme = useContext(ThemeContext);
@@ -11,4 +12,4 @@ const IndexPage: NextPage = () => {
   );
 };
 
-export default IndexPage;
+export default withApollo({ ssr: true })(IndexPage);
