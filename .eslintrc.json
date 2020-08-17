@@ -32,6 +32,13 @@
         "extensions": ["tsx"]
       }
     ],
+    "jsx-a11y/img-redundant-alt": [
+      2,
+      {
+        "components": ["Image"],
+        "words": ["Bild", "Foto"]
+      }
+    ],
     "import/no-extraneous-dependencies": 0,
     "import/no-unresolved": 0,
     "import/extensions": 0,
