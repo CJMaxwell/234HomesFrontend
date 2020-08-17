@@ -34,7 +34,7 @@ const DIYPostCard: React.FC<Props> = ({ imgUrl = '' }) => {
   return (
     <div className="text-center">
       <Wrapper imgUrl={imgUrl} className="rounded overflow-hidden shadow-lg relative text-white">
-        <button className="absolute play">
+        <button type="button" className="absolute play">
           <img className="h-12 w-12" src="/img/diy-play.svg" alt="Play" />
         </button>
       </Wrapper>

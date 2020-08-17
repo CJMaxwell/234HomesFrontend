@@ -77,7 +77,6 @@ const HouseTourImg = styled.div<Props>`
 
 const StoryCard: React.FC<Props> = ({
   imgUrl = '',
-  height = '',
   user = '',
   title = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr sed diam',
   category = '',
