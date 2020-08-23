@@ -3,9 +3,10 @@ import styled from 'styled-components';
 
 import Offering from '../Organisms/Offering';
 import Navbar from '../Organisms/Navbar';
-import ProfileSidebar from '../Organisms/ProfileSidebar';
-import Footer from './Footer';
 import DashboardProjectCard from '../Organisms/DashboardProjectCard';
+import ProfileSidebar from '../Organisms/ProfileSidebar';
+import AddNewProject from '../atoms/AddNewProject';
+import Footer from './Footer';
 
 const Wrapper = styled.section`
   .breadcrumb li:not(:last-child) {
@@ -31,6 +32,9 @@ const Wrapper = styled.section`
     color: ${({ theme }) => theme.colors.gray2};
     font-size: 0.8rem;
     font-weight: 600;
+  }
+  .section-wrap {
+    margin-bottom: 6.6rem;
   }
 `;
 
@@ -63,10 +67,12 @@ const DashboardProject = () => {
               <DashboardProjectCard imgUrl="/img/projects/AH.png" title="Lorem ipsum dolor" tag=" Living Room" location=" | Lagos" />
               <DashboardProjectCard imgUrl="/img/projects/person-holding-black-pen.png" title="Lorem ipsum dolor" tag=" Living Room" location=" | Kaduna" />
               <DashboardProjectCard imgUrl="/img/projects/chairs-coffee-table-comfortable-couch.png" title="Lorem ipsum dolor" tag=" Living Room" location=" | Lagos" />
+              <AddNewProject />
             </section>
           </section>
         </section>
       </div>
+      <Footer />
     </Wrapper>
   )
 }
