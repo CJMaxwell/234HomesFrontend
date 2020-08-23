@@ -40,7 +40,8 @@ declare module 'styled-components' {
       | 'pink2'
       | 'blue3'
       | 'blue4'
-      | 'orange4',
+      | 'orange4'
+      | 'gray22',
       string
     >;
   }

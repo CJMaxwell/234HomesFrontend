@@ -5,6 +5,7 @@ import Offering from '../Organisms/Offering';
 import Navbar from '../Organisms/Navbar';
 import DashboardSideBar from '../Organisms/DashboardSideBar';
 import Footer from './Footer';
+import CTA from '../atoms/CTA';
 
 const Wrapper = styled.section`
   .breadcrumb li:not(:last-child) {
@@ -40,11 +41,11 @@ const Wrapper = styled.section`
   }
   .update-profile {
     margin-top: 3.85rem;
-    border: 1px solid ${({ theme }) => theme.colors.orange1};
+    /* border: 1px solid ${({ theme }) => theme.colors.orange1};
     border-radius: 32px;
     color: ${({ theme }) => theme.colors.orange1};
     font-size: 0.8rem;
-    padding: 0.85rem 3rem;
+    padding: 0.85rem 3rem; */
   }
 `;
 
@@ -74,7 +75,8 @@ const Dashboard = () => {
             <p className="main-dashboard-desc flex justify-center">
               Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren.
             </p>
-            <button type="button" className="update-profile">Update Your Profile</button>
+            {/* <button type="button" className="update-profile">Update Your Profile</button> */}
+            <CTA type="button" className="update-profile" padding="0.85rem 3rem;">Update Your Profile</CTA>
           </section>
         </section>
       </div>
