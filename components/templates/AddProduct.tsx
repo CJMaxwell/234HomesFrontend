@@ -100,7 +100,7 @@ const Wrapper = styled.section`
 
 
 
-const AddProject = () => {
+const AddProduct = () => {
   return (
     <Wrapper>
       <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />
@@ -120,24 +120,18 @@ const AddProject = () => {
             <ProfileSidebar />
           </section>
           <section className="main w-3/4">
-            <h1 className="py-10 profile-title">Add New project</h1>
+            <h1 className="py-10 profile-title">Add new Product</h1>
             <section className="upload-section">
-              <section className="flex justify-between items-center">
-                <section>
-                  <h1 className="resolution">High Resolution <br /> Image</h1>
-                  <p className="img-type pt-4">PNG &amp; JPEGS <br />1200 px X 680 px</p>
-                </section>
-                <section>
-                  <h1 className="resolution">High Resolution <br />Video</h1>
-                  <p className="img-type pt-4">MP4, &lt; 4 Mins</p>
-                </section>
+              <section className="text-center">
+                <h1 className="resolution">High Resolution Image</h1>
+                <p className="img-type">PNG &amp; JPEGS 1200 px X 680 px</p>
               </section>
               <section className="flex justify-center items-center pt-20">
                 <img src="/img/cloud-computing.svg" className="text-center" alt="Upload" />
               </section>
-              <section className="w-full text-center">
+              <section className="w-full text-center pt-4">
                 <h1 className="drag-and-drop">Drag and drop an images</h1>
-                <p>Or <a className="browse pt-4">browse</a> to choose a file</p>
+                <p>Or <a className="browse">browse</a> to choose a file</p>
               </section>
             </section>
             <section className="flex items-center justify-between pt-8">
@@ -214,4 +208,4 @@ const AddProject = () => {
   )
 }
 
-export default AddProject
+export default AddProduct
