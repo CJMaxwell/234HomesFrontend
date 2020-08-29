@@ -14,16 +14,16 @@ const Wrapper = styled.section`
   cursor: pointer;
   .title {
     color: ${({ theme }) => theme.colors.gray1};
-    font-size: 1.2rem;
+    font-size: 0.8rem;
   }
   .description {
     color: ${({ theme }) => theme.colors.gray11};
-    font-size: 0.8rem;
+    font-size: 0.7rem;
   }
   .view-num,
   .vendor-loc {
-    font-size: 0.8rem;
-    color: ${({ theme }) => theme.colors.gray20};
+    font-size: 0.7rem;
+    color: ${({ theme }) => theme.colors.gray11};
   }
   .loc-pin {
     height: 0.9rem;
@@ -35,7 +35,7 @@ const Wrapper = styled.section`
   }
   .price {
     color: ${({ theme }) => theme.colors.orange1};
-    font-size: 1.2rem;
+    font-size: 0.8rem;
   }
   .logo {
     display: inline-block;
@@ -53,8 +53,8 @@ const ProductImg = styled.div<Props>`
   background-repeat: no-repeat;
   background-size:cover;
   background-position: center;
-  height: 13.05rem;
-  width: 13.55rem;
+  height: 10.25rem;
+  width: 9.65rem;
   overflow: hidden;
 
   .ad {
@@ -95,7 +95,7 @@ const ProductListCard: React.FC<Props> = ({
               accusantium doloremque totam rem aperiam….
             </p>
           </div>
-          <div className="pt-16 flex items-center">
+          <div className="pt-8 flex items-center">
             <div className="flex items-center pr-8">
               <img src="/img/pro-loc-sign.svg" className="loc-pin" alt="Location pin" />
               <p className="pl-2 vendor-loc">Shomolu, Home Accessories</p>
@@ -108,7 +108,9 @@ const ProductListCard: React.FC<Props> = ({
         </div>
         <div>
           <p className="price font-semibold">&#8358;146,000</p>
-          <img src={logo} className="logo mt-12" alt="Vendor Logo" />
+          {
+            logo ? <img src={logo} className="logo mt-12" alt="Vendor Logo" /> : ''
+          }
         </div>
       </Wrapper>
     </Link>

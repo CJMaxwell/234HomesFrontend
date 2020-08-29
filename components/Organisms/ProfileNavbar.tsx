@@ -69,11 +69,11 @@ const ProfileNavbar = () => {
             <a className="block lg:inline-block lg:mt-0 text-black mr-6">About</a>
           </Link>
         </li>
-        <li>
+        {/* <li>
           <Link href="/">
             <a className="block lg:inline-block lg:mt-0 text-black mr-6">Log out</a>
           </Link>
-        </li>
+        </li> */}
         <li>
           <Link href="/signup">
             <a className="">
