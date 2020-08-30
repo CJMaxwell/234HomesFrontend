@@ -9,8 +9,7 @@ interface Props {
 const Wrapper = styled.div<Props>`
   border-radius: 20px;
   overflow: hidden;
-  background-image: url('${({ imgUrl }) =>
-    imgUrl}'), linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5));
+  background-image: url('${({ imgUrl }) => imgUrl}'), linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5));
   background-blend-mode: overlay;
   background-repeat: no-repeat;
   background-size:cover;
