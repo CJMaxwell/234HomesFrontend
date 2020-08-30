@@ -7,14 +7,14 @@ import ProfileSidebar from '../Organisms/ProfileSidebar';
 import CTA from '../atoms/CTA';
 import Skill from '../atoms/Skill';
 import Footer from './Footer';
+import useProfile from '../../hooks/useProfile';
+import { Formik } from 'formik';
 
 const Wrapper = styled.section`
-
-
   .breadcrumb li:not(:last-child) {
     padding-right: 0.8rem;
   }
-    .breadcrumb {
+  .breadcrumb {
     margin-top: 3.175rem;
     margin-bottom: 2.35rem;
     color: ${({ theme }) => theme.colors.gray5};
@@ -32,7 +32,6 @@ const Wrapper = styled.section`
     margin-right: 10px;
     padding-left: 5px;
     padding-right: 5px;
-
   }
   fieldset {
     border: 1px solid ${({ theme }) => theme.colors.gray17};
@@ -46,13 +45,14 @@ const Wrapper = styled.section`
   .profile-title {
     text-transform: uppercase;
   }
-  .profile-title,.profile-desc {
+  .profile-title,
+  .profile-desc {
     color: ${({ theme }) => theme.colors.gray2};
     font-size: 0.8rem;
     font-weight: 600;
   }
   .profile-label {
-    color:${({ theme }) => theme.colors.gray11};
+    color: ${({ theme }) => theme.colors.gray11};
     font-size: 0.8rem;
   }
   .add-new {
@@ -64,9 +64,11 @@ const Wrapper = styled.section`
     margin-top: 2.75rem;
     margin-bottom: 5.25rem;
   }
-  `;
+`;
 
 const DashboardProfile = () => {
+  const { profile } = useProfile();
+
   return (
     <Wrapper>
       <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />
@@ -85,152 +87,209 @@ const DashboardProfile = () => {
           <section className="w-1/4">
             <ProfileSidebar />
           </section>
-          <section className="main w-3/4">
-            <h1 className="py-10 profile-title">Personal Info</h1>
-            <section className="flex items-center justify-between">
-              <fieldset className="w-1/2 mr-6">
-                <legend className="profile-label">First Name</legend>
-                <p className="fieldset-input profile-desc">Ikechukwu</p>
-              </fieldset>
-              <fieldset className="w-1/2">
-                <legend className="profile-label">Last Name</legend>
-                <p className="fieldset-input profile-desc">Agwu</p>
-              </fieldset>
-            </section>
-            <section className="flex items-center justify-between pt-6">
-              <fieldset className="w-1/2 mr-6">
-                <legend className="profile-label">Email</legend>
-                <p className="fieldset-input profile-desc">johndoe@gmail.com</p>
-              </fieldset>
-              <fieldset className="w-1/2">
-                <legend className="profile-label">Phone Number</legend>
-                <p className="fieldset-input profile-desc">2348123785612</p>
-              </fieldset>
-            </section>
-            <section className="flex items-center justify-between pt-8">
-              <fieldset className="w-full">
-                <legend className="profile-label">Address</legend>
-                <p className="fieldset-input profile-desc">4th Floor, 40 Strand Semyonovskaya Street</p>
-              </fieldset>
-            </section>
-            <section className="flex items-center justify-between pt-8">
-              <fieldset className="w-1/2 mr-6">
-                <legend className="profile-label">City</legend>
-                <select className="fieldset-input profile-desc">
-                  <option value="Lekki">Lekki</option>
-                </select>
-              </fieldset>
-              <fieldset className="w-1/2">
-                <legend className="profile-label">State</legend>
-                <select className="fieldset-input profile-desc">
-                  <option value="Lagos">Lagos</option>
-                </select>
-              </fieldset>
-            </section>
-            <section className="flex items-center justify-between pt-8">
-              <fieldset className="w-full">
-                <legend className="profile-label">Profile</legend>
-                <p className="fieldset-input profile-desc">
-                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy.
-                  </p>
-              </fieldset>
-            </section>
-            <h1 className="prof-info mt-16 mb-8 profile-title">Professional Info</h1>
-            <section className="flex items-center justify-between">
-              <fieldset className="w-1/2 mr-6">
-                <legend className="profile-label">Occupation</legend>
-                <select className="fieldset-input profile-desc">
-                  <option value="Interior Designer">Interior Designer</option>
-                </select>
-              </fieldset>
-              <fieldset className="w-1/2">
-                <legend className="profile-label">Experience</legend>
-                <select className="fieldset-input profile-desc">
-                  <option value="8 years +">8 years +</option>
-                </select>
-              </fieldset>
-            </section>
-            <section>
-              <section className="flex justify-between items-center mt-8 mb-4">
-                <h1 className="profile-label">Key skills</h1>
-                <button className="add-new" type="button">Add new</button>
-              </section>
-              <Skill>Interior Design</Skill>
-              <Skill>Decoration</Skill>
-              <Skill>Painting</Skill>
-              <Skill>Lighting</Skill>
-              <Skill>Living Room</Skill>
-              <Skill>Bathroom</Skill>
-            </section>
-            <section className="educ-info flex justify-between items-center mt-8 mb-4">
-              <h1 className="profile-label">Education</h1>
-              <button className="add-new" type="button">Add new</button>
-            </section>
-            <section className="flex items-center justify-between">
-              <fieldset className="w-1/2 mr-6">
-                <legend className="profile-label">Country Of College/University</legend>
-                <select className="fieldset-input profile-desc">
-                  <option value="">Russian Federation</option>
-                </select>
-              </fieldset>
-              <fieldset className="w-1/2">
-                <legend className="profile-label">College/University</legend>
-                <select className="fieldset-input profile-desc">
-                  <option value="">Synergy University, Moscow</option>
-                </select>
-              </fieldset>
-            </section>
-            <section className="flex items-center justify-between pt-8">
-              <fieldset className="w-1/3 mr-6">
-                <legend className="profile-label">Title</legend>
-                <select className="fieldset-input profile-desc">
-                  <option value="">Bachelor of Arts</option>
-                </select>
-              </fieldset>
-              <fieldset className="w-1/3 mr-6">
-                <legend className="profile-label">Major</legend>
-                <select className="fieldset-input profile-desc">
-                  <option value="">Architecture</option>
-                </select>
-              </fieldset>
-              <fieldset className="w-1/3">
-                <legend className="profile-label">Year</legend>
-                <select className="fieldset-input profile-desc">
-                  <option value="">2016</option>
-                </select>
-              </fieldset>
-            </section>
-            <section className=" flex justify-between items-center mt-8 mb-4">
-              <h1 className="profile-label">Certifications</h1>
-              <button className="add-new" type="button">Add new</button>
-            </section>
-            <section className="flex items-center justify-between">
-              <fieldset className="w-1/3 mr-6">
-                <legend className="profile-label">Certificate Awarded</legend>
-                <p className="fieldset-input profile-desc">Social Media Management</p>
-              </fieldset>
-              <fieldset className="w-1/3 mr-6">
-                <legend className="profile-label">Certified From</legend>
-                <p className="fieldset-input profile-desc">Social Media Management</p>
-              </fieldset>
-              <fieldset className="w-1/3">
-                <legend className="profile-label">Year</legend>
-                <select className="fieldset-input profile-desc">
-                  <option value="">2016</option>
-                </select>
-              </fieldset>
-            </section>
-            <section className="flex justify-end items-center cta">
-              {/* <button type="button" className="uppercase">Update profile</button> */}
-              <CTA padding="0.8rem 1.25rem">Update Profile</CTA>
-            </section>
-          </section>
+          <Formik
+            onSubmit={() => {
+              //
+            }}
+            enableReinitialize
+            initialValues={{
+              firstName: profile?.firstName,
+              lastName: profile?.lastName,
+              email: profile?.email,
+              phoneNumber: profile?.phoneNumber,
+              address: profile?.address,
+              city: profile?.city,
+              state: profile?.state,
+              bio: profile?.bio,
+              occupation: profile?.occupation,
+              experienceLevel: profile?.experienceLevel,
+            }}
+          >
+            {({ values, handleChange, handleBlur, handleSubmit }) => (
+              <form className="main w-3/4" onSubmit={handleSubmit}>
+                <h1 className="py-10 profile-title">Personal Info</h1>
+                <section className="flex items-center justify-between">
+                  <fieldset className="w-1/2 mr-6">
+                    <legend className="profile-label">First Name</legend>
+                    <input
+                      className="fieldset-input profile-desc w-full outline-none"
+                      name="firstName"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={values.firstName}
+                    />
+                  </fieldset>
+                  <fieldset className="w-1/2">
+                    <legend className="profile-label">Last Name</legend>
+                    <input
+                      className="fieldset-input profile-desc w-full outline-none"
+                      name="lastName"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={values.lastName}
+                    />
+                  </fieldset>
+                </section>
+                <section className="flex items-center justify-between pt-6">
+                  <fieldset className="w-1/2 mr-6">
+                    <legend className="profile-label">Email</legend>
+                    <input
+                      className="fieldset-input profile-desc w-full outline-none"
+                      name="email"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={values.email}
+                    />
+                  </fieldset>
+                  <fieldset className="w-1/2">
+                    <legend className="profile-label">Phone Number</legend>
+                    <input
+                      className="fieldset-input profile-desc w-full outline-none"
+                      name="phoneNumber"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={values.phoneNumber}
+                    />
+                  </fieldset>
+                </section>
+                <section className="flex items-center justify-between pt-8">
+                  <fieldset className="w-full">
+                    <legend className="profile-label">Address</legend>
+                    <p className="fieldset-input profile-desc">
+                      4th Floor, 40 Strand Semyonovskaya Street
+                    </p>
+                  </fieldset>
+                </section>
+                <section className="flex items-center justify-between pt-8">
+                  <fieldset className="w-1/2 mr-6">
+                    <legend className="profile-label">City</legend>
+                    <select className="fieldset-input profile-desc">
+                      <option value="Lekki">Lekki</option>
+                    </select>
+                  </fieldset>
+                  <fieldset className="w-1/2">
+                    <legend className="profile-label">State</legend>
+                    <select className="fieldset-input profile-desc">
+                      <option value="Lagos">Lagos</option>
+                    </select>
+                  </fieldset>
+                </section>
+                <section className="flex items-center justify-between pt-8">
+                  <fieldset className="w-full">
+                    <legend className="profile-label">Profile</legend>
+                    <p className="fieldset-input profile-desc">
+                      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                      eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+                      voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
+                      kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem
+                      ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy.
+                    </p>
+                  </fieldset>
+                </section>
+                <h1 className="prof-info mt-16 mb-8 profile-title">Professional Info</h1>
+                <section className="flex items-center justify-between">
+                  <fieldset className="w-1/2 mr-6">
+                    <legend className="profile-label">Occupation</legend>
+                    <select className="fieldset-input profile-desc">
+                      <option value="Interior Designer">Interior Designer</option>
+                    </select>
+                  </fieldset>
+                  <fieldset className="w-1/2">
+                    <legend className="profile-label">Experience</legend>
+                    <select className="fieldset-input profile-desc">
+                      <option value="8 years +">8 years +</option>
+                    </select>
+                  </fieldset>
+                </section>
+                <section>
+                  <section className="flex justify-between items-center mt-8 mb-4">
+                    <h1 className="profile-label">Key skills</h1>
+                    <button className="add-new" type="button">
+                      Add new
+                    </button>
+                  </section>
+                  <Skill>Interior Design</Skill>
+                  <Skill>Decoration</Skill>
+                  <Skill>Painting</Skill>
+                  <Skill>Lighting</Skill>
+                  <Skill>Living Room</Skill>
+                  <Skill>Bathroom</Skill>
+                </section>
+                <section className="educ-info flex justify-between items-center mt-8 mb-4">
+                  <h1 className="profile-label">Education</h1>
+                  <button className="add-new" type="button">
+                    Add new
+                  </button>
+                </section>
+                <section className="flex items-center justify-between">
+                  <fieldset className="w-1/2 mr-6">
+                    <legend className="profile-label">Country Of College/University</legend>
+                    <select className="fieldset-input profile-desc">
+                      <option value="">Russian Federation</option>
+                    </select>
+                  </fieldset>
+                  <fieldset className="w-1/2">
+                    <legend className="profile-label">College/University</legend>
+                    <select className="fieldset-input profile-desc">
+                      <option value="">Synergy University, Moscow</option>
+                    </select>
+                  </fieldset>
+                </section>
+                <section className="flex items-center justify-between pt-8">
+                  <fieldset className="w-1/3 mr-6">
+                    <legend className="profile-label">Title</legend>
+                    <select className="fieldset-input profile-desc">
+                      <option value="">Bachelor of Arts</option>
+                    </select>
+                  </fieldset>
+                  <fieldset className="w-1/3 mr-6">
+                    <legend className="profile-label">Major</legend>
+                    <select className="fieldset-input profile-desc">
+                      <option value="">Architecture</option>
+                    </select>
+                  </fieldset>
+                  <fieldset className="w-1/3">
+                    <legend className="profile-label">Year</legend>
+                    <select className="fieldset-input profile-desc">
+                      <option value="">2016</option>
+                    </select>
+                  </fieldset>
+                </section>
+                <section className=" flex justify-between items-center mt-8 mb-4">
+                  <h1 className="profile-label">Certifications</h1>
+                  <button className="add-new" type="button">
+                    Add new
+                  </button>
+                </section>
+                <section className="flex items-center justify-between">
+                  <fieldset className="w-1/3 mr-6">
+                    <legend className="profile-label">Certificate Awarded</legend>
+                    <p className="fieldset-input profile-desc">Social Media Management</p>
+                  </fieldset>
+                  <fieldset className="w-1/3 mr-6">
+                    <legend className="profile-label">Certified From</legend>
+                    <p className="fieldset-input profile-desc">Social Media Management</p>
+                  </fieldset>
+                  <fieldset className="w-1/3">
+                    <legend className="profile-label">Year</legend>
+                    <select className="fieldset-input profile-desc">
+                      <option value="">2016</option>
+                    </select>
+                  </fieldset>
+                </section>
+                <section className="flex justify-end items-center cta">
+                  {/* <button type="button" className="uppercase">Update profile</button> */}
+                  <CTA padding="0.8rem 1.25rem">Update Profile</CTA>
+                </section>
+              </form>
+            )}
+          </Formik>
         </section>
       </div>
 
       <Footer />
     </Wrapper>
-  )
-}
+  );
+};
 
-export default DashboardProfile
+export default DashboardProfile;

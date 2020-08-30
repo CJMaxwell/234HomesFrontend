@@ -1,16 +1,13 @@
 import React, { useContext } from 'react';
-import Router from 'next/router';
 import styled, { ThemeContext } from 'styled-components';
 import { Formik } from 'formik';
-import { useMutation } from '@apollo/react-hooks';
 import Loader from 'react-loader-spinner';
 import dynamic from 'next/dynamic';
-import { notify } from 'react-notify-toast';
 
 import SignUpNavbar from '../Organisms/SignUpNavbar';
 import Footer from './Footer';
-import { REGISTER_BY_PHONE } from '../../graphql/mutations/register';
 import phoneSignupSchema from '../../schema/phoneSignupSchema';
+import useSignUp from '../../hooks/useSignup';
 
 interface Props {
   phone?: string;
@@ -85,7 +82,7 @@ const ReactCodeInput = dynamic(import('react-code-input'));
 
 const Verify: React.FC<Props> = ({ phone }) => {
   const theme = useContext(ThemeContext);
-  const [registerByPhone, { loading }] = useMutation(REGISTER_BY_PHONE);
+  const { registerByPhone, registerByPhoneLoading: loading } = useSignUp();
 
   return (
     <MainWrapper>
@@ -121,11 +118,7 @@ const Verify: React.FC<Props> = ({ phone }) => {
                     code: values.code,
                   },
                 },
-              })
-                .then(() => Router.push('/verify-success'))
-                .catch((err) => {
-                  notify.show(err.graphQLErrors?.[0].message, 'error');
-                });
+              });
             }}
             validationSchema={phoneSignupSchema}
             validateOnBlur

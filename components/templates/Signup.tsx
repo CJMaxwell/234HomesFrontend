@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import { useMutation } from '@apollo/react-hooks';
 import Router from 'next/router';
 import styled, { ThemeContext } from 'styled-components';
 import { notify } from 'react-notify-toast';
@@ -8,8 +7,8 @@ import Loader from 'react-loader-spinner';
 
 import SignUpNavbar from '../Organisms/SignUpNavbar';
 import Footer from './Footer';
-import { SEND_PHONE_VERIFICATION } from '../../graphql/mutations/register';
 import useCountries from '../../hooks/useCountries';
+import useSignup from '../../hooks/useSignup';
 
 interface Props {
   imgUrl?: string;
@@ -55,7 +54,7 @@ const Wrapper = styled.section<Props>`
 const Signup: React.FC<Props> = () => {
   const theme = useContext(ThemeContext);
   const { dialCodes } = useCountries();
-  const [sendPhoneVerification, { loading }] = useMutation(SEND_PHONE_VERIFICATION);
+  const { sendPhoneVerification, sendPhoneVerificationLoading: loading } = useSignup();
 
   return (
     <MainWrapper>

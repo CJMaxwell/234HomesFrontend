@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import Router from 'next/router';
 
 import Offering from '../Organisms/Offering';
 import Navbar from '../Organisms/Navbar';
 import DashboardSideBar from '../Organisms/DashboardSideBar';
 import Footer from './Footer';
+import useProfile from '../../hooks/useProfile';
 
 const Wrapper = styled.section`
   .breadcrumb li:not(:last-child) {
@@ -80,6 +82,9 @@ const Wrapper = styled.section`
 `;
 
 const DashboardType = () => {
+  const [accountType, setAccountType] = useState('individual');
+  const { updateProfile, updateProfileLoading } = useProfile();
+
   return (
     <Wrapper>
       <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />
@@ -99,38 +104,78 @@ const DashboardType = () => {
             <DashboardSideBar />
           </section>
           <section className="main w-3/4">
-            <h1 className="account-type">
-              Select Preferred Account Type
-            </h1>
+            <h1 className="account-type">Select Preferred Account Type</h1>
             <ul className="flex items-center">
-              <li className="acc-type">
+              <li
+                className={`acc-type ${accountType === 'individual' && 'active'}`}
+                onClick={() => {
+                  setAccountType('individual');
+                }}
+                aria-hidden="true"
+              >
                 <span>
                   <img src="/img/dashboard/dashboarduser.svg" alt="User" />
                 </span>
                 <a className="selection">Individual User</a>
               </li>
-              <li className="acc-type active">
+              <li
+                className={`acc-type ${accountType === 'professional' && 'active'}`}
+                onClick={() => {
+                  setAccountType('professional');
+                }}
+                aria-hidden="true"
+              >
                 <span>
                   <img src="/img/dashboard/work-white.svg" alt="Professional" />
                 </span>
-                <a className="selection">Individual User</a>
+                <a className="selection">Professional</a>
               </li>
-              <li className="acc-type">
+              <li
+                className={`acc-type ${accountType === 'vendor' && 'active'}`}
+                onClick={() => {
+                  setAccountType('vendor');
+                }}
+                aria-hidden="true"
+              >
                 <span>
                   <img src="/img/dashboard/dashboardbox.svg" alt="Vendor" />
                 </span>
-                <a className="selection">Individual User</a>
+                <a className="selection">Vendor</a>
               </li>
             </ul>
             <p className="feat">Features</p>
             <ul className="features">
-              <li>At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren.</li>
-              <li>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod.</li>
+              <li>
+                At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren.
+              </li>
+              <li>
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod.
+              </li>
               <li>Consetetur sadipscing elitr, sed diam nonumy eirmod.</li>
-              <li>Labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo</li>
+              <li>
+                Labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
+                justo duo
+              </li>
             </ul>
             <section className="flex justify-end">
-              <button type="button" className="next">Next</button>
+              <button
+                type="button"
+                className="next"
+                onClick={() => {
+                  updateProfile(
+                    {
+                      variables: {
+                        input: { accountType: 'individual' },
+                      },
+                    },
+                    () => {
+                      Router.push('/membership-package');
+                    },
+                  );
+                }}
+              >
+                Next
+              </button>
             </section>
           </section>
         </section>
