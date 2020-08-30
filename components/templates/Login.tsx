@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import styled, { ThemeContext } from 'styled-components';
+import React from 'react';
+import styled from 'styled-components';
 
 import SignUpNavbar from '../Organisms/SignUpNavbar';
 import Footer from './Footer';
@@ -60,9 +60,7 @@ const Wrapper = styled.section<Props>`
  
 `;
 
-const Login: React.FC<Props> = ({ imgUrl = '' }) => {
-  const theme = useContext(ThemeContext);
-
+const Login: React.FC<Props> = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // Router.push('/dashboard')
