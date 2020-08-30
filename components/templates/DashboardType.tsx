@@ -6,6 +6,7 @@ import Offering from '../Organisms/Offering';
 import Navbar from '../Organisms/Navbar';
 import DashboardSideBar from '../Organisms/DashboardSideBar';
 import Footer from './Footer';
+import useProfile from '../../hooks/useProfile';
 
 const Wrapper = styled.section`
   .breadcrumb li:not(:last-child) {
@@ -80,12 +81,9 @@ const Wrapper = styled.section`
   }
 `;
 
-function setAccountTypeToLocalStorage(accountType: string) {
-  sessionStorage.setItem('accountType', accountType);
-}
-
 const DashboardType = () => {
   const [accountType, setAccountType] = useState('individual');
+  const { updateProfile, updateProfileLoading } = useProfile();
 
   return (
     <Wrapper>
@@ -164,8 +162,16 @@ const DashboardType = () => {
                 type="button"
                 className="next"
                 onClick={() => {
-                  setAccountTypeToLocalStorage(accountType);
-                  Router.push('/membership-package');
+                  updateProfile(
+                    {
+                      variables: {
+                        input: { accountType: 'individual' },
+                      },
+                    },
+                    () => {
+                      Router.push('/membership-package');
+                    },
+                  );
                 }}
               >
                 Next

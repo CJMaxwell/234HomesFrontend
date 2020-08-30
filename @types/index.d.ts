@@ -1,10 +1,20 @@
-import { NextPageContext } from 'next';
-import { IncomingMessage } from 'http';
-
-export interface CookieMessage extends IncomingMessage {
-  cookies: { [name: string]: string };
-}
-
-export interface CookiesPageContext extends NextPageContext {
-  req: CookieMessage | undefined;
+export interface IProfile {
+  id: string;
+  firstName: string;
+  lastName: string;
+  phoneNumber: string;
+  email: string;
+  phoneVerified: boolean;
+  emailVerified: boolean;
+  profilePhoto: string;
+  address: string;
+  bio: string;
+  state: string;
+  city: string;
+  accountType: string;
+  occupation: string;
+  experienceLevel: number;
+  skills: string[];
+  createdAt: Date;
+  updatedAt: Date;
 }

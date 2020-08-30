@@ -6,6 +6,7 @@ import Navbar from '../Organisms/Navbar';
 import DashboardSideBar from '../Organisms/DashboardSideBar';
 import Footer from './Footer';
 import CTA from '../atoms/CTA';
+// import useProfile from '../../hooks/useProfile';
 
 const Wrapper = styled.section`
   .breadcrumb li:not(:last-child) {
@@ -50,6 +51,8 @@ const Wrapper = styled.section`
 `;
 
 const Dashboard = () => {
+  // const { profile } = useProfile();
+
   return (
     <Wrapper>
       <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />
@@ -69,14 +72,16 @@ const Dashboard = () => {
             <DashboardSideBar />
           </section>
           <section className="main text-center w-3/4">
-            <h1 className="temp-access">
-              Your account access is temporary limited
-            </h1>
+            <h1 className="temp-access">Your account access is temporary limited</h1>
             <p className="main-dashboard-desc flex justify-center">
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren.
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+              invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+              accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren.
             </p>
             {/* <button type="button" className="update-profile">Update Your Profile</button> */}
-            <CTA type="button" className="update-profile" padding="0.85rem 3rem;">Update Your Profile</CTA>
+            <CTA type="button" className="update-profile" padding="0.85rem 3rem;">
+              Update Your Profile
+            </CTA>
           </section>
         </section>
       </div>
