@@ -276,7 +276,7 @@ const DashboardProfile = () => {
                     <legend className="profile-label">Country Of College/University</legend>
                     <select className="fieldset-input profile-desc">
                       {countries.map(({ name, code }) => (
-                        <option value={code}>{name}</option>
+                        <option value={code} key={name}>{name}</option>
                       ))}
                     </select>
                   </fieldset>
@@ -340,8 +340,8 @@ const DashboardProfile = () => {
                         width={60}
                       />
                     ) : (
-                      'Update Profile'
-                    )}
+                        'Update Profile'
+                      )}
                   </CTA>
                 </section>
               </form>
