@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 
-import ProfileNavbar from '../Organisms/ProfileNavbar';
+import Navbar from '../Organisms/Navbar';
 import Hero from '../Organisms/Hero';
 import Favourite from '../molecules/Favourite';
 import Footer from './Footer';
@@ -43,7 +43,7 @@ const Directory = () => {
     <section>
       <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />
       <div className="container mx-auto">
-        <ProfileNavbar />
+        <Navbar />
       </div>
       <hr />
       <div className="general-padding container mx-auto">

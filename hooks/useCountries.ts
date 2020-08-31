@@ -1220,6 +1220,7 @@ dialCodes = dialCodes.sort(function (a, b) {
 function useCountries() {
   return {
     dialCodes,
+    countries,
   };
 }
 

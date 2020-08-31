@@ -1,5 +1,7 @@
-import React, { useContext } from 'react';
-import styled, { ThemeContext } from 'styled-components';
+import React from 'react';
+import styled from 'styled-components';
+import useProfile from '../../hooks/useProfile';
+import useAuth from '../../hooks/useAuth';
 
 const Wrapper = styled.section`
   width: 16rem;
@@ -23,13 +25,18 @@ const Wrapper = styled.section`
 `;
 
 const DashboardSideBar = () => {
-  const theme = useContext(ThemeContext);
+  const { profile } = useProfile();
+  const { logOut } = useAuth();
+
   return (
     <Wrapper>
       <section className="flex items-center justify-center py-10">
-        <img src="/img/dashboard/dashboardperson.svg" alt="Profile picture" />
+        <img
+          src="/img/dashboard/dashboardperson.svg"
+          alt={`${profile?.firstName} ${profile?.lastName}`}
+        />
       </section>
-      <h1 className="text-center pb-12 user">Chuma</h1>
+      <h1 className="text-center pb-12 user">{profile?.firstName}</h1>
       <section>
         <ul className="px-4">
           <li className="flex items-center py-4">
@@ -70,7 +77,7 @@ const DashboardSideBar = () => {
           </li>
         </ul>
         <section className="text-center p-12">
-          <button type="button" className="uppercase log-out">
+          <button type="button" className="uppercase log-out" onClick={logOut}>
             Log Out
           </button>
         </section>

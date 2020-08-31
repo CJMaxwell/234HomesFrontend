@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Link from 'next/link';
-import styled, { ThemeContext } from 'styled-components';
+import styled from 'styled-components';
 
 interface Props {
   type?: 'login' | 'register';
@@ -23,8 +23,6 @@ const Logo = styled.a`
 `;
 
 const SignUpNavbar: React.FC<Props> = ({ type = 'register' }) => {
-  const theme = useContext(ThemeContext);
-
   return (
     <nav className="container mx-auto general-padding flex items-center justify-between py-5">
       <Link href="/">

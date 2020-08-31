@@ -8,7 +8,7 @@ import Loader from 'react-loader-spinner';
 import SignUpNavbar from '../Organisms/SignUpNavbar';
 import Footer from './Footer';
 import useCountries from '../../hooks/useCountries';
-import useSignup from '../../hooks/useSignup';
+import useSignup from '../../hooks/useAuth';
 
 interface Props {
   imgUrl?: string;

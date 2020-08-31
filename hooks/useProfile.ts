@@ -1,5 +1,6 @@
 import { useMutation, useQuery } from '@apollo/react-hooks';
 import { useState, useEffect } from 'react';
+import { notify } from 'react-notify-toast';
 import { UPDATE_PROFILE } from '../graphql/mutations/profile';
 import { IProfile } from '../@types';
 import { PROFILE } from '../graphql/queries/profile';
@@ -15,6 +16,7 @@ export default function useProfile() {
   function updateProfile(variables: any, callback = () => {}) {
     updateProfileMutation(variables).then(({ data }) => {
       setProfile(data.updateProfile);
+      notify.show('Profile updated successfully', 'success');
       callback();
     });
   }

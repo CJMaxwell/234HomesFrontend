@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Link from 'next/link';
-import styled, { ThemeContext } from 'styled-components';
+import styled from 'styled-components';
 
 const Logo = styled.a`
   img {
@@ -18,15 +18,8 @@ const Wrapper = styled.nav`
     width: 7rem;
   }
 `;
-const MainWrapper = styled.div`
-  hr {
-    color: ${({ theme }) => theme.colors.gray17};
-  }
-`;
 
 const ProfileNavbar = () => {
-  const theme = useContext(ThemeContext);
-
   return (
     <Wrapper className="flex items-center justify-between container mx-auto general-padding py-6">
       <Link href="/">
@@ -80,7 +73,7 @@ const ProfileNavbar = () => {
               <img
                 className="h-10 w-10 rounded-full inline-block mr-2"
                 src="/img/profileImg.jpg"
-                alt="User Profile Picture"
+                alt="//"
               />
             </a>
           </Link>

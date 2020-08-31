@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Router from 'next/router';
 
 import Offering from '../Organisms/Offering';
 import Navbar from '../Organisms/Navbar';
@@ -51,8 +52,6 @@ const Wrapper = styled.section`
 `;
 
 const Dashboard = () => {
-  // const { profile } = useProfile();
-
   return (
     <Wrapper>
       <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />
@@ -79,7 +78,14 @@ const Dashboard = () => {
               accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren.
             </p>
             {/* <button type="button" className="update-profile">Update Your Profile</button> */}
-            <CTA type="button" className="update-profile" padding="0.85rem 3rem;">
+            <CTA
+              type="button"
+              className="update-profile"
+              padding="0.85rem 3rem;"
+              onClick={() => {
+                Router.push('/dashboard-profile');
+              }}
+            >
               Update Your Profile
             </CTA>
           </section>

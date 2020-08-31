@@ -1,14 +1,16 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useContext } from 'react';
+import styled, { ThemeContext } from 'styled-components';
+import { Formik } from 'formik';
+import Loader from 'react-loader-spinner';
 
 import Offering from '../Organisms/Offering';
 import Navbar from '../Organisms/Navbar';
-import ProfileSidebar from '../Organisms/ProfileSidebar';
 import CTA from '../atoms/CTA';
 import Skill from '../atoms/Skill';
 import Footer from './Footer';
 import useProfile from '../../hooks/useProfile';
-import { Formik } from 'formik';
+import DashboardSideBar from '../Organisms/DashboardSideBar';
+import useCountries from '../../hooks/useCountries';
 
 const Wrapper = styled.section`
   .breadcrumb li:not(:last-child) {
@@ -67,7 +69,9 @@ const Wrapper = styled.section`
 `;
 
 const DashboardProfile = () => {
-  const { profile } = useProfile();
+  const { profile, updateProfile, updateProfileLoading: loading } = useProfile();
+  const theme = useContext(ThemeContext);
+  const { countries } = useCountries();
 
   return (
     <Wrapper>
@@ -85,24 +89,32 @@ const DashboardProfile = () => {
         </ul>
         <section className="flex justify-between">
           <section className="w-1/4">
-            <ProfileSidebar />
+            <DashboardSideBar />
           </section>
           <Formik
-            onSubmit={() => {
-              //
+            onSubmit={(values) => {
+              updateProfile({
+                variables: {
+                  input: {
+                    ...values,
+                    experienceLevel: Number(values.experienceLevel),
+                  },
+                },
+              });
             }}
             enableReinitialize
             initialValues={{
-              firstName: profile?.firstName,
-              lastName: profile?.lastName,
-              email: profile?.email,
-              phoneNumber: profile?.phoneNumber,
-              address: profile?.address,
-              city: profile?.city,
-              state: profile?.state,
-              bio: profile?.bio,
-              occupation: profile?.occupation,
-              experienceLevel: profile?.experienceLevel,
+              firstName: profile?.firstName || '',
+              lastName: profile?.lastName || '',
+              // email: profile?.email || '',
+              // phoneNumber: profile?.phoneNumber || '',
+              address: profile?.address || '',
+              city: profile?.city || '',
+              state: profile?.state || '',
+              bio: profile?.bio || '',
+              occupation: profile?.occupation || '',
+              experienceLevel: profile?.experienceLevel || 0,
+              // education: profile?.education || [],
             }}
           >
             {({ values, handleChange, handleBlur, handleSubmit }) => (
@@ -117,6 +129,7 @@ const DashboardProfile = () => {
                       onChange={handleChange}
                       onBlur={handleBlur}
                       value={values.firstName}
+                      required
                     />
                   </fieldset>
                   <fieldset className="w-1/2">
@@ -127,6 +140,7 @@ const DashboardProfile = () => {
                       onChange={handleChange}
                       onBlur={handleBlur}
                       value={values.lastName}
+                      required
                     />
                   </fieldset>
                 </section>
@@ -136,9 +150,9 @@ const DashboardProfile = () => {
                     <input
                       className="fieldset-input profile-desc w-full outline-none"
                       name="email"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      value={values.email}
+                      // onChange={handleChange}
+                      // onBlur={handleBlur}
+                      value={profile?.email}
                     />
                   </fieldset>
                   <fieldset className="w-1/2">
@@ -146,30 +160,46 @@ const DashboardProfile = () => {
                     <input
                       className="fieldset-input profile-desc w-full outline-none"
                       name="phoneNumber"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      value={values.phoneNumber}
+                      // onChange={handleChange}
+                      // onBlur={handleBlur}
+                      value={profile?.phoneNumber}
                     />
                   </fieldset>
                 </section>
                 <section className="flex items-center justify-between pt-8">
                   <fieldset className="w-full">
                     <legend className="profile-label">Address</legend>
-                    <p className="fieldset-input profile-desc">
-                      4th Floor, 40 Strand Semyonovskaya Street
-                    </p>
+                    <input
+                      className="fieldset-input profile-desc w-full outline-none"
+                      name="address"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={values.address}
+                    />
                   </fieldset>
                 </section>
                 <section className="flex items-center justify-between pt-8">
                   <fieldset className="w-1/2 mr-6">
                     <legend className="profile-label">City</legend>
-                    <select className="fieldset-input profile-desc">
+                    <select
+                      className="fieldset-input profile-desc"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      name="city"
+                      value={values.city}
+                    >
                       <option value="Lekki">Lekki</option>
                     </select>
                   </fieldset>
                   <fieldset className="w-1/2">
                     <legend className="profile-label">State</legend>
-                    <select className="fieldset-input profile-desc">
+                    <select
+                      className="fieldset-input profile-desc"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      name="state"
+                      value={values.state}
+                    >
                       <option value="Lagos">Lagos</option>
                     </select>
                   </fieldset>
@@ -177,27 +207,47 @@ const DashboardProfile = () => {
                 <section className="flex items-center justify-between pt-8">
                   <fieldset className="w-full">
                     <legend className="profile-label">Profile</legend>
-                    <p className="fieldset-input profile-desc">
-                      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-                      eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-                      voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
-                      kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem
-                      ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy.
-                    </p>
+                    <textarea
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      name="bio"
+                      className="fieldset-input profile-desc w-full outline-none"
+                      value={values.bio}
+                    />
                   </fieldset>
                 </section>
                 <h1 className="prof-info mt-16 mb-8 profile-title">Professional Info</h1>
                 <section className="flex items-center justify-between">
                   <fieldset className="w-1/2 mr-6">
                     <legend className="profile-label">Occupation</legend>
-                    <select className="fieldset-input profile-desc">
-                      <option value="Interior Designer">Interior Designer</option>
+                    <select
+                      className="fieldset-input profile-desc w-full outline-none"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      name="occupation"
+                      value={values.occupation}
+                    >
+                      {['Interior Designer', 'Architect', 'Creative Director'].map((job) => (
+                        <option value={job} key={job}>
+                          {job}
+                        </option>
+                      ))}
                     </select>
                   </fieldset>
                   <fieldset className="w-1/2">
                     <legend className="profile-label">Experience</legend>
-                    <select className="fieldset-input profile-desc">
-                      <option value="8 years +">8 years +</option>
+                    <select
+                      className="fieldset-input profile-desc w-full outline-none"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      name="experienceLevel"
+                      value={values.experienceLevel}
+                    >
+                      {['1 year', '2 years', '3 years', '4 years', '5 years'].map((year, index) => (
+                        <option value={index + 1} key={year}>
+                          {year}
+                        </option>
+                      ))}
                     </select>
                   </fieldset>
                 </section>
@@ -225,7 +275,9 @@ const DashboardProfile = () => {
                   <fieldset className="w-1/2 mr-6">
                     <legend className="profile-label">Country Of College/University</legend>
                     <select className="fieldset-input profile-desc">
-                      <option value="">Russian Federation</option>
+                      {countries.map(({ name, code }) => (
+                        <option value={code}>{name}</option>
+                      ))}
                     </select>
                   </fieldset>
                   <fieldset className="w-1/2">
@@ -279,7 +331,18 @@ const DashboardProfile = () => {
                 </section>
                 <section className="flex justify-end items-center cta">
                   {/* <button type="button" className="uppercase">Update profile</button> */}
-                  <CTA padding="0.8rem 1.25rem">Update Profile</CTA>
+                  <CTA padding="0.8rem 1.25rem" className="outline-none" disabled={loading}>
+                    {loading ? (
+                      <Loader
+                        type="ThreeDots"
+                        color={theme.colors.orange1}
+                        height={20}
+                        width={60}
+                      />
+                    ) : (
+                      'Update Profile'
+                    )}
+                  </CTA>
                 </section>
               </form>
             )}

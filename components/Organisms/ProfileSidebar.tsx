@@ -1,5 +1,6 @@
-import React, { useContext } from 'react';
-import styled, { ThemeContext } from 'styled-components';
+import React from 'react';
+import styled from 'styled-components';
+import useProfile from '../../hooks/useProfile';
 
 const Wrapper = styled.section`
   width: 16rem;
@@ -29,13 +30,17 @@ const Wrapper = styled.section`
 `;
 
 const ProfileSidebar = () => {
-  const theme = useContext(ThemeContext);
+  const { profile } = useProfile();
   return (
     <Wrapper>
       <section className="flex items-center justify-center py-10">
-        <img className="icon-img" src="/img/dashboard/dashboardperson.svg" alt="Profile picture" />
+        <img
+          className="icon-img"
+          src="/img/dashboard/dashboardperson.svg"
+          alt={`${profile?.firstName} ${profile?.lastName}`}
+        />
       </section>
-      <h1 className="text-center pb-12 user">Chuma</h1>
+      <h1 className="text-center pb-12 user">{profile?.firstName}</h1>
       <section>
         <ul className="px-4">
           <li className="flex items-center py-4">

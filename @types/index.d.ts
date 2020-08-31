@@ -1,3 +1,12 @@
+export interface IEducation {
+  id: string;
+  title: string;
+  major: string;
+  year: number;
+  country: string;
+  institution: string;
+}
+
 export interface IProfile {
   id: string;
   firstName: string;
@@ -15,6 +24,7 @@ export interface IProfile {
   occupation: string;
   experienceLevel: number;
   skills: string[];
+  education: IEducation[];
   createdAt: Date;
   updatedAt: Date;
 }

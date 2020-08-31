@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
+import useAuth from '../../hooks/useAuth';
 
 const Logo = styled.a`
   img {
@@ -21,6 +22,8 @@ const Wrapper = styled.nav`
 `;
 
 const Navbar = () => {
+  const { online } = useAuth();
+
   return (
     <Wrapper className="container mx-auto flex items-center justify-between py-6 general-padding">
       <Link href="/">
@@ -61,19 +64,38 @@ const Navbar = () => {
             <a className="block lg:inline-block lg:mt-0 text-black mr-6">About</a>
           </Link>
         </li>
-        <li>
-          <Link href="/login">
-            <a className="block lg:inline-block lg:mt-0 text-black mr-6">Log in</a>
-          </Link>
-        </li>
-        <li>
-          <Link href="/signup">
-            <a className="inline-flex justify-center items-center h-12 signupLink text-sm px-2 py-2 leading-none border rounded-full bg-black text-white border-white">
-              <img className="h-4 w-4 inline-block mr-2" src="/img/user.svg" alt="Sign up" />
-              Sign up
-            </a>
-          </Link>
-        </li>
+
+        {!online && (
+          <>
+            <li>
+              <Link href="/login">
+                <a className="block lg:inline-block lg:mt-0 text-black mr-6">Log in</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/signup">
+                <a className="inline-flex justify-center items-center h-12 signupLink text-sm px-2 py-2 leading-none border rounded-full bg-black text-white border-white">
+                  <img className="h-4 w-4 inline-block mr-2" src="/img/user.svg" alt="Sign up" />
+                  Sign up
+                </a>
+              </Link>
+            </li>
+          </>
+        )}
+
+        {online && (
+          <li>
+            <Link href="#">
+              <a className="">
+                <img
+                  className="h-10 w-10 rounded-full inline-block mr-2"
+                  src="/img/profileImg.jpg"
+                  alt="//"
+                />
+              </a>
+            </Link>
+          </li>
+        )}
       </ul>
     </Wrapper>
   );
