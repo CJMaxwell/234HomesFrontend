@@ -7,7 +7,7 @@ import dynamic from 'next/dynamic';
 import SignUpNavbar from '../Organisms/SignUpNavbar';
 import Footer from './Footer';
 import phoneSignupSchema from '../../schema/phoneSignupSchema';
-import useSignUp from '../../hooks/useSignup';
+import useSignUp from '../../hooks/useAuth';
 
 interface Props {
   phone?: string;
