@@ -1,6 +1,9 @@
 import { NextPage } from 'next';
+import React from 'react';
 
 import Directory from '../components/templates/Directory';
+import withApollo from '../lib/withApollo';
+import WithAuth from '../hoc/WithAuth';
 
 const DirectoryPage: NextPage = () => {
   return (
@@ -10,4 +13,4 @@ const DirectoryPage: NextPage = () => {
   );
 };
 
-export default DirectoryPage;
+export default withApollo()(WithAuth(DirectoryPage));

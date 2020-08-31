@@ -16,3 +16,12 @@ export const REGISTER_BY_PHONE = gql`
     }
   }
 `;
+
+export const LOGIN_BY_PHONE = gql`
+  mutation loginByPhone($input: LoginByPhoneInput!) {
+    loginByPhone(input: $input) {
+      accessToken
+      expiresAt
+    }
+  }
+`;

@@ -1,8 +1,12 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useContext } from 'react';
+import styled, { ThemeContext } from 'styled-components';
+import { Formik } from 'formik';
+import Loader from 'react-loader-spinner';
 
 import SignUpNavbar from '../Organisms/SignUpNavbar';
 import Footer from './Footer';
+import useCountries from '../../hooks/useCountries';
+import useAuth from '../../hooks/useAuth';
 
 interface Props {
   imgUrl?: string;
@@ -61,10 +65,9 @@ const Wrapper = styled.section<Props>`
 `;
 
 const Login: React.FC<Props> = () => {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    // Router.push('/dashboard')
-  };
+  const { dialCodes } = useCountries();
+  const { loginByPhone, loginByPhoneLoading: loading } = useAuth();
+  const theme = useContext(ThemeContext);
 
   return (
     <MainWrapper>
@@ -79,47 +82,90 @@ const Login: React.FC<Props> = () => {
         <div className="w-full signup bg-white rounded pb-16">
           <h1 className="text-2xl font-semibold text-center my-10">Sign In</h1>
           <hr className="mb-20" />
-          <form onSubmit={handleSubmit} className="px-8 mt-auto">
-            <div className="border border-gray-500 form-wrap h-12 pr-4 justify-between flex items-center">
-              <div className="input-addon pr-4">
-                <p>+234</p>
-              </div>
-              <input
-                className="appearance-none outline-none w-full h-full leading-tight pr-4"
-                id="phone"
-                type="text"
-                required
-                placeholder="Enter Your Phone Number"
-              />
-            </div>
-            <div className="border border-gray-500 form-wrap h-12 mt-5 pr-4 justify-between flex items-center">
-              <div className="input-addon pr-4">
-                <img
-                  src="/img/password-phone.svg"
-                  className="inline-block w-4 h-6"
-                  alt="Sign up with phone"
-                />
-              </div>
-              <input
-                className="appearance-none outline-none w-full h-full leading-tight pr-4"
-                id="password"
-                type="password"
-                required
-                placeholder="Password"
-              />
-            </div>
-            <p className="flex justify-end reset-password">
-              <a>Reset password</a>
-            </p>
-            <div className="text-center form-wrap signIn mt-8 h-12">
-              <button
-                type="submit"
-                className="text-center font-semibold uppercase w-full h-full text-white"
-              >
-                Sign In
-              </button>
-            </div>
-          </form>
+          <Formik
+            initialValues={{
+              phoneNumber: '',
+              dialCode: '+234',
+              password: '',
+            }}
+            onSubmit={({ dialCode, ...values }) => {
+              loginByPhone({
+                variables: {
+                  input: {
+                    ...values,
+                    phoneNumber: dialCode + values.phoneNumber,
+                  },
+                },
+              });
+            }}
+          >
+            {({ values, handleChange, handleBlur, handleSubmit }) => (
+              <form onSubmit={handleSubmit} className="px-8 mt-auto">
+                <div className="border border-gray-500 form-wrap h-12 pr-4 justify-between flex items-center">
+                  <div className="input-addon pr-4">
+                    <select
+                      value={values.dialCode}
+                      name="dialCode"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      required
+                    >
+                      {dialCodes.map((dialCode) => (
+                        <option key={`dialCode${dialCode}`} value={dialCode}>
+                          {dialCode}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  <input
+                    className="appearance-none outline-none w-full h-full leading-tight pr-4"
+                    name="phoneNumber"
+                    type="text"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.phoneNumber}
+                    required
+                    placeholder="Enter Your Phone Number"
+                  />
+                </div>
+                <div className="border border-gray-500 form-wrap h-12 mt-5 pr-4 justify-between flex items-center">
+                  <div className="input-addon pr-4">
+                    <img
+                      src="/img/password-phone.svg"
+                      className="inline-block w-4 h-6"
+                      alt="Sign up with phone"
+                    />
+                  </div>
+                  <input
+                    className="appearance-none outline-none w-full h-full leading-tight pr-4"
+                    name="password"
+                    type="password"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.password}
+                    required
+                    placeholder="Password"
+                  />
+                </div>
+                <p className="flex justify-end reset-password">
+                  <a>Reset password</a>
+                </p>
+                <div className="text-center form-wrap signIn mt-8 h-12">
+                  <button
+                    type="submit"
+                    className="flex items-center justify-center font-semibold uppercase w-full h-full text-white"
+                    disabled={loading}
+                  >
+                    {loading ? (
+                      <Loader type="ThreeDots" color={theme.colors.white} height={20} width={60} />
+                    ) : (
+                      'Sign In'
+                    )}
+                  </button>
+                </div>
+              </form>
+            )}
+          </Formik>
           <ul className="flex items-center justify-center mt-12">
             <li className="border border-gray-500 rounded-full social-icons h-12 w-12 mr-10">
               <img src="/img/email-icon.svg" className="h-full w-full" alt="Email" />

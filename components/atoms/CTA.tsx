@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+
 interface Props {
-  padding?: string
+  padding?: string;
 }
 
 const CTA = styled.button<Props>`
