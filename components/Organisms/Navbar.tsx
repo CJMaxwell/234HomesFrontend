@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
 import useAuth from '../../hooks/useAuth';
+import withApollo from '../../lib/withApollo';
 
 const Logo = styled.a`
   img {
@@ -101,4 +102,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default withApollo()(Navbar);

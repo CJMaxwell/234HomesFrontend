@@ -13,7 +13,7 @@ const Wrapper = styled.section`
   .breadcrumb li:not(:last-child) {
     padding-right: 0.8rem;
   }
-    .breadcrumb {
+  .breadcrumb {
     margin-top: 3.175rem;
     margin-bottom: 2.35rem;
     color: ${({ theme }) => theme.colors.gray5};
@@ -29,7 +29,8 @@ const Wrapper = styled.section`
   .profile-title {
     text-transform: uppercase;
   }
-  .profile-title,.profile-desc {
+  .profile-title,
+  .profile-desc {
     color: ${({ theme }) => theme.colors.gray2};
     font-size: 0.8rem;
     font-weight: 600;
@@ -44,7 +45,6 @@ const Wrapper = styled.section`
     margin-right: 10px;
     padding-left: 5px;
     padding-right: 5px;
-
   }
   fieldset {
     border: 1px solid ${({ theme }) => theme.colors.gray17};
@@ -58,16 +58,18 @@ const Wrapper = styled.section`
   .profile-title {
     text-transform: uppercase;
   }
-  .profile-title,.profile-desc {
+  .profile-title,
+  .profile-desc {
     color: ${({ theme }) => theme.colors.gray2};
     font-size: 0.8rem;
     font-weight: 600;
   }
   .profile-label {
-    color:${({ theme }) => theme.colors.gray11};
+    color: ${({ theme }) => theme.colors.gray11};
     font-size: 0.8rem;
   }
-  textarea::placeholder, input::placeholder {
+  textarea::placeholder,
+  input::placeholder {
     color: ${({ theme }) => theme.colors.gray17};
     font-size: 0.7rem;
   }
@@ -98,8 +100,6 @@ const Wrapper = styled.section`
   }
 `;
 
-
-
 const AddProject = () => {
   return (
     <Wrapper>
@@ -124,11 +124,19 @@ const AddProject = () => {
             <section className="upload-section">
               <section className="flex justify-between items-center">
                 <section>
-                  <h1 className="resolution">High Resolution <br /> Image</h1>
-                  <p className="img-type pt-4">PNG &amp; JPEGS <br />1200 px X 680 px</p>
+                  <h1 className="resolution">
+                    High Resolution <br /> Image
+                  </h1>
+                  <p className="img-type pt-4">
+                    PNG &amp; JPEGS <br />
+                    1200 px X 680 px
+                  </p>
                 </section>
                 <section>
-                  <h1 className="resolution">High Resolution <br />Video</h1>
+                  <h1 className="resolution">
+                    High Resolution <br />
+                    Video
+                  </h1>
                   <p className="img-type pt-4">MP4, &lt; 4 Mins</p>
                 </section>
               </section>
@@ -137,13 +145,18 @@ const AddProject = () => {
               </section>
               <section className="w-full text-center">
                 <h1 className="drag-and-drop">Drag and drop an images</h1>
-                <p>Or <a className="browse pt-4">browse</a> to choose a file</p>
+                <p>
+                  Or <a className="browse pt-4">browse</a> to choose a file
+                </p>
               </section>
             </section>
             <section className="flex items-center justify-between pt-8">
               <fieldset className="w-full">
                 <legend className="profile-label">Title</legend>
-                <input className="fieldset-input profile-desc w-full focus:outline-none" placeholder="Lorem ipsum dolor sit amet sed diam nonumy eirmod" />
+                <input
+                  className="fieldset-input profile-desc w-full focus:outline-none"
+                  placeholder="Lorem ipsum dolor sit amet sed diam nonumy eirmod"
+                />
               </fieldset>
             </section>
             <section className="flex items-center justify-between pt-8">
@@ -200,18 +213,23 @@ const AddProject = () => {
             <section className="flex items-center justify-between pt-8 mt-4">
               <fieldset className="w-full">
                 <legend className="profile-label">Description</legend>
-                <textarea className="fieldset-input profile-desc w-full focus:outline-none" placeholder="Tell us about the project…"></textarea>
+                <textarea
+                  className="fieldset-input profile-desc w-full focus:outline-none"
+                  placeholder="Tell us about the project…"
+                />
               </fieldset>
             </section>
             <section className="flex justify-end mt-12 mb-16">
-              <CTA type="button" className="update-profile" padding="0.8rem 2.4rem;">Submit</CTA>
+              <CTA type="button" className="update-profile" padding="0.8rem 2.4rem;">
+                Submit
+              </CTA>
             </section>
           </section>
         </section>
       </div>
       <Footer />
     </Wrapper>
-  )
-}
+  );
+};
 
-export default AddProject
+export default AddProject;

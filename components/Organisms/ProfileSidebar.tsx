@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import useProfile from '../../hooks/useProfile';
+import withApollo from '../../lib/withApollo';
 
 const Wrapper = styled.section`
   width: 16rem;
@@ -90,4 +91,4 @@ const ProfileSidebar = () => {
   );
 };
 
-export default ProfileSidebar;
+export default withApollo()(ProfileSidebar);
