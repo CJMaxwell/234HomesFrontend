@@ -41,7 +41,8 @@
     "react-loader-spinner": "^3.1.14",
     "react-masonry-css": "^1.0.14",
     "react-notify-toast": "^0.5.1",
-    "react-slick": "^0.27.8",
+    "react-slick": "^0.27.10",
+    "slick-carousel": "^1.8.1",
     "styled-components": "^5.1.1",
     "swr": "^0.2.2",
     "yup": "^0.29.3"
@@ -59,6 +60,7 @@
     "@types/react-dom": "^16.9.8",
     "@types/react-loader-spinner": "^3.1.0",
     "@types/react-notify-toast": "^0.5.2",
+    "@types/react-slick": "^0.23.4",
     "@types/styled-components": "^5.1.0",
     "@types/yup": "^0.29.5",
     "@typescript-eslint/eslint-plugin": "^3.9.0",

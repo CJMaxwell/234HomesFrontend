@@ -3,6 +3,9 @@ import styled from 'styled-components';
 
 interface Props {
   imgUrl?: string;
+  index?: number,
+  total?: number,
+  desc?: string
 }
 
 const Wrapper = styled.div<Props>`
@@ -11,54 +14,32 @@ const Wrapper = styled.div<Props>`
   background-repeat: no-repeat;
   background-size:cover;
   background-position: center;
-  height: 31.35rem;
-
-  .share {
-    top: 8%;
-    right: 8%
-  }
+  height: 33rem;
+`;
+const SectionWrap = styled.section`
+background-color: ${({ theme }) => theme.colors.gray23};
 `;
 
 const Indicators = styled.div`
-  .img {
-    padding: 0.55rem 0.8rem;
-  }
   .num {
-    color: ${({ theme }) => theme.colors.gray1};
+    color: ${({ theme }) => theme.colors.orange1};
   }
 `;
 
-const HouseTourImage: React.FC<Props> = ({ imgUrl = '' }) => {
+const HouseTourImage: React.FC<Props> = ({ imgUrl, index, total, desc }) => {
   return (
-    <>
+    <SectionWrap>
       <Wrapper imgUrl={imgUrl} className="relative">
-        <button className="absolute share">
-          <img className="h-12 w-12" src="/img/share-house-tour.svg" alt="share" />
-        </button>
       </Wrapper>
-      <Indicators className="flex items-center justify-between pt-8">
-        <div className="num font-semibold">
-          <span>2/</span>
-          <span>14</span>
+      <Indicators className="flex items-center pt-8 pb-12 pl-16">
+        <div className="num font-semibold flex">
+          <div className="pr-1">{index}</div>
+          <div className="pr-1">/</div>
+          <div>{total}</div>
         </div>
-        <div className="flex items-center">
-          <div className="h-10 w-10 border border-gray-400 mr-6">
-            <img
-              src="/img/image-left-arrow.svg"
-              className="inline-block bg-white img h-full w-full"
-              alt="Left arrow"
-            />
-          </div>
-          <div className="h-10 w-10 border border-gray-400">
-            <img
-              src="/img/image-right-arrow.svg"
-              className="inline-block bg-white img h-full w-full"
-              alt="Left arrow"
-            />
-          </div>
-        </div>
+        <div className="img-desc pl-8">{desc}</div>
       </Indicators>
-    </>
+    </SectionWrap>
   );
 };
 

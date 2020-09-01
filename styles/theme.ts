@@ -43,5 +43,6 @@ export const theme: DefaultTheme = {
     gray22: '#F4F4F4',
     green2: '#33732D',
     orange5: '#E2A822',
+    gray23: '#FAFAFA',
   },
 };
