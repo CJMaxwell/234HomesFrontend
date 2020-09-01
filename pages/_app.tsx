@@ -5,6 +5,8 @@ import { ThemeProvider } from 'styled-components';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import '../styles/style.css';
 import { theme } from '../styles/theme';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 class MyApp extends App<any> {
   render() {
