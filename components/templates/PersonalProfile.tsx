@@ -105,7 +105,7 @@ const Continue = styled.button`
   height: 2.57rem;
 `;
 
-const Personal = () => {
+const PersonalProfile = () => {
   const theme = useContext(ThemeContext);
 
   return (
