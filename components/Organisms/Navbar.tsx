@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
 import useAuth from '../../hooks/useAuth';
 import withApollo from '../../lib/withApollo';
+import DropdownMenu from './DropdownMenu';
 
 const Logo = styled.a`
   img {
     width: 4.71875rem;
     height: 5.33125rem;
-    /* object-fit: cover; */
   }
 `;
 
@@ -24,6 +24,16 @@ const Wrapper = styled.nav`
 
 const Navbar = () => {
   const { online } = useAuth();
+
+  const [dropdown, setDropdown] = useState(false);
+
+  const toggleDropdown = () => setDropdown(!dropdown);
+
+  // const handleOnClickOutside = () => {
+  //   if (dropdown === true) {
+  //     setDropdown(false);
+  //   }
+  // }
 
   return (
     <Wrapper className="container mx-auto flex items-center justify-between py-6 general-padding">
@@ -85,16 +95,17 @@ const Navbar = () => {
         )}
 
         {online && (
-          <li>
-            <Link href="#">
-              <a className="">
-                <img
-                  className="h-10 w-10 rounded-full inline-block mr-2"
-                  src="/img/profileImg.jpg"
-                  alt="//"
-                />
-              </a>
-            </Link>
+
+          <li className="relative" onClick={toggleDropdown}>
+            <a>
+              <img
+                className="h-10 w-10 object-cover rounded-full inline-block mr-2"
+                src="/img/profileImg.jpg"
+                alt="profile picture"
+              />
+            </a>
+            {/* <button onClick={handleOnClickOutside} className="fixed inset-0 h-full w-full opacity-0 cursor-default"></button> */}
+            {dropdown && <DropdownMenu />}
           </li>
         )}
       </ul>
