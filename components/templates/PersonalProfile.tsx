@@ -110,7 +110,7 @@ const Personal = () => {
 
   return (
     <>
-      <ProfileNavbar />
+      <Navbar />
       <hr />
       <Main className="container mx-auto mb-24 general-padding">
         <ul className="flex text-sm py-2">
