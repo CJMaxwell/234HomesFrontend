@@ -2,7 +2,7 @@ import React from 'react';
 import Slider from 'react-slick';
 import styled from 'styled-components';
 
-import ProfileNavbar from '../Organisms/ProfileNavbar';
+import Navbar from '../Organisms/Navbar';
 import Offering from '../Organisms/Offering';
 import MostTalkedHouseTours from '../Organisms/MostTalkedHouseTours';
 import Footer from './Footer';
@@ -83,7 +83,7 @@ const SingleHouseTour = () => {
   return (
     <Wrapper>
       <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />
-      <ProfileNavbar />
+      <Navbar />
       <hr />
       <div className="general-padding container mx-auto">
         <Offering />

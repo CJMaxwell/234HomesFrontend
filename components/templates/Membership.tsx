@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Router from 'next/router';
 
-import ProfileNavbar from '../Organisms/ProfileNavbar';
+import Navbar from '../Organisms/Navbar';
 import Offering from '../Organisms/Offering';
 import Footer from './Footer';
 
@@ -95,7 +95,7 @@ const Membership = () => {
   return (
     <Wrapper>
       <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />
-      <ProfileNavbar />
+      <Navbar />
       <hr />
       <section className="general-padding container mx-auto">
         <Offering />

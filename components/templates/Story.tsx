@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import Router from 'next/router';
 
-import ProfileNavbar from '../Organisms/ProfileNavbar';
+import Navbar from '../Organisms/Navbar';
 import Offering from '../Organisms/Offering';
 import StoryCard from '../Organisms/StoryCard';
 import Button from '../atoms/Button';
@@ -110,7 +110,7 @@ const Story = () => {
   return (
     <Wrapper>
       <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />
-      <ProfileNavbar />
+      <Navbar />
       <hr />
       <div className="general-padding container mx-auto">
         <Offering />

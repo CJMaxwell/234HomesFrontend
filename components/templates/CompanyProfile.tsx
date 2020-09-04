@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import Router from 'next/router';
 
-import ProfileNavbar from '../Organisms/ProfileNavbar';
+import Navbar from '../Organisms/Navbar';
 import Footer from './Footer';
 import Direction from '../atoms/Direction';
 
@@ -92,7 +92,7 @@ const CompanyProfile = () => {
 
   return (
     <>
-      <ProfileNavbar />
+      <Navbar />
       <hr />
       <Main className="container  general-padding mx-auto mb-24">
         <ul className="flex text-sm py-2">

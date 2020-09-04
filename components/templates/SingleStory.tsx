@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 
-import ProfileNavbar from '../Organisms/ProfileNavbar';
+import Navbar from '../Organisms/Navbar';
 import Offering from '../Organisms/Offering';
 import UserCard from '../molecules/UserCard';
 import MostTalkedCard from '../Organisms/MostTalkedCard';
@@ -73,7 +73,7 @@ const SingleStory = () => {
   return (
     <MainWrap>
       <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />
-      <ProfileNavbar />
+      <Navbar />
       <hr />
       <div className="general-padding container mx-auto">
         <Offering />

@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import Link from 'next/link';
 
-import ProfileNavbar from '../Organisms/ProfileNavbar';
+import Navbar from '../Organisms/Navbar';
 import ProductListCard from '../Organisms/ProductListCard';
 import Offering from '../Organisms/Offering';
 import Footer from './Footer';
@@ -52,7 +52,7 @@ const Products = () => {
   return (
     <Wrapper>
       <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />
-      <ProfileNavbar />
+      <Navbar />
       <hr />
       <div className="general-padding container mx-auto">
         <Offering />

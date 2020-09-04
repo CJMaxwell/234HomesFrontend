@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import ProfileNavbar from '../Organisms/ProfileNavbar';
+import Navbar from '../Organisms/Navbar';
 import Footer from './Footer';
 import Button from '../atoms/Button';
 import ProjectCard from '../Organisms/ProjectCard';
@@ -172,7 +172,7 @@ const AboutProfessional = () => {
   return (
     <Wrapper>
       <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />
-      <ProfileNavbar />
+      <Navbar />
       <hr />
       <div className="general-padding container mx-auto mb-48">
         <Offering />

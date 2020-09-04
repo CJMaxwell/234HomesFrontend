@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 // import Router from 'next/router';
 
-import ProfileNavbar from '../Organisms/ProfileNavbar';
+import Navbar from '../Organisms/Navbar';
 import Footer from './Footer';
 
 const Main = styled.section`
@@ -105,7 +105,7 @@ const Continue = styled.button`
   height: 2.57rem;
 `;
 
-const PersonalProfile = () => {
+const Personal = () => {
   const theme = useContext(ThemeContext);
 
   return (
