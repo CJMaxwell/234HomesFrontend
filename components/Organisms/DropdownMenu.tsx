@@ -13,14 +13,17 @@ const Wrapper = styled.ul`
     font-weight: none;
   }
 `;
+const ToggleBtn = styled.button`
+  height: calc(100% - 134px);
+`;
 
-const DropdownMenu = () => {
+const DropdownMenu = ({ toggleMenu }: { toggleMenu: () => void }) => {
   const { logOut } = useAuth();
-
 
   return (
     <>
-      <Wrapper className="right-0 mt-4 py-2 w-48 bg-white absolute rounded-lg shadow-2xl capitalize">
+      <ToggleBtn onClick={toggleMenu} className="fixed right-0 left-0 bottom-0 h-full w-full opacity-0 cursor-default" />
+      <Wrapper className="right-0 z-50 mt-4 py-2 w-48 bg-white absolute rounded-lg shadow-2xl capitalize">
         {
           Items.map((item, index) => {
             return (

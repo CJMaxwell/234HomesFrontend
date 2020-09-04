@@ -27,13 +27,9 @@ const Navbar = () => {
 
   const [dropdown, setDropdown] = useState(false);
 
-  const toggleDropdown = () => setDropdown(!dropdown);
+  const toggleMenu = () => setDropdown(!dropdown);
 
-  // const handleOnClickOutside = () => {
-  //   if (dropdown === true) {
-  //     setDropdown(false);
-  //   }
-  // }
+
 
   return (
     <Wrapper className="container mx-auto flex items-center justify-between py-6 general-padding">
@@ -96,7 +92,7 @@ const Navbar = () => {
 
         {online && (
 
-          <li className="relative" onClick={toggleDropdown}>
+          <li className="relative" onClick={toggleMenu}>
             <a>
               <img
                 className="h-10 w-10 object-cover rounded-full inline-block mr-2"
@@ -104,8 +100,9 @@ const Navbar = () => {
                 alt="profile picture"
               />
             </a>
-            {/* <button onClick={handleOnClickOutside} className="fixed inset-0 h-full w-full opacity-0 cursor-default"></button> */}
-            {dropdown && <DropdownMenu />}
+            {
+              dropdown && <DropdownMenu toggleMenu={toggleMenu} />
+            }
           </li>
         )}
       </ul>
