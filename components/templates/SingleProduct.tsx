@@ -1,5 +1,6 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import styled, { ThemeContext } from 'styled-components';
+import Slider from 'react-slick';
 
 import Navbar from '../Organisms/Navbar';
 import Offering from '../Organisms/Offering';
@@ -34,13 +35,18 @@ const Wrapper = styled.div`
   .show-more {
     color: ${({ theme }) => theme.colors.orange1};
     font-size: 0.7rem;
+    font-weight: 600;
   }
+  
   .project,
   .load-more-projects,
-  .review-title,
   .leave-review,
   .customer-review {
     color: ${({ theme }) => theme.colors.gray2};
+  }
+  .review-title {
+    color: ${({ theme }) => theme.colors.gray1};
+    font-weight: 600;
   }
   .project-category {
     color: ${({ theme }) => theme.colors.gray19};
@@ -57,6 +63,7 @@ const Wrapper = styled.div`
     width: 9.9rem;
     height: 2rem;
     font-size: 0.8rem;
+    margin-top: 2.3rem;
   }
   .customer-review {
     font-size: 0.95rem;
@@ -69,6 +76,7 @@ const Wrapper = styled.div`
   }
   .top-rated {
     color: ${({ theme }) => theme.colors.blue2};
+    font-weight: 600;
   }
   .sec-rating {
     color: ${({ theme }) => theme.colors.gray17};
@@ -79,6 +87,8 @@ const Wrapper = styled.div`
     }
     .rating-value {
       color: ${({ theme }) => theme.colors.gray5};
+      font-weight: 600;
+
     }
   }
   .carousel-img {
@@ -94,10 +104,18 @@ const Wrapper = styled.div`
     padding: 10px 0;
     font-weight: 600;
   }
+  .caret:before {
+    content: url('/img/product-down-arrow.svg');
+    display: inline-block;
+    height: 0.5rem;
+    padding: 10px 0;
+  }
+  .open.caret:before {
+    transform: rotate(180deg);
+  }
   .accordion-content {
     color: ${({ theme }) => theme.colors.gray5};
     font-size: 0.8rem;
-    padding-top: 1rem;
   }
   .review-star-rating img:not(:last-child) {
     padding-right: 0.25rem;
@@ -156,6 +174,33 @@ const Wrapper = styled.div`
   .phone {
     padding-top: 0.25rem;
   }
+
+  .product-slides .slick-prev,
+.product-slides .slick-next {
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+}
+
+
+.product-slides {
+  position: relative;
+}
+
+.product-slides .slick-prev,
+.product-slides .slick-next {
+  position: absolute;
+  top: 42%;
+  z-index:1;
+}
+
+.product-slides .slick-prev {
+  left: 5%;
+}
+
+.product-slides .slick-next {
+  right: 5%;
+}
 `;
 const VendorBtn = styled(Button)`
   border: 1px solid ${({ theme }) => theme.colors.green1};
@@ -176,8 +221,46 @@ const MsgBtn = styled(Button)`
   width: 14.7rem;
 `;
 
+const settings = {
+  dots: false,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  arrows: true,
+  className: 'product-slides'
+};
+
+const productSliders = [
+  {
+    id: 1,
+    url: '/img/BArt.png'
+  },
+  {
+    id: 2,
+    url: '/img/BArt.png'
+  },
+  {
+    id: 3,
+    url: '/img/BArt.png'
+  },
+  {
+    id: 4,
+    url: '/img/BArt.png'
+  },
+  {
+    id: 5,
+    url: '/img/BArt.png'
+  },
+  {
+    id: 6,
+    url: '/img/BArt.png'
+  }
+]
+
 const SingleProduct = () => {
   const theme = useContext(ThemeContext);
+  const [accordion, setAccordion] = useState('description');
 
   return (
     <Wrapper>
@@ -214,75 +297,146 @@ const SingleProduct = () => {
               <div>
                 <img src="/img/BArt-medium.png" className="product-img" alt="Poduct item" />
               </div>
-              <div className="flex items-center justify-between mt-3 mb-16">
+              <div className="flex items-center justify-between mr-2 mt-3 mb-16">
+                {/* <Slider {...settings}>
+                  {
+                    productSliders.map((item, index) => (
+                      <div key={index}>
+                        <img src={item.url} className="h-32 carousel-img" alt="Poduct item" />
+                      </div>
+                    ))
+                  }
+                </Slider> */}
+
+                {/* <img src="/img/BArt.png" className="h-32 carousel-img" alt="Poduct item" />
                 <img src="/img/BArt.png" className="h-32 carousel-img" alt="Poduct item" />
                 <img src="/img/BArt.png" className="h-32 carousel-img" alt="Poduct item" />
                 <img src="/img/BArt.png" className="h-32 carousel-img" alt="Poduct item" />
-                <img src="/img/BArt.png" className="h-32 carousel-img" alt="Poduct item" />
-                <img src="/img/BArt.png" className="h-32 carousel-img" alt="Poduct item" />
+                <img src="/img/BArt.png" className="h-32 carousel-img" alt="Poduct item" /> */}
               </div>
             </section>
             <section>
-              <div className="mb-4">
+              <a onClick={() => setAccordion('description')}>
                 <div className="flex items-center justify-between accordion">
                   <h3 className="accordion-title">Product Description</h3>
-                  <img src="/img/product-down-arrow.svg" className="h-2" alt="Product arrow" />
+                  <div className={`caret ${accordion === 'description' && 'open'}`}></div>
                 </div>
-                <p className="accordion-content">
-                  Sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-                  sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
-                  clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-                  tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
-                  vero eos et accusam et justo duo dolores et.
-                  <div className="flex items-center pt-4">
-                    <span className="show-more pr-1">Show more</span>
-                    <img src="/img/show-more.svg" alt="Show More" />
-                  </div>
-                </p>
-              </div>
-              <hr />
-              <div>
+                {
+                  accordion === 'description' && (
+                    <div className="accordion-content">
+                      Sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+                      sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+                      clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+                      tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
+                      vero eos et accusam et justo duo dolores et.
+                      <p className="flex items-center pt-4">
+                        <span className="show-more pr-1">Show more</span>
+                        <img src="/img/show-more.svg" alt="Show More" />
+                      </p>
+                    </div>
+                  )
+                }
+
+              </a>
+              <hr className="mt-4" />
+              <a onClick={() => setAccordion('dimensions')}>
                 <div className="flex items-center justify-between">
                   <h3 className="accordion-title">Weight & Dimensions</h3>
-                  <img src="/img/product-down-arrow.svg" className="h-2" alt="Product arrow" />
+                  <div className={`caret ${accordion === 'dimensions' && 'open'}`}></div>
                 </div>
-                {/* accordion content
-              <p></p> */}
-              </div>
-              <hr />
-              <div>
+                {
+                  accordion === 'dimensions' && (
+                    <div className="accordion-content">
+                      Sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+                      sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+                      clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+                      tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
+                      vero eos et accusam et justo duo dolores et.
+                      <p className="flex items-center pt-4">
+                        <span className="show-more pr-1">Show more</span>
+                        <img src="/img/show-more.svg" alt="Show More" />
+                      </p>
+                    </div>
+                  )
+                }
+              </a>
+              <hr className="mt-4" />
+              <a onClick={() => setAccordion('specifications')}>
                 <div className="flex items-center justify-between">
                   <h3 className="accordion-title">Specifications</h3>
-                  <img src="/img/product-down-arrow.svg" className="h-2" alt="Product arrow" />
+                  <div className={`caret ${accordion === 'specifications' && 'open'}`}></div>
                 </div>
-                {/* accordion content
-              <p></p> */}
-              </div>
-              <hr />
-              <div>
+                {
+                  accordion === 'specifications' && (
+                    <div className="accordion-content">
+                      Sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+                      sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+                      clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+                      tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
+                      vero eos et accusam et justo duo dolores et.
+                      <p className="flex items-center pt-4">
+                        <span className="show-more pr-1">Show more</span>
+                        <img src="/img/show-more.svg" alt="Show More" />
+                      </p>
+                    </div>
+                  )
+                }
+              </a>
+              <hr className="mt-4" />
+              <a onClick={() => setAccordion('shipping')}>
                 <div className="flex items-center justify-between">
                   <h3 className="accordion-title">Shipping & Returns</h3>
-                  <img src="/img/product-down-arrow.svg" className="h-2" alt="Product arrow" />
+                  <div className={`caret ${accordion === 'shipping' && 'open'}`}></div>
                 </div>
-                {/* accordion content
-              <p></p> */}
-              </div>
+                {
+                  accordion === 'shipping' && (
+                    <div className="accordion-content">
+                      Sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+                      sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+                      clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+                      tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
+                      vero eos et accusam et justo duo dolores et.
+                      <p className="flex items-center pt-4">
+                        <span className="show-more pr-1">Show more</span>
+                        <img src="/img/show-more.svg" alt="Show More" />
+                      </p>
+                    </div>
+                  )
+                }
+              </a>
 
-              <hr />
-              <div>
+              <hr className="mt-4" />
+              <a onClick={() => setAccordion('faq')}>
                 <div className="flex items-center justify-between">
                   <h3 className="accordion-title">FAQs</h3>
-                  <img src="/img/product-down-arrow.svg" className="h-2" alt="Product arrow" />
+                  <div className={`caret ${accordion === 'faq' && 'open'}`}></div>
                 </div>
-                {/* accordion content
-              <p></p> */}
-              </div>
-              <hr />
+                {
+                  accordion === 'faq' && (
+                    <div className="accordion-content">
+                      Sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+                      sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+                      clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+                      tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
+                      vero eos et accusam et justo duo dolores et.
+                      <p className="flex items-center pt-4">
+                        <span className="show-more pr-1">Show more</span>
+                        <img src="/img/show-more.svg" alt="Show More" />
+                      </p>
+                    </div>
+                  )
+                }
+              </a>
+              <hr className="mt-4" />
             </section>
             <section className="reviews mt-12">
               <div className="flex justify-between items-center">
-                <h4 className="review-title">Reviews</h4>
+                <h4 className="review-title">Customer Reviews</h4>
                 <button className="uppercase leave-review">Leave a review</button>
               </div>
               <div className="flex items-center">
@@ -307,7 +461,7 @@ const SingleProduct = () => {
                 <span className="rating-count pl-1">5</span>
               </div>
             </section>
-            <section className="user-rating flex justify-between items-center mt-10 mb-16">
+            <section className="user-rating flex justify-between items-center mt-6 mb-16">
               <div className="user-rating-container">
                 <div className="grid grid-cols-12 gap-2 items-center pb-2">
                   <div className="col-span-2 top-rated">5 Stars</div>
@@ -413,7 +567,7 @@ const SingleProduct = () => {
               <div>
                 <VendorBtn>Hi, I’m interested, please contact me.</VendorBtn>
                 <VendorBtn className="v-btn">Hi, when can I come see the item?</VendorBtn>
-                <VendorBtn className="v-btn">Tell me about the special offers you have</VendorBtn>
+                <VendorBtn className="v-btn px-4">Tell me about the special offers you have</VendorBtn>
               </div>
               <form>
                 <textarea
