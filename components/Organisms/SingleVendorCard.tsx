@@ -13,13 +13,15 @@ interface Props {
   title?: string;
   width?: string;
   path?: string;
+  fontSize?: string;
 }
 
-const Main = styled.div`
+const Main = styled.div<Props>`
   background-color: ${({ theme }) => theme.colors.gray15};
-  .heading-text {
-    font-size: 1.1rem;
+  .heading-text,.message {
+    font-size: ${({ fontSize }) => fontSize || '1.1rem'};
   }
+  
 `;
 const Wrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.gray15};
@@ -43,12 +45,13 @@ const SingleVendorCard: React.FC<Props> = ({
   location,
   phone,
   path = '/single-vendor',
+  fontSize
 }) => {
   const theme = useContext(ThemeContext);
 
   return (
     <Link href={path}>
-      <Main className="max-w-sm rounded-sm cursor-pointer">
+      <Main className="max-w-sm rounded-sm cursor-pointer" fontSize={fontSize}>
         <div className="text-center">
           <ImgContainer imgUrl={imgUrl} height={height} width={width} />
         </div>
@@ -68,7 +71,7 @@ const SingleVendorCard: React.FC<Props> = ({
           </div>
           <button
             onClick={() => Router.push('/professional-about')}
-            className="uppercase border-gray-600 text-gray-600 py-1 mt-4 w-full bg-white rounded-sm block text-center"
+            className="uppercase border-gray-600 text-gray-600 py-1 message mt-4 w-full bg-white rounded-sm block text-center"
           >
             Send A Message
           </button>
