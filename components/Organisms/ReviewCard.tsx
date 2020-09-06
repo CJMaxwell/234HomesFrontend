@@ -11,12 +11,13 @@ interface Props {
 }
 
 const Wrapper = styled.section`
-  h1 {
-    color: ${({ theme }) => theme.colors.gray5};
+  .username {
+    color: ${({ theme }) => theme.colors.gray1};
     font-weight: 600;
   }
   .rating {
     color: ${({ theme }) => theme.colors.orange1};
+    font-weight: 600;
   }
   .location {
     font-size: 0.8rem;
@@ -48,7 +49,7 @@ const ReviewCard: React.FC<Props> = ({
           <div className="flex justify-between items-start">
             <img className="inline-block h-16 w-16 rounded-full" src={userImg} alt={userName} />
             <div className="pl-4">
-              <h1>{userName}</h1>
+              <h1 className="username">{userName}</h1>
               <p className="location">{location}</p>
             </div>
             <div className="pl-4 flex items-center">

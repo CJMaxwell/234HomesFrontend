@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import Link from 'next/link';
 import Router from 'next/router';
@@ -217,6 +217,7 @@ const Directory = styled.div`
 
 const Home = () => {
   const theme = useContext(ThemeContext);
+  const [tab, setTab] = useState('professional');
 
   return (
     <div>
@@ -265,14 +266,16 @@ const Home = () => {
           expedita alias repellendus reprehenderit architecto eos enim delectus optio libero.
         </p>
         <div className="mt-12">
-          <button className="border-b-2">
-            Learn More About Us
+          <Link href="/about-us">
+            <a className="border-b-2 border-gray-700 pb-1">
+              Learn More About Us
             <img
-              className="inline-block h-4 pl-4"
-              src="/img/left-arrow-button.svg"
-              alt="View more"
-            />
-          </button>
+                className="inline-block h-4 pl-4"
+                src="/img/left-arrow-button.svg"
+                alt="View more"
+              />
+            </a>
+          </Link>
         </div>
       </Connect>
 
@@ -340,7 +343,7 @@ const Home = () => {
         <div className="mt-16 container mx-auto general-padding mb-20 ">
           <div className="grid grid-cols-3 gap-10">
             <div className="col-span-2 grid grid-cols-2 gap-4">
-              <div>
+              <div className="cursor-pointer" onClick={() => Router.push('/single-diy')}>
                 <DIYCard imgUrl="/img/EO_kitchen.png" height="414.5px" />
               </div>
               <div className="grid grid-rows-2 gap-4">
@@ -385,13 +388,13 @@ const Home = () => {
           <div className="flex justify-between items-center pb-10 pt-5">
             <ul className="text-gray-500 flex text-sm">
               <li className="pr-8">
-                <a className="active-link">Featured Professional</a>
+                <a onClick={() => setTab('professional')} className={`${tab === 'professional' && 'active-link'}`}>Featured Professional</a>
               </li>
               <li className="pr-8">
-                <a>Most views Products</a>
+                <a onClick={() => setTab('products')} className={`${tab === 'products' && 'active-link'}`}>Most views Products</a>
               </li>
               <li>
-                <a>Top Rated Vendors</a>
+                <a onClick={() => setTab('vendors')} className={`${tab === 'vendors' && 'active-link'}`}>Top Rated Vendors</a>
               </li>
             </ul>
             <div className="inline-flex">
@@ -403,66 +406,81 @@ const Home = () => {
               </button>
             </div>
           </div>
-        </div>
-        <div className="grid grid-cols-4 gap-4 mb-12">
-          <ProfessionalCard
-            name="Babatunde Maxwell"
-            occupation="Interior Designer"
-            location="Ikeja, Lagos"
-            phone="0803 456 7890"
-          />
-          <ProfessionalCard
-            name="Alexandria Vladimir"
-            occupation="Painter"
-            location="Barnawa, Kaduna"
-            phone="0809 053 4405"
-          />
-          <ProfessionalCard
-            name="Micheal Jonna"
-            occupation="Carpenter"
-            location="Wuse, Abuja"
-            phone="0812 456 8900"
-          />
-          <ProfessionalCard
-            name="Wuraola Gbotemi"
-            occupation="Plumber"
-            location="Maitama, Abuja"
-            phone="0809 053 4405"
-          />
-        </div>
-        <div className="grid grid-cols-2 gap-4">
-          <MostViewedProducts imgUrl="/img/BArt.png" />
-          <MostViewedProducts imgUrl="/img/B-18-B.png" />
-        </div>
-        <div className="grid grid-cols-4 gap-4 mt-4">
-          <TopRatedVendor
-            imgUrl="/img/vendors/sidekix-media-I_QC1JICzA0-unsplash.png"
-            height="15rem"
-            name="Nick Interior LTD"
-            location="77, Central Park South, Ikeja, Lagos"
-            phone="0812 456 8900, 0812 456 8900"
-          />
-          <TopRatedVendor
-            imgUrl="/img/vendors/francesca-tosolini-tHkJAMcO3QE-unsplash.png"
-            height="15rem"
-            name="Lorem Furniture"
-            location="77, Central Park South, Ikeja, Lagos"
-            phone="0812 456 8900, 0812 456 8900"
-          />
-          <TopRatedVendor
-            imgUrl="/img/vendors/francesca-tosolini-w1RE0lBbREo-unsplash.png"
-            height="15rem"
-            name="Chuma & Sons LTD"
-            location="77, Central Park South, Ikeja, Lagos"
-            phone="0812 456 8900, 0812 456 8900"
-          />
-          <TopRatedVendor
-            imgUrl="/img/vendors/two-white-rod-pocket-curtains-910458.png"
-            height="15rem"
-            name="Consetetur Designs"
-            location="77, Central Park South, Ikeja, Lagos"
-            phone="0812 456 8900, 0812 456 8900"
-          />
+          {
+            tab === 'professional' && (
+              <div className="grid grid-cols-4 gap-4 mb-12">
+                <ProfessionalCard
+                  name="Babatunde Maxwell"
+                  occupation="Interior Designer"
+                  location="Ikeja, Lagos"
+                  phone="0803 456 7890"
+                />
+                <ProfessionalCard
+                  name="Alexandria Vladimir"
+                  occupation="Painter"
+                  location="Barnawa, Kaduna"
+                  phone="0809 053 4405"
+                />
+                <ProfessionalCard
+                  name="Micheal Jonna"
+                  occupation="Carpenter"
+                  location="Wuse, Abuja"
+                  phone="0812 456 8900"
+                />
+                <ProfessionalCard
+                  name="Wuraola Gbotemi"
+                  occupation="Plumber"
+                  location="Maitama, Abuja"
+                  phone="0809 053 4405"
+                />
+              </div>
+
+            )
+          }
+          {
+            tab === 'products' && (
+              <div className="grid grid-cols-2 gap-4">
+                <MostViewedProducts imgUrl="/img/BArt.png" />
+                <MostViewedProducts imgUrl="/img/B-18-B.png" />
+              </div>
+            )
+          }
+
+          {
+            tab === 'vendors' && (
+              <div className="grid grid-cols-4 gap-4 mt-4">
+                <TopRatedVendor
+                  imgUrl="/img/vendors/sidekix-media-I_QC1JICzA0-unsplash.png"
+                  height="15rem"
+                  name="Nick Interior LTD"
+                  location="77, Central Park South, Ikeja, Lagos"
+                  phone="0812 456 8900, 0812 456 8900"
+                />
+                <TopRatedVendor
+                  imgUrl="/img/vendors/francesca-tosolini-tHkJAMcO3QE-unsplash.png"
+                  height="15rem"
+                  name="Lorem Furniture"
+                  location="77, Central Park South, Ikeja, Lagos"
+                  phone="0812 456 8900, 0812 456 8900"
+                />
+                <TopRatedVendor
+                  imgUrl="/img/vendors/francesca-tosolini-w1RE0lBbREo-unsplash.png"
+                  height="15rem"
+                  name="Chuma & Sons LTD"
+                  location="77, Central Park South, Ikeja, Lagos"
+                  phone="0812 456 8900, 0812 456 8900"
+                />
+                <TopRatedVendor
+                  imgUrl="/img/vendors/two-white-rod-pocket-curtains-910458.png"
+                  height="15rem"
+                  name="Consetetur Designs"
+                  location="77, Central Park South, Ikeja, Lagos"
+                  phone="0812 456 8900, 0812 456 8900"
+                />
+              </div>
+
+            )
+          }
         </div>
       </Directory>
       <Footer />

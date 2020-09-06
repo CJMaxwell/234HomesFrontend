@@ -18,19 +18,13 @@ const MainWrapper = styled.div`
   }
 `;
 const Wrapper = styled.section<Props>`
-  height: 38rem;
   background: url('${({ imgUrl }) => imgUrl}'), linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5));
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 
   .signup {
-    position: absolute;
     margin: 0;
-    top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
     max-width: 28.9rem;
     max-height: 35.3rem;
   }
@@ -57,7 +51,6 @@ const Wrapper = styled.section<Props>`
     padding-top: 0.5rem;
   }
   .social-icons {
-    /* padding: 1.05rem 0.85rem; */
     padding: 0.8rem 0.5rem;
 
   }
@@ -76,7 +69,7 @@ const Login: React.FC<Props> = () => {
         <SignUpNavbar type="login" />
       </div>
       <Wrapper
-        className="relative"
+        className="flex justify-center py-16"
         imgUrl="/img/square-glass-top-coffee-table-and-two-white-leather-2-seat.png"
       >
         <div className="w-full signup bg-white rounded pb-16">
@@ -101,7 +94,7 @@ const Login: React.FC<Props> = () => {
           >
             {({ values, handleChange, handleBlur, handleSubmit }) => (
               <form onSubmit={handleSubmit} className="px-8 mt-auto">
-                <div className="border border-gray-500 form-wrap h-12 pr-4 justify-between flex items-center">
+                <div className="border border-gray-500 form-wrap h-12 pr-4 justify-between flex items-center overflow-hidden">
                   <div className="input-addon pr-4">
                     <select
                       value={values.dialCode}
@@ -159,8 +152,8 @@ const Login: React.FC<Props> = () => {
                     {loading ? (
                       <Loader type="ThreeDots" color={theme.colors.white} height={20} width={60} />
                     ) : (
-                      'Sign In'
-                    )}
+                        'Sign In'
+                      )}
                   </button>
                 </div>
               </form>

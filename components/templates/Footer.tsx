@@ -57,9 +57,11 @@ const Footer = () => {
           <div>
             <h6 className="pb-12 font-bold">Company</h6>
             <ul className="text-sm leading-loose">
-              <li>
-                <a>About +234Homes</a>
-              </li>
+              <Link href="/about-us">
+                <li>
+                  <a>About +234Homes</a>
+                </li>
+              </Link>
               <Link href="/careers">
                 <li>
                   <a>Careers</a>
@@ -95,21 +97,28 @@ const Footer = () => {
                   <a>Vendors</a>
                 </li>
               </Link>
-              <li>
-                <a>Blog Stories</a>
-              </li>
+              <Link href="/stories">
+                <li>
+                  <a>Blog Stories</a>
+                </li>
+              </Link>
+
               <li>
                 <a>Advert Placement</a>
               </li>
               <li>
                 <a>Reviews</a>
               </li>
-              <li>
-                <a>House Tour</a>
-              </li>
-              <li>
-                <a>Gallery</a>
-              </li>
+              <Link href="/house-tours">
+                <li>
+                  <a>House Tour</a>
+                </li>
+              </Link>
+              <Link href="/gallery">
+                <li>
+                  <a>Gallery</a>
+                </li>
+              </Link>
               <li>
                 <a>Advertise</a>
               </li>
