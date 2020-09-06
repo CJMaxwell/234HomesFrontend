@@ -128,9 +128,18 @@ const Membership = () => {
               NGN0.00 <span>/ Month</span>
             </p>
             <ul className="offering">
-              <li>Free Page</li>
-              <li>Ability to upload 3 photos of products and contents</li>
-              <li>Weekly Newsletter</li>
+              <li className="flex items-center justify-center">
+                <img className="pr-2" src="/img/tick.svg" alt="Part of the subscription plan" />
+                <span>Free Page</span>
+              </li>
+              <li className="flex items-start">
+                <img className="pt-1" src="/img/tick.svg" alt="Part of the subscription plan" />
+                <span>Ability to upload 3 photos of products and contents</span>
+              </li>
+              <li className="flex items-center justify-center">
+                <img className="pr-2" src="/img/tick.svg" alt="Part of the subscription plan" />
+                <span>Weekly Newsletter</span>
+              </li>
             </ul>
             <button
               type="button"
@@ -148,15 +157,42 @@ const Membership = () => {
               NGN 10,000.00 <span>/ Month</span>
             </p>
             <ul className="offering">
-              <li>Free Page</li>
-              <li>Ability to upload 3 photos of products and contents</li>
-              <li>Weekly Newsletter</li>
-              <li>Ability to be found in search</li>
-              <li>Free general advisory on consumer trends</li>
-              <li>Spotlight on vendor (random and at our discretion)</li>
-              <li>Free web page design advisory</li>
-              <li>Auto verification</li>
-              <li>First level priority placement on vendor list</li>
+              <li className="flex items-center justify-center">
+                <img className="pr-2" src="/img/tick.svg" alt="Part of the subscription plan" />
+                <span>Free Page</span>
+              </li>
+              <li className="flex items-start">
+                <img className="pt-1" src="/img/tick.svg" alt="Part of the subscription plan" />
+                <span>Ability to upload 3 photos of products and contents</span>
+              </li>
+              <li className="flex items-center justify-center">
+                <img className="pr-2" src="/img/tick.svg" alt="Part of the subscription plan" />
+                <span>Weekly Newsletter</span>
+              </li>
+              <li className="flex items-center justify-center">
+                <img className="pr-2" src="/img/tick.svg" alt="Part of the subscription plan" />
+                <span>Ability to be found in search</span>
+              </li>
+              <li className="flex items-start justify-center">
+                <img className="pr-2 pt-1" src="/img/tick.svg" alt="Part of the subscription plan" />
+                <span>Free general advisory on consumer trends</span>
+              </li>
+              <li className="flex items-start justify-center">
+                <img className="pr-2 pt-1" src="/img/tick.svg" alt="Part of the subscription plan" />
+                <span>Spotlight on vendor (random and at our discretion)</span>
+              </li>
+              <li className="flex items-center justify-center">
+                <img className="pr-2" src="/img/tick.svg" alt="Part of the subscription plan" />
+                <span>Free web page design advisory</span>
+              </li>
+              <li className="flex items-center justify-center">
+                <img className="pr-2" src="/img/tick.svg" alt="Part of the subscription plan" />
+                <span>Auto verification</span>
+              </li>
+              <li className="flex items-start justify-center">
+                <img className="pr-2 pt-1" src="/img/tick.svg" alt="Part of the subscription plan" />
+                <span>First level priority placement on vendor list</span>
+              </li>
             </ul>
             <button type="button" className="premium-btn uppercase py-3 px-20">
               Upgrade
@@ -168,11 +204,26 @@ const Membership = () => {
               NGN 5,000.00 <span>/ Month</span>
             </p>
             <ul className="offering">
-              <li>Free Page</li>
-              <li>Ability to upload 3 photos of products and contents</li>
-              <li>Weekly Newsletter</li>
-              <li>Ability to be found in search</li>
-              <li>Free general advisory on consumer trends</li>
+              <li className="flex items-center justify-center">
+                <img className="pr-2" src="/img/tick.svg" alt="Part of the subscription plan" />
+                <span>Free Page</span>
+              </li>
+              <li className="flex items-start">
+                <img className="pt-1" src="/img/tick.svg" alt="Part of the subscription plan" />
+                <span>Ability to upload 3 photos of products and contents</span>
+              </li>
+              <li className="flex items-center justify-center">
+                <img className="pr-2" src="/img/tick.svg" alt="Part of the subscription plan" />
+                <span>Weekly Newsletter</span>
+              </li>
+              <li className="flex items-center justify-center">
+                <img className="pr-2" src="/img/tick.svg" alt="Part of the subscription plan" />
+                <span>Ability to be found in search</span>
+              </li>
+              <li className="flex items-start justify-center">
+                <img className="pr-2 pt-1" src="/img/tick.svg" alt="Part of the subscription plan" />
+                <span>Free general advisory on consumer trends</span>
+              </li>
             </ul>
             <button type="button" className="plus-btn uppercase py-3 px-20">
               Upgrade
