@@ -20,14 +20,14 @@ const Wrapper = styled.div`
     text-transform: uppercase;
   }
   .about {
-    h1,
     .short-desc,
-    .break-down-title {
-      color: ${({ theme }) => theme.colors.gray5};
-    }
+    
     .short-desc {
       font-size: 0.8rem;
     }
+  }
+  .break-down-title {
+    color: ${({ theme }) => theme.colors.gray5};
   }
   .bar-container {
     width: 100%;
@@ -44,13 +44,37 @@ const Wrapper = styled.div`
   .show-more {
     color: ${({ theme }) => theme.colors.orange1};
     font-size: 0.7rem;
+    font-weight: 600;
   }
+  .education, .certifications {
+    font-size: 0.8rem;
+  }
+  .edu-title, .cert-title,.qualification {
+    color: ${({ theme }) => theme.colors.gray1};
+    font-weight: 600;
+  }
+  .qualification {
+    margin-top: 0.8rem;
+    margin-bottom: 0.5rem;
+  }
+  .edu-title, .cert-title {
+
+  }
+
   .project,
-  .load-more-projects,
   .review-title,
+  .prof-title {
+    color: ${({ theme }) => theme.colors.gray1};
+    font-weight: 600;
+  }
+  .load-more-projects {
+    color: ${({ theme }) => theme.colors.gray5};
+    font-weight: 600;
+  }
   .leave-review,
   .customer-review {
-    color: ${({ theme }) => theme.colors.gray2};
+    color: ${({ theme }) => theme.colors.gray5};
+    font-weight: 600;
   }
   .project-category {
     color: ${({ theme }) => theme.colors.gray19};
@@ -73,27 +97,30 @@ const Wrapper = styled.div`
   }
   .rating-count {
     color: ${({ theme }) => theme.colors.orange1};
+    font-weight: 600;
   }
   .star-listing span {
     padding-right: 4px;
   }
   .top-rated {
     color: ${({ theme }) => theme.colors.blue2};
+    font-weight: 600;
   }
   .sec-rating {
     color: ${({ theme }) => theme.colors.gray17};
   }
   .break-down {
-    h1 {
-      color: ${({ theme }) => theme.colors.gray2};
+    .brk-down-title {
+      color: ${({ theme }) => theme.colors.gray5};
     }
     .rating-value {
       color: ${({ theme }) => theme.colors.gray5};
+      font-weight: 600;
     }
   }
 
   aside {
-    height: 46rem;
+    height: 70rem;
   }
   .aside-title {
     color: ${({ theme }) => theme.colors.gray5};
@@ -147,12 +174,12 @@ const Wrapper = styled.div`
     font-size: 0.7rem;
     font-weight: 500;
   }
-  .camera {
+  /* .camera {
     top: 70px;
     left: 45px;
     height: 2.15rem;
     width: 2.55rem;
-  }
+  } */
 `;
 
 const Hero = styled.section`
@@ -174,7 +201,7 @@ const AboutProfessional = () => {
       <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />
       <Navbar />
       <hr />
-      <div className="general-padding container mx-auto mb-48">
+      <div className="general-padding container mx-auto">
         <Offering />
         <ul className="breadcrumb flex items-center">
           <li>Directory</li>
@@ -183,34 +210,37 @@ const AboutProfessional = () => {
           </li>
           <li>Professionals</li>
         </ul>
-        <Hero className="rounded-md border-white mb-16">
-          <div className="flex justify-between hero-detail px-10">
-            <div className="flex items-center">
-              <div className="pr-8 relative">
-                <img
-                  src="/img/professional.jpg"
-                  className="h-32 w-32 rounded-full"
-                  alt="Professional"
-                />
-                <span className="absolute camera">
-                  <img src="/img/ar-camera.svg" alt="Camera" />
-                </span>
-              </div>
-              <div>
-                <h1 className="prof-name font-semibold">Wuraola Gbotemi</h1>
-                <div className="flex items-center">
-                  <img src="/img/pin.svg" className="pr-2 prof-pin" alt="Location pin" />
-                  <span className="prof-location">Lekki, Lagos</span>
-                </div>
-              </div>
+      </div>
+
+      <Hero className="rounded-md border-white mb-16">
+        <div className="flex justify-between hero-detail px-10">
+          <div className="flex items-center">
+            <div className="pr-8 relative">
+              <img
+                src="/img/professional.jpg"
+                className="h-32 w-32 rounded-full"
+                alt="Professional"
+              />
+              {/* <span className="absolute camera">
+                <img src="/img/ar-camera.svg" alt="Camera" />
+              </span> */}
             </div>
-            <div className="pt-4">
-              <HeroButton width="11rem" height="3.15rem">
-                Send Message
-              </HeroButton>
+            <div>
+              <h1 className="prof-name font-semibold">Wuraola Gbotemi</h1>
+              <div className="flex items-center">
+                <img src="/img/pin.svg" className="pr-2 prof-pin" alt="Location pin" />
+                <span className="prof-location">Lekki, Lagos</span>
+              </div>
             </div>
           </div>
-        </Hero>
+          <div className="pt-4">
+            <HeroButton width="11rem" height="3.15rem">
+              Send Message
+              </HeroButton>
+          </div>
+        </div>
+      </Hero>
+      <div className="general-padding container mx-auto mb-48">
         <section className="grid grid-cols-6">
           <aside className="col-span-2 px-6 pt-8 rounded border border-gray-200 mr-12">
             <div className="mb-10">
@@ -298,10 +328,32 @@ const AboutProfessional = () => {
                 </div>
               </div>
             </div>
+            <div className="education mt-12">
+              <h1 className="edu-title">Education</h1>
+              <div>
+                <h2 className="qualification">B.A. - Architecture</h2>
+                <p className="description">Obafemi Awolowo University, Ife Graduated 2014</p>
+              </div>
+            </div>
+            <div className="certifications mt-12">
+              <h1 className="cert-title">Certifications</h1>
+              <div>
+                <h2 className="qualification">First Certificate English (FCE)</h2>
+                <p className="description">Certified from Cambridge University 2010</p>
+              </div>
+              <div>
+                <h2 className="qualification">Social Media Marketing Cert.</h2>
+                <p className="description">Online Marketing Academy 2016</p>
+              </div>
+              <div>
+                <h2 className="qualification">Web Design & Development</h2>
+                <p className="description">UMassOnline 2011</p>
+              </div>
+            </div>
           </aside>
           <main className="col-span-4 px-12 pt-8 rounded border border-gray-200">
             <section className="about mb-8">
-              <h1>About Me</h1>
+              <h1 className="prof-title">About Me</h1>
               <article className="pt-4 short-desc">
                 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
                 tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
@@ -320,7 +372,7 @@ const AboutProfessional = () => {
             <hr />
             <section className="projects mt-10">
               <div className="flex items-center justify-between mb-8">
-                <h1 className="project">Projects</h1>
+                <h1 className="project ab-prof-title">Projects</h1>
                 <select
                   className="project-category border border-gray-300 px-5 py-2"
                   name="category"
@@ -346,7 +398,7 @@ const AboutProfessional = () => {
             <hr />
             <section className="reviews mt-10">
               <div className="flex justify-between items-center">
-                <h4 className="review-title">Reviews</h4>
+                <h4 className="review-title ab-prof-title">Reviews</h4>
                 <button type="button" className="uppercase leave-review">
                   Leave a review
                 </button>
@@ -412,23 +464,23 @@ const AboutProfessional = () => {
                 </div>
               </div>
               <div className="break-down">
-                <h1 className="break-dwon-title font-semibold">Rating Breakdown</h1>
+                <h1 className="break-down-title font-semibold">Rating Breakdown</h1>
                 <div className="flex justify-between items-center pt-4">
-                  <h1>Communication Level</h1>
+                  <h1 className="brk-down-title">Communication Level</h1>
                   <div className="flex items-center justify-between pl-4">
                     <span className="pr-1 rating-value">4.9</span>
                     <img src="img/star-vendor.svg" className="h-4 w-4" alt="Stars" />
                   </div>
                 </div>
                 <div className="flex justify-between items-center pt-4">
-                  <h1>Recommend to a friend</h1>
+                  <h1 className="brk-down-title">Recommend to a friend</h1>
                   <div className="flex justify-between items-center pl-4">
                     <span className="pr-1 rating-value">5.0</span>
                     <img src="img/star-vendor.svg" className="h-4 w-4" alt="Stars" />
                   </div>
                 </div>
                 <div className="flex justify-between items-center pt-4">
-                  <h1>Service as described</h1>
+                  <h1 className="brk-down-title">Service as described</h1>
                   <div className="flex justify-between items-center pl-4">
                     <span className="pr-1 rating-value">5.0</span>
                     <img src="img/star-vendor.svg" className="h-4 w-4" alt="Stars" />

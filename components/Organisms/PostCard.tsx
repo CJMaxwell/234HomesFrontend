@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 interface Props {
   imgUrl?: string;
   height?: string;
+
 }
 
 const Wrapper = styled.div<Props>`
-  background-image: url('${({ imgUrl }) =>
-    imgUrl}'), linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5));
+  background-image: url('${({ imgUrl }) => imgUrl}'), linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5));
   background-blend-mode: overlay;
   background-repeat: no-repeat;
   background-size:cover;
@@ -20,8 +20,15 @@ const Wrapper = styled.div<Props>`
   .title-author {
     left:29px;
     bottom: 20px;
+    /* visibility: hidden; */
   }
+  /* &:hover  {
 
+    .title-author {
+      visibility: visible;
+
+    }
+  } */
   .share {
     right: 21px;
     top: 38.12px;
@@ -29,6 +36,7 @@ const Wrapper = styled.div<Props>`
 `;
 
 const PostCard: React.FC<Props> = ({ imgUrl = '/img/Adora_NH_sink.png', height }) => {
+
   return (
     <Wrapper
       imgUrl={imgUrl}
