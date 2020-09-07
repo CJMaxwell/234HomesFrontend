@@ -53,12 +53,29 @@ const GalleryImg = styled.section`
     top: 50%;
     width: 100%
   }
+
+@keyframes bounce {
+  0% {
+    transform: scale(1,1) translate(0px, 0px);
+  }
+
+  50%{
+    transform: scale(1,0.8) translate(0px, 10px); 
+  }
+
+  100% {
+    transform: scale(1,1) translate(0px, 0px);
+  }
+}
+
   .callout {
     position: absolute;
     top: 25%;
     left: 35%;
     width: 100%;
+    animation: bounce 5s infinite;
   }
+
 `;
 
 const SingleGallery = () => {
