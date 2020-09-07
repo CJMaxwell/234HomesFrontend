@@ -1,6 +1,7 @@
-import React, { useContext } from 'react';
-import styled, { ThemeContext } from 'styled-components';
+import React from 'react';
+import styled from 'styled-components';
 import Masonry from 'react-masonry-css';
+import Link from 'next/link';
 
 import Offering from '../Organisms/Offering';
 import Navbar from '../Organisms/Navbar';
@@ -105,40 +106,43 @@ const Gallery = () => {
           className="masonry-grid"
           columnClassName="masonry-grid_column"
         >
-          <div className="">
-            <GalleryItem
-              imgUrl="/img/gallery/sidekix-media-I_QC1JICzA0-unsplash.png"
-              height="20.65rem"
-            />
-          </div>
-          <div className="">
+          <Link href="/single-gallery">
+            <div className="cursor-pointer">
+              <GalleryItem
+                imgUrl="/img/gallery/sidekix-media-I_QC1JICzA0-unsplash.png"
+                height="20.65rem"
+              />
+            </div>
+          </Link>
+
+          <div>
             <GalleryItem
               imgUrl="/img/gallery/francesca-tosolini-tHkJAMcO3QE-unsplash.png"
               height="16.95rem"
             />
           </div>
-          <div className="">
+          <div>
             <GalleryItem imgUrl="/img/gallery/AH-31.png" height="20.65rem" />
           </div>
-          <div className="">
+          <div>
             <GalleryItem imgUrl="/img/gallery/AH-42.png" height="16.95rem" />
           </div>
-          <div className="">
+          <div>
             <GalleryItem imgUrl="/img/gallery/Adora_NH.png" height="16.95rem" />
           </div>
-          <div className="">
+          <div>
             <GalleryItem imgUrl="/img/gallery/AH-30.png" height="16.95rem" />
           </div>
-          <div className="">
+          <div>
             <GalleryItem imgUrl="/img/gallery/B-25-1.png" height="16.95rem" />
           </div>
-          <div className="">
+          <div>
             <GalleryItem imgUrl="/img/gallery/Adora_NH-42.png" height="20.65rem" />
           </div>
-          <div className="">
+          <div>
             <GalleryItem imgUrl="/img/gallery/B-8.png" height="20.65rem" />
           </div>
-          <div className="">
+          <div>
             <GalleryItem
               imgUrl="/img/gallery/francesca-tosolini-w1RE0lBbREo-unsplash.png"
               height="16.95rem"
@@ -147,46 +151,46 @@ const Gallery = () => {
           <div className="ad">
             <GalleryItem imgUrl="/img/gallery/AH-18-3.png" height="24.1rem" />
           </div>
-          <div className="">
+          <div>
             <GalleryItem
               imgUrl="/img/gallery/two-white-rod-pocket-curtains-910458.png"
               height="16.95rem"
             />
           </div>
-          <div className="">
+          <div>
             <GalleryItem
               imgUrl="/img/gallery/2-seat-orange-leather-sofa-beside-wall-1866149.png"
               height="20.65rem"
             />
           </div>
-          <div className="">
+          <div>
             <GalleryItem
               imgUrl="/img/gallery/interior-design-of-a-house-1571460.png"
               height="16.95rem"
             />
           </div>
-          <div className="">
+          <div>
             <GalleryItem imgUrl="/img/gallery/B-18-1.png" height="16.95rem" />
           </div>
-          <div className="">
+          <div>
             <GalleryItem imgUrl="/img/gallery/AH-18-2.png" height="16.95rem" />
           </div>
-          <div className="">
+          <div>
             <GalleryItem
               imgUrl="/img/gallery/two-assorted-color-padded-chairs-near-side-table-1350789-1.png"
               height="20.65rem"
             />
           </div>
-          <div className="">
+          <div>
             <GalleryItem imgUrl="/img/gallery/B-6-1.png" height="20.65rem" />
           </div>
-          <div className="">
+          <div>
             <GalleryItem
               imgUrl="/img/gallery/bathroom-cabinet-candles-faucet-342800.png"
               height="16.95rem"
             />
           </div>
-          <div className="">
+          <div>
             <GalleryItem
               imgUrl="/img/gallery/two-white-rod-pocket-curtains-910458.png"
               height="16.95rem"

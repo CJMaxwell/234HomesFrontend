@@ -73,7 +73,7 @@ const GalleryImg = styled.section`
     top: 25%;
     left: 35%;
     width: 100%;
-    animation: bounce 5s infinite;
+    animation: bounce 3s infinite;
   }
 
 `;
