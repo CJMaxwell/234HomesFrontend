@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import Navbar from '../Organisms/Navbar';
@@ -6,7 +6,10 @@ import Offering from '../Organisms/Offering';
 import UserRatingCard from '../molecules/UserRatingCard';
 import UserInfoCard from '../molecules/UserInfoCard';
 import SingleVendorCard from '../Organisms/SingleVendorCard';
+import Save from '../molecules/Save';
+import Share from '../molecules/Share';
 import Footer from './Footer';
+
 
 
 
@@ -38,9 +41,31 @@ const GalleryImg = styled.section`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+
+  .save-share {
+    position: absolute;
+    top: 85%;
+    left: 50%; 
+    transform: translate(-50%, -50%);
+  }
+  .directional-btn {
+    position: absolute;
+    top: 50%;
+    width: 100%
+  }
+  .callout {
+    position: absolute;
+    top: 25%;
+    left: 35%;
+    width: 100%;
+  }
 `;
 
 const SingleGallery = () => {
+
+  const [open, setOpen] = useState(false);
+
+
   return (
     <Wrapper>
       <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />
@@ -51,58 +76,82 @@ const SingleGallery = () => {
       </div>
       <section className="mb-48 mt-8 grid grid-cols-5">
         <section className="col-span-3" >
-          <GalleryImg></GalleryImg>
-          <section className="pl-24">
-            <h4 className="pt-8 pb-6 font-semibold sold-by">Products Sold By</h4>
-            <section className="mb-16">
-              <UserInfoCard padding="1rem" />
+          <GalleryImg className="relative">
+            <section className="flex items-center justify-between directional-btn">
+              <button>
+                <img className="h-8 px-16" src="/img/down-arrow-gallery-left.svg" alt="Left direction" />
+              </button>
+              <button>
+                <img className="h-8 px-16" src="/img/down-arrow-gallery-right.svg" alt="Right direction" />
+              </button>
             </section>
-            <section className="flex items-center justify-between mb-6">
-              <p className="similiar-products font-semibold">Vendors With Similar Products</p>
-              <div className="flex item justify-between">
-                <img className="h-10 w-10 mr-4 p-2 border border-gray-700" src="/img/down-arrow_ss-right.svg" alt="" />
-                <img className="h-10 w-10 p-2 border border-gray-700" src="/img/down-arrow__s-s-left.svg" alt="" />
-              </div>
+            <section className="flex items-end justify-center save-share">
+              <section className="pr-6">
+                <Save />
+              </section>
+              <Share />
             </section>
-            <section className="grid grid-cols-4 gap-2">
-              <SingleVendorCard
-                imgUrl="/img/vendors/single-vendor-sidekix-media-I_QC1JICzA0-unsplash.png"
-                height="10.3rem"
-                name="Nick Interiors Ltd"
-                occupation="Interior Designer"
-                location="Ikeja, Lagos"
-                phone="0803 456 7890"
-                fontSize="0.8rem"
-              />
-              <SingleVendorCard
-                imgUrl="/img/vendors/francesca-tosolini-tHkJAMcO3QE-unsplash.png"
-                height="10.3rem"
-                name="Lorem Furniture"
-                occupation="Painter"
-                location="Barnawa, Kaduna"
-                phone="0809 053 4405"
-                fontSize="0.8rem"
-              />
-              <SingleVendorCard
-                imgUrl="/img/vendors/jacek-dylag-Vve7XkiUq_Y-unsplash.png"
-                height="10.3rem"
-                name="Chuma & Sons Ltd"
-                occupation="Interior Designer"
-                location="Ikeja, Lagos"
-                phone="0803 456 7890"
-                fontSize="0.8rem"
-              />
-              <SingleVendorCard
-                imgUrl="/img/vendors/architecture-clouds-estate-exterior-280222-1.png"
-                height="10.3rem"
-                name="Consetetur Designs"
-                occupation="Painter"
-                location="Barnawa, Kaduna"
-                phone="0809 053 4405"
-                fontSize="0.8rem"
-              />
-            </section>
-          </section>
+            <button onClick={() => setOpen(!open)} className="callout focus:outline-none">
+              <img className="h-8" src="/img/callout-tab.svg" alt="See vendor that sold this product" />
+            </button>
+          </GalleryImg>
+          {
+            open && (
+              <section className="pl-24">
+                <h4 className="pt-8 pb-6 font-semibold sold-by">Products Sold By</h4>
+                <section className="mb-16">
+                  <UserInfoCard padding="1rem" />
+                </section>
+                <section className="flex items-center justify-between mb-6">
+                  <p className="similiar-products font-semibold">Vendors With Similar Products</p>
+                  <div className="flex item justify-between">
+                    <img className="h-10 w-10 mr-4 p-2 border border-gray-700" src="/img/down-arrow_ss-right.svg" alt="" />
+                    <img className="h-10 w-10 p-2 border border-gray-700" src="/img/down-arrow__s-s-left.svg" alt="" />
+                  </div>
+                </section>
+                <section className="grid grid-cols-4 gap-2">
+                  <SingleVendorCard
+                    imgUrl="/img/vendors/single-vendor-sidekix-media-I_QC1JICzA0-unsplash.png"
+                    height="10.3rem"
+                    name="Nick Interiors Ltd"
+                    occupation="Interior Designer"
+                    location="Ikeja, Lagos"
+                    phone="0803 456 7890"
+                    fontSize="0.8rem"
+                  />
+                  <SingleVendorCard
+                    imgUrl="/img/vendors/francesca-tosolini-tHkJAMcO3QE-unsplash.png"
+                    height="10.3rem"
+                    name="Lorem Furniture"
+                    occupation="Painter"
+                    location="Barnawa, Kaduna"
+                    phone="0809 053 4405"
+                    fontSize="0.8rem"
+                  />
+                  <SingleVendorCard
+                    imgUrl="/img/vendors/jacek-dylag-Vve7XkiUq_Y-unsplash.png"
+                    height="10.3rem"
+                    name="Chuma & Sons Ltd"
+                    occupation="Interior Designer"
+                    location="Ikeja, Lagos"
+                    phone="0803 456 7890"
+                    fontSize="0.8rem"
+                  />
+                  <SingleVendorCard
+                    imgUrl="/img/vendors/architecture-clouds-estate-exterior-280222-1.png"
+                    height="10.3rem"
+                    name="Consetetur Designs"
+                    occupation="Painter"
+                    location="Barnawa, Kaduna"
+                    phone="0809 053 4405"
+                    fontSize="0.8rem"
+                  />
+                </section>
+              </section>
+
+            )
+          }
+
         </section>
         <section className="col-span-2 pl-12">
           <UserRatingCard />
