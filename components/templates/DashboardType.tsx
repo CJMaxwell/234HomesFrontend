@@ -62,6 +62,7 @@ const Wrapper = styled.section`
   }
   .acc-type {
     margin-right: 1.35rem;
+    width: 10rem;
   }
   .selection {
     padding-top: 0.85rem;
@@ -99,15 +100,15 @@ const DashboardType = () => {
           </li>
           <li>Dashboard</li>
         </ul>
-        <section className="flex justify-between">
-          <section className="w-1/4">
+        <section className="flex justify-center items-center">
+          {/* <section className="w-1/4">
             <DashboardSideBar />
-          </section>
-          <section className="main w-3/4">
+          </section> */}
+          <section className="main">
             <h1 className="account-type">Select Preferred Account Type</h1>
             <ul className="flex items-center">
               <li
-                className={`acc-type ${accountType === 'individual' && 'active'}`}
+                className={`acc-type cursor-pointer ${accountType === 'individual' && 'active'}`}
                 onClick={() => {
                   setAccountType('individual');
                 }}
@@ -119,7 +120,7 @@ const DashboardType = () => {
                 <a className="selection">Individual User</a>
               </li>
               <li
-                className={`acc-type ${accountType === 'professional' && 'active'}`}
+                className={`acc-type cursor-pointer ${accountType === 'professional' && 'active'}`}
                 onClick={() => {
                   setAccountType('professional');
                 }}
@@ -131,7 +132,7 @@ const DashboardType = () => {
                 <a className="selection">Professional</a>
               </li>
               <li
-                className={`acc-type ${accountType === 'vendor' && 'active'}`}
+                className={`acc-type cursor-pointer ${accountType === 'vendor' && 'active'}`}
                 onClick={() => {
                   setAccountType('vendor');
                 }}
@@ -143,21 +144,68 @@ const DashboardType = () => {
                 <a className="selection">Vendor</a>
               </li>
             </ul>
-            <p className="feat">Features</p>
-            <ul className="features">
-              <li>
-                At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren.
-              </li>
-              <li>
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod.
-              </li>
-              <li>Consetetur sadipscing elitr, sed diam nonumy eirmod.</li>
-              <li>
-                Labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                justo duo
-              </li>
-            </ul>
-            <section className="flex justify-end">
+            {
+              accountType === 'individual' && (
+                <section>
+                  <p className="feat">Features</p>
+                  <ul className="features">
+                    <li>
+                      Free Page
+                    </li>
+                    <li>
+                      Ability to upload 3 photos of products and contents.
+                    </li>
+                    <li>Consetetur sadipscing elitr, sed diam nonumy eirmod.</li>
+                    <li>
+                      Labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
+                      justo duo
+                    </li>
+                  </ul>
+                </section>
+              )
+            }
+            {
+              accountType === 'professional' && (
+                <section>
+                  <p className="feat">Features</p>
+                  <ul className="features">
+                    <li>
+                      Ability to be found in search
+                    </li>
+                    <li>
+                      Weekly Newsletter
+                    </li>
+                    <li>Consetetur sadipscing elitr, sed diam nonumy eirmod.</li>
+                    <li>
+                      Labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
+                      justo duo
+                    </li>
+                  </ul>
+                </section>
+              )
+            }
+            {
+              accountType === 'vendor' && (
+                <section>
+                  <p className="feat">Features</p>
+                  <ul className="features">
+                    <li>
+                      First level priority placement on vendor list
+                    </li>
+                    <li>
+                      Free web page design advisory
+                    </li>
+                    <li>Free general advisory on consumer trends</li>
+                    <li>
+                      Labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
+                      justo duo
+                    </li>
+                  </ul>
+                </section>
+              )
+            }
+
+            <section className="flex justify-end pb-12">
               <button
                 type="button"
                 className="next"
