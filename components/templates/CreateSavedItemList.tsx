@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import withApollo from '../../lib/withApollo';
 import Offering from '../Organisms/Offering';
 import Navbar from '../Organisms/Navbar';
-import ProfileSidebar from '../Organisms/ProfileSidebar';
+import DashboardSideBar from '../Organisms/DashboardSideBar';
 import Skill from '../atoms/Skill';
 import CTA from '../atoms/CTA';
 
@@ -119,7 +120,7 @@ const CreateSavedItemList = () => {
         </ul>
         <section className="flex justify-between">
           <section className="w-1/4">
-            <ProfileSidebar />
+            <DashboardSideBar />
           </section>
           <section className="main w-3/4">
             <h1 className="py-10 profile-title text-center">Create a list</h1>
@@ -152,7 +153,7 @@ const CreateSavedItemList = () => {
             </section>
 
             <section className="flex justify-center mt-12 mb-16">
-              <CTA type="button" className="update-profile" padding="0.8rem 2.4rem;">Save</CTA>
+              <CTA type="button" className="update-profile focus:outline-none" padding="0.8rem 2.4rem;">Save</CTA>
             </section>
           </section>
         </section>
@@ -162,4 +163,4 @@ const CreateSavedItemList = () => {
   )
 }
 
-export default CreateSavedItemList
+export default withApollo()(CreateSavedItemList);

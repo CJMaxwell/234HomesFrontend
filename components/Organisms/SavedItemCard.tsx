@@ -1,11 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
+import Link from 'next/link';
 
 interface Props {
   imgUrl?: string;
   height?: string;
   title?: string;
   tag?: string;
+  url?: string;
 }
 
 const ProjectImg = styled.section<Props>`
@@ -18,7 +20,7 @@ const ProjectImg = styled.section<Props>`
   background-position: center;
   height: 10.7rem;
 `;
-const Wrapper = styled.section.attrs({
+const Wrapper = styled.a.attrs({
   className: "max-w-xs overflow-hidden rounded-lg border border-gray-200"
 })`
   background-color: ${({ theme }) => theme.colors.gray22};
@@ -45,20 +47,22 @@ const Wrapper = styled.section.attrs({
   }
 `;
 
-const SavedItemCard: React.FC<Props> = ({ imgUrl, height, title, tag }) => {
+const SavedItemCard: React.FC<Props> = ({ imgUrl, height, title, tag, url }) => {
   return (
-    <Wrapper >
-      <ProjectImg imgUrl={imgUrl} height={height} />
-      <section className="px-6 py-4">
-        <p className="text-gray-700 proj-title">{title}</p>
-        <section className="flex items-center">
-          {
-            tag === 'Everyone' ? <img src="/img/saved/group.svg" className="saved-icon" alt="Photo" /> : <img src="/img/saved/password.svg" className="saved-icon-private" alt="Photo" />
-          }
-          <span className="proj-tag">{tag}</span>
+    <Link href={url}>
+      <Wrapper>
+        <ProjectImg imgUrl={imgUrl} height={height} />
+        <section className="px-6 py-4">
+          <p className="text-gray-700 proj-title">{title}</p>
+          <section className="flex items-center">
+            {
+              tag === 'Everyone' ? <img src="/img/saved/group.svg" className="saved-icon" alt="Photo" /> : <img src="/img/saved/password.svg" className="saved-icon-private" alt="Photo" />
+            }
+            <span className="proj-tag">{tag}</span>
+          </section>
         </section>
-      </section>
-    </Wrapper>
+      </Wrapper>
+    </Link>
   );
 };
 

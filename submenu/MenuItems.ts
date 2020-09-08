@@ -11,7 +11,7 @@ export const Items = [
   },
   {
     title: 'Saved Item',
-    path: '/',
+    path: '/saved-item',
     cName: 'dropdown-item'
   },
   {

@@ -1,10 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
+import Router from 'next/router';
 
+import withApollo from '../../lib/withApollo';
 import Offering from '../Organisms/Offering';
 import Navbar from '../Organisms/Navbar';
 import SavedItemCard from '../Organisms/SavedItemCard';
-import ProfileSidebar from '../Organisms/ProfileSidebar';
+import DashboardSideBar from '../Organisms/DashboardSideBar';
 import CTA from '../atoms/CTA';
 import Footer from './Footer';
 
@@ -57,21 +59,21 @@ const SavedItem = () => {
         </ul>
         <section className="flex justify-between">
           <section className="w-1/4">
-            <ProfileSidebar />
+            <DashboardSideBar />
           </section>
           <section className="main w-3/4">
             <section className="flex items-center justify-between">
               <h1 className="py-10 profile-title font-semibold">Saved Items</h1>
-              <CTA type="button" className="update-profile" padding="0.8rem 1.75rem;">
+              <CTA onClick={() => Router.push('/create-saved-item')} type="button" className="update-profile focus:outline-none" padding="0.8rem 1.75rem;">
                 <img src="/img/add-new.svg" alt="Add new" className="inline-block pr-2" />
                 Create a list
               </CTA>
             </section>
             <section className="grid grid-cols-3 gap-4">
-              <SavedItemCard imgUrl="/img/projects/bathroom-cabinet-candles-faucet.png" title="Uncategorized" tag="Everyone" />
-              <SavedItemCard imgUrl="/img/projects/pink-and-purple-wallpaper.png" title="Kitchens Ideas" tag="Everyone" />
-              <SavedItemCard imgUrl="/img/saved/francesca-tosolini-w1RE0lBbREo-unsplash.png" title="Bedrooms Ideas" tag="Everyone" />
-              <SavedItemCard imgUrl="/img/projects/person-holding-black-pen.png" title="DIY Videos" tag="Private" />
+              <SavedItemCard url="/saved-item-group-list" imgUrl="/img/projects/bathroom-cabinet-candles-faucet.png" title="Uncategorized" tag="Everyone" />
+              <SavedItemCard url="/saved-item-group-list" imgUrl="/img/projects/pink-and-purple-wallpaper.png" title="Kitchens Ideas" tag="Everyone" />
+              <SavedItemCard url="/saved-item-group-list" imgUrl="/img/saved/francesca-tosolini-w1RE0lBbREo-unsplash.png" title="Bedrooms Ideas" tag="Everyone" />
+              <SavedItemCard url="/saved-item-group-list" imgUrl="/img/projects/person-holding-black-pen.png" title="DIY Videos" tag="Private" />
             </section>
           </section>
         </section>
@@ -81,4 +83,4 @@ const SavedItem = () => {
   )
 }
 
-export default SavedItem;
+export default withApollo()(SavedItem);

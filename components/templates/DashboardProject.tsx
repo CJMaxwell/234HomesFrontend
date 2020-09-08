@@ -1,12 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import withApollo from '../../lib/withApollo';
 import Offering from '../Organisms/Offering';
 import Navbar from '../Organisms/Navbar';
 import DashboardProjectCard from '../Organisms/DashboardProjectCard';
-import ProfileSidebar from '../Organisms/ProfileSidebar';
 import AddNewProject from '../atoms/AddNewProject';
 import Footer from './Footer';
+import DashboardSideBar from '../Organisms/DashboardSideBar';
 
 const Wrapper = styled.section`
   .breadcrumb li:not(:last-child) {
@@ -57,7 +58,7 @@ const DashboardProject = () => {
         </ul>
         <section className="flex justify-between">
           <section className="w-1/4">
-            <ProfileSidebar />
+            <DashboardSideBar />
           </section>
           <section className="main w-3/4">
             <h1 className="py-10 profile-title">Personal Info</h1>
@@ -77,4 +78,4 @@ const DashboardProject = () => {
   )
 }
 
-export default DashboardProject
+export default withApollo()(DashboardProject)

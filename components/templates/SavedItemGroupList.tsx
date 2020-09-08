@@ -1,10 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
+import Router from 'next/router';
 
+import withApollo from '../../lib/withApollo';
 import Offering from '../Organisms/Offering';
 import Navbar from '../Organisms/Navbar';
 import DashboardProjectCard from '../Organisms/DashboardProjectCard';
-import ProfileSidebar from '../Organisms/ProfileSidebar';
+import DashboardSideBar from '../Organisms/DashboardSideBar'
 import CTA from '../atoms/CTA';
 import Footer from './Footer';
 
@@ -57,12 +59,12 @@ const SavedItemGroupList = () => {
         </ul>
         <section className="flex justify-between">
           <section className="w-1/4">
-            <ProfileSidebar />
+            <DashboardSideBar />
           </section>
           <section className="main w-3/4">
             <section className="flex items-center justify-between">
               <h1 className="py-10 profile-title font-semibold">Uncategorized</h1>
-              <CTA type="button" className="update-profile" padding="0.8rem 1.75rem;">
+              <CTA onClick={() => Router.push('/create-saved-item')} type="button" className="update-profile focus:outline-none" padding="0.8rem 1.75rem;">
                 <img src="/img/add-new.svg" alt="Add new" className="inline-block pr-2" />
                 Create a list
               </CTA>
@@ -82,4 +84,4 @@ const SavedItemGroupList = () => {
   )
 }
 
-export default SavedItemGroupList;
+export default withApollo()(SavedItemGroupList);
