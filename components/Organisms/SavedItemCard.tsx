@@ -49,7 +49,7 @@ const Wrapper = styled.a.attrs({
 
 const SavedItemCard: React.FC<Props> = ({ imgUrl, height, title, tag, url }) => {
   return (
-    <Link href={url}>
+    <Link href="/saved-item-group-list">
       <Wrapper>
         <ProjectImg imgUrl={imgUrl} height={height} />
         <section className="px-6 py-4">

@@ -70,10 +70,10 @@ const SavedItem = () => {
               </CTA>
             </section>
             <section className="grid grid-cols-3 gap-4">
-              <SavedItemCard url="/saved-item-group-list" imgUrl="/img/projects/bathroom-cabinet-candles-faucet.png" title="Uncategorized" tag="Everyone" />
-              <SavedItemCard url="/saved-item-group-list" imgUrl="/img/projects/pink-and-purple-wallpaper.png" title="Kitchens Ideas" tag="Everyone" />
-              <SavedItemCard url="/saved-item-group-list" imgUrl="/img/saved/francesca-tosolini-w1RE0lBbREo-unsplash.png" title="Bedrooms Ideas" tag="Everyone" />
-              <SavedItemCard url="/saved-item-group-list" imgUrl="/img/projects/person-holding-black-pen.png" title="DIY Videos" tag="Private" />
+              <SavedItemCard imgUrl="/img/projects/bathroom-cabinet-candles-faucet.png" title="Uncategorized" tag="Everyone" />
+              <SavedItemCard imgUrl="/img/projects/pink-and-purple-wallpaper.png" title="Kitchens Ideas" tag="Everyone" />
+              <SavedItemCard imgUrl="/img/saved/francesca-tosolini-w1RE0lBbREo-unsplash.png" title="Bedrooms Ideas" tag="Everyone" />
+              <SavedItemCard imgUrl="/img/projects/person-holding-black-pen.png" title="DIY Videos" tag="Private" />
             </section>
           </section>
         </section>
