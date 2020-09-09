@@ -4,7 +4,6 @@ import Router from 'next/router';
 
 import Offering from '../Organisms/Offering';
 import Navbar from '../Organisms/Navbar';
-import DashboardSideBar from '../Organisms/DashboardSideBar';
 import Footer from './Footer';
 import useProfile from '../../hooks/useProfile';
 
@@ -144,66 +143,48 @@ const DashboardType = () => {
                 <a className="selection">Vendor</a>
               </li>
             </ul>
-            {
-              accountType === 'individual' && (
-                <section>
-                  <p className="feat">Features</p>
-                  <ul className="features">
-                    <li>
-                      Free Page
-                    </li>
-                    <li>
-                      Ability to upload 3 photos of products and contents.
-                    </li>
-                    <li>Consetetur sadipscing elitr, sed diam nonumy eirmod.</li>
-                    <li>
-                      Labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                      justo duo
-                    </li>
-                  </ul>
-                </section>
-              )
-            }
-            {
-              accountType === 'professional' && (
-                <section>
-                  <p className="feat">Features</p>
-                  <ul className="features">
-                    <li>
-                      Ability to be found in search
-                    </li>
-                    <li>
-                      Weekly Newsletter
-                    </li>
-                    <li>Consetetur sadipscing elitr, sed diam nonumy eirmod.</li>
-                    <li>
-                      Labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                      justo duo
-                    </li>
-                  </ul>
-                </section>
-              )
-            }
-            {
-              accountType === 'vendor' && (
-                <section>
-                  <p className="feat">Features</p>
-                  <ul className="features">
-                    <li>
-                      First level priority placement on vendor list
-                    </li>
-                    <li>
-                      Free web page design advisory
-                    </li>
-                    <li>Free general advisory on consumer trends</li>
-                    <li>
-                      Labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                      justo duo
-                    </li>
-                  </ul>
-                </section>
-              )
-            }
+            {accountType === 'individual' && (
+              <section>
+                <p className="feat">Features</p>
+                <ul className="features">
+                  <li>Free Page</li>
+                  <li>Ability to upload 3 photos of products and contents.</li>
+                  <li>Consetetur sadipscing elitr, sed diam nonumy eirmod.</li>
+                  <li>
+                    Labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam
+                    et justo duo
+                  </li>
+                </ul>
+              </section>
+            )}
+            {accountType === 'professional' && (
+              <section>
+                <p className="feat">Features</p>
+                <ul className="features">
+                  <li>Ability to be found in search</li>
+                  <li>Weekly Newsletter</li>
+                  <li>Consetetur sadipscing elitr, sed diam nonumy eirmod.</li>
+                  <li>
+                    Labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam
+                    et justo duo
+                  </li>
+                </ul>
+              </section>
+            )}
+            {accountType === 'vendor' && (
+              <section>
+                <p className="feat">Features</p>
+                <ul className="features">
+                  <li>First level priority placement on vendor list</li>
+                  <li>Free web page design advisory</li>
+                  <li>Free general advisory on consumer trends</li>
+                  <li>
+                    Labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam
+                    et justo duo
+                  </li>
+                </ul>
+              </section>
+            )}
 
             <section className="flex justify-end pb-12">
               <button
@@ -213,10 +194,14 @@ const DashboardType = () => {
                   updateProfile(
                     {
                       variables: {
-                        input: { accountType: 'individual' },
+                        input: { accountType },
                       },
                     },
                     () => {
+                      if (accountType === 'individual') {
+                        Router.push('/dashboard');
+                        return;
+                      }
                       Router.push('/membership-package');
                     },
                   );

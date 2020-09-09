@@ -1,9 +1,9 @@
 import { NextPage } from 'next';
 import React from 'react';
 
-import DashboardProfile from '../components/templates/DashboardProfile';
-import withApollo from '../lib/withApollo';
-import WithAuth from '../hoc/WithAuth';
+import DashboardProfile from '../../components/templates/DashboardProfile';
+import withApollo from '../../lib/withApollo';
+import WithAuth from '../../hoc/WithAuth';
 
 const DashboardProfilePage: NextPage = () => {
   return (

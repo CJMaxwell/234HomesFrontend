@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Link from 'next/link';
 
 const Wrapper = styled.section`
   background-color: ${({ theme }) => theme.colors.gray22};
@@ -14,14 +15,16 @@ const Wrapper = styled.section`
 const AddNewProject = () => {
   return (
     <Wrapper className="flex justify-center items-center">
-      <a>
-        <section className="flex justify-center items-center">
-          <img src="/img/add-project.svg" className="h-8 w-8" alt="Add new Project" />
-        </section>
-        <p className="add-new pt-4">Add New Project</p>
-      </a>
+      <Link href="/dashboard/add-project">
+        <a>
+          <section className="flex justify-center items-center">
+            <img src="/img/add-project.svg" className="h-8 w-8" alt="Add new Project" />
+          </section>
+          <p className="add-new pt-4">Add New Project</p>
+        </a>
+      </Link>
     </Wrapper>
-  )
-}
+  );
+};
 
-export default AddNewProject
+export default AddNewProject;

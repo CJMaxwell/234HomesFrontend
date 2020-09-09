@@ -3,17 +3,18 @@ import styled from 'styled-components';
 
 import Offering from '../Organisms/Offering';
 import Navbar from '../Organisms/Navbar';
-import ProfileSidebar from '../Organisms/ProfileSidebar';
+import DashboardSideBar from '../Organisms/DashboardSideBar';
 import Skill from '../atoms/Skill';
 import CTA from '../atoms/CTA';
 
 import Footer from './Footer';
+import withApollo from '../../lib/withApollo';
 
 const Wrapper = styled.section`
   .breadcrumb li:not(:last-child) {
     padding-right: 0.8rem;
   }
-    .breadcrumb {
+  .breadcrumb {
     margin-top: 3.175rem;
     margin-bottom: 2.35rem;
     color: ${({ theme }) => theme.colors.gray5};
@@ -29,7 +30,8 @@ const Wrapper = styled.section`
   .profile-title {
     text-transform: uppercase;
   }
-  .profile-title,.profile-desc {
+  .profile-title,
+  .profile-desc {
     color: ${({ theme }) => theme.colors.gray2};
     font-size: 0.8rem;
     font-weight: 600;
@@ -44,7 +46,6 @@ const Wrapper = styled.section`
     margin-right: 10px;
     padding-left: 5px;
     padding-right: 5px;
-
   }
   fieldset {
     border: 1px solid ${({ theme }) => theme.colors.gray17};
@@ -58,16 +59,18 @@ const Wrapper = styled.section`
   .profile-title {
     text-transform: uppercase;
   }
-  .profile-title,.profile-desc {
+  .profile-title,
+  .profile-desc {
     color: ${({ theme }) => theme.colors.gray2};
     font-size: 0.8rem;
     font-weight: 600;
   }
   .profile-label {
-    color:${({ theme }) => theme.colors.gray11};
+    color: ${({ theme }) => theme.colors.gray11};
     font-size: 0.8rem;
   }
-  textarea::placeholder, input::placeholder {
+  textarea::placeholder,
+  input::placeholder {
     color: ${({ theme }) => theme.colors.gray17};
     font-size: 0.7rem;
   }
@@ -98,8 +101,6 @@ const Wrapper = styled.section`
   }
 `;
 
-
-
 const AddProduct = () => {
   return (
     <Wrapper>
@@ -117,7 +118,7 @@ const AddProduct = () => {
         </ul>
         <section className="flex justify-between">
           <section className="w-1/4">
-            <ProfileSidebar />
+            <DashboardSideBar />
           </section>
           <section className="main w-3/4">
             <h1 className="py-10 profile-title">Add new Product</h1>
@@ -131,13 +132,18 @@ const AddProduct = () => {
               </section>
               <section className="w-full text-center pt-4">
                 <h1 className="drag-and-drop">Drag and drop an images</h1>
-                <p>Or <a className="browse">browse</a> to choose a file</p>
+                <p>
+                  Or <a className="browse">browse</a> to choose a file
+                </p>
               </section>
             </section>
             <section className="flex items-center justify-between pt-8">
               <fieldset className="w-full">
                 <legend className="profile-label">Title</legend>
-                <input className="fieldset-input profile-desc w-full focus:outline-none" placeholder="Lorem ipsum dolor sit amet sed diam nonumy eirmod" />
+                <input
+                  className="fieldset-input profile-desc w-full focus:outline-none"
+                  placeholder="Lorem ipsum dolor sit amet sed diam nonumy eirmod"
+                />
               </fieldset>
             </section>
             <section className="flex items-center justify-between pt-8">
@@ -194,18 +200,23 @@ const AddProduct = () => {
             <section className="flex items-center justify-between pt-8 mt-4">
               <fieldset className="w-full">
                 <legend className="profile-label">Description</legend>
-                <textarea className="fieldset-input profile-desc w-full focus:outline-none" placeholder="Tell us about the project…"></textarea>
+                <textarea
+                  className="fieldset-input profile-desc w-full focus:outline-none"
+                  placeholder="Tell us about the project…"
+                />
               </fieldset>
             </section>
             <section className="flex justify-end mt-12 mb-16">
-              <CTA type="button" className="update-profile" padding="0.8rem 2.4rem;">Submit</CTA>
+              <CTA type="button" className="update-profile" padding="0.8rem 2.4rem;">
+                Submit
+              </CTA>
             </section>
           </section>
         </section>
       </div>
       <Footer />
     </Wrapper>
-  )
-}
+  );
+};
 
-export default AddProduct
+export default withApollo()(AddProduct);

@@ -41,7 +41,7 @@ const DashboardSideBar = () => {
       <h1 className="text-center pb-12 user">{profile?.firstName}</h1>
       <section>
         <ul className="px-4">
-          <Link href="/dashboard">
+          <Link href="/dashboard/profile">
             <li className="flex items-center py-4 cursor-pointer">
               <span className="pr-4">
                 <img src="/img/dashboard/dashboarduser.svg" alt="User" />
@@ -55,18 +55,16 @@ const DashboardSideBar = () => {
             </span>
             <a>Messages</a>
           </li>
-          {
-            profile?.accountType === 'professional' && (
-              <Link href="/dashboard-projects">
-                <li className="flex items-center py-4 cursor-pointer">
-                  <span className="pr-4">
-                    <img src="/img/dashboard/dashboardwork.svg" alt="Project" />
-                  </span>
-                  <a>My Projects</a>
-                </li>
-              </Link>
-            )
-          }
+          {profile?.accountType === 'professional' && (
+            <Link href="/dashboard/projects">
+              <li className="flex items-center py-4 cursor-pointer">
+                <span className="pr-4">
+                  <img src="/img/dashboard/dashboardwork.svg" alt="Project" />
+                </span>
+                <a>My Projects</a>
+              </li>
+            </Link>
+          )}
 
           <Link href="/saved-item">
             <li className="flex items-center py-4 cursor-pointer">
@@ -76,18 +74,16 @@ const DashboardSideBar = () => {
               <a>Saved Ideas</a>
             </li>
           </Link>
-          {
-            profile?.accountType === 'vendor' && (
-              <Link href="/dashboardproduct">
-                <li className="flex items-center py-4 cursor-pointer">
-                  <span className="pr-4">
-                    <img src="/img/dashboard/dashboardbox.svg" alt="Box" />
-                  </span>
-                  <a>Product Listing</a>
-                </li>
-              </Link>
-            )
-          }
+          {profile?.accountType === 'vendor' && (
+            <Link href="/dashboard/products">
+              <li className="flex items-center py-4 cursor-pointer">
+                <span className="pr-4">
+                  <img src="/img/dashboard/dashboardbox.svg" alt="Box" />
+                </span>
+                <a>Product Listing</a>
+              </li>
+            </Link>
+          )}
           <li className="flex items-center py-4 cursor-pointer">
             <span className="pr-4">
               <img src="/img/dashboard/dashboardsettings.svg" alt="Settingd" />
