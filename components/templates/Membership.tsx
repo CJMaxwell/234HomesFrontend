@@ -5,6 +5,8 @@ import Router from 'next/router';
 import Navbar from '../Organisms/Navbar';
 import Offering from '../Organisms/Offering';
 import Footer from './Footer';
+import useSubscription from '../../hooks/useSubscription';
+import withApollo from '../../lib/withApollo';
 
 const Wrapper = styled.section`
   .breadcrumb li:not(:last-child) {
@@ -92,6 +94,8 @@ const Wrapper = styled.section`
 `;
 
 const Membership = () => {
+  const { subscribe } = useSubscription();
+
   return (
     <Wrapper>
       <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />
@@ -145,12 +149,13 @@ const Membership = () => {
               type="button"
               className="free-btn uppercase py-3 px-16"
               onClick={() => {
-                Router.push('/dashboard');
+                Router.push('/dashboard-profile');
               }}
             >
               Current plan
             </button>
           </section>
+
           <section className="subscription premium-plan mr-6">
             <h1 className="mem-option uppercase">PREMIUM</h1>
             <p className="pricing">
@@ -174,11 +179,19 @@ const Membership = () => {
                 <span>Ability to be found in search</span>
               </li>
               <li className="flex items-start justify-center">
-                <img className="pr-2 pt-1" src="/img/tick.svg" alt="Part of the subscription plan" />
+                <img
+                  className="pr-2 pt-1"
+                  src="/img/tick.svg"
+                  alt="Part of the subscription plan"
+                />
                 <span>Free general advisory on consumer trends</span>
               </li>
               <li className="flex items-start justify-center">
-                <img className="pr-2 pt-1" src="/img/tick.svg" alt="Part of the subscription plan" />
+                <img
+                  className="pr-2 pt-1"
+                  src="/img/tick.svg"
+                  alt="Part of the subscription plan"
+                />
                 <span>Spotlight on vendor (random and at our discretion)</span>
               </li>
               <li className="flex items-center justify-center">
@@ -190,11 +203,23 @@ const Membership = () => {
                 <span>Auto verification</span>
               </li>
               <li className="flex items-start justify-center">
-                <img className="pr-2 pt-1" src="/img/tick.svg" alt="Part of the subscription plan" />
+                <img
+                  className="pr-2 pt-1"
+                  src="/img/tick.svg"
+                  alt="Part of the subscription plan"
+                />
                 <span>First level priority placement on vendor list</span>
               </li>
             </ul>
-            <button type="button" className="premium-btn uppercase py-3 px-20">
+            <button
+              type="button"
+              className="premium-btn uppercase py-3 px-20"
+              onClick={() => {
+                subscribe({
+                  plan: 'premium',
+                });
+              }}
+            >
               Upgrade
             </button>
           </section>
@@ -221,11 +246,23 @@ const Membership = () => {
                 <span>Ability to be found in search</span>
               </li>
               <li className="flex items-start justify-center">
-                <img className="pr-2 pt-1" src="/img/tick.svg" alt="Part of the subscription plan" />
+                <img
+                  className="pr-2 pt-1"
+                  src="/img/tick.svg"
+                  alt="Part of the subscription plan"
+                />
                 <span>Free general advisory on consumer trends</span>
               </li>
             </ul>
-            <button type="button" className="plus-btn uppercase py-3 px-20">
+            <button
+              type="button"
+              className="plus-btn uppercase py-3 px-20"
+              onClick={() => {
+                subscribe({
+                  plan: 'plus',
+                });
+              }}
+            >
               Upgrade
             </button>
           </section>
@@ -237,4 +274,4 @@ const Membership = () => {
   );
 };
 
-export default Membership;
+export default withApollo()(Membership);

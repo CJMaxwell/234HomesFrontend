@@ -1,6 +1,7 @@
+import React from 'react';
 import { NextPage } from 'next';
 
-import DashboardProductListing from '../components/templates/DashboardProductListing';
+import DashboardProductListing from '../../components/templates/DashboardProductListing';
 
 const DashboardProductListingPage: NextPage = () => {
   return (

@@ -6,9 +6,9 @@ import Navbar from '../Organisms/Navbar';
 import ProductListCard from '../Organisms/ProductListCard';
 import Offering from '../Organisms/Offering';
 import Footer from './Footer';
-import ProfileSidebar from '../Organisms/ProfileSidebar';
+import DashboardSideBar from '../Organisms/DashboardSideBar';
 import CTA from '../atoms/CTA';
-
+import withApollo from '../../lib/withApollo';
 
 const Wrapper = styled.div`
   .htitle {
@@ -29,7 +29,7 @@ const Wrapper = styled.div`
   .product-list {
     border: 1px solid ${({ theme }) => theme.colors.gray17};
   }
-  
+
   .profile-title {
     color: ${({ theme }) => theme.colors.gray2};
     font-size: 0.8rem;
@@ -37,7 +37,6 @@ const Wrapper = styled.div`
     text-transform: uppercase;
   }
 `;
-
 
 const DashboardProductListing = () => {
   return (
@@ -56,7 +55,7 @@ const DashboardProductListing = () => {
         </ul>
         <section className="flex justify-between">
           <section className="w-1/4">
-            <ProfileSidebar />
+            <DashboardSideBar />
           </section>
 
           <section className="product-list w-3/4 px-8">
@@ -77,9 +76,7 @@ const DashboardProductListing = () => {
             </div>
             <hr />
             <div className="py-3">
-              <ProductListCard
-                imgUrl="/img/brown-and-black-wooden-box-3889740.png"
-              />
+              <ProductListCard imgUrl="/img/brown-and-black-wooden-box-3889740.png" />
             </div>
             <hr />
             <div className="py-3">
@@ -91,9 +88,7 @@ const DashboardProductListing = () => {
             </div>
             <hr />
             <div className="pt-3 pb-8">
-              <ProductListCard
-                imgUrl="/img/prince-abid-pEvPkPmuHzo-unsplash.png"
-              />
+              <ProductListCard imgUrl="/img/prince-abid-pEvPkPmuHzo-unsplash.png" />
             </div>
           </section>
         </section>
@@ -103,4 +98,4 @@ const DashboardProductListing = () => {
   );
 };
 
-export default DashboardProductListing;
+export default withApollo()(DashboardProductListing);
