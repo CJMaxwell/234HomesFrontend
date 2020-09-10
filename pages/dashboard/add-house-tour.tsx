@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 
-import AddHouseTour from '../components/templates/AddHouseTour';
+import AddHouseTour from '../../components/templates/AddHouseTour';
 
 const AddHouseTourPage: NextPage = () => {
   return (

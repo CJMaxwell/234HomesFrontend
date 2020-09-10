@@ -61,13 +61,13 @@ const Directory = () => {
               <img src="/img/list.svg" alt="All Categories" />
             </span>
           </li>
-          <li>Interior designers</li>
-          <li>Carpenters</li>
-          <li>Painters</li>
-          <li>Decorators</li>
-          <li>Landscaping</li>
-          <li>Electricians</li>
-          <li>Plumbers</li>
+          <li><a>Interior designers</a></li>
+          <li><a>Carpenters</a></li>
+          <li><a>Painters</a></li>
+          <li><a>Decorators</a></li>
+          <li><a>Landscaping</a></li>
+          <li><a>Electricians</a></li>
+          <li><a>Plumbers</a></li>
         </ul>
       </Categories>
       <Main className="container mx-auto general-padding my-20">

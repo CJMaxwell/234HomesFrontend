@@ -100,7 +100,7 @@ const Wrapper = styled.section`
   }
 `;
 
-const AddHouseTour = () => {
+const AddDIY = () => {
   return (
     <Wrapper>
       <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />
@@ -120,7 +120,7 @@ const AddHouseTour = () => {
             <DashboardSideBar />
           </section>
           <form className="main w-3/4">
-            <h1 className="py-10 profile-title">Add New House Tour</h1>
+            <h1 className="py-10 profile-title">Add New DIY</h1>
             <section className="upload-section relative">
               <input
                 className="file-upload absolute inset-0 w-full z-50 opacity-0 cursor-pointer"
@@ -199,4 +199,4 @@ const AddHouseTour = () => {
   )
 }
 
-export default withApollo()(AddHouseTour);
+export default withApollo()(AddDIY);
