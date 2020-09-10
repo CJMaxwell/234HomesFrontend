@@ -77,13 +77,12 @@ const Dashboard = () => {
               invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
               accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren.
             </p>
-            {/* <button type="button" className="update-profile">Update Your Profile</button> */}
             <CTA
               type="button"
               className="update-profile"
               padding="0.85rem 3rem;"
               onClick={() => {
-                Router.push('/dashboard-profile');
+                Router.push('/dashboard/profile');
               }}
             >
               Update Your Profile

@@ -17,7 +17,7 @@ const ProjectImg = styled.section<Props>`
   height: 8rem;
   width: 100%;
 `;
-const Wrapper = styled.section.attrs({
+const Wrapper = styled.a.attrs({
   className: "max-w-xs overflow-hidden"
 })`
   .proj-title{
