@@ -4,9 +4,9 @@ import Router from 'next/router';
 import { ADD_PROJECT } from '../graphql/mutations/project';
 
 export default function useProjects() {
-  const [addProjectMutation, { loading: addProjectLoading }] = useMutation(ADD_PROJECT);
-  const addProject = (file: File | null, input: any) => {
-    addProjectMutation({
+  const [mutate, { loading: addProjectLoading }] = useMutation(ADD_PROJECT);
+  const addProject = (file: any, input: any) => {
+    mutate({
       variables: {
         file,
         input,
@@ -16,7 +16,6 @@ export default function useProjects() {
         Router.push('/dashboard/products');
       })
       .catch((err) => {
-        console.error({ err });
         notify.show('Project could not be added.', 'error');
       });
   };

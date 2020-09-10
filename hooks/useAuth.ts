@@ -55,7 +55,6 @@ export default function useAuth() {
   const loginByPhone = (variables: any) => {
     loginByPhoneMutation(variables)
       .then(({ data: { loginByPhone: response } }) => {
-        console.log(response.accessToken);
         Cookies.set('accessToken', response.accessToken);
         Router.push('/dashboard');
       })

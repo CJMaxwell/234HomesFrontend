@@ -110,6 +110,7 @@ const Wrapper = styled.section`
 const AddProject = () => {
   const [tags, setTags] = useState<Array<string>>(['Interior Design', 'Architecture', 'Bathroom']);
   const { addProject, addProjectLoading: loading } = useProjects();
+  const [file, setFile] = useState<any>();
 
   return (
     <Wrapper>
@@ -130,7 +131,7 @@ const AddProject = () => {
             <DashboardSideBar />
           </section>
           <Formik
-            onSubmit={({ color, file, year, ...values }) => {
+            onSubmit={({ color, year, ...values }) => {
               const payload = {
                 ...values,
                 year: Number(year),
@@ -141,12 +142,10 @@ const AddProject = () => {
               // // @ts-ignore
               // formData.append('banner', file);
 
-              console.log(file);
-
               addProject(file, payload);
             }}
             initialValues={{
-              file: null,
+              // file: null,
               title: '',
               category: '',
               year: 0,
@@ -169,7 +168,7 @@ const AddProject = () => {
                     required
                     onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                       // setFieldValue('file', event?.currentTarget?.files?.[0]);
-                      setFieldValue('file', event.target.files?.[0]);
+                      setFile(event.target.files?.[0]);
                     }}
                     type="file"
                   />
