@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import Router from 'next/router';
 
+import withApollo from '../../lib/withApollo';
 import Offering from '../Organisms/Offering';
 import Navbar from '../Organisms/Navbar';
-import ProfileSidebar from '../Organisms/ProfileSidebar';
+import DashboardSideBar from '../Organisms/DashboardSideBar';
 import PYHCard from '../Organisms/PYHCard';
 import CTA from '../atoms/CTA';
 import Footer from './Footer';
@@ -63,7 +65,7 @@ const PYHome = () => {
         </ul>
         <section className="flex justify-between">
           <section className="w-1/4">
-            <ProfileSidebar />
+            <DashboardSideBar />
           </section>
           <section className="main w-3/4">
             <h1 className="pt-10 title">Design your Home</h1>
@@ -78,7 +80,7 @@ const PYHome = () => {
               <PYHCard imgUrl="/img/randy-fath-OwWsKiVGtQY-unsplash-pyh.png" title="Dining" />
             </section>
             <section className="flex justify-end mt-12 mb-16">
-              <CTA type="button" className="update-profile" padding="0.8rem 2.4rem;">Next</CTA>
+              <CTA onClick={() => Router.push("/home-plan")} type="button" className="update-profile focus:outline-none" padding="0.8rem 2.4rem;">Next</CTA>
             </section>
           </section>
         </section>
@@ -88,4 +90,4 @@ const PYHome = () => {
   )
 }
 
-export default PYHome;
+export default withApollo()(PYHome);

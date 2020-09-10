@@ -69,7 +69,7 @@ const SavedItem = () => {
                 Create a list
               </CTA>
             </section>
-            <section className="grid grid-cols-3 gap-4">
+            <section className="grid grid-cols-3 gap-4 mb-12">
               <SavedItemCard imgUrl="/img/projects/bathroom-cabinet-candles-faucet.png" title="Uncategorized" tag="Everyone" />
               <SavedItemCard imgUrl="/img/projects/pink-and-purple-wallpaper.png" title="Kitchens Ideas" tag="Everyone" />
               <SavedItemCard imgUrl="/img/saved/francesca-tosolini-w1RE0lBbREo-unsplash.png" title="Bedrooms Ideas" tag="Everyone" />

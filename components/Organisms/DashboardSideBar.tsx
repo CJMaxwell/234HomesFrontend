@@ -74,6 +74,16 @@ const DashboardSideBar = () => {
               <a>Saved Ideas</a>
             </li>
           </Link>
+          {profile?.accountType === 'individual' && (
+            <Link href="/plan-your-home">
+              <li className="flex items-center py-4 cursor-pointer">
+                <span className="pr-4">
+                  <img src="/img/dashboard/plan-your-home.svg" alt="Plan" />
+                </span>
+                <a>Plan Your Home</a>
+              </li>
+            </Link>
+          )}
           {profile?.accountType === 'vendor' && (
             <Link href="/dashboard/products">
               <li className="flex items-center py-4 cursor-pointer">
