@@ -129,17 +129,12 @@ const AddProduct = () => {
             <DashboardSideBar />
           </section>
           <Formik
-            onSubmit={({ color, year, price, ...values }) => {
+            onSubmit={({ color, price, ...values }) => {
               const payload = {
                 ...values,
-                year: Number(year),
                 price: Number(price),
                 colors: [color],
               };
-
-              // const formData = new FormData();
-              // // @ts-ignore
-              // formData.append('banner', file);
 
               addProduct(file, payload);
             }}
@@ -147,7 +142,6 @@ const AddProduct = () => {
               // file: null,
               title: '',
               category: '',
-              year: 0,
               tags: [],
               color: '',
               city: '',
@@ -168,7 +162,7 @@ const AddProduct = () => {
                     onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                       // setFieldValue('file', event?.currentTarget?.files?.[0]);
                       // console.log(event?.currentTarget?.files?.[0]);
-                      console.log(event.target.files?.[0]);
+                      //console.log(event.target.files?.[0]);
                       setFile(event.target.files?.[0]);
                       //setFile(event?.currentTarget?.files?.[0]);
                     }}
@@ -260,7 +254,7 @@ const AddProduct = () => {
                   </ul>
                 </section>
 
-                <section className="flex items-center justify-between pt-8">
+                <section className="flex items-center justify-between mt-12">
                   <fieldset className="w-full">
                     <legend className="profile-label">Price</legend>
                     <input
@@ -272,23 +266,6 @@ const AddProduct = () => {
                       className="fieldset-input profile-desc w-full focus:outline-none"
                       placeholder="Enter amount"
                     />
-                  </fieldset>
-                </section>
-
-                <section className="flex items-center justify-between mt-12">
-                  <fieldset className="w-1/2 mr-6">
-                    <legend className="profile-label">Year</legend>
-                    <select
-                      className="fieldset-input profile-desc"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      value={values.year}
-                      name="year"
-                      required
-                    >
-                      <option value={0}>Select year</option>
-                      <option value={2019}>2019</option>
-                    </select>
                   </fieldset>
                   <fieldset className="w-1/2">
                     <legend className="profile-label">Colors</legend>
