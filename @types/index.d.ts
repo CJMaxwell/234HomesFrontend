@@ -28,3 +28,16 @@ export interface IProfile {
   createdAt: Date;
   updatedAt: Date;
 }
+
+export interface IUserProjects {
+  id: string;
+  title: string;
+  category: string;
+  tags: string[];
+  colors: string[];
+  year: number;
+  city: string;
+  state: string;
+  media: string;
+  description: string;
+}

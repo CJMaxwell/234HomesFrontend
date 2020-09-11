@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import React, { useState, useContext } from 'react';
+import styled, { ThemeContext } from 'styled-components';
 import { Formik } from 'formik';
+import Loader from 'react-loader-spinner';
 
 import withApollo from '../../lib/withApollo';
 import useProducts from '../../hooks/useProducts';
@@ -107,7 +108,8 @@ const Wrapper = styled.section`
 `;
 
 const AddProduct = () => {
-  const [tags, setTags] = useState<Array<string>>(['Interior Design', 'Architecture', 'Bathroom']);
+  const theme = useContext(ThemeContext);
+  const [tags, setTags] = useState<Array<string>>(['Interior Design']);
   const { addProduct, addProductLoading: loading } = useProducts();
   const [file, setFile] = useState<any>();
   return (
@@ -255,7 +257,7 @@ const AddProduct = () => {
                 </section>
 
                 <section className="flex items-center justify-between mt-12">
-                  <fieldset className="w-full">
+                  <fieldset className="w-1/2 mr-6">
                     <legend className="profile-label">Price</legend>
                     <input
                       name="price"
@@ -333,7 +335,11 @@ const AddProduct = () => {
                     padding="0.8rem 2.4rem;"
                     disabled={loading}
                   >
-                    Submit
+                    {loading ? (
+                      <Loader type="ThreeDots" color={theme.colors.orange1} height={20} width={60} />
+                    ) : (
+                        'Submit'
+                      )}
                   </CTA>
                 </section>
               </form>
