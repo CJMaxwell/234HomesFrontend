@@ -2,14 +2,17 @@ import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import Link from 'next/link';
 import Router from 'next/router';
+import Loader from 'react-loader-spinner';
 
+
+import withApollo from '../../lib/withApollo';
+import useProduct from '../../hooks/useProducts';
 import Navbar from '../Organisms/Navbar';
 import ProductListCard from '../Organisms/ProductListCard';
 import Offering from '../Organisms/Offering';
-import Footer from './Footer';
 import DashboardSideBar from '../Organisms/DashboardSideBar';
 import CTA from '../atoms/CTA';
-import withApollo from '../../lib/withApollo';
+import Footer from './Footer';
 
 const Wrapper = styled.div`
   .htitle {
@@ -40,6 +43,8 @@ const Wrapper = styled.div`
 `;
 
 const DashboardProductListing = () => {
+  const theme = useContext(ThemeContext);
+  const { products, productLoading: loading } = useProduct();
   return (
     <Wrapper>
       <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />
@@ -67,30 +72,30 @@ const DashboardProductListing = () => {
                 Add New
               </CTA>
             </section>
-            <hr />
-            <div className="py-3">
-              <ProductListCard imgUrl="/img/BArt.png" />
-            </div>
-            <hr />
-            <div className="py-3">
-              <ProductListCard imgUrl="/img/B-18-B.png" ad />
-            </div>
-            <hr />
-            <div className="py-3">
-              <ProductListCard imgUrl="/img/brown-and-black-wooden-box-3889740.png" />
-            </div>
-            <hr />
-            <div className="py-3">
-              <ProductListCard imgUrl="/img/B-7.png" ad />
-            </div>
-            <hr />
-            <div className="py-3">
-              <ProductListCard imgUrl="/img/Bullish.png" ad />
-            </div>
-            <hr />
-            <div className="pt-3 pb-8">
-              <ProductListCard imgUrl="/img/prince-abid-pEvPkPmuHzo-unsplash.png" />
-            </div>
+            {loading && (
+              <section className="flex justify-center items-center mt-40">
+                <Loader type="TailSpin" color={theme.colors.orange1} height={80} width={80} />
+              </section>
+            )
+            }
+            {
+              products && (
+                // @ts-ignore
+                products.map(product => (
+                  <section key={product.id}>
+                    <hr />
+                    <div className="py-3">
+                      <ProductListCard
+                        imgUrl={product.media}
+                        title={product.title}
+                        price={product.price}
+                        description={product.description}
+                      />
+                    </div>
+                  </section>
+                ))
+              )
+            }
           </section>
         </section>
       </div>

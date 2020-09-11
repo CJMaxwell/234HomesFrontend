@@ -8,6 +8,9 @@ interface Props {
   width?: string;
   logo?: string;
   ad?: boolean;
+  price?: number,
+  title?: string,
+  description?: string
 }
 
 const Wrapper = styled.section`
@@ -76,6 +79,9 @@ const ProductListCard: React.FC<Props> = ({
   width = '',
   logo = '',
   ad = false,
+  price,
+  title,
+  description
 }) => {
   const theme = useContext(ThemeContext);
 
@@ -88,11 +94,10 @@ const ProductListCard: React.FC<Props> = ({
         <div className="pl-8 pr-32">
           <div>
             <h1 className="title font-semibold capitalize text-xl">
-              Lorem ipsum dolor sit amet, consetetur
+              {title}
             </h1>
             <p className="pt-6 description">
-              Sed ut perspiciatis unde omnis iste natus error sit voluptatem <br />
-              accusantium doloremque totam rem aperiam….
+              {description}
             </p>
           </div>
           <div className="pt-8 flex items-center">
@@ -107,7 +112,7 @@ const ProductListCard: React.FC<Props> = ({
           </div>
         </div>
         <div>
-          <p className="price font-semibold">&#8358;146,000</p>
+          <p className="price font-semibold">&#8358;{price}</p>
           {
             logo ? <img src={logo} className="logo mt-12" alt="Vendor Logo" /> : ''
           }

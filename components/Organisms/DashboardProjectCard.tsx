@@ -5,7 +5,7 @@ interface Props {
   imgUrl?: string;
   height?: string;
   title?: string;
-  tag?: string;
+  tags?: string[];
   location?: string;
 }
 
@@ -32,16 +32,24 @@ const Wrapper = styled.section.attrs({
   .proj-tag, .proj-loc {
     font-size: 0.65rem;
   }
+  .proj-tag:not(:last-child) {
+    padding-right: 2px;
+    display: inline-block;
+  }
 `;
 
-const DashboardProjectCard: React.FC<Props> = ({ imgUrl, height, title, tag, location }) => {
+const DashboardProjectCard: React.FC<Props> = ({ imgUrl, height, title, tags, location }) => {
   return (
     <Wrapper >
       <ProjectImg imgUrl={imgUrl} height={height} />
       <section className="px-6 py-4">
         <p className="text-gray-700 proj-title">{title}</p>
         <section>
-          <span className="proj-tag">{tag}</span>
+          {
+            tags && tags.map(tag => (
+              <span key={`productTag${tag}`} className="proj-tag">{tag}</span>
+            ))
+          }
           <span className="proj-loc">{location}</span>
         </section>
       </section>

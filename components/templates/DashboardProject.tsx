@@ -1,13 +1,16 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useContext } from 'react';
+import styled, { ThemeContext } from 'styled-components';
+import Loader from 'react-loader-spinner';
+
 
 import withApollo from '../../lib/withApollo';
+import useProject from '../../hooks/useProjects';
 import Offering from '../Organisms/Offering';
 import Navbar from '../Organisms/Navbar';
+import DashboardSideBar from '../Organisms/DashboardSideBar';
 import DashboardProjectCard from '../Organisms/DashboardProjectCard';
 import AddNewProject from '../atoms/AddNewProject';
 import Footer from './Footer';
-import DashboardSideBar from '../Organisms/DashboardSideBar';
 
 const Wrapper = styled.section`
   .breadcrumb li:not(:last-child) {
@@ -41,6 +44,8 @@ const Wrapper = styled.section`
 `;
 
 const DashboardProject = () => {
+  const theme = useContext(ThemeContext);
+  const { projects, projectLoading: loading } = useProject();
   return (
     <Wrapper>
       <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />
@@ -61,38 +66,31 @@ const DashboardProject = () => {
           </section>
           <section className="main w-3/4">
             <h1 className="py-10 profile-title">My Projects</h1>
-            <section className="grid grid-cols-3 gap-4 mb-16">
-              <DashboardProjectCard
-                imgUrl="/img/projects/bathroom-cabinet-candles-faucet.png"
-                title="consetetur elitr"
-                tag=" Bathroom"
-                location=" | Abuja"
-              />
-              <DashboardProjectCard
-                imgUrl="/img/projects/pink-and-purple-wallpaper.png"
-                title="How to Put an Awesome"
-                tag="Wallpaper"
-              />
-              <DashboardProjectCard
-                imgUrl="/img/projects/AH.png"
-                title="Lorem ipsum dolor"
-                tag=" Living Room"
-                location=" | Lagos"
-              />
-              <DashboardProjectCard
-                imgUrl="/img/projects/person-holding-black-pen.png"
-                title="Lorem ipsum dolor"
-                tag=" Living Room"
-                location=" | Kaduna"
-              />
-              <DashboardProjectCard
-                imgUrl="/img/projects/chairs-coffee-table-comfortable-couch.png"
-                title="Lorem ipsum dolor"
-                tag=" Living Room"
-                location=" | Lagos"
-              />
-              <AddNewProject />
-            </section>
+            {loading && (
+              <section className="flex justify-center items-center mt-40">
+                <Loader type="TailSpin" color={theme.colors.orange1} height={80} width={80} />
+              </section>
+            )
+            }
+            {
+              projects && (
+                <section className="grid grid-cols-3 gap-4 mb-16">
+                  {
+                    // @ts-ignore
+                    projects.map(project => (
+                      <DashboardProjectCard
+                        imgUrl={project.media}
+                        title={project.title}
+                        tags={project.tags}
+                        location={` | ${project.state}`}
+                        key={project?.id}
+                      />
+                    ))
+                  }
+                  <AddNewProject />
+                </section>
+              )
+            }
           </section>
         </section>
       </div>

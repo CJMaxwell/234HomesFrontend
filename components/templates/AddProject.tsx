@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import React, { useState, useContext } from 'react';
+import styled, { ThemeContext } from 'styled-components';
 import { Formik } from 'formik';
+import Loader from 'react-loader-spinner';
 
 import Offering from '../Organisms/Offering';
 import Navbar from '../Organisms/Navbar';
@@ -108,7 +109,8 @@ const Wrapper = styled.section`
 `;
 
 const AddProject = () => {
-  const [tags, setTags] = useState<Array<string>>(['Interior Design', 'Architecture', 'Bathroom']);
+  const theme = useContext(ThemeContext);
+  const [tags, setTags] = useState<Array<string>>(['Interior Design']);
   const { addProject, addProjectLoading: loading } = useProjects();
   const [file, setFile] = useState<any>();
 
@@ -355,7 +357,11 @@ const AddProject = () => {
                     padding="0.8rem 2.4rem;"
                     disabled={loading}
                   >
-                    Submit
+                    {loading ? (
+                      <Loader type="ThreeDots" color={theme.colors.orange1} height={20} width={60} />
+                    ) : (
+                        'Submit'
+                      )}
                   </CTA>
                 </section>
               </form>
