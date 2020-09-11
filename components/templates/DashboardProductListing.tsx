@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import Link from 'next/link';
+import Router from 'next/router';
 
 import Navbar from '../Organisms/Navbar';
 import ProductListCard from '../Organisms/ProductListCard';
@@ -61,7 +62,7 @@ const DashboardProductListing = () => {
           <section className="product-list w-3/4 px-8">
             <section className="flex items-center justify-between">
               <h1 className="py-10 profile-title">Product Listings</h1>
-              <CTA type="button" className="update-profile" padding="0.8rem 1.75rem;">
+              <CTA onClick={() => Router.push('/dashboard/add-product')} type="button" className="update-profile focus:outline-none" padding="0.8rem 1.75rem;">
                 <img src="/img/add-new.svg" alt="Add new" className="inline-block pr-2" />
                 Add New
               </CTA>

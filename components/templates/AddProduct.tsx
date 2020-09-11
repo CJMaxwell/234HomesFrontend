@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import { Formik } from 'formik';
 
+import withApollo from '../../lib/withApollo';
+import useProducts from '../../hooks/useProducts';
 import Offering from '../Organisms/Offering';
 import Navbar from '../Organisms/Navbar';
 import DashboardSideBar from '../Organisms/DashboardSideBar';
 import Skill from '../atoms/Skill';
 import CTA from '../atoms/CTA';
-
 import Footer from './Footer';
-import withApollo from '../../lib/withApollo';
+
 
 const Wrapper = styled.section`
   .breadcrumb li:not(:last-child) {
@@ -99,9 +101,15 @@ const Wrapper = styled.section`
     color: ${({ theme }) => theme.colors.orange1};
     font-weight: 600;
   }
+  .tags {
+    height: 4.1245rem;
+  }
 `;
 
 const AddProduct = () => {
+  const [tags, setTags] = useState<Array<string>>(['Interior Design', 'Architecture', 'Bathroom']);
+  const { addProduct, addProductLoading: loading } = useProducts();
+  const [file, setFile] = useState<any>();
   return (
     <Wrapper>
       <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />
@@ -120,98 +128,217 @@ const AddProduct = () => {
           <section className="w-1/4">
             <DashboardSideBar />
           </section>
-          <section className="main w-3/4">
-            <h1 className="py-10 profile-title">Add new Product</h1>
-            <section className="upload-section">
-              <section className="text-center">
-                <h1 className="resolution">High Resolution Image</h1>
-                <p className="img-type">PNG &amp; JPEGS 1200 px X 680 px</p>
-              </section>
-              <section className="flex justify-center items-center pt-20">
-                <img src="/img/cloud-computing.svg" className="text-center" alt="Upload" />
-              </section>
-              <section className="w-full text-center pt-4">
-                <h1 className="drag-and-drop">Drag and drop an images</h1>
-                <p>
-                  Or <a className="browse">browse</a> to choose a file
+          <Formik
+            onSubmit={({ color, price, ...values }) => {
+              const payload = {
+                ...values,
+                price: Number(price),
+                colors: [color],
+              };
+
+              addProduct(file, payload);
+            }}
+            initialValues={{
+              // file: null,
+              title: '',
+              category: '',
+              tags: [],
+              color: '',
+              city: '',
+              price: 0,
+              state: '',
+              description: '',
+            }}
+          >
+            {({ handleChange, handleSubmit, handleBlur, values, setFieldValue }) => (
+              <form className="main w-3/4" onSubmit={handleSubmit}>
+                <h1 className="py-10 profile-title">Add new Product</h1>
+                <section className="upload-section relative">
+                  <input
+                    className="file-upload absolute inset-0 w-full z-50 opacity-0 cursor-pointer"
+                    name="file"
+                    id="file"
+                    required
+                    onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                      // setFieldValue('file', event?.currentTarget?.files?.[0]);
+                      // console.log(event?.currentTarget?.files?.[0]);
+                      //console.log(event.target.files?.[0]);
+                      setFile(event.target.files?.[0]);
+                      //setFile(event?.currentTarget?.files?.[0]);
+                    }}
+                    type="file"
+                  />
+                  <section className="text-center">
+                    <h1 className="resolution">High Resolution Image</h1>
+                    <p className="img-type">PNG &amp; JPEGS 1200 px X 680 px</p>
+                  </section>
+                  <section className="flex justify-center items-center pt-20">
+                    <img src="/img/cloud-computing.svg" className="text-center" alt="Upload" />
+                  </section>
+                  <section className="w-full text-center pt-4">
+                    <h1 className="drag-and-drop">Drag and drop an images</h1>
+                    <p>
+                      Or <a className="browse">browse</a> to choose a file
                 </p>
-              </section>
-            </section>
-            <section className="flex items-center justify-between pt-8">
-              <fieldset className="w-full">
-                <legend className="profile-label">Title</legend>
-                <input
-                  className="fieldset-input profile-desc w-full focus:outline-none"
-                  placeholder="Lorem ipsum dolor sit amet sed diam nonumy eirmod"
-                />
-              </fieldset>
-            </section>
-            <section className="flex items-center justify-between pt-8">
-              <fieldset className="w-full">
-                <legend className="profile-label">Address</legend>
-                <select className="fieldset-input profile-desc">
-                  <option value="Kitchen">Kitchen</option>
-                </select>
-              </fieldset>
-            </section>
-            <section className="flex items-center justify-between pt-8">
-              <fieldset className="w-full pb-4 px-4">
-                <legend className="profile-label">Tags</legend>
-                {/* <p className="fieldset-input profile-desc">Lorem ipsum dolor sit amet sed diam nonumy eirmod</p> */}
-                <Skill>Interior Design</Skill>
-                <Skill>Decoration</Skill>
-              </fieldset>
-            </section>
-            <section>
-              <ul className="flex items-center collection">
-                <li>Interior Design</li>
-                <li>Architecture</li>
-                <li>Bathroom</li>
-              </ul>
-            </section>
-            <section className="flex items-center justify-between mt-12">
-              <fieldset className="w-1/2 mr-6">
-                <legend className="profile-label">Year</legend>
-                <select className="fieldset-input profile-desc">
-                  <option value="Interior Designer">2019</option>
-                </select>
-              </fieldset>
-              <fieldset className="w-1/2">
-                <legend className="profile-label">Colors</legend>
-                <select className="fieldset-input profile-desc">
-                  <option value="8 years +">Royal blue</option>
-                </select>
-              </fieldset>
-            </section>
-            <section className="flex items-center justify-between mt-10">
-              <fieldset className="w-1/2 mr-6">
-                <legend className="profile-label">City</legend>
-                <select className="fieldset-input profile-desc">
-                  <option value="Interior Designer">Lekki</option>
-                </select>
-              </fieldset>
-              <fieldset className="w-1/2">
-                <legend className="profile-label">State</legend>
-                <select className="fieldset-input profile-desc">
-                  <option value="8 years +">Lagos</option>
-                </select>
-              </fieldset>
-            </section>
-            <section className="flex items-center justify-between pt-8 mt-4">
-              <fieldset className="w-full">
-                <legend className="profile-label">Description</legend>
-                <textarea
-                  className="fieldset-input profile-desc w-full focus:outline-none"
-                  placeholder="Tell us about the project…"
-                />
-              </fieldset>
-            </section>
-            <section className="flex justify-end mt-12 mb-16">
-              <CTA type="button" className="update-profile" padding="0.8rem 2.4rem;">
-                Submit
-              </CTA>
-            </section>
-          </section>
+                  </section>
+                </section>
+                <section className="flex items-center justify-between pt-8">
+                  <fieldset className="w-full">
+                    <legend className="profile-label">Title</legend>
+                    <input
+                      name="title"
+                      required
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={values.title}
+                      className="fieldset-input profile-desc w-full focus:outline-none"
+                      placeholder="Lorem ipsum dolor sit amet sed diam nonumy eirmod"
+                    />
+                  </fieldset>
+                </section>
+                <section className="flex items-center justify-between pt-8">
+                  <fieldset className="w-full">
+                    <legend className="profile-label">Category</legend>
+                    <select
+                      name="category"
+                      required
+                      className="fieldset-input profile-desc"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={values.category}
+                    >
+                      <option value="">Select category</option>
+                      <option value="Kitchen">Kitchen</option>
+                    </select>
+                  </fieldset>
+                </section>
+
+                <section className="flex items-center justify-between pt-8">
+                  <fieldset className="w-full pb-4 px-4 tags">
+                    <legend className="profile-label">Tags</legend>
+                    {values.tags.map((tag) => (
+                      <Skill key={`selectedTag${tag}`}>
+                        <button
+                          className="focus:outline-none"
+                          type="button"
+                          onClick={() => {
+                            setFieldValue(
+                              'tags',
+                              values.tags.filter((t) => t !== tag),
+                            );
+                            setTags([...tags, tag]);
+                          }}
+                        >
+                          {tag}
+                        </button>
+                      </Skill>
+                    ))}
+                  </fieldset>
+                </section>
+                <section>
+                  <ul className="flex items-center collection">
+                    {tags.map((tag) => (
+                      <li className="cursor-pointer" key={`availableTags${tag}`}>
+                        <button
+                          className="focus:outline-none"
+                          type="button"
+                          onClick={() => {
+                            setFieldValue('tags', Array.from(new Set([...values.tags, tag])));
+                            setTags(tags.filter((t) => t !== tag));
+                          }}
+                        >
+                          {tag}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+
+                <section className="flex items-center justify-between mt-12">
+                  <fieldset className="w-full">
+                    <legend className="profile-label">Price</legend>
+                    <input
+                      name="price"
+                      required
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={values.price}
+                      className="fieldset-input profile-desc w-full focus:outline-none"
+                      placeholder="Enter amount"
+                    />
+                  </fieldset>
+                  <fieldset className="w-1/2">
+                    <legend className="profile-label">Colors</legend>
+                    <select
+                      className="fieldset-input profile-desc"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={values.color}
+                      name="color"
+                      required
+                    >
+                      <option value="">Select color</option>
+                      <option value="Royal blue">Royal blue</option>
+                    </select>
+                  </fieldset>
+                </section>
+                <section className="flex items-center justify-between mt-10">
+                  <fieldset className="w-1/2 mr-6">
+                    <legend className="profile-label">City</legend>
+                    <select
+                      className="fieldset-input profile-desc"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={values.city}
+                      name="city"
+                      required
+                    >
+                      <option value="">Select city</option>
+                      <option value="Lekki">Lekki</option>
+                    </select>
+                  </fieldset>
+                  <fieldset className="w-1/2">
+                    <legend className="profile-label">State</legend>
+                    <select
+                      className="fieldset-input profile-desc"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={values.state}
+                      name="state"
+                      required
+                    >
+                      <option value="">Select state</option>
+                      <option value="Lagos">Lagos</option>
+                    </select>
+                  </fieldset>
+                </section>
+                <section className="flex items-center justify-between pt-8 mt-4">
+                  <fieldset className="w-full">
+                    <legend className="profile-label">Description</legend>
+                    <textarea
+                      className="fieldset-input profile-desc w-full focus:outline-none"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={values.description}
+                      name="description"
+                      placeholder="Tell us about the project…"
+                      required
+                    />
+                  </fieldset>
+                </section>
+                <section className="flex justify-end mt-12 mb-16">
+                  <CTA
+                    type="submit"
+                    className="update-profile"
+                    padding="0.8rem 2.4rem;"
+                    disabled={loading}
+                  >
+                    Submit
+                  </CTA>
+                </section>
+              </form>
+            )}
+          </Formik>
         </section>
       </div>
       <Footer />
