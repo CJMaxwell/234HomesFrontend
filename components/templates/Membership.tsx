@@ -149,7 +149,7 @@ const Membership = () => {
               type="button"
               className="free-btn uppercase py-3 px-16"
               onClick={() => {
-                Router.push('/dashboard-profile');
+                Router.push('/dashboard');
               }}
             >
               Current plan

@@ -60,8 +60,8 @@ const DashboardProject = () => {
             <DashboardSideBar />
           </section>
           <section className="main w-3/4">
-            <h1 className="py-10 profile-title">Personal Info</h1>
-            <section className="grid grid-cols-3 gap-4">
+            <h1 className="py-10 profile-title">My Projects</h1>
+            <section className="grid grid-cols-3 gap-4 mb-16">
               <DashboardProjectCard
                 imgUrl="/img/projects/bathroom-cabinet-candles-faucet.png"
                 title="consetetur elitr"
