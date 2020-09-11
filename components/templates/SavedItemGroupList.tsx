@@ -70,11 +70,11 @@ const SavedItemGroupList = () => {
               </CTA>
             </section>
             <section className="grid grid-cols-3 gap-4 mb-16">
-              <DashboardProjectCard imgUrl="/img/projects/bathroom-cabinet-candles-faucet.png" title="consetetur elitr" tag=" Bathroom" location=" | Abuja" />
-              <DashboardProjectCard imgUrl="/img/projects/pink-and-purple-wallpaper.png" title="How to Put an Awesome" tag="Wallpaper" />
-              <DashboardProjectCard imgUrl="/img/projects/AH.png" title="Lorem ipsum dolor" tag=" Living Room" location=" | Lagos" />
-              <DashboardProjectCard imgUrl="/img/projects/person-holding-black-pen.png" title="Lorem ipsum dolor" tag=" Living Room" location=" | Kaduna" />
-              <DashboardProjectCard imgUrl="/img/projects/chairs-coffee-table-comfortable-couch.png" title="Lorem ipsum dolor" tag=" Living Room" location=" | Lagos" />
+              <DashboardProjectCard imgUrl="/img/projects/bathroom-cabinet-candles-faucet.png" title="consetetur elitr" tags={[" Bathroom"]} location=" | Abuja" />
+              <DashboardProjectCard imgUrl="/img/projects/pink-and-purple-wallpaper.png" title="How to Put an Awesome" tags={[" Wallpaper"]} />
+              <DashboardProjectCard imgUrl="/img/projects/AH.png" title="Lorem ipsum dolor" tags={[" Living Room"]} location=" | Lagos" />
+              <DashboardProjectCard imgUrl="/img/projects/person-holding-black-pen.png" title="Lorem ipsum dolor" tags={[" Living Room"]} location=" | Kaduna" />
+              <DashboardProjectCard imgUrl="/img/projects/chairs-coffee-table-comfortable-couch.png" title="Lorem ipsum dolor" tags={[" Living Room"]} location=" | Lagos" />
             </section>
           </section>
         </section>
