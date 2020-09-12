@@ -24,3 +24,11 @@ export const UPDATE_PROFILE = gql`
     }
   }
 `;
+
+export const UPLOAD_PROFILE_PHOTO = gql`
+  mutation uploadProfilePhoto($file: Upload!){
+    uploadProfilePhoto(file: $file){
+      profilePhoto
+    }
+  }
+`;

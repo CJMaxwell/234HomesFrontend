@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import Link from 'next/link';
 import styled from 'styled-components';
-import useAuth from '../../hooks/useAuth';
+import Link from 'next/link';
+
 import withApollo from '../../lib/withApollo';
+import useAuth from '../../hooks/useAuth';
+import useProfile from '../../hooks/useProfile';
 import DropdownMenu from './DropdownMenu';
 
 const Logo = styled.a`
@@ -24,6 +26,7 @@ const Wrapper = styled.nav`
 
 const Navbar = () => {
   const { online } = useAuth();
+  const { profile } = useProfile();
 
   const [dropdown, setDropdown] = useState(false);
 
@@ -96,8 +99,8 @@ const Navbar = () => {
             <a>
               <img
                 className="h-10 w-10 object-cover rounded-full inline-block mr-2"
-                src="/img/profileImg.jpg"
-                alt="profile picture"
+                src={profile?.profilePhoto || '/img/dashboard/dashboardperson.svg'}
+                alt=''
               />
             </a>
             {
