@@ -27,14 +27,26 @@ const Wrapper = styled.section`
 `;
 
 const DashboardSideBar = () => {
-  const { profile } = useProfile();
+  const { profile, uploadProfilePhoto } = useProfile();
   const { logOut } = useAuth();
 
   return (
     <Wrapper>
-      <section className="flex items-center justify-center py-10">
+      <section className="flex items-center justify-center relative py-10">
+        <input
+          className="file-upload absolute inset-0 w-full z-50 opacity-0 cursor-pointer"
+          name="file"
+          id="file"
+          required
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+            uploadProfilePhoto(event.target.files?.[0])
+          }}
+          type="file"
+        />
         <img
-          src="/img/dashboard/dashboardperson.svg"
+          //src="/img/dashboard/dashboardperson.svg"
+          className="rounded-full h-40 w-40"
+          src={profile?.profilePhoto || '/img/dashboard/dashboardperson.svg'}
           alt={`${profile?.firstName} ${profile?.lastName}`}
         />
       </section>
