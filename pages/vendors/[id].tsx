@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 
-import SingleVendor from '../components/templates/SingleVendor';
+import SingleVendor from '../../components/templates/SingleVendor';
 
 const SingleVendorPage: NextPage = () => {
   return (

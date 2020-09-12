@@ -44,13 +44,13 @@ const SingleVendorCard: React.FC<Props> = ({
   width,
   location,
   phone,
-  path = '/single-vendor',
+  path,
   fontSize
 }) => {
   const theme = useContext(ThemeContext);
 
   return (
-    <Link href={path}>
+    <Link href={`${path || ''}`}>
       <Main className="max-w-sm rounded-sm cursor-pointer" fontSize={fontSize}>
         <div className="text-center">
           <ImgContainer imgUrl={imgUrl} height={height} width={width} />
