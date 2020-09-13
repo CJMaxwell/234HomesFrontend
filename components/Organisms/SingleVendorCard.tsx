@@ -70,7 +70,7 @@ const SingleVendorCard: React.FC<Props> = ({
             </div>
           </div>
           <button
-            onClick={() => Router.push('/professional-about')}
+            onClick={() => Router.push(`${path}`)}
             className="uppercase border-gray-600 text-gray-600 py-1 message mt-4 w-full bg-white rounded-sm block text-center"
           >
             Send A Message

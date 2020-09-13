@@ -7,6 +7,9 @@ export const PROFILE = gql`
       firstName
       lastName
       phoneNumber
+      website
+      businessName
+      banner
       email
       phoneVerified
       emailVerified

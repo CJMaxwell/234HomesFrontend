@@ -11,6 +11,11 @@ import ProjectCard from '../Organisms/ProjectCard';
 import ReviewCard from '../Organisms/ReviewCard';
 import Offering from '../Organisms/Offering';
 
+
+interface Props {
+  imgUrl?: string;
+}
+
 const Wrapper = styled.div`
   .breadcrumb li:not(:last-child) {
     padding-right: 0.8rem;
@@ -185,9 +190,9 @@ const Wrapper = styled.div`
   } */
 `;
 
-const Hero = styled.section`
+const Hero = styled.section<Props>`
   height: 16.425rem;
-  background: url('/img/Hero.png');
+  background: url('${({ imgUrl }) => imgUrl}'); 
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -198,10 +203,11 @@ const HeroButton = styled(Button)`
   text-transform: uppercase;
 `;
 
-const AboutProfessional = () => {
+const AboutProfessional: React.FC<Props> = ({ imgUrl }) => {
   const router = useRouter();
   const { id } = router.query;
   console.log(id);
+  // '/img/Hero.png'
 
   const { user, userLoading } = useUser(id as string);
 
@@ -223,7 +229,7 @@ const AboutProfessional = () => {
       {
         user && (
           <section>
-            <Hero className="rounded-md border-white mb-16">
+            <Hero imgUrl={`${user.banner || '/img/Hero.png'}`} className="rounded-md border-white mb-16">
               <div className="flex justify-between hero-detail px-10">
                 <div className="flex items-center">
                   <div className="pr-8 relative">

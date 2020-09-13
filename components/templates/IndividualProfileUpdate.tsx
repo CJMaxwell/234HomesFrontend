@@ -3,14 +3,9 @@ import styled, { ThemeContext } from 'styled-components';
 import { Formik } from 'formik';
 import Loader from 'react-loader-spinner';
 
-import Offering from '../Organisms/Offering';
-import Navbar from '../Organisms/Navbar';
+
 import CTA from '../atoms/CTA';
-import Skill from '../atoms/Skill';
-import Footer from './Footer';
 import useProfile from '../../hooks/useProfile';
-import DashboardSideBar from '../Organisms/DashboardSideBar';
-import useCountries from '../../hooks/useCountries';
 
 const Wrapper = styled.section`
   .breadcrumb li:not(:last-child) {
@@ -71,7 +66,6 @@ const Wrapper = styled.section`
 const IndividualProfileUpdate = () => {
   const { profile, updateProfile, updateProfileLoading: loading } = useProfile();
   const theme = useContext(ThemeContext);
-  const { countries } = useCountries();
 
   return (
 
@@ -79,10 +73,7 @@ const IndividualProfileUpdate = () => {
       onSubmit={(values) => {
         updateProfile({
           variables: {
-            input: {
-              ...values,
-              experienceLevel: Number(values.experienceLevel),
-            },
+            input: values,
           },
         });
       }}
@@ -90,15 +81,11 @@ const IndividualProfileUpdate = () => {
       initialValues={{
         firstName: profile?.firstName || '',
         lastName: profile?.lastName || '',
-        // email: profile?.email || '',
-        // phoneNumber: profile?.phoneNumber || '',
         address: profile?.address || '',
         city: profile?.city || '',
         state: profile?.state || '',
         bio: profile?.bio || '',
-        occupation: profile?.occupation || '',
-        experienceLevel: profile?.experienceLevel || 0,
-        // education: profile?.education || [],
+
       }}
     >
       {({ values, handleChange, handleBlur, handleSubmit }) => (
@@ -146,6 +133,7 @@ const IndividualProfileUpdate = () => {
                 name="phoneNumber"
                 // onChange={handleChange}
                 // onBlur={handleBlur}
+                readOnly
                 value={profile?.phoneNumber}
               />
             </fieldset>
@@ -209,7 +197,6 @@ const IndividualProfileUpdate = () => {
             </fieldset>
           </section>
           <section className="flex justify-end items-center cta">
-            {/* <button type="button" className="uppercase">Update profile</button> */}
             <CTA padding="0.8rem 1.25rem" className="outline-none" disabled={loading}>
               {loading ? (
                 <Loader

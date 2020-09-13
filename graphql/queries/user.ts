@@ -10,6 +10,7 @@ export const USER = gql`
       email
       profilePhoto
       banner
+      website
       businessName
       address
       bio

@@ -1,7 +1,7 @@
 import { useMutation, useQuery } from '@apollo/react-hooks';
 import { useState, useEffect } from 'react';
 import { notify } from 'react-notify-toast';
-import { UPDATE_PROFILE, UPLOAD_PROFILE_PHOTO } from '../graphql/mutations/profile';
+import { UPDATE_PROFILE, UPLOAD_PROFILE_PHOTO, UPLOAD_BANNER } from '../graphql/mutations/profile';
 import { IProfile } from '../@types';
 import { PROFILE } from '../graphql/queries/profile';
 
@@ -13,6 +13,7 @@ export default function useProfile() {
 
   const [updateProfileMutation, { loading: updateProfileLoading }] = useMutation(UPDATE_PROFILE);
   const [profilePhotoMutate, { loading: profilePhotoLoading }] = useMutation(UPLOAD_PROFILE_PHOTO);
+  const [bannerMutate, { loading: bannerLoading }] = useMutation(UPLOAD_BANNER);
 
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -21,6 +22,8 @@ export default function useProfile() {
       setProfile(data.updateProfile);
       notify.show('Profile updated successfully', 'success');
       callback();
+    }).catch(() => {
+      notify.show('Profile was not updated', 'error');
     });
   }
 
@@ -38,12 +41,20 @@ export default function useProfile() {
     });
   }
 
+  function uploadBanner(file: any) {
+    bannerMutate({ variables: { file } }).then(() => {
+      //notify.show('Banner updated successfully', 'success');
+    });
+  }
+
   return {
     updateProfile,
     updateProfileLoading,
     profile,
     getProfileLoading,
     uploadProfilePhoto,
-    profilePhotoLoading
+    profilePhotoLoading,
+    uploadBanner,
+    bannerLoading
   };
 }

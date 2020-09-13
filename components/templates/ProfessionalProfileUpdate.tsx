@@ -69,7 +69,7 @@ const Wrapper = styled.section`
 `;
 
 const ProfessionalProfileUpdate = () => {
-  const { profile, updateProfile, updateProfileLoading: loading } = useProfile();
+  const { profile, updateProfile, updateProfileLoading: loading, uploadBanner, bannerLoading } = useProfile();
   const theme = useContext(ThemeContext);
   const { countries } = useCountries();
 
@@ -90,6 +90,7 @@ const ProfessionalProfileUpdate = () => {
       initialValues={{
         firstName: profile?.firstName || '',
         lastName: profile?.lastName || '',
+        website: profile?.website || '',
         // email: profile?.email || '',
         // phoneNumber: profile?.phoneNumber || '',
         address: profile?.address || '',
@@ -147,6 +148,18 @@ const ProfessionalProfileUpdate = () => {
                 // onChange={handleChange}
                 // onBlur={handleBlur}
                 value={profile?.phoneNumber}
+              />
+            </fieldset>
+          </section>
+          <section className="flex items-center justify-between pt-8">
+            <fieldset className="w-full">
+              <legend className="profile-label">Website</legend>
+              <input
+                className="fieldset-input profile-desc w-full outline-none"
+                name="website"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.website}
               />
             </fieldset>
           </section>
@@ -323,9 +336,34 @@ const ProfessionalProfileUpdate = () => {
               </select>
             </fieldset>
           </section>
+          <section className="upload-section relative mt-8">
+            <input
+              className="file-upload absolute inset-0 w-full z-50 opacity-0 cursor-pointer"
+              name="file"
+              id="file"
+              required
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                uploadBanner(event.target.files?.[0])
+              }}
+              type="file"
+            />
+            <section className="text-center">
+              <h1 className="resolution">High Resolution Image</h1>
+              <p className="img-type">PNG &amp; JPEGS 1200 px X 680 px</p>
+            </section>
+            <section className="flex justify-center items-center pt-20">
+              <img src="/img/cloud-computing.svg" className="text-center" alt="Upload" />
+            </section>
+            <section className="w-full text-center pt-4">
+              <h1 className="drag-and-drop">Drag and drop an images</h1>
+              <p>
+                Or <a className="browse">browse</a> to choose a file
+                </p>
+            </section>
+          </section>
           <section className="flex justify-end items-center cta">
             {/* <button type="button" className="uppercase">Update profile</button> */}
-            <CTA padding="0.8rem 1.25rem" className="outline-none" disabled={loading}>
+            <CTA type="submit" padding="0.8rem 1.25rem" className="outline-none" disabled={loading}>
               {loading ? (
                 <Loader
                   type="ThreeDots"

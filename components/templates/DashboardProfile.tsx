@@ -70,6 +70,28 @@ const Wrapper = styled.section`
     margin-top: 2.75rem;
     margin-bottom: 5.25rem;
   }
+  .drag-and-drop {
+    color: ${({ theme }) => theme.colors.gray1};
+    font-weight: 600;
+    font-size: 1.75rem;
+  }
+  .browse {
+    color: ${({ theme }) => theme.colors.orange1};
+    font-weight: 600;
+  }
+  .resolution {
+    color: ${({ theme }) => theme.colors.gray1};
+    font-weight: 600;
+  }
+  .img-type {
+    font-size: 0.8rem;
+    color: ${({ theme }) => theme.colors.gray11};
+  }
+  .upload-section {
+    border: 1px dashed ${({ theme }) => theme.colors.gray17};
+    border-radius: 7px;
+    padding: 2.55rem 5.25rem;
+  }
 `;
 
 const DashboardProfile = () => {

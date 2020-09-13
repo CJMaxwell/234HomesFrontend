@@ -5,9 +5,8 @@ export const VENDORS = gql`
     vendors {
       id
       businessName
-      banner
       phoneNumber
-      profilePhoto
+      banner
       city
       state
     }
