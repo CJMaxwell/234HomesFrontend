@@ -188,7 +188,11 @@ const DashboardProfile = () => {
                       name="city"
                       value={values.city}
                     >
+                      <option value="">Select City</option>
                       <option value="Lekki">Lekki</option>
+                      <option value="Ikoyi">Ikoyi</option>
+                      <option value="Mile 12">Mile 12</option>
+                      <option value="Trade Fair">Trade Fair</option>
                     </select>
                   </fieldset>
                   <fieldset className="w-1/2">
@@ -200,7 +204,11 @@ const DashboardProfile = () => {
                       name="state"
                       value={values.state}
                     >
+                      <option value="">Select state</option>
                       <option value="Lagos">Lagos</option>
+                      <option value="Abuja">Abuja</option>
+                      <option value="Enugu">Enugu</option>
+                      <option value="Anambra">Anambra</option>
                     </select>
                   </fieldset>
                 </section>
@@ -227,6 +235,7 @@ const DashboardProfile = () => {
                       name="occupation"
                       value={values.occupation}
                     >
+                      <option value="">Select Occupation</option>
                       {['Interior Designer', 'Architect', 'Creative Director'].map((job) => (
                         <option value={job} key={job}>
                           {job}
@@ -243,6 +252,7 @@ const DashboardProfile = () => {
                       name="experienceLevel"
                       value={values.experienceLevel}
                     >
+                      <option value="">Experience level</option>
                       {['1 year', '2 years', '3 years', '4 years', '5 years'].map((year, index) => (
                         <option value={index + 1} key={year}>
                           {year}

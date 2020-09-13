@@ -63,10 +63,8 @@ const SingleVendor: React.FC<Props> = ({ imgUrl = '' }) => {
   const theme = useContext(ThemeContext);
   const router = useRouter();
   const { id } = router.query;
-  console.log(id);
 
   const { user, userLoading } = useUser(id as string);
-  console.log(user);
 
   return (
     <Wrapper>
