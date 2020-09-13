@@ -68,7 +68,7 @@ const Wrapper = styled.section`
   }
 `;
 
-const VendorProfileUpdate = () => {
+const IndividualProfileUpdate = () => {
   const { profile, updateProfile, updateProfileLoading: loading } = useProfile();
   const theme = useContext(ThemeContext);
   const { countries } = useCountries();
@@ -80,51 +80,54 @@ const VendorProfileUpdate = () => {
         updateProfile({
           variables: {
             input: {
-              ...values
+              ...values,
+              experienceLevel: Number(values.experienceLevel),
             },
           },
         });
       }}
       enableReinitialize
       initialValues={{
-        businessName: profile?.businessName || '',
-        //website: profile?.website || '',
+        firstName: profile?.firstName || '',
+        lastName: profile?.lastName || '',
         // email: profile?.email || '',
         // phoneNumber: profile?.phoneNumber || '',
         address: profile?.address || '',
         city: profile?.city || '',
         state: profile?.state || '',
         bio: profile?.bio || '',
+        occupation: profile?.occupation || '',
+        experienceLevel: profile?.experienceLevel || 0,
+        // education: profile?.education || [],
       }}
     >
       {({ values, handleChange, handleBlur, handleSubmit }) => (
         <form className="main w-3/4" onSubmit={handleSubmit}>
-          <h1 className="py-10 profile-title">Company Info</h1>
+          <h1 className="py-10 profile-title">Personal Info</h1>
           <section className="flex items-center justify-between">
-            <fieldset className="w-full">
-              <legend className="profile-label">Business Name</legend>
+            <fieldset className="w-1/2 mr-6">
+              <legend className="profile-label">First Name</legend>
               <input
                 className="fieldset-input profile-desc w-full outline-none"
-                name="businessName"
+                name="firstName"
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.businessName}
+                value={values.firstName}
+                required
+              />
+            </fieldset>
+            <fieldset className="w-1/2">
+              <legend className="profile-label">Last Name</legend>
+              <input
+                className="fieldset-input profile-desc w-full outline-none"
+                name="lastName"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.lastName}
                 required
               />
             </fieldset>
           </section>
-          {/* <section className="flex items-center justify-between pt-8">
-                  <fieldset className="w-full">
-                    <legend className="profile-label">Website</legend>
-                    <input
-                      className="fieldset-input profile-desc w-full outline-none"
-                      name="website"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      value={values.website}
-                    />
-                  </fieldset>
-                </section> */}
           <section className="flex items-center justify-between pt-6">
             <fieldset className="w-1/2 mr-6">
               <legend className="profile-label">Email</legend>
@@ -195,7 +198,7 @@ const VendorProfileUpdate = () => {
           </section>
           <section className="flex items-center justify-between pt-8">
             <fieldset className="w-full">
-              <legend className="profile-label">Bio</legend>
+              <legend className="profile-label">Profile</legend>
               <textarea
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -205,7 +208,6 @@ const VendorProfileUpdate = () => {
               />
             </fieldset>
           </section>
-
           <section className="flex justify-end items-center cta">
             {/* <button type="button" className="uppercase">Update profile</button> */}
             <CTA padding="0.8rem 1.25rem" className="outline-none" disabled={loading}>
@@ -224,7 +226,8 @@ const VendorProfileUpdate = () => {
         </form>
       )}
     </Formik>
+
   );
 };
 
-export default VendorProfileUpdate;
+export default IndividualProfileUpdate;

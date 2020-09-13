@@ -50,7 +50,9 @@ const DashboardSideBar = () => {
           alt={`${profile?.firstName} ${profile?.lastName}`}
         />
       </section>
-      <h1 className="text-center pb-12 user">{profile?.firstName}</h1>
+      <h1 className="text-center pb-12 user">
+        {profile?.accountType === 'professional' ? profile?.firstName : profile?.businessName}
+      </h1>
       <section>
         <ul className="px-4">
           <Link href="/dashboard/profile">

@@ -8,14 +8,13 @@ export const USER = gql`
       lastName
       phoneNumber
       email
-      phoneVerified
-      emailVerified
       profilePhoto
+      banner
+      businessName
       address
       bio
       city
       state
-      accountType
       occupation
       experienceLevel
       skills

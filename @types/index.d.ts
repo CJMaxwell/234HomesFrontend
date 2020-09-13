@@ -34,6 +34,7 @@ export interface IProfile {
   occupation: string;
   experienceLevel: number;
   skills: string[];
+  certifications: ICertification[];
   education: IEducation[];
   createdAt: Date;
   updatedAt: Date;
@@ -77,6 +78,8 @@ export interface IProfessional {
   firstName: string;
   lastName: string;
   phoneNumber: string;
+  banner: string;
+  businessName: string;
   email: string;
   phoneVerified: boolean;
   emailVerified: boolean;
