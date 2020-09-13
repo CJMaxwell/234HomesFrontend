@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 
+import withApollo from '../../lib/withApollo';
+import useProfessional from '../../hooks/useProfessional';
 import Navbar from '../Organisms/Navbar';
 import Hero from '../Organisms/Hero';
 import Favourite from '../molecules/Favourite';
@@ -38,7 +40,8 @@ const Main = styled.main`
 
 const Directory = () => {
   const theme = useContext(ThemeContext);
-
+  const { professionals, ProfessionalLoading } = useProfessional();
+  console.log(professionals);
   return (
     <section>
       <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />
@@ -90,78 +93,21 @@ const Directory = () => {
           </div>
         </div>
         <section className="grid grid-cols-4 gap-6">
-          <ProfessionalCard
-            name="Babatunde Maxwell"
-            occupation="Interior Designer"
-            location="Ikeja, Lagos"
-            phone="0803 456 7890"
-          />
-          <ProfessionalCard
-            name="Alexandria Vladimir"
-            occupation="Painter"
-            location="Barnawa, Kaduna"
-            phone="0809 053 4405"
-          />
-          <ProfessionalCard
-            name="Babatunde Maxwell"
-            occupation="Interior Designer"
-            location="Ikeja, Lagos"
-            phone="0803 456 7890"
-          />
-          <ProfessionalCard
-            name="Alexandria Vladimir"
-            occupation="Painter"
-            location="Barnawa, Kaduna"
-            phone="0809 053 4405"
-          />
-          <ProfessionalCard
-            name="Micheal Jonna"
-            occupation="Carpenter"
-            location="Wuse, Abuja"
-            phone="0812 456 8900"
-          />
-          <ProfessionalCard
-            name="Wuraola Gbotemi"
-            occupation="Plumber"
-            location="Maitama, Abuja"
-            phone="0809 053 4405"
-          />
-          <ProfessionalCard
-            name="Babatunde Maxwell"
-            occupation="Interior Designer"
-            location="Ikeja, Lagos"
-            phone="0803 456 7890"
-          />
-          <ProfessionalCard
-            name="Alexandria Vladimir"
-            occupation="Painter"
-            location="Barnawa, Kaduna"
-            phone="0809 053 4405"
-          />
-          <ProfessionalCard
-            name="Babatunde Maxwell"
-            occupation="Interior Designer"
-            location="Ikeja, Lagos"
-            phone="0803 456 7890"
-          />
-          <ProfessionalCard
-            name="Alexandria Vladimir"
-            occupation="Painter"
-            location="Barnawa, Kaduna"
-            phone="0809 053 4405"
-          />
-          <ProfessionalCard
-            name="Micheal Jonna"
-            occupation="Carpenter"
-            location="Wuse, Abuja"
-            phone="0812 456 8900"
-          />
-          <ProfessionalCard
-            name="Wuraola Gbotemi"
-            occupation="Plumber"
-            location="Maitama, Abuja"
-            phone="0809 053 4405"
-          />
+          {
+            // @ts-ignore
+            professionals && professionals.map(professional => (
+              <ProfessionalCard
+                name={`${professional.firstName} ${professional.lastName}`}
+                occupation={professional.occupation}
+                location={`${professional.city}, ${professional.state}`}
+                phone={professional.phoneNumber}
+                profilePhoto={professional.profilePhoto || '/img/dashboard/dashboardperson.svg'}
+                key={professional.id}
+                path={`/directory/${professional.id}`}
+              />
+            ))
+          }
+
         </section>
       </Main>
       <Footer />
@@ -169,4 +115,4 @@ const Directory = () => {
   );
 };
 
-export default Directory;
+export default withApollo()(Directory);

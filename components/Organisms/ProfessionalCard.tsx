@@ -4,7 +4,7 @@ import Router from 'next/router';
 import Link from 'next/link';
 
 interface Props {
-  imgUrl?: string;
+  profilePhoto?: string;
   name?: string;
   occupation?: string;
   location?: string;
@@ -20,7 +20,7 @@ const Wrapper = styled.div`
 `;
 
 const ProfessionalCard: React.FC<Props> = ({
-  imgUrl = '/img/jonathan.jpg',
+  profilePhoto,
   name,
   occupation,
   location,
@@ -30,11 +30,11 @@ const ProfessionalCard: React.FC<Props> = ({
   const theme = useContext(ThemeContext);
 
   return (
-    <Link href={path}>
+    <Link href={`${path || ''}`}>
       <Wrapper className="max-w-sm rounded-sm px-4 cursor-pointer">
         <div className="w-full">
           <div className="text-center pt-8">
-            <img className="w-20 h-20 rounded-full inline-block" src={imgUrl} alt={name} />
+            <img className="w-20 h-20 rounded-full inline-block" src={profilePhoto} alt={name} />
           </div>
 
           <div className="text-sm mt-4 text-center">

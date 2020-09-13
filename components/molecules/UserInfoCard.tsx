@@ -70,7 +70,7 @@ const UserInfoCard: React.FC<Props> = ({
         <img src={logo || '/img/vendor - logo.png'} className="logo" alt="Vendor Logo" />
         <p className="registered">Member since 2019</p>
       </div>
-      <div className="w-3/4">
+      <div className="w-3/4 ml-6">
         <div className="flex items-center justify-between">
           <div>
             <h1 className="capitalize vendor-name font-semibold">{businessName}</h1>
@@ -85,7 +85,7 @@ const UserInfoCard: React.FC<Props> = ({
                 <span className="pr-3">
                   <img src="/img/phone.svg" alt="vendor's phone number" />
                 </span>
-                <span>${phoneNumber}</span>
+                <span>{phoneNumber}</span>
               </div>
               <div className="flex items-center pt-4">
                 <span className="pr-3">
