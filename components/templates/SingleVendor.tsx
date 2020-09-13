@@ -1,6 +1,9 @@
 import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
+import { useRouter } from 'next/router'
 
+import withApollo from '../../lib/withApollo';
+import useUser from '../../hooks/useUser';
 import Navbar from '../Organisms/Navbar';
 import Offering from '../Organisms/Offering';
 import Footer from './Footer';
@@ -58,6 +61,12 @@ const UserBanner = styled.div<Props>`
 
 const SingleVendor: React.FC<Props> = ({ imgUrl = '' }) => {
   const theme = useContext(ThemeContext);
+  const router = useRouter();
+  const { id } = router.query;
+  console.log(id);
+
+  const { user, userLoading } = useUser(id as string);
+  console.log(user);
 
   return (
     <Wrapper>
@@ -77,7 +86,20 @@ const SingleVendor: React.FC<Props> = ({ imgUrl = '' }) => {
       <UserBanner imgUrl="/img/vendor-profile-banner.png" />
       <section className="container mx-auto general-padding mb-24">
         {/*  */}
-        <UserInfoCard marginTtop="-mt-40" />
+        {
+          user && (
+            <UserInfoCard
+              marginTtop="-mt-40"
+              businessName={`${user.firstName} ${user.lastName}`}
+              bio={user.bio}
+              address={user.address}
+              city={user.city}
+              state={user.state}
+              phoneNumber={user.phoneNumber}
+              logo={user.profilePhoto}
+            />
+          )
+        }
 
         <section className="flex justify-between items-center main-content">
           <div>
@@ -127,4 +149,4 @@ const SingleVendor: React.FC<Props> = ({ imgUrl = '' }) => {
   );
 };
 
-export default SingleVendor;
+export default withApollo()(SingleVendor);

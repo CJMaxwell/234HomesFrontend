@@ -1,13 +1,13 @@
 import { NextPage } from 'next';
 import React from 'react';
 
-import Vendor from '../components/templates/Vendor';
-import WithAuth from '../hoc/WithAuth';
+import Vendors from '../../components/templates/Vendors';
+import WithAuth from '../../hoc/WithAuth';
 
 const VendorPage: NextPage = () => {
   return (
     <>
-      <Vendor />
+      <Vendors />
     </>
   );
 };
