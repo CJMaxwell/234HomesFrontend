@@ -79,9 +79,9 @@ const Vendors = () => {
             // @ts-ignore
             vendors && vendors.map(vendor => (
               <SingleVendorCard
-                imgUrl="/img/vendors/single-vendor-sidekix-media-I_QC1JICzA0-unsplash.png"
+                imgUrl={`${vendor.banner || '/img/vendors/single-vendor-sidekix-media-I_QC1JICzA0-unsplash.png'}`}
                 height="10.3rem"
-                name={`${vendor.firstName} ${vendor.lastName}`}
+                name={vendor.businessName}
                 occupation={vendor.occupation}
                 location={`${vendor.city}, ${vendor.state}`}
                 phone={vendor.phoneNumber}

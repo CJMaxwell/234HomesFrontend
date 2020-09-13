@@ -90,7 +90,7 @@ const ProfessionalCard: React.FC<Props> = ({
             </div>
           </div>
           <button
-            onClick={() => Router.push('/professional-about')}
+            onClick={() => Router.push(`${path}`)}
             className="uppercase border-gray-600 text-gray-600 mt-4 w-full bg-white rounded-sm block text-center mb-10"
           >
             Hire me

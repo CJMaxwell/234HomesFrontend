@@ -1,7 +1,7 @@
 import { gql } from 'apollo-boost';
 
 export const UPDATE_PROFILE = gql`
-  mutation updateProfile($input: UpdateMeInput!) {
+  mutation updateProfile($input: UpdateProfileInput!) {
     updateProfile(input: $input) {
       id
       firstName
@@ -11,6 +11,9 @@ export const UPDATE_PROFILE = gql`
       phoneVerified
       emailVerified
       profilePhoto
+      banner
+      businessName
+      website
       address
       bio
       city
@@ -29,6 +32,14 @@ export const UPLOAD_PROFILE_PHOTO = gql`
   mutation uploadProfilePhoto($file: Upload!){
     uploadProfilePhoto(file: $file){
       profilePhoto
+    }
+  }
+`;
+
+export const UPLOAD_BANNER = gql`
+  mutation uploadBanner($file: Upload!){
+    uploadBanner(file: $file){
+      banner
     }
   }
 `;

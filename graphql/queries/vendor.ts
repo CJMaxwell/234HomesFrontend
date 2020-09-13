@@ -4,13 +4,11 @@ export const VENDORS = gql`
   query vendors {
     vendors {
       id
-      firstName
-      lastName
+      businessName
       phoneNumber
-      profilePhoto
+      banner
       city
       state
-      occupation
     }
   }
 

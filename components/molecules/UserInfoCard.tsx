@@ -17,7 +17,8 @@ interface Details {
   businessName?: string,
   state?: string,
   city?: string,
-  logo?: string
+  logo?: string,
+  website?: string
 }
 
 const ProfileCard = styled.section<Props>`
@@ -68,7 +69,8 @@ const UserInfoCard: React.FC<Details> = ({
   businessName,
   city,
   state,
-  logo
+  logo,
+  website
 }) => {
   return (
     <ProfileCard padding={padding} className={`flex border ${marginTtop} border-gray-200 rounded-md bg-white p-8`}>
@@ -97,7 +99,7 @@ const UserInfoCard: React.FC<Details> = ({
                 <span className="pr-3">
                   <img src="/img/www.svg" alt="vendor's website" />
                 </span>
-                <span>www.mcityventures.com</span>
+                <span>{website}</span>
               </div>
             </div>
           </div>
