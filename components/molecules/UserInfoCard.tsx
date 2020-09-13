@@ -13,7 +13,7 @@ interface Details {
   padding?: string
   bio?: string,
   address?: string,
-  phoneNumber: string,
+  phoneNumber?: string,
   businessName?: string,
   state?: string,
   city?: string,
