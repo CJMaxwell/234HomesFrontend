@@ -6,6 +6,11 @@ import Button from '../atoms/Button';
 interface Props {
   marginTtop?: string;
   padding?: string
+}
+
+interface Details {
+  marginTtop?: string;
+  padding?: string
   bio?: string,
   address?: string,
   phoneNumber: string,
@@ -14,6 +19,7 @@ interface Props {
   city?: string,
   logo?: string
 }
+
 const ProfileCard = styled.section<Props>`
   .logo {
     border: 1.45rem solid ${({ theme }) => theme.colors.blue4};
@@ -53,7 +59,7 @@ const MessageBtn = styled(Button)`
   font-weight: 600;
 `;
 
-const UserInfoCard: React.FC<Props> = ({
+const UserInfoCard: React.FC<Details> = ({
   marginTtop,
   padding,
   bio,
