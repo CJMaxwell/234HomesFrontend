@@ -1,4 +1,4 @@
-import { useMutation } from '@apollo/react-hooks';
+import { useMutation, useApolloClient } from '@apollo/react-hooks';
 import Router from 'next/router';
 import { useEffect, useState } from 'react';
 import { notify } from 'react-notify-toast';
@@ -17,10 +17,13 @@ function useOnline() {
       setOnline(true);
     }
   }, []);
+  const client = useApolloClient();
 
   function logOut() {
-    Cookies.remove('accessToken');
-    Router.push('/login');
+    client.clearStore().then(() => {
+      Cookies.remove('accessToken');
+      Router.push('/login');
+    });
   }
 
   return { online, logOut };
