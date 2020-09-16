@@ -174,45 +174,55 @@ const Register: React.FC<Props> = () => {
                 <section className="main">
                   <h1 className="account-type text-center py-4">Select Preferred Account Type</h1>
                   <ul className="flex justify-center items-center">
-                    <li
-                      className={`acc-type cursor-pointer ${accountType === 'individual' && 'active'}`}
-                      onClick={() => {
-                        setAccountType('individual');
-                      }}
-                      aria-hidden="true"
-                      data-tip='An Individual user is just a viewer on our website. For greater, exoperience, consider the Professional or Vendor option.'
-                      data-for='individual'
+                    <Tippy
+                      content="An Individual user is just a viewer on our website. If you have a skill or sell a product, then consider the Professional or Vendor option."
                     >
-                      <span>
-                        <img src="/img/dashboard/dashboarduser.svg" alt="User" />
-                      </span>
-                      <a className="selection">Individual User</a>
-                    </li>
+                      <li
+                        className={`acc-type cursor-pointer ${accountType === 'individual' && 'active'}`}
+                        onClick={() => {
+                          setAccountType('individual');
+                        }}
+                        aria-hidden="true"
+                      >
+                        <span>
+                          <img src="/img/dashboard/dashboarduser.svg" alt="User" />
+                        </span>
+                        <a className="selection">Individual User</a>
+                      </li>
+                    </Tippy>
+                    <Tippy
+                      content="Tell us about yourself and your projects. We will show it to the whole world."
+                    >
+                      <li
+                        className={`acc-type cursor-pointer ${accountType === 'professional' && 'active'}`}
+                        onClick={() => {
+                          setAccountType('professional');
+                        }}
+                        aria-hidden="true"
+                      >
+                        <span>
+                          <img src="/img/dashboard/work-white.svg" alt="Professional" />
+                        </span>
+                        <a className="selection">Professional</a>
+                      </li>
+                    </Tippy>
+                    <Tippy
+                      content="Sell products? Let's help you reach the right audience."
+                    >
 
-                    <li
-                      className={`acc-type cursor-pointer ${accountType === 'professional' && 'active'}`}
-                      onClick={() => {
-                        setAccountType('professional');
-                      }}
-                      aria-hidden="true"
-                    >
-                      <span>
-                        <img src="/img/dashboard/work-white.svg" alt="Professional" />
-                      </span>
-                      <a className="selection">Professional</a>
-                    </li>
-                    <li
-                      className={`acc-type cursor-pointer ${accountType === 'vendor' && 'active'}`}
-                      onClick={() => {
-                        setAccountType('vendor');
-                      }}
-                      aria-hidden="true"
-                    >
-                      <span>
-                        <img src="/img/dashboard/dashboardbox.svg" alt="Vendor" />
-                      </span>
-                      <a className="selection">Vendor</a>
-                    </li>
+                      <li
+                        className={`acc-type cursor-pointer ${accountType === 'vendor' && 'active'}`}
+                        onClick={() => {
+                          setAccountType('vendor');
+                        }}
+                        aria-hidden="true"
+                      >
+                        <span>
+                          <img src="/img/dashboard/dashboardbox.svg" alt="Vendor" />
+                        </span>
+                        <a className="selection">Vendor</a>
+                      </li>
+                    </Tippy>
                   </ul>
                 </section>
 
