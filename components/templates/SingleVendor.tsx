@@ -4,12 +4,12 @@ import { useRouter } from 'next/router'
 
 import withApollo from '../../lib/withApollo';
 import useUser from '../../hooks/useUser';
+import useAllProducts from '../../hooks/useAllProducts';
 import Navbar from '../Organisms/Navbar';
 import Offering from '../Organisms/Offering';
 import Footer from './Footer';
 import ProductListCard from '../Organisms/ProductListCard';
 import UserInfoCard from '../molecules/UserInfoCard';
-import useProducts from '../../hooks/useProducts';
 
 interface Props {
   imgUrl?: string;
@@ -66,7 +66,7 @@ const SingleVendor: React.FC<Props> = ({ imgUrl }) => {
   const { id } = router.query;
 
   const { user, userLoading } = useUser(id as string);
-  const { products, productLoading: loading } = useProducts(id as string);
+  const { products, loading } = useAllProducts(id as string);
 
   return (
     <Wrapper>
@@ -127,6 +127,7 @@ const SingleVendor: React.FC<Props> = ({ imgUrl }) => {
                           description={product.description}
                           city={user.city}
                           path={`/products/${product.id}`}
+                          category={product.category}
                         />
                       </div>
                     ))

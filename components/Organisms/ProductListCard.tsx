@@ -13,6 +13,7 @@ interface Props {
   description?: string;
   city?: string;
   path?: string;
+  category?: string
 }
 
 const Wrapper = styled.section`
@@ -96,7 +97,8 @@ const ProductListCard: React.FC<Props> = ({
   title,
   description,
   city,
-  path
+  path,
+  category
 }) => {
   const theme = useContext(ThemeContext);
 
@@ -118,7 +120,7 @@ const ProductListCard: React.FC<Props> = ({
           <div className="pt-8 flex items-center">
             <div className="flex items-center pr-8">
               <img src="/img/pro-loc-sign.svg" className="loc-pin" alt="Location pin" />
-              <p className="pl-2 vendor-loc">{`${city} , Home Accessories`}</p>
+              <p className="pl-2 vendor-loc">{`${city} , ${category}`}</p>
             </div>
             <div className="flex items-center">
               <img src="/img/views.svg" className="view" alt="Location pin" />

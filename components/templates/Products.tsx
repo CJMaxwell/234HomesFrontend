@@ -102,7 +102,8 @@ const Products = () => {
                       title={product.title}
                       description={product.description}
                       logo="/img/Image-11.png"
-                      city="Lekki"
+                      city={product.city}
+                      category={product.category}
                     />
                   </div>
                   <hr />

@@ -1,12 +1,16 @@
 import { useQuery } from '@apollo/react-hooks';
-import { PRODUCTS } from '../graphql/queries/product';
+import { PRODUCTS, USER_PRODUCTS } from '../graphql/queries/product';
 
 
-export default function useAllProducts() {
-  const { data, loading } = useQuery(PRODUCTS);
+export default function useAllProducts(id?: string) {
+  const query = id ? USER_PRODUCTS : PRODUCTS;
+  const variables = id ? { id } : null;
+  const { data, loading } = useQuery(query, {
+    variables
+  });
 
   return {
-    products: data?.products,
+    products: data?.products || data?.userProducts,
     loading
   }
 }

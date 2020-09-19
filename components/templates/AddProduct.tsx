@@ -4,7 +4,7 @@ import { Formik } from 'formik';
 import Loader from 'react-loader-spinner';
 
 import withApollo from '../../lib/withApollo';
-import useProducts from '../../hooks/useProducts';
+import useProducts from '../../hooks/useAddProduct';
 import Offering from '../Organisms/Offering';
 import Navbar from '../Organisms/Navbar';
 import DashboardSideBar from '../Organisms/DashboardSideBar';
