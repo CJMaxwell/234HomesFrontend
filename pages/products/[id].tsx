@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 
-import SingleProduct from '../components/templates/SingleProduct';
+import SingleProduct from '../../components/templates/SingleProduct';
 
 const SingleProductPage: NextPage = () => {
   return (

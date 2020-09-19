@@ -9,6 +9,7 @@ import Offering from '../Organisms/Offering';
 import Footer from './Footer';
 import ProductListCard from '../Organisms/ProductListCard';
 import UserInfoCard from '../molecules/UserInfoCard';
+import useProducts from '../../hooks/useProducts';
 
 interface Props {
   imgUrl?: string;
@@ -65,6 +66,7 @@ const SingleVendor: React.FC<Props> = ({ imgUrl }) => {
   const { id } = router.query;
 
   const { user, userLoading } = useUser(id as string);
+  const { products, productLoading: loading } = useProducts(id as string);
 
   return (
     <Wrapper>
@@ -112,36 +114,25 @@ const SingleVendor: React.FC<Props> = ({ imgUrl }) => {
                   </select>
                 </div>
               </section>
-              <section className="product-list border border-gray-200 mt-6">
-                <div className="px-8 pt-8 pb-3">
-                  <ProductListCard imgUrl="/img/BArt.png" logo="/img/Image-11.png" />
-                </div>
-                <hr />
-                <div className="px-8 py-3">
-                  <ProductListCard imgUrl="/img/B-18-B.png" logo="/img/Image 16.png" ad />
-                </div>
-                <hr />
-                <div className="px-8 py-3">
-                  <ProductListCard
-                    imgUrl="/img/brown-and-black-wooden-box-3889740.png"
-                    logo="/img/Image14er.png"
-                  />
-                </div>
-                <hr />
-                <div className="px-8 py-3">
-                  <ProductListCard imgUrl="/img/B-7.png" logo="/img/Image-11.png" ad />
-                </div>
-                <hr />
-                <div className="px-8 py-3">
-                  <ProductListCard imgUrl="/img/Bullish.png" logo="/img/Image17.png" ad />
-                </div>
-                <hr />
-                <div className="px-8 pt-3 pb-8">
-                  <ProductListCard
-                    imgUrl="/img/prince-abid-pEvPkPmuHzo-unsplash.png"
-                    logo="/img/Image-11.png"
-                  />
-                </div>
+              <section className="product-list border border-gray-200 mt-6 pb-8">
+                {
+                  products && (
+                    // @ts-ignore
+                    products.map(product => (
+                      <div className="px-8 pt-8" key={product.id}>
+                        <ProductListCard
+                          imgUrl={product.media}
+                          logo={user.profilePhoto}
+                          title={product.title}
+                          description={product.description}
+                          city={user.city}
+                          path={`/products/${product.id}`}
+                        />
+                      </div>
+                    ))
+                  )
+                }
+
               </section>
             </section>
           </section>
