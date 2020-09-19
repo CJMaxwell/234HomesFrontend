@@ -45,7 +45,7 @@ const DashboardSideBar = () => {
         />
         <img
           //src="/img/dashboard/dashboardperson.svg"
-          className="rounded-full h-40 w-40"
+          className="rounded-full h-40"
           src={profile?.profilePhoto || '/img/dashboard/dashboardperson.svg'}
           alt={`${profile?.firstName} ${profile?.lastName}`}
         />

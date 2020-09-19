@@ -10,7 +10,9 @@ interface Props {
   ad?: boolean;
   price?: number,
   title?: string,
-  description?: string
+  description?: string;
+  city?: string;
+  path?: string;
 }
 
 const Wrapper = styled.section`
@@ -40,13 +42,13 @@ const Wrapper = styled.section`
     color: ${({ theme }) => theme.colors.orange1};
     font-size: 0.8rem;
   }
-  .logo {
+  /* .logo {
     display: inline-block;
     height: 4.7rem;
     width: 6.2rem;
     border: 1px solid ${({ theme }) => theme.colors.gray21};
     padding: 0.45rem 1.15rem;
-  }
+  } */
 `;
 
 const ProductImg = styled.div<Props>`
@@ -72,6 +74,17 @@ const ProductImg = styled.div<Props>`
     
   }
 `;
+const Logo = styled.div<Props>`
+  overflow: hidden;
+  background-image: url('${({ logo }) => logo}');
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position: center;
+  height: 5rem;
+  width: 5rem;
+  border: 1px solid ${({ theme }) => theme.colors.gray21};
+  /* width: 10rem; */
+`;
 
 const ProductListCard: React.FC<Props> = ({
   imgUrl = '',
@@ -81,12 +94,14 @@ const ProductListCard: React.FC<Props> = ({
   ad = false,
   price,
   title,
-  description
+  description,
+  city,
+  path
 }) => {
   const theme = useContext(ThemeContext);
 
   return (
-    <Link href="/single-product">
+    <Link href={`${path || ''}`}>
       <Wrapper className="w-full flex">
         <ProductImg imgUrl={imgUrl} height={height} width={width}>
           {ad ? <div className="ad text-white relative py-2 px-4">Top Ad</div> : <div />}
@@ -103,7 +118,7 @@ const ProductListCard: React.FC<Props> = ({
           <div className="pt-8 flex items-center">
             <div className="flex items-center pr-8">
               <img src="/img/pro-loc-sign.svg" className="loc-pin" alt="Location pin" />
-              <p className="pl-2 vendor-loc">Shomolu, Home Accessories</p>
+              <p className="pl-2 vendor-loc">{`${city} , Home Accessories`}</p>
             </div>
             <div className="flex items-center">
               <img src="/img/views.svg" className="view" alt="Location pin" />
@@ -112,9 +127,15 @@ const ProductListCard: React.FC<Props> = ({
           </div>
         </div>
         <div>
-          <p className="price font-semibold">&#8358;{price}</p>
+          {/* <p className="price font-semibold">&#8358;{price}</p> */}
+          {/* <img src={logo} className="logo mt-12" alt="Vendor Logo" /> :  */}
+
           {
-            logo ? <img src={logo} className="logo mt-12" alt="Vendor Logo" /> : ''
+            logo ?
+              <div className="px-4 py-6 flex items-center justify-center">
+                <Logo logo={logo || ''} className="w-full" />
+              </div> :
+              ''
           }
         </div>
       </Wrapper>

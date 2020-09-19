@@ -2,6 +2,9 @@ import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import Link from 'next/link';
 
+import withApollo from '../../lib/withApollo';
+import useAllProducts from '../../hooks/useAllProducts';
+import useProfile from '../../hooks/useProfile';
 import Navbar from '../Organisms/Navbar';
 import ProductListCard from '../Organisms/ProductListCard';
 import Offering from '../Organisms/Offering';
@@ -49,6 +52,8 @@ const Wrapper = styled.div`
 `;
 
 const Products = () => {
+  const { products, loading } = useAllProducts();
+
   return (
     <Wrapper>
       <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />
@@ -86,35 +91,26 @@ const Products = () => {
           </div>
         </div>
         <div className="product-list border border-gray-200">
-          <div className="px-8 pt-8 pb-3">
-            <ProductListCard imgUrl="/img/BArt.png" logo="/img/Image-11.png" />
-          </div>
-          <hr />
-          <div className="px-8 py-3">
-            <ProductListCard imgUrl="/img/B-18-B.png" logo="/img/Image 16.png" ad />
-          </div>
-          <hr />
-          <div className="px-8 py-3">
-            <ProductListCard
-              imgUrl="/img/brown-and-black-wooden-box-3889740.png"
-              logo="/img/Image14er.png"
-            />
-          </div>
-          <hr />
-          <div className="px-8 py-3">
-            <ProductListCard imgUrl="/img/B-7.png" logo="/img/Image-11.png" ad />
-          </div>
-          <hr />
-          <div className="px-8 py-3">
-            <ProductListCard imgUrl="/img/Bullish.png" logo="/img/Image17.png" ad />
-          </div>
-          <hr />
-          <div className="px-8 pt-3 pb-8">
-            <ProductListCard
-              imgUrl="/img/prince-abid-pEvPkPmuHzo-unsplash.png"
-              logo="/img/Image-11.png"
-            />
-          </div>
+          {
+            products && (
+              // @ts-ignore
+              products.map(product => (
+                <section key={product.id}>
+                  <div className="px-8 pt-8 pb-3">
+                    <ProductListCard
+                      imgUrl={product.media}
+                      title={product.title}
+                      description={product.description}
+                      logo="/img/Image-11.png"
+                      city="Lekki"
+                    />
+                  </div>
+                  <hr />
+                </section>
+              ))
+            )
+          }
+
         </div>
       </div>
       <Footer />
@@ -122,4 +118,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default withApollo()(Products);

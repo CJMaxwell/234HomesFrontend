@@ -6,7 +6,7 @@ import { ADD_PRODUCT } from '../graphql/mutations/product';
 import { USER_PRODUCTS } from '../graphql/queries/product';
 
 
-export default function useProducts() {
+export default function useProducts(id: string) {
   const [mutate, { loading: addProductLoading }] = useMutation(ADD_PRODUCT);
   const addProduct = (file: any, input: any) => {
     mutate({
@@ -23,7 +23,9 @@ export default function useProducts() {
       });
   };
 
-  const { data, loading: productLoading } = useQuery(USER_PRODUCTS);
+  const { data, loading: productLoading } = useQuery(USER_PRODUCTS, {
+    variables: { id },
+  });
   return {
     addProduct,
     addProductLoading,

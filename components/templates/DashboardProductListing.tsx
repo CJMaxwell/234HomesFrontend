@@ -6,6 +6,7 @@ import Loader from 'react-loader-spinner';
 
 
 import withApollo from '../../lib/withApollo';
+import useProfile from '../../hooks/useProfile';
 import useProduct from '../../hooks/useProducts';
 import Navbar from '../Organisms/Navbar';
 import ProductListCard from '../Organisms/ProductListCard';
@@ -44,7 +45,8 @@ const Wrapper = styled.div`
 
 const DashboardProductListing = () => {
   const theme = useContext(ThemeContext);
-  const { products, productLoading: loading } = useProduct();
+  const { profile, updateProfile, updateProfileLoading: profileLoading } = useProfile();
+  const { products, productLoading: loading } = useProduct(profile?.id as string);
   return (
     <Wrapper>
       <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />
@@ -90,6 +92,8 @@ const DashboardProductListing = () => {
                         title={product.title}
                         price={product.price}
                         description={product.description}
+                        city={profile?.city}
+                        path={`/products/${product.id}`}
                       />
                     </div>
                   </section>
