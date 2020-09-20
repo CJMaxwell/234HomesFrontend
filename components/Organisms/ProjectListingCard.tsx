@@ -31,6 +31,7 @@ const ProjectBanner = styled.div<Props>`
   background-size:cover;
   background-position: center;
   height: 16rem;
+  border-radius: 14px;
   /* height: ${({ height }) => height}; */
 
 
