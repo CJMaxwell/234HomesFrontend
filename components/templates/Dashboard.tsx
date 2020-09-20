@@ -71,7 +71,7 @@ const Dashboard = () => {
             <DashboardSideBar />
           </section>
           <section className="main text-center w-3/4">
-            <h1 className="temp-access">Your account access is temporary limited</h1>
+            <h1 className="temp-access">Your account access is temporarily limited</h1>
             <p className="main-dashboard-desc flex justify-center">
               Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
               invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
