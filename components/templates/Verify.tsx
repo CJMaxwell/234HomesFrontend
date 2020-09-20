@@ -10,7 +10,7 @@ import phoneSignupSchema from '../../schema/phoneSignupSchema';
 import useSignUp from '../../hooks/useAuth';
 
 interface Props {
-  phone?: string;
+  code?: string;
   imgUrl?: string;
 }
 
@@ -80,9 +80,10 @@ const ErrorMsg = styled.span`
 
 const ReactCodeInput = dynamic(import('react-code-input'));
 
-const Verify: React.FC<Props> = ({ phone }) => {
+const Verify: React.FC<Props> = ({ code }) => {
   const theme = useContext(ThemeContext);
   const { registerByPhone, registerByPhoneLoading: loading } = useSignUp();
+  const { dialCode, phoneNumber, ...step1 } = JSON.parse(atob(code as string));
 
   return (
     <MainWrapper>
@@ -113,7 +114,8 @@ const Verify: React.FC<Props> = ({ phone }) => {
               registerByPhone({
                 variables: {
                   input: {
-                    phoneNumber: phone,
+                    ...step1,
+                    phoneNumber: `${dialCode}${phoneNumber}`,
                     password: values.password,
                     code: values.code,
                   },

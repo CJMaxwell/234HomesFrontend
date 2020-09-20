@@ -7,13 +7,13 @@ import withApollo from '../lib/withApollo';
 const VerifyPage: NextPage = ({ query }: any) => {
   return (
     <>
-      <Verify phone={query.phone} />
+      <Verify code={query.code} />
     </>
   );
 };
 
 export async function getServerSideProps(ctx: NextPageContext) {
-  if (!ctx.query.phone) {
+  if (!ctx.query.code) {
     ctx.res?.writeHead(302, { Location: '/signup' });
     ctx.res?.end();
   }

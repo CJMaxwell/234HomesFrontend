@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import Router from 'next/router';
 import styled, { ThemeContext } from 'styled-components';
 import { notify } from 'react-notify-toast';
@@ -10,7 +10,6 @@ import useCountries from '../../hooks/useCountries';
 import useSignup from '../../hooks/useAuth';
 import SignUpNavbar from '../Organisms/SignUpNavbar';
 import Footer from './Footer';
-
 
 interface Props {
   imgUrl?: string;
@@ -123,7 +122,6 @@ const Wrapper = styled.section<Props>`
 const Signup: React.FC<Props> = () => {
   const theme = useContext(ThemeContext);
   const { dialCodes } = useCountries();
-  const [accountType, setAccountType] = useState('individual');
   const { sendPhoneVerification, sendPhoneVerificationLoading: loading } = useSignup();
 
   return (
@@ -144,42 +142,54 @@ const Signup: React.FC<Props> = () => {
               firstName: '',
               lastName: '',
               businessName: '',
-              accountType: '',
+              accountType: 'individual',
               phoneNumber: '',
               email: '',
               city: '',
               state: '',
               dialCode: '+234',
             }}
-            onSubmit={(values) => {
+            onSubmit={(values: { [key: string]: string }) => {
+              const form = Object.keys(values).reduce(
+                (acc: { [key: string]: string }, key: string) => {
+                  if (values[key]) {
+                    acc[key] = values[key];
+                  }
+                  return acc;
+                },
+                {},
+              );
+
+              const code = btoa(JSON.stringify(form));
+
               sendPhoneVerification({
                 variables: {
                   phoneNumber: `${values.dialCode}${values.phoneNumber}`,
                 },
               })
-                .then(() =>
+                .then(() => {
                   Router.push(
-                    `/verify?phone=${encodeURIComponent(values.dialCode + values.phoneNumber)}`,
-                  ),
-                )
+                    // `/verify?phone=${encodeURIComponent(values.dialCode + values.phoneNumber)}`,
+                    `/verify?code=${code}`,
+                  );
+                })
                 .catch((err) => {
                   notify.show(err.graphQLErrors?.[0].message, 'error');
                 });
             }}
           >
-            {({ values, handleChange, handleBlur, handleSubmit }) => (
+            {({ values, handleChange, handleBlur, handleSubmit, setFieldValue }) => (
               <form onSubmit={handleSubmit} className="px-8">
-
                 <section className="main">
                   <h1 className="account-type text-center py-4">Select Preferred Account Type</h1>
                   <ul className="flex justify-center items-center">
-                    <Tippy
-                      content="An Individual user is just a viewer on our website. If you have a skill or sell a product, then consider the Professional or Vendor option."
-                    >
+                    <Tippy content="An Individual user is just a viewer on our website. If you have a skill or sell a product, then consider the Professional or Vendor option.">
                       <li
-                        className={`acc-type cursor-pointer ${accountType === 'individual' && 'active'}`}
+                        className={`acc-type cursor-pointer ${
+                          values.accountType === 'individual' && 'active'
+                        }`}
                         onClick={() => {
-                          setAccountType('individual');
+                          setFieldValue('accountType', 'individual');
                         }}
                         aria-hidden="true"
                       >
@@ -189,13 +199,13 @@ const Signup: React.FC<Props> = () => {
                         <a className="selection">Individual User</a>
                       </li>
                     </Tippy>
-                    <Tippy
-                      content="Tell us about yourself and your projects. We will show it to the whole world."
-                    >
+                    <Tippy content="Tell us about yourself and your projects. We will show it to the whole world.">
                       <li
-                        className={`acc-type cursor-pointer ${accountType === 'professional' && 'active'}`}
+                        className={`acc-type cursor-pointer ${
+                          values.accountType === 'professional' && 'active'
+                        }`}
                         onClick={() => {
-                          setAccountType('professional');
+                          setFieldValue('accountType', 'professional');
                         }}
                         aria-hidden="true"
                       >
@@ -205,14 +215,13 @@ const Signup: React.FC<Props> = () => {
                         <a className="selection">Professional</a>
                       </li>
                     </Tippy>
-                    <Tippy
-                      content="Sell products? Let's help you reach the right audience."
-                    >
-
+                    <Tippy content="Sell products? Let's help you reach the right audience.">
                       <li
-                        className={`acc-type cursor-pointer ${accountType === 'vendor' && 'active'}`}
+                        className={`acc-type cursor-pointer ${
+                          values.accountType === 'vendor' && 'active'
+                        }`}
                         onClick={() => {
-                          setAccountType('vendor');
+                          setFieldValue('accountType', 'vendor');
                         }}
                         aria-hidden="true"
                       >
@@ -225,53 +234,48 @@ const Signup: React.FC<Props> = () => {
                   </ul>
                 </section>
 
-                {
-                  accountType !== "vendor" && (
-                    <section className="flex items-center py-4 justify-between">
-                      <fieldset className="w-1/2 mr-6">
-                        <legend className="profile-label">First Name</legend>
-                        <input
-                          className="fieldset-input profile-desc w-full outline-none"
-                          name="firstName"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          value={values.firstName}
-                          required
-                        />
-                      </fieldset>
-                      <fieldset className="w-1/2">
-                        <legend className="profile-label">Last Name</legend>
-                        <input
-                          className="fieldset-input profile-desc w-full outline-none"
-                          name="lastName"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          value={values.lastName}
-                          required
-                        />
-                      </fieldset>
-                    </section>
+                {values.accountType !== 'vendor' && (
+                  <section className="flex items-center py-4 justify-between">
+                    <fieldset className="w-1/2 mr-6">
+                      <legend className="profile-label">First Name</legend>
+                      <input
+                        className="fieldset-input profile-desc w-full outline-none"
+                        name="firstName"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.firstName}
+                        required
+                      />
+                    </fieldset>
+                    <fieldset className="w-1/2">
+                      <legend className="profile-label">Last Name</legend>
+                      <input
+                        className="fieldset-input profile-desc w-full outline-none"
+                        name="lastName"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.lastName}
+                        required
+                      />
+                    </fieldset>
+                  </section>
+                )}
 
-                  )
-                }
-
-                {
-                  accountType === "vendor" && (
-                    <section className="flex items-center justify-between mt-4">
-                      <fieldset className="w-full">
-                        <legend className="profile-label">Business Name</legend>
-                        <input
-                          className="fieldset-input profile-desc w-full outline-none"
-                          name="businessName"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          value={values.businessName}
-                          required
-                        />
-                      </fieldset>
-                    </section>
-                  )
-                }
+                {values.accountType === 'vendor' && (
+                  <section className="flex items-center justify-between mt-4">
+                    <fieldset className="w-full">
+                      <legend className="profile-label">Business Name</legend>
+                      <input
+                        className="fieldset-input profile-desc w-full outline-none"
+                        name="businessName"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.businessName}
+                        required
+                      />
+                    </fieldset>
+                  </section>
+                )}
                 <section className="flex items-center justify-between py-4">
                   <fieldset className="w-1/2 mr-6">
                     <legend className="profile-label">Email</legend>
@@ -355,10 +359,15 @@ const Signup: React.FC<Props> = () => {
                       className="font-semibold uppercase w-full h-full text-white flex items-center justify-center"
                     >
                       {loading ? (
-                        <Loader type="ThreeDots" color={theme.colors.white} height={20} width={60} />
+                        <Loader
+                          type="ThreeDots"
+                          color={theme.colors.white}
+                          height={20}
+                          width={60}
+                        />
                       ) : (
-                          'Send me Code'
-                        )}
+                        'Send me Code'
+                      )}
                     </button>
                   </section>
                 </section>
@@ -382,7 +391,7 @@ const Signup: React.FC<Props> = () => {
                 </div>
                 <button type="button" className="continue-btn h-full w-full outline-none">
                   Continue with Email
-              </button>
+                </button>
               </div>
             </section>
             <section className="flex justify-center my-2">
@@ -396,9 +405,8 @@ const Signup: React.FC<Props> = () => {
                 </div>
                 <button type="button" className="continue-btn h-full w-full outline-none">
                   Continue with Google
-              </button>
+                </button>
               </div>
-
             </section>
 
             <section className="flex justify-center">
@@ -412,11 +420,9 @@ const Signup: React.FC<Props> = () => {
                 </div>
                 <button type="button" className="continue-btn h-full w-full outline-none">
                   Continue with Facebook
-              </button>
+                </button>
               </div>
             </section>
-
-
           </div>
         </div>
       </Wrapper>
