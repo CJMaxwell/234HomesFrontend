@@ -71,7 +71,7 @@ const ProjectListingCard: React.FC<Props> = ({ imgUrl = '', height }) => {
           </div>
         </div>
         <div className="flex items-center">
-          <div className="flex items-center">
+          <div className="flex items-center mr-4">
             <img
               className="project-activty mr-1"
               src="/img/heart-project.svg"

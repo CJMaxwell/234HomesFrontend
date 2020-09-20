@@ -46,7 +46,7 @@ const Projects = () => {
       <Hero
         title="Find Inspiration For Your Next project!"
         imgUrl="/img/vendors/banner.png"
-        placeholder="Search for a product..."
+        placeholder="Search for a projects..."
       />
 
       <div className="general-padding container mx-auto mb-48">
