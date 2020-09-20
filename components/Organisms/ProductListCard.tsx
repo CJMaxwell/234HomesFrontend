@@ -8,12 +8,12 @@ interface Props {
   width?: string;
   logo?: string;
   ad?: boolean;
-  price?: number,
-  title?: string,
+  price?: number;
+  title?: string;
   description?: string;
   city?: string;
   path?: string;
-  category?: string
+  category?: string;
 }
 
 const Wrapper = styled.section`
@@ -93,12 +93,11 @@ const ProductListCard: React.FC<Props> = ({
   width = '',
   logo = '',
   ad = false,
-  price,
   title,
   description,
   city,
   path,
-  category
+  category,
 }) => {
   const theme = useContext(ThemeContext);
 
@@ -110,12 +109,8 @@ const ProductListCard: React.FC<Props> = ({
         </ProductImg>
         <div className="pl-8 pr-32">
           <div>
-            <h1 className="title font-semibold capitalize text-xl">
-              {title}
-            </h1>
-            <p className="pt-6 description">
-              {description}
-            </p>
+            <h1 className="title font-semibold capitalize text-xl">{title}</h1>
+            <p className="pt-6 description">{description}</p>
           </div>
           <div className="pt-8 flex items-center">
             <div className="flex items-center pr-8">
@@ -132,13 +127,13 @@ const ProductListCard: React.FC<Props> = ({
           {/* <p className="price font-semibold">&#8358;{price}</p> */}
           {/* <img src={logo} className="logo mt-12" alt="Vendor Logo" /> :  */}
 
-          {
-            logo ?
-              <div className="px-4 py-6 flex items-center justify-center">
-                <Logo logo={logo || ''} className="w-full" />
-              </div> :
-              ''
-          }
+          {logo ? (
+            <div className="px-4 py-6 flex items-center justify-center">
+              <Logo logo={logo || ''} className="w-full" />
+            </div>
+          ) : (
+            ''
+          )}
         </div>
       </Wrapper>
     </Link>

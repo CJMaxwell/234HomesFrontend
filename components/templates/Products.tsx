@@ -91,27 +91,23 @@ const Products = () => {
           </div>
         </div>
         <div className="product-list border border-gray-200">
-          {
-            products && (
-              // @ts-ignore
-              products.map(product => (
-                <section key={product.id}>
-                  <div className="px-8 pt-8 pb-3">
-                    <ProductListCard
-                      imgUrl={product.media}
-                      title={product.title}
-                      description={product.description}
-                      logo="/img/Image-11.png"
-                      city={product.city}
-                      category={product.category}
-                    />
-                  </div>
-                  <hr />
-                </section>
-              ))
-            )
-          }
-
+          {products &&
+            // @ts-ignore
+            products.map((product) => (
+              <section key={product.id}>
+                <div className="px-8 pt-8 pb-3">
+                  <ProductListCard
+                    imgUrl={product.media}
+                    title={product.title}
+                    description={product.description}
+                    logo="/img/Image-11.png"
+                    city={product.city}
+                    category={product.category}
+                  />
+                </div>
+                <hr />
+              </section>
+            ))}
         </div>
       </div>
       <Footer />

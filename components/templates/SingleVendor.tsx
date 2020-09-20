@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
 
 import withApollo from '../../lib/withApollo';
 import useUser from '../../hooks/useUser';
@@ -59,7 +59,6 @@ const UserBanner = styled.div<Props>`
   height: 29rem;
 `;
 
-
 const SingleVendor: React.FC<Props> = ({ imgUrl }) => {
   const theme = useContext(ThemeContext);
   const router = useRouter();
@@ -73,72 +72,70 @@ const SingleVendor: React.FC<Props> = ({ imgUrl }) => {
       <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />
       <Navbar />
       <hr />
-      {
-        user && (
-          <section>
-            <div className="general-padding container mx-auto">
-              <Offering />
-              <ul className="breadcrumb flex items-center">
-                <li>Directory</li>
-                <li>
-                  <img src="/img/direction.svg" alt="Breadcrumb navigation" />
-                </li>
-                <li>Vendors</li>
-              </ul>
-            </div>
-            <UserBanner imgUrl={`${user.banner || '/img/vendor-profile-banner.png'}`} />
-            <section className="container mx-auto general-padding mb-24">
-              {/*  */}
+      {user && (
+        <section>
+          <div className="general-padding container mx-auto">
+            <Offering />
+            <ul className="breadcrumb flex items-center">
+              <li>Directory</li>
+              <li>
+                <img src="/img/direction.svg" alt="Breadcrumb navigation" />
+              </li>
+              <li>Vendors</li>
+            </ul>
+          </div>
+          <UserBanner imgUrl={`${user.banner || '/img/vendor-profile-banner.png'}`} />
+          <section className="container mx-auto general-padding mb-24">
+            {/*  */}
 
-              <UserInfoCard
-                marginTtop="-mt-40"
-                businessName={user.businessName}
-                bio={user.bio}
-                address={user.address}
-                city={user.city}
-                state={user.state}
-                phoneNumber={user.phoneNumber}
-                logo={user.profilePhoto}
-                website={user.website}
-              />
+            <UserInfoCard
+              marginTtop="-mt-40"
+              businessName={user.businessName}
+              bio={user.bio}
+              address={user.address}
+              city={user.city}
+              state={user.state}
+              phoneNumber={user.phoneNumber}
+              logo={user.profilePhoto}
+              website={user.website}
+            />
 
+            <section className="flex justify-between items-center main-content">
+              <div>
+                <h1 className="filter-heading">Product Listings</h1>
+              </div>
+              <div className="filter">
+                <select>
+                  <option value="Category">Category</option>
+                  <option value="">Category</option>
+                </select>
+              </div>
+            </section>
+            <section className="product-list border border-gray-200 mt-6 pb-8">
+              {products &&
+                products.length > 0 &&
+                // @ts-ignore
+                products.map((product) => (
+                  <div className="px-8 pt-8" key={product.id}>
+                    <ProductListCard
+                      imgUrl={product.media}
+                      logo={user.profilePhoto}
+                      title={product.title}
+                      description={product.description}
+                      city={user.city}
+                      path={`/products/${product.id}`}
+                      category={product.category}
+                    />
+                  </div>
+                ))}
 
-              <section className="flex justify-between items-center main-content">
-                <div>
-                  <h1 className="filter-heading">Product Listings</h1>
-                </div>
-                <div className="filter">
-                  <select>
-                    <option value="Category">Category</option>
-                    <option value="">Category</option>
-                  </select>
-                </div>
-              </section>
-              <section className="product-list border border-gray-200 mt-6 pb-8">
-                {
-                  products && (
-                    // @ts-ignore
-                    products.map(product => (
-                      <div className="px-8 pt-8" key={product.id}>
-                        <ProductListCard
-                          imgUrl={product.media}
-                          logo={user.profilePhoto}
-                          title={product.title}
-                          description={product.description}
-                          city={user.city}
-                          path={`/products/${product.id}`}
-                          category={product.category}
-                        />
-                      </div>
-                    ))
-                  )
-                }
-
-              </section>
+              {products && products.length === 0 && (
+                <div className="px-8 pt-8">No product listing</div>
+              )}
             </section>
           </section>
-        )
-      }
+        </section>
+      )}
       <Footer />
     </Wrapper>
   );

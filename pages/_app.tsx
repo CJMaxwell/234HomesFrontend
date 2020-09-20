@@ -7,6 +7,7 @@ import '../styles/style.css';
 import { theme } from '../styles/theme';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import 'tippy.js/dist/tippy.css';
 
 class MyApp extends App<any> {
   render() {

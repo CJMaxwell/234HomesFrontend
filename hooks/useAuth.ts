@@ -48,7 +48,7 @@ export default function useAuth() {
         Cookies.set('accessToken', response.accessToken);
         // Cookies.set('role', response.user.role);
 
-        Router.push('/account-type');
+        Router.push('/dashboard');
       })
       .catch((err) => {
         notify.show(err.graphQLErrors?.[0].message, 'error');
