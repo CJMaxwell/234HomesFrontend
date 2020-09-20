@@ -69,19 +69,23 @@ const Wrapper = styled.section`
 `;
 
 const VendorProfileUpdate = () => {
-  const { profile, updateProfile, updateProfileLoading: loading, uploadBanner, bannerLoading } = useProfile();
+  const {
+    profile,
+    updateProfile,
+    updateProfileLoading: loading,
+    uploadBanner,
+    bannerLoading,
+  } = useProfile();
   const theme = useContext(ThemeContext);
   const { countries } = useCountries();
-  console.log(profile);
 
   return (
-
     <Formik
       onSubmit={(values) => {
         updateProfile({
           variables: {
             input: {
-              ...values
+              ...values,
             },
           },
         });
@@ -213,7 +217,7 @@ const VendorProfileUpdate = () => {
               name="file"
               id="file"
               onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                uploadBanner(event.target.files?.[0])
+                uploadBanner(event.target.files?.[0]);
               }}
               type="file"
             />
@@ -228,22 +232,17 @@ const VendorProfileUpdate = () => {
               <h1 className="drag-and-drop">Drag and drop an images</h1>
               <p>
                 Or <a className="browse">browse</a> to choose a file
-                </p>
+              </p>
             </section>
           </section>
 
           <section className="flex justify-end items-center cta">
             <CTA type="submit" padding="0.8rem 1.25rem" className="outline-none" disabled={loading}>
               {loading ? (
-                <Loader
-                  type="ThreeDots"
-                  color={theme.colors.orange1}
-                  height={20}
-                  width={60}
-                />
+                <Loader type="ThreeDots" color={theme.colors.orange1} height={20} width={60} />
               ) : (
-                  'Update Profile'
-                )}
+                'Update Profile'
+              )}
             </CTA>
           </section>
         </form>

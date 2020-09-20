@@ -13,6 +13,7 @@ export default function WithAuth(WrappedComponent: ComponentType<any>) {
   fn.defaultProps = {};
   fn.getInitialProps = async (ctx: any) => {
     const { accessToken } = cookies(ctx);
+    console.log(accessToken, '===sdf========');
     // if (!accessToken && role !== 'user') {
     //   redirect(ctx.res, '/login');
     // }
