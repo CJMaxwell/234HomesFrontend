@@ -25,6 +25,9 @@ const Wrapper = styled.div`
   .directory {
     border-bottom: 3px solid ${({ theme }) => theme.colors.gray5};
   }
+  .projects {
+    border-bottom: 3px solid ${({ theme }) => theme.colors.orange2};
+  }
 `;
 
 const Offering = () => {
@@ -43,7 +46,10 @@ const Offering = () => {
           <li className="cursor-pointer diy">DIY</li>
         </Link>
         <Link href="/directory">
-          <li className="cursor-pointer directory active">Directory</li>
+          <li className="cursor-pointer directory">Directory</li>
+        </Link>
+        <Link href="/projects">
+          <li className="cursor-pointer projects active">Projects</li>
         </Link>
       </ul>
     </Wrapper>
