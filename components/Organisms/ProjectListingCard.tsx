@@ -7,28 +7,25 @@ interface Props {
 }
 
 const Wrapper = styled.section`
+  .user {
+    color: ${({ theme }) => theme.colors.gray1};
+    font-weight: 600;
+  }
 
-.user {
-  color: ${({ theme }) => theme.colors.gray1};
-  font-weight: 600;
-}
-
-.project-activty {
-  height: 0.7rem;
-  width: 0.8rem;
-}
-.reactions {
-  font-size: 0.65rem;
-  color: ${({ theme }) => theme.colors.gray11};
-  
-}
-
+  .project-activty {
+    height: 0.7rem;
+    width: 0.8rem;
+  }
+  .reactions {
+    font-size: 0.65rem;
+    color: ${({ theme }) => theme.colors.gray11};
+  }
 `;
 
 const ProjectBanner = styled.div<Props>`
   border-radius: 20px;
   overflow: hidden;
-  background-image: url('${({ imgUrl }) => imgUrl}'), linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5));
+  background-image: url('${({ imgUrl }) => imgUrl}');
   background-blend-mode: overlay;
   background-repeat: no-repeat;
   background-size:cover;
@@ -36,15 +33,30 @@ const ProjectBanner = styled.div<Props>`
   height: 16rem;
   /* height: ${({ height }) => height}; */
 
+
   .title {
     bottom: 20px;
     left: 32px;
+    visibility: hidden;
+    opacity: 0;
   }
+
+  &:hover {
+    background-image: url('${({ imgUrl }) => imgUrl}'), 
+    linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5));
+
+    .title {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
   .share {
     top: 8%;
     right: 8%;
     border-radius: 20px;
-    padding: 0.45rem 0.65rem; 
+    padding: 0.45rem 0.65rem;
+    background: rgba(0,0,0,0.5);
   }
 `;
 
@@ -72,24 +84,15 @@ const ProjectListingCard: React.FC<Props> = ({ imgUrl = '', height }) => {
         </div>
         <div className="flex items-center">
           <div className="flex items-center mr-4">
-            <img
-              className="project-activty mr-1"
-              src="/img/heart-project.svg"
-              alt="Like Project"
-            />
+            <img className="project-activty mr-1" src="/img/heart-project.svg" alt="Like Project" />
             <p className="reactions">123</p>
           </div>
           <div className="flex items-center">
-            <img
-              className="project-activty mr-1"
-              src="/img/views.svg"
-              alt="Views"
-            />
+            <img className="project-activty mr-1" src="/img/views.svg" alt="Views" />
             <p className="reactions">843</p>
           </div>
         </div>
       </div>
-
     </Wrapper>
   );
 };

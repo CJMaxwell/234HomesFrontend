@@ -2,15 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import Hero from '../Organisms/Hero';
 
-import Navbar from '../Organisms/Navbar'
-import Offering from '../Organisms/Offering'
+import Navbar from '../Organisms/Navbar';
+import Offering from '../Organisms/Offering';
 import ProjectListingCard from '../Organisms/ProjectListingCard';
 import Footer from './Footer';
 
 const Wrapper = styled.section`
-
-
-.filter {
+  .filter {
     color: ${({ theme }) => theme.colors.gray5};
     select {
       border: 1px solid ${({ theme }) => theme.colors.gray17};
@@ -31,7 +29,6 @@ const Wrapper = styled.section`
   .recommended {
     font-weight: 600;
   }
-
 `;
 
 const Projects = () => {
@@ -73,25 +70,15 @@ const Projects = () => {
           </div>
         </div>
         <div className="grid grid-cols-3 gap-6">
-          <ProjectListingCard
-            imgUrl="/img/beazy-Q-nk9A5GsSM-unsplash.png"
-          />
-          <ProjectListingCard
-            imgUrl="/img/francesca-tosolini-FX1EbT-jKBQ-unsplash.png"
-          />
-          <ProjectListingCard
-            imgUrl="/img/francesca-tosolini-tHkJAMcO3QE-unsplash.png"
-          />
-          <ProjectListingCard
-            imgUrl="/img/beazy-Q-nk9A5GsSM-unsplash.png"
-          />
-
+          <ProjectListingCard imgUrl="/img/beazy-Q-nk9A5GsSM-unsplash.png" />
+          <ProjectListingCard imgUrl="/img/francesca-tosolini-FX1EbT-jKBQ-unsplash.png" />
+          <ProjectListingCard imgUrl="/img/francesca-tosolini-tHkJAMcO3QE-unsplash.png" />
+          <ProjectListingCard imgUrl="/img/beazy-Q-nk9A5GsSM-unsplash.png" />
         </div>
       </div>
       <Footer />
-
     </Wrapper>
-  )
-}
+  );
+};
 
-export default Projects
+export default Projects;

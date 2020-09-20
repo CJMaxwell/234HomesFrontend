@@ -1,4 +1,5 @@
 import { NextPage } from 'next';
+import React from 'react';
 import withApollo from '../lib/withApollo';
 
 import Home from '../components/templates/Home';
