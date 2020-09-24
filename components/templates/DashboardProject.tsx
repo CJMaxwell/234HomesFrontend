@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import Loader from 'react-loader-spinner';
+import Router from 'next/router';
 
 
 import withApollo from '../../lib/withApollo';
@@ -41,6 +42,9 @@ const Wrapper = styled.section`
   .section-wrap {
     margin-bottom: 6.6rem;
   }
+  .add-button {
+    box-shadow: 0px 3px 10px rgba(0,0,0,0.2);
+  }
 `;
 
 const DashboardProject = () => {
@@ -65,7 +69,12 @@ const DashboardProject = () => {
             <DashboardSideBar />
           </section>
           <section className="main w-3/4">
-            <h1 className="py-10 profile-title">My Projects</h1>
+            <section className="flex items-center justify-between">
+              <h1 className="py-10 profile-title">My Projects</h1>
+              <button type="button" onClick={() => Router.push('/dashboard/add-project')} className="h-8 w-8 rounded-full add-button flex items-center justify-center focus:outline-none">
+                <img src="/img/add-project.svg" className="h-4 w-4" alt="Add new Project" />
+              </button>
+            </section>
             {loading && (
               <section className="flex justify-center items-center mt-40">
                 <Loader type="TailSpin" color={theme.colors.orange1} height={80} width={80} />

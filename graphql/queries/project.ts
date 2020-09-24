@@ -1,7 +1,7 @@
 import { gql } from 'apollo-boost';
 export const USER_PROJECTS = gql`
-  query userProjects {
-    userProjects {
+  query userProjects($id: String!) {
+    userProjects(id: $id) {
       id
       title
       category
