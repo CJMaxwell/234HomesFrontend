@@ -153,7 +153,10 @@ const SingleProject = () => {
             {project?.title}
           </h1>
           <div>
-            <UserCard />
+            <UserCard
+              imgUrl={profile?.profilePhoto}
+              user={`${profile?.lastName} ${profile?.firstName}`}
+            />
           </div>
           <section className="flex items-center mt-8">
             <span className="signup-comment font-semibold pr-2 capitalize">Sign Up to Comment</span>
