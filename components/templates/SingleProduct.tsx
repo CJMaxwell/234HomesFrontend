@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
 import Slider from 'react-slick';
 
 import withApollo from '../../lib/withApollo';
