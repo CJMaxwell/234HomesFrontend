@@ -256,7 +256,6 @@ const AboutProfessional: React.FC<Props> = ({ imgUrl }) => {
               </HeroButton>
                 </div>
               </div>
-
             </Hero>
             <div className="general-padding container mx-auto mb-48">
               <section className="grid grid-cols-6">
