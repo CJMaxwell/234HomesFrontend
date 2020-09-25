@@ -5,6 +5,7 @@ import styled from 'styled-components';
 interface Props {
   imgUrl?: string;
   height?: string;
+  title?: string;
 }
 
 const Wrapper = styled.section`
@@ -15,12 +16,12 @@ const Wrapper = styled.section`
 }
 `;
 
-const ProjectCard: React.FC<Props> = ({ imgUrl = '' }) => {
+const ProjectCard: React.FC<Props> = ({ imgUrl, title }) => {
   return (
     <Wrapper className="max-w-xs overflow-hidden rounded-lg border border-gray-200">
       <img className="w-full object-cover" src={imgUrl} alt="" />
       <div className="px-6 py-4">
-        <p className="proj-title">Lorem ipsum dolor sit consetetur elitr</p>
+        <p className="proj-title">{title}</p>
       </div>
     </Wrapper>
   );

@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 
 import withApollo from '../../lib/withApollo';
 import useUser from '../../hooks/useUser';
+import useAllProjects from '../../hooks/useAllProjects';
 import Navbar from '../Organisms/Navbar';
 import Footer from './Footer';
 import Button from '../atoms/Button';
@@ -206,10 +207,10 @@ const HeroButton = styled(Button)`
 const AboutProfessional: React.FC<Props> = ({ imgUrl }) => {
   const router = useRouter();
   const { id } = router.query;
-  console.log(id);
-  // '/img/Hero.png'
 
   const { user, userLoading } = useUser(id as string);
+  const { projects, loading } = useAllProjects(id as string);
+
 
   return (
     <Wrapper>
@@ -392,12 +393,20 @@ const AboutProfessional: React.FC<Props> = ({ imgUrl }) => {
                       </select>
                     </div>
                     <div className="grid grid-cols-3 gap-4">
-                      <ProjectCard imgUrl="/img/projects/bathroom-cabinet-candles-faucet.png" />
-                      <ProjectCard imgUrl="/img/projects/pink-and-purple-wallpaper.png" />
-                      <ProjectCard imgUrl="/img/projects/architecture-clouds-estate-exterior.png" />
-                      <ProjectCard imgUrl="/img/projects/AH.png" />
-                      <ProjectCard imgUrl="/img/projects/person-holding-black-pen.png" />
-                      <ProjectCard imgUrl="/img/projects/chairs-coffee-table-comfortable-couch.png" />
+                      {
+                        projects &&
+                        projects.length > 0 &&
+                        // @ts-ignore
+                        projects.map(project => (
+                          <ProjectCard
+                            imgUrl={project.media}
+                            title={project.title}
+                          />
+                        ))
+                      }
+                      {projects && projects.length === 0 && (
+                        <div className="px-8 pt-8">No project created</div>
+                      )}
                     </div>
                     <div className="w-full text-center">
                       <button type="button" className="uppercase my-8 load-more-projects font-semibold">
