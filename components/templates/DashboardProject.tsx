@@ -5,7 +5,8 @@ import Router from 'next/router';
 
 
 import withApollo from '../../lib/withApollo';
-import useProject from '../../hooks/useProjects';
+import useProfile from '../../hooks/useProfile';
+import useAllProjects from '../../hooks/useAllProjects';
 import Offering from '../Organisms/Offering';
 import Navbar from '../Organisms/Navbar';
 import DashboardSideBar from '../Organisms/DashboardSideBar';
@@ -49,7 +50,8 @@ const Wrapper = styled.section`
 
 const DashboardProject = () => {
   const theme = useContext(ThemeContext);
-  const { projects, projectLoading: loading } = useProject();
+  const { profile, updateProfile, updateProfileLoading: profileLoading } = useProfile();
+  const { projects, loading } = useAllProjects(profile?.id);
   return (
     <Wrapper>
       <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />
