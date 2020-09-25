@@ -5,10 +5,7 @@ import Router from 'next/router';
 import Loader from 'react-loader-spinner';
 
 import withApollo from '../../lib/withApollo';
-import useProfile from '../../hooks/useProfile';
-import useAllProducts from '../../hooks/useAllProducts';
 import Navbar from '../Organisms/Navbar';
-import ProductListCard from '../Organisms/ProductListCard';
 import Offering from '../Organisms/Offering';
 import DashboardSideBar from '../Organisms/DashboardSideBar';
 import CTA from '../atoms/CTA';
@@ -42,10 +39,9 @@ const Wrapper = styled.div`
   }
 `;
 
-const DashboardProductListing = () => {
+const DashboardHouseTours = () => {
   const theme = useContext(ThemeContext);
-  const { profile, updateProfile, updateProfileLoading: profileLoading } = useProfile();
-  const { products, loading } = useAllProducts(profile?.id);
+
   return (
     <Wrapper>
       <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />
@@ -67,9 +63,9 @@ const DashboardProductListing = () => {
 
           <section className="product-list w-3/4 px-8">
             <section className="flex items-center justify-between">
-              <h1 className="py-10 profile-title">Product Listings</h1>
+              <h1 className="py-10 profile-title">House Tours</h1>
               <CTA
-                onClick={() => Router.push('/dashboard/add-product')}
+                onClick={() => Router.push('/dashboard/create-house-tours')}
                 type="button"
                 className="update-profile focus:outline-none"
                 padding="0.8rem 1.75rem;"
@@ -78,28 +74,9 @@ const DashboardProductListing = () => {
                 Add New
               </CTA>
             </section>
-            {loading && (
-              <section className="flex justify-center items-center mt-40">
-                <Loader type="TailSpin" color={theme.colors.orange1} height={80} width={80} />
-              </section>
-            )}
-            {products &&
-              // @ts-ignore
-              products.map((product) => (
-                <section key={product.id}>
-                  <hr />
-                  <div className="py-3">
-                    <ProductListCard
-                      imgUrl={product.media}
-                      title={product.title}
-                      price={product.price}
-                      description={product.description}
-                      city={profile?.city}
-                      path={`/products/${product.id}`}
-                    />
-                  </div>
-                </section>
-              ))}
+            {/* <section className="flex justify-center items-center mt-40">
+              <Loader type="TailSpin" color={theme.colors.orange1} height={80} width={80} />
+            </section> */}
           </section>
         </section>
       </div>
@@ -108,4 +85,4 @@ const DashboardProductListing = () => {
   );
 };
 
-export default withApollo()(DashboardProductListing);
+export default withApollo()(DashboardHouseTours);

@@ -11,5 +11,4 @@ export const VENDORS = gql`
       state
     }
   }
-
 `;

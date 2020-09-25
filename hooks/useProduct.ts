@@ -1,7 +1,6 @@
 import { useQuery } from '@apollo/react-hooks';
 import { PRODUCT } from '../graphql/queries/product';
 
-
 export default function useProduct(id: string) {
   const { data, loading: productLoading } = useQuery(PRODUCT, {
     variables: { id },
@@ -9,6 +8,6 @@ export default function useProduct(id: string) {
 
   return {
     product: data?.product,
-    productLoading
-  }
+    productLoading,
+  };
 }

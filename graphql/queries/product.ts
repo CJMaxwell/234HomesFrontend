@@ -1,4 +1,5 @@
 import { gql } from 'apollo-boost';
+
 export const USER_PRODUCTS = gql`
   query userProducts($id: String!) {
     userProducts(id: $id) {
@@ -31,7 +32,6 @@ export const PRODUCT = gql`
       description
     }
   }
-
 `;
 
 export const PRODUCTS = gql`
@@ -49,6 +49,4 @@ export const PRODUCTS = gql`
       description
     }
   }
-
 `;
-
