@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
 import React from 'react';
 
-import Products from '../components/templates/Products';
+import Products from '../../components/templates/Products';
 
 const ProductsPage: NextPage = () => {
   return (

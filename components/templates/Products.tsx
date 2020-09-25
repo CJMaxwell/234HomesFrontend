@@ -103,6 +103,7 @@ const Products = () => {
                     logo="/img/Image-11.png"
                     city={product.city}
                     category={product.category}
+                    path={`/products/${product.id}`}
                   />
                 </div>
                 <hr />

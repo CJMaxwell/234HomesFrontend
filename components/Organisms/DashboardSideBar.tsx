@@ -5,6 +5,20 @@ import Link from 'next/link';
 import useProfile from '../../hooks/useProfile';
 import useAuth from '../../hooks/useAuth';
 
+
+interface Props {
+  imgUrl?: string;
+  height?: string;
+}
+
+const Avatar = styled.section<Props>`
+  overflow: hidden;
+  background-image: url('${({ imgUrl }) => imgUrl}');
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position: center;
+`;
+
 const Wrapper = styled.section`
   width: 16rem;
   border: 1px solid ${({ theme }) => theme.colors.gray17};
@@ -26,7 +40,7 @@ const Wrapper = styled.section`
   }
 `;
 
-const DashboardSideBar = () => {
+const DashboardSideBar: React.FC<Props> = ({ imgUrl }) => {
   const { profile, uploadProfilePhoto } = useProfile();
   const { logOut } = useAuth();
 
@@ -43,11 +57,14 @@ const DashboardSideBar = () => {
           }}
           type="file"
         />
-        <img
-          //src="/img/dashboard/dashboardperson.svg"
-          className="rounded-full h-40"
+        {/* <img
+          className="rounded-full w-40 h-40"
           src={profile?.profilePhoto || '/img/dashboard/dashboardperson.svg'}
           alt={`${profile?.firstName} ${profile?.lastName}`}
+        /> */}
+        <Avatar
+          className="rounded-full w-40 h-40"
+          imgUrl={profile?.profilePhoto || '/img/dashboard/dashboardperson.svg'}
         />
       </section>
       <h1 className="text-center pb-12 user">

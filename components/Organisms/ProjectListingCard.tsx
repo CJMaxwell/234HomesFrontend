@@ -1,9 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
+import Link from 'next/link';
 
 interface Props {
   imgUrl?: string;
   height?: string;
+  title?: string;
+  description?: string;
+  category?: string;
+  city?: string;
+  state?: string;
+  path?: string;
+  year?: Number
 }
 
 const Wrapper = styled.section`
@@ -61,40 +69,52 @@ const ProjectBanner = styled.div<Props>`
   }
 `;
 
-const ProjectListingCard: React.FC<Props> = ({ imgUrl = '', height }) => {
+const ProjectListingCard: React.FC<Props> = ({
+  imgUrl,
+  height,
+  title,
+  description,
+  category,
+  path,
+  city,
+  state,
+  year
+}) => {
   return (
-    <Wrapper>
-      <ProjectBanner
-        imgUrl={imgUrl}
-        height={height}
-        className="rounded overflow-hidden shadow-lg relative text-white"
-      >
-        <p className="absolute share text-white border border-white">Bathroom</p>
-        <div className="font-bold mb-2 title absolute">The Coldest Sunset</div>
-      </ProjectBanner>
-      <div className="pt-4 flex justify-between items-center">
-        <div className="flex items-center">
-          <img
-            className="w-6 h-6 rounded-full mr-4"
-            src="/img/jonathan.jpg"
-            alt="Avatar of Jonathan Reinink"
-          />
-          <div className="text-xs">
-            <p className="user leading-none">Jonathan Reinink</p>
-          </div>
-        </div>
-        <div className="flex items-center">
-          <div className="flex items-center mr-4">
-            <img className="project-activty mr-1" src="/img/heart-project.svg" alt="Like Project" />
-            <p className="reactions">123</p>
+    <Link href={`${path || ''}`}>
+      <Wrapper className="cursor-pointer">
+        <ProjectBanner
+          imgUrl={imgUrl}
+          height={height}
+          className="rounded overflow-hidden shadow-lg relative text-white"
+        >
+          <p className="absolute share text-white border border-white">{category}</p>
+          <div className="font-bold mb-2 title absolute">{title}</div>
+        </ProjectBanner>
+        <div className="pt-4 flex justify-between items-center">
+          <div className="flex items-center">
+            <img
+              className="w-6 h-6 rounded-full mr-4"
+              src="/img/jonathan.jpg"
+              alt="Avatar of Jonathan Reinink"
+            />
+            <div className="text-xs">
+              <p className="user leading-none">Jonathan Reinink</p>
+            </div>
           </div>
           <div className="flex items-center">
-            <img className="project-activty mr-1" src="/img/views.svg" alt="Views" />
-            <p className="reactions">843</p>
+            <div className="flex items-center mr-4">
+              <img className="project-activty mr-1" src="/img/heart-project.svg" alt="Like Project" />
+              <p className="reactions">123</p>
+            </div>
+            <div className="flex items-center">
+              <img className="project-activty mr-1" src="/img/views.svg" alt="Views" />
+              <p className="reactions">843</p>
+            </div>
           </div>
         </div>
-      </div>
-    </Wrapper>
+      </Wrapper>
+    </Link>
   );
 };
 

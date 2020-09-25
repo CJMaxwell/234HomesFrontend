@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import Hero from '../Organisms/Hero';
 
+import withApollo from '../../lib/withApollo';
+import useAllProjects from '../../hooks/useAllProjects';
 import Navbar from '../Organisms/Navbar';
 import Offering from '../Organisms/Offering';
 import ProjectListingCard from '../Organisms/ProjectListingCard';
@@ -32,6 +34,9 @@ const Wrapper = styled.section`
 `;
 
 const Projects = () => {
+  const { projects, loading } = useAllProjects();
+  console.log(projects);
+
   return (
     <Wrapper>
       <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />
@@ -70,10 +75,18 @@ const Projects = () => {
           </div>
         </div>
         <div className="grid grid-cols-3 gap-6">
-          <ProjectListingCard imgUrl="/img/beazy-Q-nk9A5GsSM-unsplash.png" />
-          <ProjectListingCard imgUrl="/img/francesca-tosolini-FX1EbT-jKBQ-unsplash.png" />
-          <ProjectListingCard imgUrl="/img/francesca-tosolini-tHkJAMcO3QE-unsplash.png" />
-          <ProjectListingCard imgUrl="/img/beazy-Q-nk9A5GsSM-unsplash.png" />
+          {projects &&
+            // @ts-ignore 
+            projects.map(project => (
+              <ProjectListingCard
+                key={project.id}
+                imgUrl={project.media}
+                title={project.title}
+                category={project.category}
+                path={`/projects/${project.id}`}
+              />
+            ))
+          }
         </div>
       </div>
       <Footer />
@@ -81,4 +94,4 @@ const Projects = () => {
   );
 };
 
-export default Projects;
+export default withApollo()(Projects);

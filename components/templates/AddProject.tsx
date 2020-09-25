@@ -11,7 +11,7 @@ import CTA from '../atoms/CTA';
 
 import Footer from './Footer';
 import withApollo from '../../lib/withApollo';
-import useProjects from '../../hooks/useProjects';
+import useAddProject from '../../hooks/useAddProject';
 
 const Wrapper = styled.section`
   .breadcrumb li:not(:last-child) {
@@ -111,7 +111,7 @@ const Wrapper = styled.section`
 const AddProject = () => {
   const theme = useContext(ThemeContext);
   const [tags, setTags] = useState<Array<string>>(['Interior Design']);
-  const { addProject, addProjectLoading: loading } = useProjects();
+  const { addProject, addProjectLoading: loading } = useAddProject();
   const [file, setFile] = useState<any>();
 
   return (
