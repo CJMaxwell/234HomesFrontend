@@ -10,10 +10,9 @@ import useProfile from '../../hooks/useProfile';
 import Navbar from '../Organisms/Navbar';
 import Offering from '../Organisms/Offering';
 import ProjectSlider from '../Organisms/ProjectSlider';
-import MostTalkedHouseTours from '../Organisms/MostTalkedHouseTours';
-import Footer from './Footer';
-import HouseTourImage from '../atoms/HouseTourImage';
+import UserCard from '../molecules/UserCard';
 import ProjectListingCard from '../Organisms/ProjectListingCard';
+import Footer from './Footer';
 
 
 const Wrapper = styled.section`
@@ -67,6 +66,34 @@ const settings = {
   className: 'house-tour-slides'
 };
 
+const Main = styled.section`
+  width: 47.5rem;
+
+  .main-title {
+    color: ${({ theme }) => theme.colors.gray1};
+    /* padding-top: 4.25rem; */
+  }
+  .inline-title {
+    font-size: 1.4rem;
+    color: ${({ theme }) => theme.colors.gray1};
+    font-weight: 600;
+    padding-bottom: 1.05rem;
+  }
+  .inline-desc,
+  .signup-comment {
+    font-size: 0.8rem;
+    color: ${({ theme }) => theme.colors.gray5};
+  }
+  .conversation {
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+  textarea::placeholder,
+  .number-comments {
+    color: ${({ theme }) => theme.colors.gray11};
+    font-size: 0.8rem;
+  }
+`;
 
 const banners = [
   {
@@ -120,6 +147,32 @@ const SingleProject = () => {
             ))}
           </Slider>
         </section>
+
+        <Main className="container mx-auto mb-16">
+          <h1 className="capitalize main-title text-4xl font-semibold py-12">
+            {project?.title}
+          </h1>
+          <div>
+            <UserCard />
+          </div>
+          <section className="flex items-center mt-8">
+            <span className="signup-comment font-semibold pr-2 capitalize">Sign Up to Comment</span>
+            <img src="/img/comment_ss.svg" alt="comment" />
+          </section>
+          <section className="mt-10">
+            <div className="flex items-center">
+              <h1 className="conversation uppercase pr-1">CONVERSATION</h1>
+              <span className="number-comments">(0) Comments</span>
+            </div>
+            <textarea
+              className="border border-gray-200 mt-5 outline-none w-full h-20 pt-4 pl-6 rounded-md"
+              name="discussion"
+              id="discussion"
+              placeholder="Join the discussion…"
+            />
+          </section>
+        </Main>
+
       </section>
       <h1 className="mt-12 mb-8 text-center font-semibold most-talked">Similiar Projects</h1>
       <section className="container mx-auto general-padding grid grid-cols-3 gap-8 mb-20">
