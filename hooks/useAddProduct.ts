@@ -1,9 +1,8 @@
-import { useMutation, useQuery } from '@apollo/react-hooks';
+import { useMutation } from '@apollo/react-hooks';
 import { notify } from 'react-notify-toast';
 import Router from 'next/router';
 
 import { ADD_PRODUCT } from '../graphql/mutations/product';
-
 
 export default function useAddProduct() {
   const [mutate, { loading: addProductLoading }] = useMutation(ADD_PRODUCT);
@@ -22,9 +21,8 @@ export default function useAddProduct() {
       });
   };
 
-
   return {
     addProduct,
     addProductLoading,
-  }
+  };
 }

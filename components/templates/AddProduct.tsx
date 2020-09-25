@@ -12,7 +12,6 @@ import Skill from '../atoms/Skill';
 import CTA from '../atoms/CTA';
 import Footer from './Footer';
 
-
 const Wrapper = styled.section`
   .breadcrumb li:not(:last-child) {
     padding-right: 0.8rem;
@@ -181,7 +180,7 @@ const AddProduct = () => {
                     <h1 className="drag-and-drop">Drag and drop an images</h1>
                     <p>
                       Or <a className="browse">browse</a> to choose a file
-                </p>
+                    </p>
                   </section>
                 </section>
                 <section className="flex items-center justify-between pt-8">
@@ -336,10 +335,15 @@ const AddProduct = () => {
                     disabled={loading}
                   >
                     {loading ? (
-                      <Loader type="ThreeDots" color={theme.colors.orange1} height={20} width={60} />
+                      <Loader
+                        type="ThreeDots"
+                        color={theme.colors.orange1}
+                        height={20}
+                        width={60}
+                      />
                     ) : (
-                        'Submit'
-                      )}
+                      'Submit'
+                    )}
                   </CTA>
                 </section>
               </form>

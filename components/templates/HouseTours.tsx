@@ -7,6 +7,8 @@ import Offering from '../Organisms/Offering';
 import HouseTourCard from '../Organisms/HouseTourCard';
 import Button from '../atoms/Button';
 import Footer from './Footer';
+import useHouseTours from '../../hooks/useHouseTours';
+import withApollo from '../../lib/withApollo';
 
 const Wrapper = styled.div`
   .recommended {
@@ -103,6 +105,7 @@ const FeatButton = styled(Button)`
 
 const HouseTours = () => {
   const theme = useContext(ThemeContext);
+  const { houseTours, loading } = useHouseTours();
 
   return (
     <Wrapper>
@@ -141,6 +144,7 @@ const HouseTours = () => {
           </ImgBanner>
         </div>
       </TopBanner>
+
       <div className="general-padding container mx-auto mb-32 stories-container">
         <div className="flex justify-between items-center">
           <h1 className="uppercase latest font-semibold">Latest</h1>
@@ -151,40 +155,21 @@ const HouseTours = () => {
             </select>
           </div>
         </div>
-        <HouseTourCard
-          imgUrl="/img/A_house-tour.png"
-          user="Wuraola Gbotemi"
-          PostDate="June 11, 2020"
-          category="KITCHEN"
-        />
-        <HouseTourCard
-          imgUrl="/img/Adora_N_house-tour.png"
-          sponsored
-          user="Wuraola Gbotemi"
-          PostDate="June 11, 2020"
-          category="EUROPEAN STYLE"
-          title="A Small California Rental Uses Pastel Colors to Create a Soothing Space"
-        />
-        <HouseTourCard
-          imgUrl="/img/Adora_NH_house-tour.png"
-          user="Wuraola Gbotemi"
-          PostDate="June 11, 2020"
-          category="CONDO APARTMENT"
-          title="Lorem ipsum dolor sit amet, consetetur sadipscing elitr sed diam"
-        />
-        <HouseTourCard
-          imgUrl="/img/AH_-house-tour.png"
-          user="Wuraola Gbotemi"
-          PostDate="June 11, 2020"
-          category="DUPLEX"
-        />
-        <HouseTourCard
-          imgUrl="/img/AH_hoiuse-tour.png"
-          user="Wuraola Gbotemi"
-          PostDate="June 11, 2020"
-          category="STUDIO APARTMENT"
-          title="A Small California Rental Uses Pastel Colors to Create a Soothing Space"
-        />
+
+        {houseTours &&
+          houseTours.map((ht: any) => (
+            <HouseTourCard
+              key={ht.id}
+              imgUrl={ht.slides[0].photo}
+              user="Wuraola Gbotemi"
+              PostDate="June 11, 2020"
+              category={ht.category}
+              title={ht.title}
+              summary={ht.summary}
+              path={`/house-tours/${ht.id}`}
+            />
+          ))}
+
         <hr className="mt-20" />
         <div className="flex items-center justify-between mt-8">
           <div className="flex items-center">
@@ -206,4 +191,4 @@ const HouseTours = () => {
   );
 };
 
-export default HouseTours;
+export default withApollo()(HouseTours);

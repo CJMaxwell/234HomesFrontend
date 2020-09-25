@@ -1,13 +1,15 @@
 import React from 'react';
 import Slider from 'react-slick';
 import styled from 'styled-components';
+import { useRouter } from 'next/router';
 
 import Navbar from '../Organisms/Navbar';
 import Offering from '../Organisms/Offering';
 import MostTalkedHouseTours from '../Organisms/MostTalkedHouseTours';
 import Footer from './Footer';
 import HouseTourImage from '../atoms/HouseTourImage';
-
+import useHouseTours from '../../hooks/useHouseTours';
+import withApollo from '../../lib/withApollo';
 
 const Wrapper = styled.section`
   .breadcrumb {
@@ -23,31 +25,30 @@ const Wrapper = styled.section`
   }
 
   .house-tour-slides .slick-prev,
-.house-tour-slides .slick-next {
-  position: absolute;
-  top: 50%;
-  z-index: 1;
-}
+  .house-tour-slides .slick-next {
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+  }
 
+  .house-tour-slides {
+    position: relative;
+  }
 
-.house-tour-slides {
-  position: relative;
-}
+  .house-tour-slides .slick-prev,
+  .house-tour-slides .slick-next {
+    position: absolute;
+    top: 42%;
+    z-index: 1;
+  }
 
-.house-tour-slides .slick-prev,
-.house-tour-slides .slick-next {
-  position: absolute;
-  top: 42%;
-  z-index:1;
-}
+  .house-tour-slides .slick-prev {
+    left: 5%;
+  }
 
-.house-tour-slides .slick-prev {
-  left: 5%;
-}
-
-.house-tour-slides .slick-next {
-  right: 5%;
-}
+  .house-tour-slides .slick-next {
+    right: 5%;
+  }
 `;
 
 const settings = {
@@ -57,29 +58,15 @@ const settings = {
   slidesToShow: 1,
   slidesToScroll: 1,
   arrows: true,
-  className: 'house-tour-slides'
+  className: 'house-tour-slides',
 };
 
-
-const banners = [
-  {
-    id: 1,
-    url: '/img/AH-inner-one.png',
-    desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque nisi possimus voluptate, in libero perspiciatis blanditiis nobis voluptates voluptatum quaerat dolor nemo provident quas ullam eligendi rerum deleniti mollitia a cupiditate dolore accusamus deserunt. Blanditiis tempora et deserunt unde recusandae?'
-  },
-  {
-    id: 2,
-    url: '/img/AH--inner-two.png',
-    desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit.'
-  },
-  {
-    id: 3,
-    url: '/img/AH--inner-three.png',
-    desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur.'
-  }
-]
-
 const SingleHouseTour = () => {
+  const router = useRouter();
+  const { id } = router.query;
+
+  const { houseTour, loading } = useHouseTours(id as string);
+
   return (
     <Wrapper>
       <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />
@@ -98,15 +85,22 @@ const SingleHouseTour = () => {
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr sed diam nonumy eirmod tempor
           </li>
         </ul>
-        <section className="pt-20">
-          <Slider {...settings}>
-            {banners.map(banner => (
-              <div key={banner.id} className='w-full'>
-                <HouseTourImage imgUrl={banner.url} index={banner.id} total={banners.length} desc={banner.desc} />
-              </div>
-            ))}
-          </Slider>
-        </section>
+        {houseTour && (
+          <section className="pt-20">
+            <Slider {...settings}>
+              {houseTour.slides.map((slide: any, index: number) => (
+                <div key={slide.photo} className="w-full">
+                  <HouseTourImage
+                    imgUrl={slide.photo}
+                    index={index + 1}
+                    total={houseTour.slides.length}
+                    desc={slide.description}
+                  />
+                </div>
+              ))}
+            </Slider>
+          </section>
+        )}
       </section>
       <h1 className="mt-12 mb-8 text-center font-semibold most-talked">Most Talked About</h1>
       <section className="container mx-auto general-padding grid grid-cols-3 gap-8 mb-20">
@@ -122,4 +116,4 @@ const SingleHouseTour = () => {
   );
 };
 
-export default SingleHouseTour;
+export default withApollo()(SingleHouseTour);

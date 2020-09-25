@@ -69,12 +69,17 @@ const Wrapper = styled.section`
 `;
 
 const ProfessionalProfileUpdate = () => {
-  const { profile, updateProfile, updateProfileLoading: loading, uploadBanner, bannerLoading } = useProfile();
+  const {
+    profile,
+    updateProfile,
+    updateProfileLoading: loading,
+    uploadBanner,
+    bannerLoading,
+  } = useProfile();
   const theme = useContext(ThemeContext);
   const { countries } = useCountries();
 
   return (
-
     <Formik
       onSubmit={(values) => {
         updateProfile({
@@ -263,7 +268,7 @@ const ProfessionalProfileUpdate = () => {
               <h1 className="profile-label">Key skills</h1>
               <button className="add-new" type="button">
                 Add new
-                    </button>
+              </button>
             </section>
             <Skill>Interior Design</Skill>
             <Skill>Decoration</Skill>
@@ -276,14 +281,16 @@ const ProfessionalProfileUpdate = () => {
             <h1 className="profile-label">Education</h1>
             <button className="add-new" type="button">
               Add new
-                  </button>
+            </button>
           </section>
           <section className="flex items-center justify-between">
             <fieldset className="w-1/2 mr-6">
               <legend className="profile-label">Country Of College/University</legend>
               <select className="fieldset-input profile-desc">
                 {countries.map(({ name, code }) => (
-                  <option value={code} key={name}>{name}</option>
+                  <option value={code} key={name}>
+                    {name}
+                  </option>
                 ))}
               </select>
             </fieldset>
@@ -318,7 +325,7 @@ const ProfessionalProfileUpdate = () => {
             <h1 className="profile-label">Certifications</h1>
             <button className="add-new" type="button">
               Add new
-                  </button>
+            </button>
           </section>
           <section className="flex items-center justify-between">
             <fieldset className="w-1/3 mr-6">
@@ -343,7 +350,7 @@ const ProfessionalProfileUpdate = () => {
               id="file"
               required
               onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                uploadBanner(event.target.files?.[0])
+                uploadBanner(event.target.files?.[0]);
               }}
               type="file"
             />
@@ -358,28 +365,22 @@ const ProfessionalProfileUpdate = () => {
               <h1 className="drag-and-drop">Drag and drop an images</h1>
               <p>
                 Or <a className="browse">browse</a> to choose a file
-                </p>
+              </p>
             </section>
           </section>
           <section className="flex justify-end items-center cta">
             {/* <button type="button" className="uppercase">Update profile</button> */}
             <CTA type="submit" padding="0.8rem 1.25rem" className="outline-none" disabled={loading}>
               {loading ? (
-                <Loader
-                  type="ThreeDots"
-                  color={theme.colors.orange1}
-                  height={20}
-                  width={60}
-                />
+                <Loader type="ThreeDots" color={theme.colors.orange1} height={20} width={60} />
               ) : (
-                  'Update Profile'
-                )}
+                'Update Profile'
+              )}
             </CTA>
           </section>
         </form>
       )}
     </Formik>
-
   );
 };
 
