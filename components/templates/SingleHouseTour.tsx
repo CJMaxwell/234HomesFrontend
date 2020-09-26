@@ -77,12 +77,12 @@ const SingleHouseTour = () => {
       </div>
       <section className="general-padding container mx-auto py-10">
         <ul className="flex items-center breadcrumb">
-          <li>Stories</li>
+          <li>House Tours</li>
           <li>
             <img src="/img/direction.svg" alt="Breadcrumb navigation" />
           </li>
           <li>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr sed diam nonumy eirmod tempor
+            {houseTour?.title}
           </li>
         </ul>
         {houseTour && (

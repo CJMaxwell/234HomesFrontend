@@ -125,6 +125,14 @@ const DashboardSideBar: React.FC<Props> = ({ imgUrl }) => {
               </li>
             </Link>
           )}
+          <Link href="/dashboard/house-tours">
+            <li className="flex items-center py-4 cursor-pointer">
+              <span className="pr-4">
+                <img src="/img/dashboard/dashboardbox.svg" alt="Box" />
+              </span>
+              <a>House Tours</a>
+            </li>
+          </Link>
           <li className="flex items-center py-4 cursor-pointer">
             <span className="pr-4">
               <img src="/img/dashboard/dashboardsettings.svg" alt="Settingd" />

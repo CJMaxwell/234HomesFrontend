@@ -5,11 +5,14 @@ import Router from 'next/router';
 import Loader from 'react-loader-spinner';
 
 import withApollo from '../../lib/withApollo';
+import useHouseTours from '../../hooks/useHouseTours';
 import Navbar from '../Organisms/Navbar';
+import DashboardHouseTourCard from '../Organisms/DashboardHousTourCard';
 import Offering from '../Organisms/Offering';
 import DashboardSideBar from '../Organisms/DashboardSideBar';
 import CTA from '../atoms/CTA';
 import Footer from './Footer';
+import HouseTours from './HouseTours';
 
 const Wrapper = styled.div`
   .htitle {
@@ -29,6 +32,7 @@ const Wrapper = styled.div`
   }
   .product-list {
     border: 1px solid ${({ theme }) => theme.colors.gray17};
+    border-radius: 14px;
   }
 
   .profile-title {
@@ -41,6 +45,7 @@ const Wrapper = styled.div`
 
 const DashboardHouseTours = () => {
   const theme = useContext(ThemeContext);
+  const { houseTours, loading } = useHouseTours();
 
   return (
     <Wrapper>
@@ -74,9 +79,18 @@ const DashboardHouseTours = () => {
                 Add New
               </CTA>
             </section>
-            {/* <section className="flex justify-center items-center mt-40">
-              <Loader type="TailSpin" color={theme.colors.orange1} height={80} width={80} />
-            </section> */}
+
+            <section className="grid grid-cols-3 gap-4">
+              {houseTours &&
+                houseTours.map((ht: any) => (
+                  <DashboardHouseTourCard
+                    key={ht.id}
+                    imgUrl={ht.slides[0].photo}
+                    title={ht.title}
+                    path={`/house-tours/${ht.id}`}
+                  />
+                ))}
+            </section>
           </section>
         </section>
       </div>
