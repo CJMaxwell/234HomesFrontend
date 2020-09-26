@@ -109,57 +109,64 @@ const Users = () => {
                 </form>
               </section>
             </section>
-            <section className="mt-8">
-              <section className="mb-6">
-                <div className="filter flex items-center justify-end space-x-4">
-                  <select className="focus:outline-none">
-                    <option value="">User Type</option>
-                    <option value="professional">Professional</option>
-                    <option value="vendor">Vendor</option>
-                    <option value="user">User</option>
-                  </select>
-                  <select className="focus:outline-none">
-                    <option value="">Status</option>
-                    <option value="active">Active</option>
-                    <option value="inactive">Inactive</option>
-                  </select>
-                </div>
+            {userLoading && (
+              <section className="flex justify-center items-center mt-40">
+                <Loader type="TailSpin" color={theme.colors.orange1} height={80} width={80} />
               </section>
-              <section className="mb-8">
-                <hr />
-              </section>
-              <table className="table-auto w-full">
-                <thead>
-                  <tr>
-                    <th className="py-2 uppercase">Name</th>
-                    <th className="py-2 uppercase">Email</th>
-                    <th className="py-2 uppercase">Account type</th>
-                    <th className="py-2 uppercase">Status</th>
-                    <th className="py-2 uppercase"></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {
-                    users &&
-                    // @ts-ignore 
-                    users.map(user => (
+            )}
+            {
+              users && (
+                <section className="mt-8">
+                  <section className="mb-6">
+                    <div className="filter flex items-center justify-end space-x-4">
+                      <select className="focus:outline-none">
+                        <option value="">User Type</option>
+                        <option value="professional">Professional</option>
+                        <option value="vendor">Vendor</option>
+                        <option value="user">User</option>
+                      </select>
+                      <select className="focus:outline-none">
+                        <option value="">Status</option>
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                      </select>
+                    </div>
+                  </section>
+                  <section className="mb-8">
+                    <hr />
+                  </section>
+                  <table className="table-auto w-full">
+                    <thead>
+                      <tr>
+                        <th className="py-2 uppercase">Name</th>
+                        <th className="py-2 uppercase">Email</th>
+                        <th className="py-2 uppercase">Account type</th>
+                        <th className="py-2 uppercase">Status</th>
+                        <th className="py-2 uppercase"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {
+                        // @ts-ignore 
+                        users.map(user => (
 
-                      <AdminUserCard
-                        key={user.id}
-                        imgUrl={user.profilePhoto}
-                        accountType={user.accountType}
-                        phoneNumber={user.phoneNumber}
-                        email={user.email}
-                        user={
-                          user.accountType == 'vendor' ? user.businessName : `${user.firstName} ${user.lastName}`
-                        }
+                          <AdminUserCard
+                            key={user.id}
+                            imgUrl={user.profilePhoto}
+                            accountType={user.accountType}
+                            phoneNumber={user.phoneNumber}
+                            email={user.email}
+                            user={
+                              user.accountType == 'vendor' ? user.businessName : `${user.firstName} ${user.lastName}`
+                            }
 
-                      />
-                    ))
-                  }
-                </tbody>
-              </table>
-            </section>
+                          />
+                        ))
+                      }
+                    </tbody>
+                  </table>
+                </section>
+              )}
           </section>
         </section>
       </div>
