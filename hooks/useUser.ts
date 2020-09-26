@@ -1,14 +1,17 @@
 import { useQuery } from '@apollo/react-hooks';
-import { USER } from '../graphql/queries/user';
+import { USER, USERS } from '../graphql/queries/user';
 
 
-export default function useUser(id: string) {
-  const { loading: userLoading, data } = useQuery(USER, {
-    variables: { id },
+export default function useUser(id?: string) {
+  const query = id ? USER : USERS;
+  const variables = id ? { id } : null;
+  const { data, loading } = useQuery(query, {
+    variables,
   });
 
   return {
     user: data?.user,
-    userLoading
+    users: data?.users,
+    loading
   }
 }

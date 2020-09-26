@@ -5,12 +5,13 @@ import Router from 'next/router';
 
 
 import withApollo from '../../lib/withApollo';
-import useProfile from '../../hooks/useProfile';
+import useUser from '../../hooks/useUser';
 import Offering from '../Organisms/Offering';
 import Navbar from '../Organisms/Navbar';
 import AdminUserCard from '../Organisms/AdminUserCard';
 import DashboardSideBar from '../Organisms/DashboardSideBar';
 import Footer from './Footer';
+import vendors from '../../pages/vendors';
 
 const Wrapper = styled.section`
   .breadcrumb li:not(:last-child) {
@@ -62,14 +63,17 @@ const Wrapper = styled.section`
   hr {
     color: ${({ theme }) => theme.colors.gray17};
   }
-  .headings {
+  th {
     color: ${({ theme }) => theme.colors.gray17};
     font-size: 0.7rem;
+    font-weight: normal;
   }
+  
 `;
 
 const Users = () => {
   const theme = useContext(ThemeContext);
+  const { users, loading } = useUser();
 
   return (
     <Wrapper>
@@ -124,18 +128,37 @@ const Users = () => {
               <section className="mb-8">
                 <hr />
               </section>
-              <section className="flex items-center px-16 space-x-24 mb-4 headings uppercase">
-                <p>Name</p>
-                <p className="pl-20">Email</p>
-                <p className="pl-8">Role</p>
-                <p className="pl-4">Status</p>
-                <p></p>
-              </section>
-              <AdminUserCard />
-              <AdminUserCard />
-              <AdminUserCard />
-              <AdminUserCard />
-              <AdminUserCard />
+              <table className="table-auto w-full">
+                <thead>
+                  <tr>
+                    <th className="py-2 uppercase">Name</th>
+                    <th className="py-2 uppercase">Email</th>
+                    <th className="py-2 uppercase">Account type</th>
+                    <th className="py-2 uppercase">Status</th>
+                    <th className="py-2 uppercase"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {
+                    users &&
+                    // @ts-ignore 
+                    users.map(user => (
+
+                      <AdminUserCard
+                        key={user.id}
+                        imgUrl={user.profilePhoto}
+                        accountType={user.accountType}
+                        phoneNumber={user.phoneNumber}
+                        email={user.email}
+                        user={
+                          user.accountType == 'vendor' ? user.businessName : `${user.firstName} ${user.lastName}`
+                        }
+
+                      />
+                    ))
+                  }
+                </tbody>
+              </table>
             </section>
           </section>
         </section>
