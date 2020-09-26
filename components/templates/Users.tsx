@@ -73,7 +73,7 @@ const Wrapper = styled.section`
 
 const Users = () => {
   const theme = useContext(ThemeContext);
-  const { users, loading } = useUser();
+  const { users, userLoading } = useUser();
 
   return (
     <Wrapper>
