@@ -12,6 +12,11 @@ export const HOUSE_TOURS = gql`
         photo
         description
       }
+      createdBy {
+        firstName
+        lastName
+      }
+      createdAt
     }
   }
 `;
@@ -28,6 +33,11 @@ export const HOUSE_TOUR = gql`
         photo
         description
       }
+      createdBy {
+        firstName
+        lastName
+      }
+      createdAt
     }
   }
 `;
