@@ -38,3 +38,44 @@ export const USER = gql`
   }
 
 `;
+
+
+export const USERS = gql`
+  query users {
+    users {
+      id
+      firstName
+      lastName
+      phoneNumber
+      accountType
+      email
+      profilePhoto
+      banner
+      website
+      businessName
+      address
+      bio
+      city
+      state
+      occupation
+      experienceLevel
+      skills
+      education {
+        id
+        title
+        major
+        year
+        country
+        institution
+      }
+      certifications {
+        id
+        title
+        institution
+        year
+      }
+      createdAt
+    }
+  }
+
+`;

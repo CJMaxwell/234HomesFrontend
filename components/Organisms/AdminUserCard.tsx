@@ -9,15 +9,18 @@ interface Props {
   profilePhoto?: string;
   email?: string;
   accountType?: string;
-  status?: string
+  status?: string;
+  phoneNumber?: string;
 }
 
-const Wrapper = styled.section`
+
+const Wrapper = styled.tr`
   border: 1px solid ${({ theme }) => theme.colors.gray17};
-  border-radius: 6px;
   font-size: 0.7rem;
   color: ${({ theme }) => theme.colors.gray1};
-  margin-bottom: 0.65rem;
+  &.row-wrap {
+    margin-bottom: 10px;
+  }
 
   .username {
     font-weight: 600;
@@ -30,6 +33,7 @@ const Wrapper = styled.section`
   }
   .phone{
     color: ${({ theme }) => theme.colors.gray24};
+    padding-top: 0.2rem;
   }
 `;
 
@@ -42,39 +46,39 @@ const Avatar = styled.div<Props>`
 `;
 
 const AdminUserCard: React.FC<Props> = ({
-  imgUrl = "/img/profileImg.jpg",
-  user = "Mohammed Ismail",
-  profilePhoto,
+  imgUrl,
+  user,
   email,
   accountType,
   status,
+  phoneNumber
 
 }) => {
   return (
-    <Wrapper>
-      <section className="px-5 py-2 flex items-center justify-between">
-        <section className="flex items-center">
-          <Avatar className="h-10 w-10 rounded-full" imgUrl={imgUrl} />
-          <section className="pl-3">
-            <h1 className="username">Micheal Jackson</h1>
-            <p className="phone">0809 053 4405</p>
-          </section>
+    <Wrapper className="row-wrap">
+      <td className="px-4 py-2 flex items-center">
+        <Avatar className="h-10 w-10 rounded-full" imgUrl={imgUrl || "/img/profileImg.jpg"} />
+        <section className="pl-3">
+          <h1 className="username">{user}</h1>
+          <p className="phone">{phoneNumber}</p>
         </section>
+      </td>
+      <td className="px-4 py-2">
         <section>
-          <p>mjackson@gmail.com</p>
+          <p>{email}</p>
         </section>
-        <section>
-          <p>Professional</p>
-        </section>
-        <section>
-          <p className="status">Active</p>
-        </section>
-        <section>
-          <button className="focus:outline-none">
-            <img className="w-6" src="/img/menu-more.svg" alt="More menu" />
-          </button>
-        </section>
-      </section>
+      </td>
+      <td className="px-4 py-2 capitalize">
+        {accountType}
+      </td>
+      <td className="px-4 py-2">
+        <p className="status">Active</p>
+      </td>
+      <td className="px-4 py-2">
+        <button className="focus:outline-none">
+          <img className="w-6" src="/img/menu-more.svg" alt="More menu" />
+        </button>
+      </td>
     </Wrapper>
   )
 }
