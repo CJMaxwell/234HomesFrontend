@@ -1,12 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
+import Link from 'next/link';
 
 interface Props {
   imgUrl?: string;
   height?: string;
+  title?: string;
+  path?: string;
 }
 
-const Wrapper = styled.div<Props>`
+const Wrapper = styled.div<{ imgUrl?: string }>`
   border-radius: 12px;
   overflow: hidden;
   background-image: url('${({ imgUrl }) => imgUrl}');
@@ -30,18 +33,18 @@ const Title = styled.h1`
   color: ${({ theme }) => theme.colors.gray5};
 `;
 
-const DIYPostCard: React.FC<Props> = ({ imgUrl = '' }) => {
+const DIYPostCard: React.FC<Props> = ({ imgUrl = '', title = '', path = '' }) => {
   return (
-    <div className="text-center">
-      <Wrapper imgUrl={imgUrl} className="rounded overflow-hidden shadow-lg relative text-white">
-        <button type="button" className="absolute play">
-          <img className="h-12 w-12" src="/img/diy-play.svg" alt="Play" />
-        </button>
-      </Wrapper>
-      <Title className="capitalize">
-        elitr sed diam nonumy eirmod tempor invidunt ut labore et
-      </Title>
-    </div>
+    <Link href={path}>
+      <div className="text-center">
+        <Wrapper imgUrl={imgUrl} className="rounded overflow-hidden shadow-lg relative text-white">
+          <button type="button" className="absolute play">
+            <img className="h-12 w-12" src="/img/diy-play.svg" alt="Play" />
+          </button>
+        </Wrapper>
+        <Title className="capitalize">{title}</Title>
+      </div>
+    </Link>
   );
 };
 

@@ -13,6 +13,7 @@ import Offering from '../Organisms/Offering';
 import DashboardSideBar from '../Organisms/DashboardSideBar';
 import CTA from '../atoms/CTA';
 import Footer from './Footer';
+import useDIY from '../../hooks/useDIY';
 
 const Wrapper = styled.div`
   .htitle {
@@ -45,6 +46,7 @@ const Wrapper = styled.div`
 
 const DashboardDIY = () => {
   const theme = useContext(ThemeContext);
+  const { diys, loading } = useDIY();
 
   return (
     <Wrapper>
@@ -78,12 +80,13 @@ const DashboardDIY = () => {
                 Add New
               </CTA>
             </section>
-
-            <section className="grid grid-cols-2 gap-4 pb-16">
-              <DIYPostCard imgUrl="/img/brown-and-black-wooden-box-3889740er.png" />
-              <DIYPostCard imgUrl="/img/Adora_NH (10).png" />
-              <DIYPostCard imgUrl="/img/Adora_NH (42).png" />
-            </section>
+            {diys && (
+              <section className="grid grid-cols-2 gap-4 pb-16">
+                {diys.map((diy: any) => (
+                  <DIYPostCard imgUrl={diy.thumbnail} title={diy.title} />
+                ))}
+              </section>
+            )}
           </section>
         </section>
       </div>

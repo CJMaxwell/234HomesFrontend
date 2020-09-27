@@ -21,7 +21,10 @@ const Avatar = styled.div<Props>`
   background-size:cover;
   background-position: center;
 `;
-const UserCard: React.FC<Props> = ({ imgUrl = "/img/profileImg.jpg", user = "Mohammed Ismail" }) => {
+const UserCard: React.FC<Props> = ({
+  imgUrl = '/img/profileImg.jpg',
+  user = 'Mohammed Ismail',
+}) => {
   const theme = useContext(ThemeContext);
 
   return (

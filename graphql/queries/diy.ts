@@ -12,6 +12,7 @@ export const DIY = gql`
       createdBy {
         firstName
         lastName
+        profilePhoto
       }
       createdAt
     }
@@ -30,6 +31,7 @@ export const DIYS = gql`
       createdBy {
         firstName
         lastName
+        profilePhoto
       }
       createdAt
     }

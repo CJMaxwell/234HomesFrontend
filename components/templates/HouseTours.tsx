@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import Router from 'next/router';
-import moment from 'moment'
+import moment from 'moment';
 
 import Navbar from '../Organisms/Navbar';
 import Offering from '../Organisms/Offering';
@@ -163,9 +163,7 @@ const HouseTours = () => {
               key={ht.id}
               imgUrl={ht.slides[0].photo}
               user="Wuraola Gbotemi"
-              PostDate={
-                moment(ht.createdAt).format("ll")
-              }
+              PostDate={moment(ht.createdAt).format('ll')}
               category={ht.category}
               title={ht.title}
               summary={ht.summary}

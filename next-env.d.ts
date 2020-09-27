@@ -3,3 +3,4 @@
 
 declare module 'next-apollo';
 declare module 'country-telephone-data';
+declare module 'react-responsive-embed';
