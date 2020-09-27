@@ -1,13 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import withApollo from '../../lib/withApollo'
+import withApollo from '../../lib/withApollo';
 import Offering from '../Organisms/Offering';
 import Navbar from '../Organisms/Navbar';
 import DashboardSideBar from '../Organisms/DashboardSideBar';
 
 import Footer from './Footer';
 import CTA from '../atoms/CTA';
+import useAddDiy from '../../hooks/useAddDiy';
+import { Formik } from 'formik';
+import useProfile from '../../hooks/useProfile';
 
 const Wrapper = styled.section`
   .breadcrumb li:not(:last-child) {
@@ -101,6 +104,9 @@ const Wrapper = styled.section`
 `;
 
 const AddDIY = () => {
+  const { addDiy, loading } = useAddDiy();
+  const { profile } = useProfile();
+
   return (
     <Wrapper>
       <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />
@@ -119,84 +125,95 @@ const AddDIY = () => {
           <section className="w-1/4">
             <DashboardSideBar />
           </section>
-          <form className="main w-3/4">
-            <h1 className="py-10 profile-title">Add New DIY</h1>
-            <section className="upload-section relative">
-              <input
-                className="file-upload absolute inset-0 w-full z-50 opacity-0 cursor-pointer"
-                name="file"
-                id="file"
-                required
-                type="file"
-              />
-              <section className="flex justify-between items-center">
-                <section>
-                  <h1 className="resolution">
-                    High Resolution <br /> Image
-                  </h1>
-                  <p className="img-type pt-4">
-                    PNG &amp; JPEGS <br />
-                    1200 px X 680 px
-                  </p>
-                </section>
-                <section>
-                  <h1 className="resolution">
-                    High Resolution <br />
-                    Video
-                  </h1>
-                  <p className="img-type pt-4">MP4, &lt; 4 Mins</p>
-                </section>
-              </section>
-              <section className="flex justify-center items-center pt-20">
-                <img src="/img/cloud-computing.svg" className="text-center" alt="Upload" />
-              </section>
-              <section className="w-full text-center">
-                <h1 className="drag-and-drop">Drag and drop an images</h1>
-                <p>
-                  Or <a className="browse pt-4">browse</a> to choose a file
-                </p>
-              </section>
-            </section>
-            <section className="flex items-center justify-between pt-8">
-              <fieldset className="w-full">
-                <legend className="profile-label">Title</legend>
-                <input
-                  className="fieldset-input profile-desc w-full focus:outline-none"
-                  placeholder="Lorem ipsum dolor sit amet sed diam nonumy eirmod"
-                />
-              </fieldset>
-            </section>
-            <section className="flex items-center justify-between pt-8">
-              <fieldset className="w-full">
-                <legend className="profile-label">Category</legend>
-                <select className="fieldset-input profile-desc">
-                  <option value="Kitchen">Select Category</option>
-                  <option value="Kitchen">Kitchen</option>
-                </select>
-              </fieldset>
-            </section>
-            <section className="flex items-center justify-between pt-8 mt-4">
-              <fieldset className="w-full">
-                <legend className="profile-label">Description</legend>
-                <textarea
-                  className="fieldset-input profile-desc w-full focus:outline-none"
-                  placeholder="Tell us about the project…"
-                />
-              </fieldset>
-            </section>
-            <section className="flex justify-end mt-12 mb-16">
-              <CTA type="submit" className="update-profile" padding="0.8rem 2.4rem;">
-                Submit
-              </CTA>
-            </section>
-          </form>
+          <Formik
+            initialValues={{
+              video: '',
+              title: '',
+              body: '',
+              featured: false,
+            }}
+            onSubmit={(values) => {
+              addDiy({ ...values, authorId: profile?.id });
+            }}
+          >
+            {({ values, handleSubmit, handleBlur, handleChange }) => (
+              <form className="main w-3/4" onSubmit={handleSubmit}>
+                <h1 className="py-10 profile-title">Add New DIY</h1>
 
+                <section className="flex items-center justify-between pt-8">
+                  <fieldset className="w-full">
+                    <legend className="profile-label">Title</legend>
+                    <input
+                      name="title"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={values.title}
+                      className="fieldset-input profile-desc w-full focus:outline-none"
+                      placeholder="Lorem ipsum dolor sit amet sed diam nonumy eirmod"
+                    />
+                  </fieldset>
+                </section>
+
+                <section className="flex items-center justify-between pt-8">
+                  <fieldset className="w-full">
+                    <legend className="profile-label">YouTube video URL</legend>
+                    <input
+                      name="video"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={values.video}
+                      className="fieldset-input profile-desc w-full focus:outline-none"
+                      placeholder="https://youtu.be/rwU44ED8gqM"
+                    />
+                  </fieldset>
+                </section>
+
+                <section className="flex items-center justify-between pt-8 mt-4">
+                  <fieldset className="w-full">
+                    <legend className="profile-label">Description</legend>
+                    <textarea
+                      name="body"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={values.body}
+                      className="fieldset-input profile-desc w-full focus:outline-none"
+                      placeholder="Tell us about the project…"
+                    />
+                  </fieldset>
+                </section>
+
+                <section className="flex items-center pt-8 mt-4">
+                  <input
+                    type="checkbox"
+                    className="mr-2"
+                    name="featured"
+                    id="featured"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    checked={values.featured}
+                  />
+                  {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+                  <label htmlFor="featured">Featured</label>
+                </section>
+
+                <section className="flex justify-end mt-12 mb-16">
+                  <CTA
+                    type="submit"
+                    className="update-profile"
+                    padding="0.8rem 2.4rem;"
+                    disabled={loading}
+                  >
+                    Submit
+                  </CTA>
+                </section>
+              </form>
+            )}
+          </Formik>
         </section>
       </div>
       <Footer />
-
     </Wrapper>
-  )
-}
+  );
+};
 
 export default withApollo()(AddDIY);

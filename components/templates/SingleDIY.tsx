@@ -1,28 +1,15 @@
 import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
+import { useRouter } from 'next/router';
 
 import Navbar from '../Organisms/Navbar';
 import Offering from '../Organisms/Offering';
 import UserCard from '../molecules/UserCard';
 import MostTalkedDIY from '../Organisms/MostTalkedDIY';
 import Footer from './Footer';
-
-const DIYBanner = styled.div`
-  height: 37.5rem;
-  background: url('/img/DIY_hero.png');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-  border-radius: 10px;
-
-  .playBtn {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-`;
+import useDIY from '../../hooks/useDIY';
+import withApollo from '../../lib/withApollo';
+import YouTubeContainer from '../Organisms/YouTubeContainer';
 
 const Main = styled.section`
   width: 47.5rem;
@@ -69,6 +56,9 @@ const MainWrap = styled.div`
 
 const SingleDIY = () => {
   const theme = useContext(ThemeContext);
+  const router = useRouter();
+  const { id } = router.query;
+  const { diy, loading } = useDIY(id as string);
 
   return (
     <MainWrap>
@@ -84,35 +74,23 @@ const SingleDIY = () => {
           <li>
             <img src="/img/direction.svg" alt="Breadcrumb navigation" />
           </li>
-          <li>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr sed diam nonumy eirmod tempor
-          </li>
+          <li>{diy?.title}</li>
         </ul>
-        <DIYBanner>
-          <div className="flex items-center pt-4 playBtn">
-            <img src="/img/diy-play.svg" className="h-16 w-16" alt="Play" />
-          </div>
-        </DIYBanner>
+        {diy && <YouTubeContainer url={diy.video} thumbnail={diy.thumbnail} />}
       </section>
 
       <Main className="container mx-auto mb-16">
-        <h1 className="capitalize main-title text-4xl font-semibold py-12">
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr sed diam nonumy
-        </h1>
+        <h1 className="capitalize main-title text-4xl font-semibold py-12">{diy?.title}</h1>
         <div className="pb-12">
-          <UserCard />
+          {diy && (
+            <UserCard
+              user={`${diy.createdBy?.firstName} ${diy.createdBy?.lastName}`}
+              imgUrl={diy.createdBy?.profilePhoto}
+            />
+          )}
         </div>
         <article>
-          <p className="inline-desc">
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-            invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
-            accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
-            sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
-            sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
-            aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
-            rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-            amet.
-          </p>
+          <p className="inline-desc">{diy?.body}</p>
         </article>
         <section className="flex items-center mt-16">
           <span className="signup-comment font-semibold pr-2 capitalize">Sign Up to Comment</span>
@@ -146,4 +124,4 @@ const SingleDIY = () => {
   );
 };
 
-export default SingleDIY;
+export default withApollo()(SingleDIY);

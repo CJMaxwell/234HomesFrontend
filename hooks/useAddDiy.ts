@@ -5,7 +5,7 @@ import Router from 'next/router';
 import { ADD_DIY } from '../graphql/mutations/diy';
 
 export default function useAddDiy() {
-  const [mutate, { loading: addDiyLoading }] = useMutation(ADD_DIY);
+  const [mutate, { loading }] = useMutation(ADD_DIY);
   const addDiy = (input: any) => {
     mutate({
       variables: {
@@ -22,6 +22,6 @@ export default function useAddDiy() {
 
   return {
     addDiy,
-    addDiyLoading,
+    loading,
   };
 }

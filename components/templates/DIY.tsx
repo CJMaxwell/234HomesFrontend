@@ -7,6 +7,8 @@ import Offering from '../Organisms/Offering';
 import Button from '../atoms/Button';
 import Footer from './Footer';
 import DIYPostCard from '../Organisms/DIYPostCard';
+import useDIY from '../../hooks/useDIY';
+import withApollo from '../../lib/withApollo';
 
 const Wrapper = styled.div`
   .recommended {
@@ -104,6 +106,7 @@ const FeatButton = styled(Button)`
 
 const DIY = () => {
   const theme = useContext(ThemeContext);
+  const { diys, loading } = useDIY();
 
   return (
     <Wrapper>
@@ -152,24 +155,17 @@ const DIY = () => {
             </select>
           </div>
         </div>
-        <section className="grid grid-cols-3 gap-8 mb-20 mt-10">
-          <DIYPostCard imgUrl="/img/brown-and-black-wooden-box-3889740er.png" />
-          <DIYPostCard imgUrl="/img/Adora_NH (10).png" />
-          <DIYPostCard imgUrl="/img/Adora_NH (42).png" />
-          <DIYPostCard imgUrl="/img/AH (9).png" />
-          <DIYPostCard imgUrl="/img/AH (31).png" />
-          <DIYPostCard imgUrl="/img/B (6) (1).png" />
-          <DIYPostCard imgUrl="/img/B (25) (1).png" />
-          <DIYPostCard imgUrl="/img/brown-and-black-wooden-box-3889740.png" />
-          <DIYPostCard imgUrl="/img/EO (42).png" />
-          <DIYPostCard imgUrl="/img/francesca-tosolini-w1RE0lBbREo-unsplash.png" />
-          <DIYPostCard imgUrl="/img/tiles-window-bathroom-marble-105934.png" />
-          <DIYPostCard imgUrl="/img/two-white-rod-pocket-curtains-910458.png" />
-        </section>
+        {diys && (
+          <section className="grid grid-cols-3 gap-8 mb-20 mt-10">
+            {diys.map((diy: any) => (
+              <DIYPostCard imgUrl={diy.thumbnail} title={diy.title} path={`/diy/${diy.id}`} />
+            ))}
+          </section>
+        )}
       </div>
       <Footer />
     </Wrapper>
   );
 };
 
-export default DIY;
+export default withApollo()(DIY);
