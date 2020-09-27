@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
+import Loader from 'react-loader-spinner';
 
 import withApollo from '../../lib/withApollo';
 import useVendor from '../../hooks/useVendor';
@@ -74,6 +75,11 @@ const Vendors = () => {
             </select>
           </div>
         </div>
+        {vendorLoading && (
+          <section className="flex justify-center items-center mt-40">
+            <Loader type="TailSpin" color={theme.colors.orange1} height={80} width={80} />
+          </section>
+        )}
         <section className="grid grid-cols-4 gap-6">
           {
             // @ts-ignore
