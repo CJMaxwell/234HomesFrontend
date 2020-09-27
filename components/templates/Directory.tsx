@@ -1,14 +1,15 @@
 import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
+import Loader from 'react-loader-spinner';
 
 import withApollo from '../../lib/withApollo';
 import useProfessional from '../../hooks/useProfessional';
 import Navbar from '../Organisms/Navbar';
 import Hero from '../Organisms/Hero';
 import Favourite from '../molecules/Favourite';
-import Footer from './Footer';
 import Offering from '../Organisms/Offering';
 import ProfessionalCard from '../Organisms/ProfessionalCard';
+import Footer from './Footer';
 
 const Categories = styled.section`
   background-color: ${({ theme }) => theme.colors.orange4};
@@ -41,7 +42,6 @@ const Main = styled.main`
 const Directory = () => {
   const theme = useContext(ThemeContext);
   const { professionals, ProfessionalLoading } = useProfessional();
-  console.log(professionals);
   return (
     <section>
       <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />
@@ -92,6 +92,11 @@ const Directory = () => {
             </select>
           </div>
         </div>
+        {ProfessionalLoading && (
+          <section className="flex justify-center items-center mt-40">
+            <Loader type="TailSpin" color={theme.colors.orange1} height={80} width={80} />
+          </section>
+        )}
         <section className="grid grid-cols-4 gap-6">
           {
             // @ts-ignore
