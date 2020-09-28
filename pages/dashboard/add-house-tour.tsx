@@ -1,3 +1,4 @@
+import React from 'react';
 import { NextPage } from 'next';
 
 import AddHouseTour from '../../components/templates/AddHouseTour';
