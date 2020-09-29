@@ -6,12 +6,12 @@ module.exports = {
       '@fullhuman/postcss-purgecss',
       process.env.NODE_ENV === 'production'
         ? {
-            content: ['./pages/**/*.tsx', './components/**/*.tsx'],
-            whitelist: ['html', 'body'],
-            defaultExtractor: (content) => content.match(/[\w-/:]+(?<!:)/g) || [],
-            whitelistPatterns: [/slick-/, /nprogress?-/, /ril__/],
-            whitelistPatternsChildren: [/slick/, /nprogress/],
-          }
+          content: ['./pages/**/*.tsx', './components/**/*.tsx'],
+          whitelist: ['html', 'body'],
+          defaultExtractor: (content) => content.match(/[\w-/:]+(?<!:)/g) || [],
+          whitelistPatterns: [/slick-/, /nprogress?-/, /ril__/, /tippy/],
+          whitelistPatternsChildren: [/slick/, /nprogress/],
+        }
         : false,
     ],
   ],
