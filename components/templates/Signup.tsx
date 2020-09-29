@@ -185,9 +185,8 @@ const Signup: React.FC<Props> = () => {
                   <ul className="flex justify-center items-center">
                     <Tippy content="An Individual user is just a viewer on our website. If you have a skill or sell a product, then consider the Professional or Vendor option.">
                       <li
-                        className={`acc-type cursor-pointer ${
-                          values.accountType === 'individual' && 'active'
-                        }`}
+                        className={`acc-type cursor-pointer ${values.accountType === 'individual' && 'active'
+                          }`}
                         onClick={() => {
                           setFieldValue('accountType', 'individual');
                         }}
@@ -201,9 +200,8 @@ const Signup: React.FC<Props> = () => {
                     </Tippy>
                     <Tippy content="Tell us about yourself and your projects. We will show it to the whole world.">
                       <li
-                        className={`acc-type cursor-pointer ${
-                          values.accountType === 'professional' && 'active'
-                        }`}
+                        className={`acc-type cursor-pointer ${values.accountType === 'professional' && 'active'
+                          }`}
                         onClick={() => {
                           setFieldValue('accountType', 'professional');
                         }}
@@ -217,9 +215,8 @@ const Signup: React.FC<Props> = () => {
                     </Tippy>
                     <Tippy content="Sell products? Let's help you reach the right audience.">
                       <li
-                        className={`acc-type cursor-pointer ${
-                          values.accountType === 'vendor' && 'active'
-                        }`}
+                        className={`acc-type cursor-pointer ${values.accountType === 'vendor' && 'active'
+                          }`}
                         onClick={() => {
                           setFieldValue('accountType', 'vendor');
                         }}
@@ -235,7 +232,7 @@ const Signup: React.FC<Props> = () => {
                 </section>
 
                 {values.accountType !== 'vendor' && (
-                  <section className="flex items-center py-4 justify-between">
+                  <section className="flex items-center pt-4 justify-between">
                     <fieldset className="w-1/2 mr-6">
                       <legend className="profile-label">First Name</legend>
                       <input
@@ -262,7 +259,7 @@ const Signup: React.FC<Props> = () => {
                 )}
 
                 {values.accountType === 'vendor' && (
-                  <section className="flex items-center justify-between mt-4">
+                  <section className="flex items-center justify-between pt-4">
                     <fieldset className="w-full">
                       <legend className="profile-label">Business Name</legend>
                       <input
@@ -366,8 +363,8 @@ const Signup: React.FC<Props> = () => {
                           width={60}
                         />
                       ) : (
-                        'Send me Code'
-                      )}
+                          'Send me Code'
+                        )}
                     </button>
                   </section>
                 </section>
