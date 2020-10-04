@@ -136,7 +136,7 @@ const HouseTours = () => {
                 tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
               </p>
               <FeatButton
-                onClick={() => Router.push('/single-house-tour')}
+                // onClick={() => Router.push('/single-house-tour')}
                 className="featured-button uppercase"
               >
                 Read Story

@@ -136,7 +136,7 @@ const DIY = () => {
                 elitr sed diam nonumy eirmod tempor invidunt ut labore et
               </h3>
               <FeatButton
-                onClick={() => Router.push('/single-diy')}
+                // onClick={() => Router.push('/single-diy')}
                 className="featured-button uppercase mt-10"
               >
                 WAtch Now
