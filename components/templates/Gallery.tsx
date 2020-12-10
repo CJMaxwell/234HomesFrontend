@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import Masonry from 'react-masonry-css';
 import Link from 'next/link';
 
+import withApollo from '../../lib/withApollo';
+import useGallery from '../../hooks/useGallery';
 import Offering from '../Organisms/Offering';
 import Navbar from '../Organisms/Navbar';
 import GalleryItem from '../Organisms/GalleryItem';
@@ -57,6 +59,8 @@ const Wrapper = styled.section`
 `;
 
 const Gallery = () => {
+  const { galleries, loading } = useGallery();
+  console.log(galleries, '====', loading);
   return (
     <Wrapper>
       <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />
@@ -106,7 +110,7 @@ const Gallery = () => {
           className="masonry-grid"
           columnClassName="masonry-grid_column"
         >
-          <Link href="/single-gallery">
+          <Link href="gallery/single-gallery">
             <div className="cursor-pointer">
               <GalleryItem
                 imgUrl="/img/gallery/sidekix-media-I_QC1JICzA0-unsplash.png"
@@ -114,107 +118,21 @@ const Gallery = () => {
               />
             </div>
           </Link>
+          {
+            // @ts-ignore
+            galleries && galleries.map(gallery => (
+              <Link href={`gallery/${gallery.id}`}>
+                <div className="cursor-pointer">
+                  <GalleryItem
+                    imgUrl={gallery.media}
+                    title={gallery.title}
+                    height="20.65rem"
+                  />
+                </div>
+              </Link>
+            ))
+          }
 
-          <div>
-            <GalleryItem
-              imgUrl="/img/gallery/francesca-tosolini-tHkJAMcO3QE-unsplash.png"
-              height="16.95rem"
-            />
-          </div>
-          <div>
-            <GalleryItem imgUrl="/img/gallery/AH-31.png" height="20.65rem" />
-          </div>
-          <div>
-            <GalleryItem imgUrl="/img/gallery/AH-42.png" height="16.95rem" />
-          </div>
-          <div>
-            <GalleryItem imgUrl="/img/gallery/Adora_NH.png" height="16.95rem" />
-          </div>
-          <div>
-            <GalleryItem imgUrl="/img/gallery/AH-30.png" height="16.95rem" />
-          </div>
-          <div>
-            <GalleryItem imgUrl="/img/gallery/B-25-1.png" height="16.95rem" />
-          </div>
-          <div>
-            <GalleryItem imgUrl="/img/gallery/Adora_NH-42.png" height="20.65rem" />
-          </div>
-          <div>
-            <GalleryItem imgUrl="/img/gallery/B-8.png" height="20.65rem" />
-          </div>
-          <div>
-            <GalleryItem
-              imgUrl="/img/gallery/francesca-tosolini-w1RE0lBbREo-unsplash.png"
-              height="16.95rem"
-            />
-          </div>
-          <div className="ad">
-            <GalleryItem imgUrl="/img/gallery/AH-18-3.png" height="24.1rem" />
-          </div>
-          <div>
-            <GalleryItem
-              imgUrl="/img/gallery/two-white-rod-pocket-curtains-910458.png"
-              height="16.95rem"
-            />
-          </div>
-          <div>
-            <GalleryItem
-              imgUrl="/img/gallery/2-seat-orange-leather-sofa-beside-wall-1866149.png"
-              height="20.65rem"
-            />
-          </div>
-          <div>
-            <GalleryItem
-              imgUrl="/img/gallery/interior-design-of-a-house-1571460.png"
-              height="16.95rem"
-            />
-          </div>
-          <div>
-            <GalleryItem imgUrl="/img/gallery/B-18-1.png" height="16.95rem" />
-          </div>
-          <div>
-            <GalleryItem imgUrl="/img/gallery/AH-18-2.png" height="16.95rem" />
-          </div>
-          <div>
-            <GalleryItem
-              imgUrl="/img/gallery/two-assorted-color-padded-chairs-near-side-table-1350789-1.png"
-              height="20.65rem"
-            />
-          </div>
-          <div>
-            <GalleryItem imgUrl="/img/gallery/B-6-1.png" height="20.65rem" />
-          </div>
-          <div>
-            <GalleryItem
-              imgUrl="/img/gallery/bathroom-cabinet-candles-faucet-342800.png"
-              height="16.95rem"
-            />
-          </div>
-          <div>
-            <GalleryItem
-              imgUrl="/img/gallery/two-white-rod-pocket-curtains-910458.png"
-              height="16.95rem"
-            />
-          </div>
-          {/* <GalleryItem imgUrl="/img/gallery/sidekix-media-I_QC1JICzA0-unsplash.png" height="29.65rem" />
-          <GalleryItem imgUrl="/img/gallery/francesca-tosolini-tHkJAMcO3QE-unsplash.png" height="20.95rem" />
-          <GalleryItem imgUrl="/img/gallery/AH-31.png" height="29.65rem" />
-          <GalleryItem imgUrl="/img/gallery/AH-42.png" height="20.95rem" />
-          <GalleryItem imgUrl="/img/gallery/Adora_NH.png" height="4.5rem" />
-          <GalleryItem imgUrl="/img/gallery/AH-30.png" height="29.65rem" />
-          <GalleryItem imgUrl="/img/gallery/B-25-1.png" height="29.65rem" />
-          <GalleryItem imgUrl="/img/gallery/Adora_NH-42.png" height="29.65rem" />
-          <GalleryItem imgUrl="/img/gallery/B-8.png" height="29.65rem" />
-          <GalleryItem imgUrl="/img/gallery/francesca-tosolini-w1RE0lBbREo-unsplash.png" height="29.65rem" />
-          <GalleryItem imgUrl="/img/gallery/AH-18-3.png" height="29.65rem" />
-          <GalleryItem imgUrl="/img/gallery/two-white-rod-pocket-curtains-910458.png" height="29.65rem" />
-          <GalleryItem imgUrl="/img/gallery/2-seat-orange-leather-sofa-beside-wall-1866149.png" height="29.65rem" />
-          <GalleryItem imgUrl="/img/gallery/interior-design-of-a-house-1571460.png" height="29.65rem" />
-          <GalleryItem imgUrl="/img/gallery/B-18-1.png" height="29.65rem" />
-          <GalleryItem imgUrl="/img/gallery/AH-18-2.png" height="29.65rem" />
-          <GalleryItem imgUrl="/img/gallery/two-assorted-color-padded-chairs-near-side-table-1350789-1.png" height="29.65rem" />
-          <GalleryItem imgUrl="/img/gallery/B-6-1.png" height="29.65rem" />
-          <GalleryItem imgUrl="/img/gallery/bathroom-cabinet-candles-faucet-342800.png" height="29.65rem" /> */}
         </Masonry>
         <div className="flex justify-center items-center loading">
           <img src="/img/gallery/loading.svg" className="text-center h-20 w-20" alt="Loading" />
@@ -225,4 +143,4 @@ const Gallery = () => {
   );
 };
 
-export default Gallery;
+export default withApollo()(Gallery);
