@@ -4,6 +4,8 @@ import { Formik } from 'formik';
 import Loader from 'react-loader-spinner';
 
 import withApollo from '../../lib/withApollo';
+import Img from '../atoms/Img';
+import fileToDataURI from '../../lib/fileToDataURI';
 import useProducts from '../../hooks/useAddProduct';
 import Offering from '../Organisms/Offering';
 import Navbar from '../Organisms/Navbar';
@@ -155,6 +157,7 @@ const AddProduct = () => {
               <form className="main w-3/4" onSubmit={handleSubmit}>
                 <h1 className="py-10 profile-title">Add new Product</h1>
                 <section className="upload-section relative">
+                  {file && <Img promise={fileToDataURI(file)} />}
                   <input
                     className="file-upload absolute inset-0 w-full z-50 opacity-0 cursor-pointer"
                     name="file"
@@ -342,8 +345,8 @@ const AddProduct = () => {
                         width={60}
                       />
                     ) : (
-                      'Submit'
-                    )}
+                        'Submit'
+                      )}
                   </CTA>
                 </section>
               </form>

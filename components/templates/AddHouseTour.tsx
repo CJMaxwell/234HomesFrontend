@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import { Formik, FieldArray } from 'formik';
 import Loader from 'react-loader-spinner';
@@ -7,11 +7,11 @@ import withApollo from '../../lib/withApollo';
 import Offering from '../Organisms/Offering';
 import Navbar from '../Organisms/Navbar';
 import DashboardSideBar from '../Organisms/DashboardSideBar';
-
 import Footer from './Footer';
 import CTA from '../atoms/CTA';
 import useProfile from '../../hooks/useProfile';
 import useAddHouseTours from '../../hooks/useAddHouseTour';
+import Img from '../atoms/Img';
 import fileToDataURI from '../../lib/fileToDataURI';
 
 const Wrapper = styled.section`
@@ -108,23 +108,7 @@ const Wrapper = styled.section`
   }
 `;
 
-const Img: React.FC<{ promise: Promise<string | ArrayBuffer | null | undefined> }> = ({
-  promise,
-}) => {
-  const [image, setImage] = useState<string | ArrayBuffer | null | undefined>();
 
-  useEffect(() => {
-    promise.then((img) => setImage(img));
-  }, []);
-
-  return (
-    <img
-      src={image as string}
-      alt="House tour media"
-      className="absolute w-full h-full inset-0 object-cover"
-    />
-  );
-};
 
 const AddHouseTour = () => {
   const { profile } = useProfile();
@@ -347,8 +331,8 @@ const AddHouseTour = () => {
                         width={60}
                       />
                     ) : (
-                      'Submit'
-                    )}
+                        'Submit'
+                      )}
                   </CTA>
                 </section>
               </form>

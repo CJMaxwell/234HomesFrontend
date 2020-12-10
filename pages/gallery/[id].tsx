@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 
-import SingleGallery from '../components/templates/SingleGallery';
+import SingleGallery from '../../components/templates/SingleGallery';
 
 const SingleGalleryPage: NextPage = () => {
   return (

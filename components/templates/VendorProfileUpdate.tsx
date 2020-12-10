@@ -8,6 +8,8 @@ import Navbar from '../Organisms/Navbar';
 import CTA from '../atoms/CTA';
 import Skill from '../atoms/Skill';
 import Footer from './Footer';
+import Img from '../atoms/Img';
+import fileToDataURI from '../../lib/fileToDataURI';
 import useProfile from '../../hooks/useProfile';
 import DashboardSideBar from '../Organisms/DashboardSideBar';
 import useCountries from '../../hooks/useCountries';
@@ -212,6 +214,7 @@ const VendorProfileUpdate = () => {
           </section>
 
           <section className="upload-section relative mt-8">
+            {/* {slide.photo && <Img promise={fileToDataURI(slide.photo)} />} */}
             <input
               className="file-upload absolute inset-0 w-full z-50 opacity-0 cursor-pointer"
               name="file"
@@ -241,8 +244,8 @@ const VendorProfileUpdate = () => {
               {loading ? (
                 <Loader type="ThreeDots" color={theme.colors.orange1} height={20} width={60} />
               ) : (
-                'Update Profile'
-              )}
+                  'Update Profile'
+                )}
             </CTA>
           </section>
         </form>
