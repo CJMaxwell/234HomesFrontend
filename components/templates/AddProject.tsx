@@ -8,7 +8,8 @@ import Navbar from '../Organisms/Navbar';
 import DashboardSideBar from '../Organisms/DashboardSideBar';
 import Skill from '../atoms/Skill';
 import CTA from '../atoms/CTA';
-
+import Img from '../atoms/Img';
+import fileToDataURI from '../../lib/fileToDataURI';
 import Footer from './Footer';
 import withApollo from '../../lib/withApollo';
 import useAddProject from '../../hooks/useAddProject';
@@ -163,6 +164,7 @@ const AddProject = () => {
                 <h1 className="py-10 profile-title">Add New project</h1>
 
                 <section className="upload-section relative">
+                  {file && <Img promise={fileToDataURI(file)} />}
                   <input
                     className="file-upload absolute inset-0 w-full z-50 opacity-0 cursor-pointer"
                     name="file"
