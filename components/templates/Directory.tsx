@@ -41,7 +41,8 @@ const Main = styled.main`
 
 const Directory = () => {
   const theme = useContext(ThemeContext);
-  const { professionals, ProfessionalLoading } = useProfessional();
+  const { professionals, loading, search } = useProfessional();
+
   return (
     <section>
       <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />
@@ -55,6 +56,8 @@ const Directory = () => {
       <Hero
         title="Find A Professional For Your Project!"
         placeholder="What Services Do You Need?"
+        search={search}
+        loading={loading}
       />
       <Categories className="py-3">
         <ul className="container mx-auto general-padding flex items-center justify-between text-white">
@@ -92,7 +95,7 @@ const Directory = () => {
             </select>
           </div>
         </div>
-        {ProfessionalLoading && (
+        {loading && (
           <section className="flex justify-center items-center mt-40">
             <Loader type="TailSpin" color={theme.colors.orange1} height={80} width={80} />
           </section>

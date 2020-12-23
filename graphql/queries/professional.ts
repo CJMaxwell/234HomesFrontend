@@ -1,8 +1,8 @@
 import { gql } from 'apollo-boost';
 
 export const PROFESSIONALS = gql`
-  query professionals {
-    professionals {
+  query professionals($where:UserSearchInput) {
+    professionals(where: $where) {
       id
       firstName
       lastName
@@ -13,5 +13,4 @@ export const PROFESSIONALS = gql`
       occupation
     }
   }
-
 `;

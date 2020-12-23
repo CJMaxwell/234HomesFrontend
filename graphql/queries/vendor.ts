@@ -1,8 +1,8 @@
 import { gql } from 'apollo-boost';
 
 export const VENDORS = gql`
-  query vendors {
-    vendors {
+  query vendors($where: UserSearchInput) {
+    vendors(where: $where) {
       id
       businessName
       phoneNumber

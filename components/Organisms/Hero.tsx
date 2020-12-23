@@ -1,5 +1,7 @@
 import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
+import { Formik } from 'formik';
+import Loader from 'react-loader-spinner';
 
 import Button from '../atoms/Button';
 
@@ -7,9 +9,15 @@ interface Props {
   imgUrl?: string;
   title?: string;
   placeholder?: string;
+  search: (searchTerm: string, location: string) => void;
+  loading?: boolean
 }
 
-const HeroBanner = styled.section<Props>`
+interface HeroBannerProps {
+  imgUrl?: string;
+}
+
+const HeroBanner = styled.section<HeroBannerProps>`
   height: 16.425rem;
   background-image: url('${({ imgUrl }) => imgUrl}'), linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5));
   background-blend-mode: overlay;
@@ -52,26 +60,65 @@ const Hero: React.FC<Props> = ({
   imgUrl = '/img/vendors/banner.png',
   title = '',
   placeholder = '',
+  search,
+  loading
 }) => {
   const theme = useContext(ThemeContext);
-
   return (
     <HeroBanner imgUrl={imgUrl} className="general-padding">
       <h1 className="text-center">{title}</h1>
-      <form className="flex items-center justify-center">
-        <div className="flex items-center form-elements-wrap">
-          <div className="border-r border-gray-400 h-full w-8/12">
-            <input className="outline-none w-full h-full" type="text" placeholder={placeholder} />
-          </div>
-          <div className="w-4/12 pl-3 h-full">
-            <div className="flex items-center h-full w-full">
-              <img src="/img/map-pin.svg" className="map-pin" alt="Map Pin" />
-              <input className="outline-none w-3/4 h-full" type="text" placeholder="Location" />
+      <Formik
+        initialValues={{
+          searchTerm: '',
+          location: ''
+        }}
+        onSubmit={({ searchTerm, location }) => {
+          search(searchTerm, location);
+        }}
+      >
+        {({ handleChange, handleSubmit, handleBlur, values }) => (
+          <form className="flex items-center justify-center" onSubmit={handleSubmit}>
+            <div className="flex items-center form-elements-wrap">
+              <div className="border-r border-gray-400 h-full w-8/12">
+                <input
+                  name="searchTerm"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.searchTerm}
+                  className="outline-none w-full h-full"
+                  type="text"
+                  placeholder={placeholder}
+                />
+              </div>
+              <div className="w-4/12 pl-3 h-full">
+                <div className="flex items-center h-full w-full">
+                  <img src="/img/map-pin.svg" className="map-pin" alt="Map Pin" />
+                  <input
+                    name="location"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.location}
+                    className="outline-none w-3/4 h-full"
+                    type="text"
+                    placeholder="Location"
+                  />
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <Search className="uppercase font-semibold">Search </Search>
-      </form>
+            <Search
+              type="submit"
+              className="uppercase font-semibold flex justify-center items-center"
+              disabled={loading}
+            >
+              {loading ? (
+                <Loader type="ThreeDots" color={theme.colors.white} height={20} width={60} />
+              ) : (
+                  'Search'
+                )}
+            </Search>
+          </form>
+        )}
+      </Formik>
     </HeroBanner>
   );
 };

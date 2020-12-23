@@ -1,12 +1,31 @@
-import { useQuery } from '@apollo/react-hooks';
+import { useEffect } from 'react';
+import { useLazyQuery } from '@apollo/react-hooks';
 import { PROFESSIONALS } from '../graphql/queries/professional';
 
-export default function useProfessional() {
-  const { data, loading: ProfessionalLoading } = useQuery(PROFESSIONALS);
-
-  return {
-    professionals: data?.professionals,
-    ProfessionalLoading
+const useProfessionals = () => {
+  const [query, { data, loading }] = useLazyQuery(PROFESSIONALS);
+  const search = (searchTerm: string, location: string) => {
+    query({
+      variables: {
+        where: {
+          searchTerm,
+          location
+        }
+      }
+    });
   };
 
+
+  useEffect(() => {
+    query()
+  }, [])
+
+
+  return {
+    search,
+    professionals: data?.professionals,
+    loading
+  };
 }
+
+export default useProfessionals;
