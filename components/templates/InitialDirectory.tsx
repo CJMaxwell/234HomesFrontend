@@ -20,10 +20,10 @@ const InitialDirectory = () => {
       <div className="container mx-auto">
         <Offering />
       </div>
-      <Hero
+      {/* <Hero
         title="Find A Professional For Your Project!"
         placeholder="What Services Do You Need?"
-      />
+      /> */}
       <section className="container mx-auto general-padding mt-20 mb-32 grid grid-cols-3 gap-12">
         <Favourite
           imgUrl="/img/AH-fav.png"
