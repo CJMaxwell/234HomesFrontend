@@ -15,11 +15,11 @@ const InitialVendor = () => {
       <div className="container mx-auto">
         <ProfileNavbar />
       </div>
-      <Hero
+      {/* <Hero
         title="Find Any Product For Your Home!"
         imgUrl="/img/vendors/banner.png"
         placeholder="Search for a product..."
-      />
+      /> */}
       <section className="container mx-auto general-padding mt-20 mb-32 grid grid-cols-3 gap-12">
         <Favourite
           path="/productlist"

@@ -36,7 +36,7 @@ const Main = styled.main`
 
 const Vendors = () => {
   const theme = useContext(ThemeContext);
-  const { vendors, vendorLoading } = useVendor();
+  const { vendors, loading, search } = useVendor();
   return (
     <div>
       <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />
@@ -51,6 +51,8 @@ const Vendors = () => {
         title="Find A Vendor For Your Next Project!"
         imgUrl="/img/vendors/banner.png"
         placeholder="Search for a product..."
+        search={search}
+        loading={loading}
       />
       <Main className="container mx-auto general-padding my-20">
         <div className="flex justify-between items-center mb-12">
@@ -75,7 +77,7 @@ const Vendors = () => {
             </select>
           </div>
         </div>
-        {vendorLoading && (
+        {loading && (
           <section className="flex justify-center items-center mt-40">
             <Loader type="TailSpin" color={theme.colors.orange1} height={80} width={80} />
           </section>
