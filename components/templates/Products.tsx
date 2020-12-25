@@ -66,6 +66,8 @@ const Products = () => {
         title="Find A Product For Your Next Project!"
         imgUrl="/img/vendors/banner.png"
         placeholder="Search for a product..."
+        loading={loading}
+        search={(searchTerm, location) => { }}
       />
       <div className="general-padding container mx-auto mb-48">
         <div className="flex justify-between items-center mb-12 mt-20">
