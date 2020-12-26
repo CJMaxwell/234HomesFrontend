@@ -2,52 +2,54 @@ import { useEffect } from 'react';
 import { useQuery, useLazyQuery } from '@apollo/react-hooks';
 import { PRODUCTS, USER_PRODUCTS } from '../graphql/queries/product';
 
-
-export const useUserProducts = (id: string) => {
-  const query = id ? USER_PRODUCTS : PRODUCTS;
-
-  const { data, loading } = useQuery(query, {
+export const useRproducts = (id?: string) => {
+  const { data, loading } = useQuery(USER_PRODUCTS, {
     variables: { id },
   });
 
   return {
     products: data?.userProducts,
-    return {
-      products: data?.userProducts,
-      loading,
-    }
-  }
-}
+    loading,
+  };
+};
 
 export const useProducts = () => {
   const [getProducts, { data, loading }] = useLazyQuery(PRODUCTS);
-  const search = (
-    searchTerm: string,
-    location: string,
-    category: string,
-    minPrice: number,
-    maxPrice: number
-  ) => {
+  const search = (params: {
+    searchTerm: string;
+    location: string;
+    category?: string;
+    minPrice?: number;
+    maxPrice?: number;
+  }) => {
+    const {
+      searchTerm,
+      // location,
+      category,
+      minPrice,
+      maxPrice,
+    } = params;
+
     getProducts({
       variables: {
         where: {
           searchTerm,
-          location,
+          // location,
           category,
           minPrice,
-          maxPrice
-        }
-      }
+          maxPrice,
+        },
+      },
     });
   };
 
-
   useEffect(() => {
-    getProducts()
-  }, [])
+    getProducts();
+  }, []);
 
   return {
     search,
-    loading
+    loading,
+    products: data?.products,
   };
-}}}}
+};

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Hero from '../Organisms/Hero';
 
 import withApollo from '../../lib/withApollo';
-import useAllProjects from '../../hooks/useAllProjects';
+import { useProjects } from '../../hooks/projects';
 import Navbar from '../Organisms/Navbar';
 import Offering from '../Organisms/Offering';
 import ProjectListingCard from '../Organisms/ProjectListingCard';
@@ -34,7 +34,7 @@ const Wrapper = styled.section`
 `;
 
 const Projects = () => {
-  const { projects, loading } = useAllProjects();
+  const { projects, loading, search } = useProjects();
 
   return (
     <Wrapper>
@@ -49,7 +49,7 @@ const Projects = () => {
         imgUrl="/img/vendors/banner.png"
         placeholder="Search for a projects..."
         loading={loading}
-        search={(searchTerm, location) => { }}
+        search={search}
       />
 
       <div className="general-padding container mx-auto mb-48">
@@ -77,8 +77,8 @@ const Projects = () => {
         </div>
         <div className="grid grid-cols-3 gap-6">
           {projects &&
-            // @ts-ignore 
-            projects.map(project => (
+            // @ts-ignore
+            projects.map((project) => (
               <ProjectListingCard
                 key={project.id}
                 imgUrl={project.media}
@@ -86,8 +86,7 @@ const Projects = () => {
                 category={project.category}
                 path={`/projects/${project.id}`}
               />
-            ))
-          }
+            ))}
         </div>
       </div>
       <Footer />

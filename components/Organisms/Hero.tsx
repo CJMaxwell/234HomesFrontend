@@ -9,8 +9,14 @@ interface Props {
   imgUrl?: string;
   title?: string;
   placeholder?: string;
-  search: (searchTerm: string, location: string, category?: string, minPrice?: number, maxPrice?: number) => void;
-  loading?: boolean
+  search: (params: {
+    searchTerm: string;
+    location: string;
+    category?: string;
+    minPrice?: number;
+    maxPrice?: number;
+  }) => void;
+  loading?: boolean;
 }
 
 interface HeroBannerProps {
@@ -19,7 +25,8 @@ interface HeroBannerProps {
 
 const HeroBanner = styled.section<HeroBannerProps>`
   height: 16.425rem;
-  background-image: url('${({ imgUrl }) => imgUrl}'), linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5));
+  background-image: url('${({ imgUrl }) =>
+    imgUrl}'), linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5));
   background-blend-mode: overlay;
   background-repeat: no-repeat;
   background-size:cover;
@@ -61,7 +68,7 @@ const Hero: React.FC<Props> = ({
   title = '',
   placeholder = '',
   search,
-  loading
+  loading,
 }) => {
   const theme = useContext(ThemeContext);
   return (
@@ -70,10 +77,10 @@ const Hero: React.FC<Props> = ({
       <Formik
         initialValues={{
           searchTerm: '',
-          location: ''
+          location: '',
         }}
         onSubmit={({ searchTerm, location }) => {
-          search(searchTerm, location);
+          search({ searchTerm, location });
         }}
       >
         {({ handleChange, handleSubmit, handleBlur, values }) => (
@@ -113,8 +120,8 @@ const Hero: React.FC<Props> = ({
               {loading ? (
                 <Loader type="ThreeDots" color={theme.colors.white} height={20} width={60} />
               ) : (
-                  'Search'
-                )}
+                'Search'
+              )}
             </Search>
           </form>
         )}

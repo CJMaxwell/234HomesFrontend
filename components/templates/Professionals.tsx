@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import styled, { ThemeContext } from 'styled-components';
+import React from 'react';
+import styled from 'styled-components';
 
 import Navbar from '../Organisms/Navbar';
 import ProfessionalCard from '../Organisms/ProfessionalCard';
@@ -60,8 +60,6 @@ const Wrapper = styled.div`
 `;
 
 const Professionals = () => {
-  const theme = useContext(ThemeContext);
-
   return (
     <Wrapper>
       <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />

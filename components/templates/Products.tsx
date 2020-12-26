@@ -1,9 +1,8 @@
-import React, { useContext } from 'react';
-import styled, { ThemeContext } from 'styled-components';
-import Link from 'next/link';
+import React from 'react';
+import styled from 'styled-components';
 
 import withApollo from '../../lib/withApollo';
-import useAllProducts, { useProducts } from '../../hooks/useAllProducts';
+import { useProducts } from '../../hooks/products';
 import useProfile from '../../hooks/useProfile';
 import Navbar from '../Organisms/Navbar';
 import ProductListCard from '../Organisms/ProductListCard';
@@ -52,7 +51,6 @@ const Wrapper = styled.div`
 `;
 
 const Products = () => {
-  // const { products, loading } = useAllProducts();
   const { loading, search, products } = useProducts();
 
   return (

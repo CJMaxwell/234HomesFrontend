@@ -1,12 +1,11 @@
 import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import Link from 'next/link';
 import Router from 'next/router';
 import Loader from 'react-loader-spinner';
 
 import withApollo from '../../lib/withApollo';
 import useProfile from '../../hooks/useProfile';
-import useAllProducts from '../../hooks/useAllProducts';
+import { useRproducts } from '../../hooks/products';
 import Navbar from '../Organisms/Navbar';
 import ProductListCard from '../Organisms/ProductListCard';
 import Offering from '../Organisms/Offering';
@@ -45,7 +44,8 @@ const Wrapper = styled.div`
 const DashboardProductListing = () => {
   const theme = useContext(ThemeContext);
   const { profile, updateProfile, updateProfileLoading: profileLoading } = useProfile();
-  const { products, loading } = useAllProducts(profile?.id);
+  const { products, loading } = useRproducts(profile?.id);
+
   return (
     <Wrapper>
       <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />

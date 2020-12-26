@@ -4,28 +4,28 @@ import { PROFESSIONALS } from '../graphql/queries/professional';
 
 const useProfessionals = () => {
   const [query, { data, loading }] = useLazyQuery(PROFESSIONALS);
-  const search = (searchTerm: string, location: string) => {
+  const search = (params: { searchTerm: string; location: string }) => {
+    const { searchTerm, location } = params;
+
     query({
       variables: {
         where: {
           searchTerm,
-          location
-        }
-      }
+          location,
+        },
+      },
     });
   };
 
-
   useEffect(() => {
-    query()
-  }, [])
-
+    query();
+  }, []);
 
   return {
     search,
     professionals: data?.professionals,
-    loading
+    loading,
   };
-}
+};
 
 export default useProfessionals;

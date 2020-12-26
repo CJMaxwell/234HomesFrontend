@@ -3,7 +3,7 @@ import styled, { ThemeContext } from 'styled-components';
 import Loader from 'react-loader-spinner';
 
 import withApollo from '../../lib/withApollo';
-import useProfessional from '../../hooks/useProfessional';
+import useProfessionals from '../../hooks/useProfessionals';
 import Navbar from '../Organisms/Navbar';
 import Hero from '../Organisms/Hero';
 import Favourite from '../molecules/Favourite';
@@ -41,7 +41,7 @@ const Main = styled.main`
 
 const Directory = () => {
   const theme = useContext(ThemeContext);
-  const { professionals, loading, search } = useProfessional();
+  const { professionals, loading, search } = useProfessionals();
 
   return (
     <section>
@@ -67,13 +67,27 @@ const Directory = () => {
               <img src="/img/list.svg" alt="All Categories" />
             </span>
           </li>
-          <li><a>Interior designers</a></li>
-          <li><a>Carpenters</a></li>
-          <li><a>Painters</a></li>
-          <li><a>Decorators</a></li>
-          <li><a>Landscaping</a></li>
-          <li><a>Electricians</a></li>
-          <li><a>Plumbers</a></li>
+          <li>
+            <a>Interior designers</a>
+          </li>
+          <li>
+            <a>Carpenters</a>
+          </li>
+          <li>
+            <a>Painters</a>
+          </li>
+          <li>
+            <a>Decorators</a>
+          </li>
+          <li>
+            <a>Landscaping</a>
+          </li>
+          <li>
+            <a>Electricians</a>
+          </li>
+          <li>
+            <a>Plumbers</a>
+          </li>
         </ul>
       </Categories>
       <Main className="container mx-auto general-padding my-20">
@@ -103,19 +117,19 @@ const Directory = () => {
         <section className="grid grid-cols-4 gap-6">
           {
             // @ts-ignore
-            professionals && professionals.map(professional => (
-              <ProfessionalCard
-                name={`${professional.firstName} ${professional.lastName}`}
-                occupation={professional.occupation}
-                location={`${professional.city}, ${professional.state}`}
-                phone={professional.phoneNumber}
-                profilePhoto={professional.profilePhoto || '/img/dashboard/dashboardperson.svg'}
-                key={professional.id}
-                path={`/directory/${professional.id}`}
-              />
-            ))
+            professionals &&
+              professionals.map((professional: any) => (
+                <ProfessionalCard
+                  name={`${professional.firstName} ${professional.lastName}`}
+                  occupation={professional.occupation}
+                  location={`${professional.city}, ${professional.state}`}
+                  phone={professional.phoneNumber}
+                  profilePhoto={professional.profilePhoto || '/img/dashboard/dashboardperson.svg'}
+                  key={professional.id}
+                  path={`/directory/${professional.id}`}
+                />
+              ))
           }
-
         </section>
       </Main>
       <Footer />

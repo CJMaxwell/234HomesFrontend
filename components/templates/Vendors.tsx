@@ -85,20 +85,23 @@ const Vendors = () => {
         <section className="grid grid-cols-4 gap-6">
           {
             // @ts-ignore
-            vendors && vendors.map(vendor => (
-              <SingleVendorCard
-                imgUrl={`${vendor.banner || '/img/vendors/single-vendor-sidekix-media-I_QC1JICzA0-unsplash.png'}`}
-                height="10.3rem"
-                name={vendor.businessName}
-                occupation={vendor.occupation}
-                location={`${vendor.city}, ${vendor.state}`}
-                phone={vendor.phoneNumber}
-                key={vendor.id}
-                path={`/vendors/${vendor.id}`}
-              />
-            ))
+            vendors &&
+              vendors.map((vendor: any) => (
+                <SingleVendorCard
+                  imgUrl={`${
+                    vendor.banner ||
+                    '/img/vendors/single-vendor-sidekix-media-I_QC1JICzA0-unsplash.png'
+                  }`}
+                  height="10.3rem"
+                  name={vendor.businessName}
+                  occupation={vendor.occupation}
+                  location={`${vendor.city}, ${vendor.state}`}
+                  phone={vendor.phoneNumber}
+                  key={vendor.id}
+                  path={`/vendors/${vendor.id}`}
+                />
+              ))
           }
-
         </section>
       </Main>
       <Footer />

@@ -1,10 +1,10 @@
-import React, { useContext } from 'react';
-import styled, { ThemeContext } from 'styled-components';
+import React from 'react';
+import styled from 'styled-components';
 import { useRouter } from 'next/router';
 
 import withApollo from '../../lib/withApollo';
 import useUser from '../../hooks/useUser';
-import useAllProducts from '../../hooks/useAllProducts';
+import { useRproducts } from '../../hooks/products';
 import Navbar from '../Organisms/Navbar';
 import Offering from '../Organisms/Offering';
 import Footer from './Footer';
@@ -60,12 +60,11 @@ const UserBanner = styled.div<Props>`
 `;
 
 const SingleVendor: React.FC<Props> = ({ imgUrl }) => {
-  const theme = useContext(ThemeContext);
   const router = useRouter();
   const { id } = router.query;
 
   const { user, userLoading } = useUser(id as string);
-  const { products, loading } = useAllProducts(id as string);
+  const { products, loading } = useRproducts(id as string);
 
   return (
     <Wrapper>

@@ -3,10 +3,9 @@ import styled, { ThemeContext } from 'styled-components';
 import Loader from 'react-loader-spinner';
 import Router from 'next/router';
 
-
 import withApollo from '../../lib/withApollo';
 import useProfile from '../../hooks/useProfile';
-import useAllProjects from '../../hooks/useAllProjects';
+import { useRprojects } from '../../hooks/projects';
 import Offering from '../Organisms/Offering';
 import Navbar from '../Organisms/Navbar';
 import DashboardSideBar from '../Organisms/DashboardSideBar';
@@ -44,14 +43,14 @@ const Wrapper = styled.section`
     margin-bottom: 6.6rem;
   }
   .add-button {
-    box-shadow: 0px 3px 10px rgba(0,0,0,0.2);
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
   }
 `;
 
 const DashboardProject = () => {
   const theme = useContext(ThemeContext);
   const { profile, updateProfile, updateProfileLoading: profileLoading } = useProfile();
-  const { projects, loading } = useAllProjects(profile?.id);
+  const { projects, loading } = useRprojects(profile?.id);
   return (
     <Wrapper>
       <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />
@@ -73,7 +72,11 @@ const DashboardProject = () => {
           <section className="main w-3/4">
             <section className="flex items-center justify-between">
               <h1 className="py-10 profile-title">My Projects</h1>
-              <button type="button" onClick={() => Router.push('/dashboard/add-project')} className="h-8 w-8 rounded-full add-button flex items-center justify-center focus:outline-none">
+              <button
+                type="button"
+                onClick={() => Router.push('/dashboard/add-project')}
+                className="h-8 w-8 rounded-full add-button flex items-center justify-center focus:outline-none"
+              >
                 <img src="/img/add-project.svg" className="h-4 w-4" alt="Add new Project" />
               </button>
             </section>
@@ -81,27 +84,24 @@ const DashboardProject = () => {
               <section className="flex justify-center items-center mt-40">
                 <Loader type="TailSpin" color={theme.colors.orange1} height={80} width={80} />
               </section>
-            )
-            }
-            {
-              projects && (
-                <section className="grid grid-cols-3 gap-4 mb-16">
-                  {
-                    // @ts-ignore
-                    projects.map(project => (
-                      <DashboardProjectCard
-                        imgUrl={project.media}
-                        title={project.title}
-                        tags={project.tags}
-                        location={` | ${project.state}`}
-                        key={project?.id}
-                      />
-                    ))
-                  }
-                  <AddNewProject />
-                </section>
-              )
-            }
+            )}
+            {projects && (
+              <section className="grid grid-cols-3 gap-4 mb-16">
+                {
+                  // @ts-ignore
+                  projects.map((project) => (
+                    <DashboardProjectCard
+                      imgUrl={project.media}
+                      title={project.title}
+                      tags={project.tags}
+                      location={` | ${project.state}`}
+                      key={project?.id}
+                    />
+                  ))
+                }
+                <AddNewProject />
+              </section>
+            )}
           </section>
         </section>
       </div>

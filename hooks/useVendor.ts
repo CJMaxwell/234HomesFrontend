@@ -2,30 +2,30 @@ import { useEffect } from 'react';
 import { useLazyQuery } from '@apollo/react-hooks';
 import { VENDORS } from '../graphql/queries/vendor';
 
-export const useVendor = () => {
+const useVendor = () => {
   const [query, { data, loading }] = useLazyQuery(VENDORS);
-  const search = (searchTerm: string, location: string) => {
+  const search = (params: { searchTerm: string; location: string }) => {
+    const { searchTerm, location } = params;
+
     query({
       variables: {
         where: {
           searchTerm,
-          location
-        }
-      }
+          location,
+        },
+      },
     });
   };
 
-
   useEffect(() => {
-    query()
-  }, [])
+    query();
+  }, []);
 
   return {
     search,
     vendors: data?.vendors,
-    loading
+    loading,
   };
-
-}
+};
 
 export default useVendor;
