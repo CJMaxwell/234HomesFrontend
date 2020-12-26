@@ -35,7 +35,7 @@ export const PRODUCT = gql`
 `;
 
 export const PRODUCTS = gql`
-  query products($where:SearchInput) {
+  query products($where:ProductSearchInput) {
     products(where: $where) {
       id
       title

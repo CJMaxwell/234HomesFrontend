@@ -9,7 +9,7 @@ interface Props {
   imgUrl?: string;
   title?: string;
   placeholder?: string;
-  search: (searchTerm: string, location: string) => void;
+  search: (searchTerm: string, location: string, category?: string, minPrice?: number, maxPrice?: number) => void;
   loading?: boolean
 }
 

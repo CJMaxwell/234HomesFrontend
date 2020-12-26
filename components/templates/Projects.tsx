@@ -35,7 +35,6 @@ const Wrapper = styled.section`
 
 const Projects = () => {
   const { projects, loading } = useAllProjects();
-  console.log(projects);
 
   return (
     <Wrapper>
@@ -49,6 +48,8 @@ const Projects = () => {
         title="Find Inspiration For Your Next project!"
         imgUrl="/img/vendors/banner.png"
         placeholder="Search for a projects..."
+        loading={loading}
+        search={(searchTerm, location) => { }}
       />
 
       <div className="general-padding container mx-auto mb-48">

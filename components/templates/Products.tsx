@@ -3,7 +3,7 @@ import styled, { ThemeContext } from 'styled-components';
 import Link from 'next/link';
 
 import withApollo from '../../lib/withApollo';
-import useAllProducts from '../../hooks/useAllProducts';
+import useAllProducts, { useProducts } from '../../hooks/useAllProducts';
 import useProfile from '../../hooks/useProfile';
 import Navbar from '../Organisms/Navbar';
 import ProductListCard from '../Organisms/ProductListCard';
@@ -52,7 +52,8 @@ const Wrapper = styled.div`
 `;
 
 const Products = () => {
-  const { products, loading } = useAllProducts();
+  // const { products, loading } = useAllProducts();
+  const { loading, search, products } = useProducts();
 
   return (
     <Wrapper>
@@ -67,7 +68,7 @@ const Products = () => {
         imgUrl="/img/vendors/banner.png"
         placeholder="Search for a product..."
         loading={loading}
-        search={(searchTerm, location) => { }}
+        search={search}
       />
       <div className="general-padding container mx-auto mb-48">
         <div className="flex justify-between items-center mb-12 mt-20">
