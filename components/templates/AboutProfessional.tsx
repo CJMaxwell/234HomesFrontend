@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
 
-import withApollo from '../../lib/withApollo';
 import useUser from '../../hooks/useUser';
 import { useRprojects } from '../../hooks/projects';
 import Navbar from '../Organisms/Navbar';
@@ -194,7 +193,7 @@ const Wrapper = styled.div`
 
 const Hero = styled.section<Props>`
   height: 16.425rem;
-  background: url('${({ imgUrl }) => imgUrl}'); 
+  background: url('${({ imgUrl }) => imgUrl}');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -551,4 +550,4 @@ const AboutProfessional: React.FC<Props> = ({ imgUrl }) => {
   );
 };
 
-export default withApollo()(AboutProfessional);
+export default AboutProfessional;

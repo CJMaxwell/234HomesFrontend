@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import Loader from 'react-loader-spinner';
 
-import withApollo from '../../lib/withApollo';
 import useProfessionals from '../../hooks/useProfessionals';
 import Navbar from '../Organisms/Navbar';
 import Hero from '../Organisms/Hero';
@@ -137,4 +136,4 @@ const Directory = () => {
   );
 };
 
-export default withApollo()(Directory);
+export default Directory;

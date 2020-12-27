@@ -5,7 +5,6 @@ import Link from 'next/link';
 import useProfile from '../../hooks/useProfile';
 import useAuth from '../../hooks/useAuth';
 
-
 interface Props {
   imgUrl?: string;
   height?: string;
@@ -15,7 +14,7 @@ const Avatar = styled.section<Props>`
   overflow: hidden;
   background-image: url('${({ imgUrl }) => imgUrl}');
   background-repeat: no-repeat;
-  background-size:cover;
+  background-size: cover;
   background-position: center;
 `;
 
@@ -53,7 +52,7 @@ const DashboardSideBar: React.FC<Props> = ({ imgUrl }) => {
           id="file"
           required
           onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-            uploadProfilePhoto(event.target.files?.[0])
+            uploadProfilePhoto(event.target.files?.[0]);
           }}
           type="file"
         />

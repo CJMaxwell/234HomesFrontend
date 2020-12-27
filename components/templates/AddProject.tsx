@@ -11,7 +11,6 @@ import CTA from '../atoms/CTA';
 import Img from '../atoms/Img';
 import fileToDataURI from '../../lib/fileToDataURI';
 import Footer from './Footer';
-import withApollo from '../../lib/withApollo';
 import useAddProject from '../../hooks/useAddProject';
 
 const Wrapper = styled.section`
@@ -360,10 +359,15 @@ const AddProject = () => {
                     disabled={loading}
                   >
                     {loading ? (
-                      <Loader type="ThreeDots" color={theme.colors.orange1} height={20} width={60} />
+                      <Loader
+                        type="ThreeDots"
+                        color={theme.colors.orange1}
+                        height={20}
+                        width={60}
+                      />
                     ) : (
-                        'Submit'
-                      )}
+                      'Submit'
+                    )}
                   </CTA>
                 </section>
               </form>
@@ -376,4 +380,4 @@ const AddProject = () => {
   );
 };
 
-export default withApollo()(AddProject);
+export default AddProject;

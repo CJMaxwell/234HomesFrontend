@@ -1,4 +1,4 @@
-import { gql } from 'apollo-boost';
+import { gql } from '@apollo/client';
 
 export const ADD_PROJECT = gql`
   mutation addProject($file: Upload!, $input: ProjectInput!) {

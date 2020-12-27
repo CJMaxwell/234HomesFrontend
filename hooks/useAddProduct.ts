@@ -1,4 +1,4 @@
-import { useMutation } from '@apollo/react-hooks';
+import { useMutation } from '@apollo/client';
 import { notify } from 'react-notify-toast';
 import Router from 'next/router';
 

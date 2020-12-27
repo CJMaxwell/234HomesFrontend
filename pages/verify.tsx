@@ -2,7 +2,6 @@ import React from 'react';
 import { NextPage, NextPageContext } from 'next';
 
 import Verify from '../components/templates/Verify';
-import withApollo from '../lib/withApollo';
 
 const VerifyPage: NextPage = ({ query }: any) => {
   return (
@@ -24,4 +23,4 @@ export async function getServerSideProps(ctx: NextPageContext) {
     },
   };
 }
-export default withApollo()(VerifyPage);
+export default VerifyPage;

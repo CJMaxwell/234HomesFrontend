@@ -4,7 +4,6 @@ import Link from 'next/link';
 import Router from 'next/router';
 import Loader from 'react-loader-spinner';
 
-import withApollo from '../../lib/withApollo';
 import useHouseTours from '../../hooks/useHouseTours';
 import Navbar from '../Organisms/Navbar';
 import DIYPostCard from '../Organisms/DIYPostCard';
@@ -95,4 +94,4 @@ const DashboardDIY = () => {
   );
 };
 
-export default withApollo()(DashboardDIY);
+export default DashboardDIY;

@@ -54,7 +54,8 @@
     "@typescript-eslint/ban-ts-ignore": "off",
     "@typescript-eslint/no-unused-vars": "error",
     "react-hooks/rules-of-hooks": 2,
-    "react-hooks/exhaustive-deps": 1
+    "react-hooks/exhaustive-deps": 1,
+    "react/react-in-jsx-scope": "off"
   },
   "settings": {
     "import/parsers": {

@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
 
-import withApollo from '../../lib/withApollo';
 import useUser from '../../hooks/useUser';
 import { useRproducts } from '../../hooks/products';
 import Navbar from '../Organisms/Navbar';
@@ -54,7 +53,7 @@ const UserBanner = styled.div<Props>`
   overflow: hidden;
   background-image: url('${({ imgUrl }) => imgUrl}');
   background-repeat: no-repeat;
-  background-size:cover;
+  background-size: cover;
   background-position: center;
   height: 29rem;
 `;
@@ -140,4 +139,4 @@ const SingleVendor: React.FC<Props> = ({ imgUrl }) => {
   );
 };
 
-export default withApollo()(SingleVendor);
+export default SingleVendor;

@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from '@apollo/react-hooks';
+import { useMutation, useQuery } from '@apollo/client';
 import { useState, useEffect } from 'react';
 import { notify } from 'react-notify-toast';
 import { UPDATE_PROFILE, UPLOAD_PROFILE_PHOTO, UPLOAD_BANNER } from '../graphql/mutations/profile';
@@ -15,16 +15,17 @@ export default function useProfile() {
   const [profilePhotoMutate, { loading: profilePhotoLoading }] = useMutation(UPLOAD_PROFILE_PHOTO);
   const [bannerMutate, { loading: bannerLoading }] = useMutation(UPLOAD_BANNER);
 
-
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  function updateProfile(variables: any, callback = () => { }) {
-    updateProfileMutation(variables).then(({ data }) => {
-      setProfile(data.updateProfile);
-      notify.show('Profile updated successfully', 'success');
-      callback();
-    }).catch(() => {
-      notify.show('Profile was not updated', 'error');
-    });
+  function updateProfile(variables: any, callback = () => {}) {
+    updateProfileMutation(variables)
+      .then(({ data }) => {
+        setProfile(data.updateProfile);
+        notify.show('Profile updated successfully', 'success');
+        callback();
+      })
+      .catch(() => {
+        notify.show('Profile was not updated', 'error');
+      });
   }
 
   const { data, refetch, loading: getProfileLoading } = useQuery<Query>(PROFILE);
@@ -32,7 +33,6 @@ export default function useProfile() {
   useEffect(() => {
     setProfile(data?.profile);
   }, [data]);
-
 
   function uploadProfilePhoto(file: any) {
     profilePhotoMutate({ variables: { file } }).then(() => {
@@ -55,6 +55,6 @@ export default function useProfile() {
     uploadProfilePhoto,
     profilePhotoLoading,
     uploadBanner,
-    bannerLoading
+    bannerLoading,
   };
 }

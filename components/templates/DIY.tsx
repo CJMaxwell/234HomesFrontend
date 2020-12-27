@@ -8,7 +8,6 @@ import Button from '../atoms/Button';
 import Footer from './Footer';
 import DIYPostCard from '../Organisms/DIYPostCard';
 import useDIY from '../../hooks/useDIY';
-import withApollo from '../../lib/withApollo';
 
 const Wrapper = styled.div`
   .recommended {
@@ -168,4 +167,4 @@ const DIY = () => {
   );
 };
 
-export default withApollo()(DIY);
+export default DIY;

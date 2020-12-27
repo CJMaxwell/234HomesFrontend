@@ -9,7 +9,6 @@ import MostTalkedHouseTours from '../Organisms/MostTalkedHouseTours';
 import Footer from './Footer';
 import HouseTourImage from '../atoms/HouseTourImage';
 import useHouseTours from '../../hooks/useHouseTours';
-import withApollo from '../../lib/withApollo';
 
 const Wrapper = styled.section`
   .breadcrumb {
@@ -81,9 +80,7 @@ const SingleHouseTour = () => {
           <li>
             <img src="/img/direction.svg" alt="Breadcrumb navigation" />
           </li>
-          <li>
-            {houseTour?.title}
-          </li>
+          <li>{houseTour?.title}</li>
         </ul>
         {houseTour && (
           <section className="pt-20">
@@ -116,4 +113,4 @@ const SingleHouseTour = () => {
   );
 };
 
-export default withApollo()(SingleHouseTour);
+export default SingleHouseTour;

@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import withApollo from '../../lib/withApollo';
 import Offering from '../Organisms/Offering';
 import Navbar from '../Organisms/Navbar';
 import DashboardSideBar from '../Organisms/DashboardSideBar';
@@ -14,7 +13,7 @@ const Wrapper = styled.section`
   .breadcrumb li:not(:last-child) {
     padding-right: 0.8rem;
   }
-    .breadcrumb {
+  .breadcrumb {
     margin-top: 3.175rem;
     margin-bottom: 2.35rem;
     color: ${({ theme }) => theme.colors.gray5};
@@ -30,7 +29,8 @@ const Wrapper = styled.section`
   .profile-title {
     text-transform: uppercase;
   }
-  .profile-title,.profile-desc {
+  .profile-title,
+  .profile-desc {
     color: ${({ theme }) => theme.colors.gray2};
     font-size: 0.8rem;
     font-weight: 600;
@@ -45,7 +45,6 @@ const Wrapper = styled.section`
     margin-right: 10px;
     padding-left: 5px;
     padding-right: 5px;
-
   }
   fieldset {
     border: 1px solid ${({ theme }) => theme.colors.gray17};
@@ -61,16 +60,18 @@ const Wrapper = styled.section`
   .profile-title {
     text-transform: uppercase;
   }
-  .profile-title,.profile-desc {
+  .profile-title,
+  .profile-desc {
     color: ${({ theme }) => theme.colors.gray2};
     font-size: 0.8rem;
     font-weight: 600;
   }
   .profile-label {
-    color:${({ theme }) => theme.colors.gray11};
+    color: ${({ theme }) => theme.colors.gray11};
     font-size: 0.8rem;
   }
-  textarea::placeholder, input::placeholder {
+  textarea::placeholder,
+  input::placeholder {
     color: ${({ theme }) => theme.colors.gray17};
     font-size: 0.7rem;
   }
@@ -100,8 +101,6 @@ const Wrapper = styled.section`
     font-weight: 600;
   }
 `;
-
-
 
 const CreateSavedItemList = () => {
   return (
@@ -134,13 +133,18 @@ const CreateSavedItemList = () => {
               </section>
               <section className="w-full text-center pt-4">
                 <h1 className="drag-and-drop">Drag and drop an images</h1>
-                <p>Or <a className="browse">browse</a> to choose a file</p>
+                <p>
+                  Or <a className="browse">browse</a> to choose a file
+                </p>
               </section>
             </section>
             <section className="flex items-center justify-between pt-8">
               <fieldset className="w-full">
                 <legend className="profile-label">Name</legend>
-                <input className="fieldset-input overflow-hidden h-10 profile-desc w-full focus:outline-none" placeholder="Lekki Kitchens &amp; Bathrooms" />
+                <input
+                  className="fieldset-input overflow-hidden h-10 profile-desc w-full focus:outline-none"
+                  placeholder="Lekki Kitchens &amp; Bathrooms"
+                />
               </fieldset>
             </section>
             <section className="flex items-center justify-between pt-8">
@@ -153,14 +157,20 @@ const CreateSavedItemList = () => {
             </section>
 
             <section className="flex justify-center mt-12 mb-16">
-              <CTA type="button" className="update-profile focus:outline-none" padding="0.8rem 2.4rem;">Save</CTA>
+              <CTA
+                type="button"
+                className="update-profile focus:outline-none"
+                padding="0.8rem 2.4rem;"
+              >
+                Save
+              </CTA>
             </section>
           </section>
         </section>
       </div>
       <Footer />
     </Wrapper>
-  )
-}
+  );
+};
 
-export default withApollo()(CreateSavedItemList);
+export default CreateSavedItemList;

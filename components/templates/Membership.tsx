@@ -6,7 +6,6 @@ import Navbar from '../Organisms/Navbar';
 import Offering from '../Organisms/Offering';
 import Footer from './Footer';
 import useSubscription from '../../hooks/useSubscription';
-import withApollo from '../../lib/withApollo';
 
 const Wrapper = styled.section`
   .breadcrumb li:not(:last-child) {
@@ -274,4 +273,4 @@ const Membership = () => {
   );
 };
 
-export default withApollo()(Membership);
+export default Membership;

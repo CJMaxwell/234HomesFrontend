@@ -3,7 +3,6 @@ import styled, { ThemeContext } from 'styled-components';
 import { Formik } from 'formik';
 import Loader from 'react-loader-spinner';
 
-import withApollo from '../../lib/withApollo';
 import Img from '../atoms/Img';
 import fileToDataURI from '../../lib/fileToDataURI';
 import useProducts from '../../hooks/useAddProduct';
@@ -164,11 +163,7 @@ const AddProduct = () => {
                     id="file"
                     required
                     onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                      // setFieldValue('file', event?.currentTarget?.files?.[0]);
-                      // console.log(event?.currentTarget?.files?.[0]);
-                      //console.log(event.target.files?.[0]);
                       setFile(event.target.files?.[0]);
-                      //setFile(event?.currentTarget?.files?.[0]);
                     }}
                     type="file"
                   />
@@ -345,8 +340,8 @@ const AddProduct = () => {
                         width={60}
                       />
                     ) : (
-                        'Submit'
-                      )}
+                      'Submit'
+                    )}
                   </CTA>
                 </section>
               </form>
@@ -359,4 +354,4 @@ const AddProduct = () => {
   );
 };
 
-export default withApollo()(AddProduct);
+export default AddProduct;

@@ -17,8 +17,10 @@ const MainWrapper = styled.div`
     height: 7.7244rem;
   }
 `;
+// background: url('${({ imgUrl }) => imgUrl}'), linear-gradient(rgba(0, 0, 0, 0.5) rgba(0,0,0, 0.5));
+
 const Wrapper = styled.section<Props>`
-  background: url('${({ imgUrl }) => imgUrl}'), linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5));
+  background: url('${({ imgUrl }) => imgUrl}'), linear-gradient(rgba(0, 0, 0, 0.5));
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -32,7 +34,7 @@ const Wrapper = styled.section<Props>`
   .signIn {
     border: 1px solid ${({ theme }) => theme.colors.orange1};
     background-color: ${({ theme }) => theme.colors.orange1};
-  } 
+  }
 
   .form-wrap {
     border-radius: 32px;
@@ -40,7 +42,7 @@ const Wrapper = styled.section<Props>`
   .input-addon {
     padding-left: 0.95rem;
     color: ${({ theme }) => theme.colors.gray1};
-    font-weight: 600
+    font-weight: 600;
   }
   input::placeholder {
     text-align: center;
@@ -52,9 +54,7 @@ const Wrapper = styled.section<Props>`
   }
   .social-icons {
     padding: 0.8rem 0.5rem;
-
   }
- 
 `;
 
 const Login: React.FC<Props> = () => {
@@ -152,8 +152,8 @@ const Login: React.FC<Props> = () => {
                     {loading ? (
                       <Loader type="ThreeDots" color={theme.colors.white} height={20} width={60} />
                     ) : (
-                        'Sign In'
-                      )}
+                      'Sign In'
+                    )}
                   </button>
                 </div>
               </form>

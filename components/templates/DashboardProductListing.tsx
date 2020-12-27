@@ -3,7 +3,6 @@ import styled, { ThemeContext } from 'styled-components';
 import Router from 'next/router';
 import Loader from 'react-loader-spinner';
 
-import withApollo from '../../lib/withApollo';
 import useProfile from '../../hooks/useProfile';
 import { useRproducts } from '../../hooks/products';
 import Navbar from '../Organisms/Navbar';
@@ -108,4 +107,4 @@ const DashboardProductListing = () => {
   );
 };
 
-export default withApollo()(DashboardProductListing);
+export default DashboardProductListing;

@@ -1,4 +1,4 @@
-import { gql } from 'apollo-boost';
+import { gql } from '@apollo/client';
 
 export const USER_PRODUCTS = gql`
   query userProducts($id: String!) {
@@ -35,7 +35,7 @@ export const PRODUCT = gql`
 `;
 
 export const PRODUCTS = gql`
-  query products($where:ProductSearchInput) {
+  query products($where: ProductSearchInput) {
     products(where: $where) {
       id
       title

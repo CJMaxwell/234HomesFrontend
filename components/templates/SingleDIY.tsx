@@ -8,7 +8,7 @@ import UserCard from '../molecules/UserCard';
 import MostTalkedDIY from '../Organisms/MostTalkedDIY';
 import Footer from './Footer';
 import useDIY from '../../hooks/useDIY';
-import withApollo from '../../lib/withApollo';
+
 import YouTubeContainer from '../Organisms/YouTubeContainer';
 
 const Main = styled.section`
@@ -124,4 +124,4 @@ const SingleDIY = () => {
   );
 };
 
-export default withApollo()(SingleDIY);
+export default SingleDIY;

@@ -1,4 +1,4 @@
-import { gql } from 'apollo-boost';
+import { gql } from '@apollo/client';
 
 export const UPDATE_PROFILE = gql`
   mutation updateProfile($input: UpdateProfileInput!) {
@@ -29,16 +29,16 @@ export const UPDATE_PROFILE = gql`
 `;
 
 export const UPLOAD_PROFILE_PHOTO = gql`
-  mutation uploadProfilePhoto($file: Upload!){
-    uploadProfilePhoto(file: $file){
+  mutation uploadProfilePhoto($file: Upload!) {
+    uploadProfilePhoto(file: $file) {
       profilePhoto
     }
   }
 `;
 
 export const UPLOAD_BANNER = gql`
-  mutation uploadBanner($file: Upload!){
-    uploadBanner(file: $file){
+  mutation uploadBanner($file: Upload!) {
+    uploadBanner(file: $file) {
       banner
     }
   }
