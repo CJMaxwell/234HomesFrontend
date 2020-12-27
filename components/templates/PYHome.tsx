@@ -49,6 +49,8 @@ const Wrapper = styled.section`
 
 
 const PYHome = () => {
+
+
   return (
     <Wrapper>
       <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />

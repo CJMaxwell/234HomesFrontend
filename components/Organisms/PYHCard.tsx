@@ -20,19 +20,37 @@ const ProjectImg = styled.section<Props>`
 const Wrapper = styled.a.attrs({
   className: "max-w-xs overflow-hidden"
 })`
-  .proj-title{
+  .proj-title {
     color: ${({ theme }) => theme.colors.gray2};
     font-size: 0.8rem;
     font-weight: 600;
+  }
+  
+  .input-hidden {
+    position: absolute;
+    left: -9999px;
+  }
+
+  /* CHECKED STYLES */
+  input[type=radio]:checked + section.planHome {
+    border: 1px solid #090;
   }
 `;
 
 const PYHCard: React.FC<Props> = ({ imgUrl, height, title }) => {
   return (
-    <Wrapper >
-      <ProjectImg imgUrl={imgUrl} height={height} />
-      <section className="py-4">
-        <p className="proj-title">{title}</p>
+    <Wrapper>
+      <input
+        type="radio"
+        name="plan-home"
+        value={title}
+        className="absolute opacity-0 h-full"
+      />
+      <section className="planHome">
+        <ProjectImg imgUrl={imgUrl} height={height} />
+        <section className="py-4">
+          <p className="proj-title">{title}</p>
+        </section>
       </section>
     </Wrapper>
   );

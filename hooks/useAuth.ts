@@ -48,7 +48,12 @@ export default function useAuth() {
         Cookies.set('accessToken', response.accessToken);
         // Cookies.set('role', response.user.role);
 
-        Router.push('/dashboard');
+        if (variables.input.accountType !== 'individual') {
+          Router.push('/membership-package');
+        } else {
+          Router.push('/dashboard');
+        }
+
       })
       .catch((err) => {
         notify.show(err.graphQLErrors?.[0].message, 'error');
