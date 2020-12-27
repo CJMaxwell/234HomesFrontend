@@ -1,4 +1,4 @@
-import { useMutation, useApolloClient } from '@apollo/react-hooks';
+import { useMutation } from '@apollo/client';
 import Router from 'next/router';
 import { useEffect, useState } from 'react';
 import { notify } from 'react-notify-toast';
@@ -17,13 +17,13 @@ function useOnline() {
       setOnline(true);
     }
   }, []);
-  const client = useApolloClient();
+  // const client = useApolloClient();
 
   function logOut() {
-    client.clearStore().then(() => {
-      Cookies.remove('accessToken');
-      Router.push('/login');
-    });
+    // client.clearStore().then(() => {
+    Cookies.remove('accessToken');
+    Router.push('/login');
+    // });
   }
 
   return { online, logOut };
@@ -53,7 +53,6 @@ export default function useAuth() {
         } else {
           Router.push('/dashboard');
         }
-
       })
       .catch((err) => {
         notify.show(err.graphQLErrors?.[0].message, 'error');

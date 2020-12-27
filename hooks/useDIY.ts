@@ -1,4 +1,4 @@
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery } from '@apollo/client';
 import { DIY, DIYS } from '../graphql/queries/diy';
 
 export default function useDIY(id?: string) {

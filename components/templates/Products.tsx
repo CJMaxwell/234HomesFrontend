@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import withApollo from '../../lib/withApollo';
 import { useProducts } from '../../hooks/products';
 import useProfile from '../../hooks/useProfile';
 import Navbar from '../Organisms/Navbar';
@@ -117,4 +116,4 @@ const Products = () => {
   );
 };
 
-export default withApollo()(Products);
+export default Products;

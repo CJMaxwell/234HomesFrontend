@@ -1,4 +1,4 @@
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery } from '@apollo/client';
 import { HOUSE_TOUR, HOUSE_TOURS } from '../graphql/queries/houseTour';
 
 export default function useHouseTours(id?: string) {

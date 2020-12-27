@@ -1,4 +1,4 @@
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery } from '@apollo/client';
 import { PRODUCT } from '../graphql/queries/product';
 
 export default function useProduct(id: string) {

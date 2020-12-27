@@ -4,7 +4,6 @@ import Link from 'next/link';
 import Router from 'next/router';
 import Loader from 'react-loader-spinner';
 
-import withApollo from '../../lib/withApollo';
 import useHouseTours from '../../hooks/useHouseTours';
 import Navbar from '../Organisms/Navbar';
 import DashboardHouseTourCard from '../Organisms/DashboardHousTourCard';
@@ -99,4 +98,4 @@ const DashboardHouseTours = () => {
   );
 };
 
-export default withApollo()(DashboardHouseTours);
+export default DashboardHouseTours;

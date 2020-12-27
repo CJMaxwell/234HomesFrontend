@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useQuery, useLazyQuery } from '@apollo/react-hooks';
+import { useQuery, useLazyQuery } from '@apollo/client';
 import { PROJECTS, USER_PROJECTS } from '../graphql/queries/project';
 
 export const useRprojects = (id?: string) => {

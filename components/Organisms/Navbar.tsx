@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 
-import withApollo from '../../lib/withApollo';
 import useAuth from '../../hooks/useAuth';
 import useProfile from '../../hooks/useProfile';
 import DropdownMenu from './DropdownMenu';
@@ -31,8 +30,6 @@ const Navbar = () => {
   const [dropdown, setDropdown] = useState(false);
 
   const toggleMenu = () => setDropdown(!dropdown);
-
-
 
   return (
     <Wrapper className="container mx-auto flex items-center justify-between py-6 general-padding">
@@ -94,18 +91,15 @@ const Navbar = () => {
         )}
 
         {online && (
-
           <li className="relative" onClick={toggleMenu}>
             <a>
               <img
                 className="h-10 w-10 object-cover rounded-full inline-block mr-2"
                 src={profile?.profilePhoto || '/img/dashboard/dashboardperson.svg'}
-                alt=''
+                alt=""
               />
             </a>
-            {
-              dropdown && <DropdownMenu toggleMenu={toggleMenu} />
-            }
+            {dropdown && <DropdownMenu toggleMenu={toggleMenu} />}
           </li>
         )}
       </ul>
@@ -113,4 +107,4 @@ const Navbar = () => {
   );
 };
 
-export default withApollo()(Navbar);
+export default Navbar;

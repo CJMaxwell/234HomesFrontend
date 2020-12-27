@@ -1,4 +1,4 @@
-import { gql } from 'apollo-boost';
+import { gql } from '@apollo/client';
 
 export const SEND_PHONE_VERIFICATION = gql`
   mutation sendPhoneVerification($phoneNumber: String!) {

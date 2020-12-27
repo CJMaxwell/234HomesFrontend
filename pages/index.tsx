@@ -1,11 +1,9 @@
 import { NextPage } from 'next';
 import React from 'react';
-import withApollo from '../lib/withApollo';
 
 import Home from '../components/templates/Home';
 
 const IndexPage: NextPage = () => {
-  // const theme = useContext(ThemeContext);
   return (
     <>
       <Home />
@@ -13,4 +11,4 @@ const IndexPage: NextPage = () => {
   );
 };
 
-export default withApollo({ ssr: true })(IndexPage);
+export default IndexPage;

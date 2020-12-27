@@ -1,9 +1,8 @@
-import { useMutation, useQuery } from '@apollo/react-hooks';
+import { useMutation, useQuery } from '@apollo/client';
 import { notify } from 'react-notify-toast';
 import Router from 'next/router';
 
 import { ADD_PROJECT } from '../graphql/mutations/project';
-
 
 export default function useAddProject() {
   const [mutate, { loading: addProjectLoading }] = useMutation(ADD_PROJECT);

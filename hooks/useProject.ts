@@ -1,4 +1,4 @@
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery } from '@apollo/client';
 import { PROJECT } from '../graphql/queries/project';
 
 export default function useProject(id: string) {

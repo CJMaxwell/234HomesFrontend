@@ -1,24 +1,37 @@
 import React from 'react';
-import App from 'next/app';
+// import App from 'next/app';
 import Notifications from 'react-notify-toast';
+import { ApolloProvider } from '@apollo/client';
 import { ThemeProvider } from 'styled-components';
+import { useApollo } from '../lib/apolloClient';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import '../styles/style.css';
 import { theme } from '../styles/theme';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import 'tippy.js/dist/tippy.css';
 
-class MyApp extends App<any> {
-  render() {
-    const { Component, pageProps } = this.props;
-    return (
-      <ThemeProvider theme={theme}>
+// class MyApp extends App<any> {
+//   render() {
+//     const { Component, pageProps } = this.props;
+//     return (
+//       <ThemeProvider theme={theme}>
+//         <Notifications />
+//         <Component {...pageProps} />
+//       </ThemeProvider>
+//     );
+//   }
+// }
+
+export default function App({ Component, pageProps }) {
+  const apolloClient = useApollo(pageProps.initialApolloState);
+
+  return (
+    <ThemeProvider theme={theme}>
+      <ApolloProvider client={apolloClient}>
         <Notifications />
         <Component {...pageProps} />
-      </ThemeProvider>
-    );
-  }
+      </ApolloProvider>
+    </ThemeProvider>
+  );
 }
-
-export default MyApp;

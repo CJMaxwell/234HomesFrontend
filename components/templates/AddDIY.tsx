@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Formik } from 'formik';
 
-import withApollo from '../../lib/withApollo';
 import Offering from '../Organisms/Offering';
 import Navbar from '../Organisms/Navbar';
 import DashboardSideBar from '../Organisms/DashboardSideBar';
@@ -9,7 +9,6 @@ import DashboardSideBar from '../Organisms/DashboardSideBar';
 import Footer from './Footer';
 import CTA from '../atoms/CTA';
 import useAddDiy from '../../hooks/useAddDiy';
-import { Formik } from 'formik';
 import useProfile from '../../hooks/useProfile';
 
 const Wrapper = styled.section`
@@ -216,4 +215,4 @@ const AddDIY = () => {
   );
 };
 
-export default withApollo()(AddDIY);
+export default AddDIY;

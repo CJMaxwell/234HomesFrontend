@@ -3,7 +3,6 @@ import styled, { ThemeContext } from 'styled-components';
 import Loader from 'react-loader-spinner';
 import Router from 'next/router';
 
-import withApollo from '../../lib/withApollo';
 import useProfile from '../../hooks/useProfile';
 import { useRprojects } from '../../hooks/projects';
 import Offering from '../Organisms/Offering';
@@ -110,4 +109,4 @@ const DashboardProject = () => {
   );
 };
 
-export default withApollo()(DashboardProject);
+export default DashboardProject;

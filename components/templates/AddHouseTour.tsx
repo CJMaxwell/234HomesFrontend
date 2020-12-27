@@ -3,7 +3,6 @@ import styled, { ThemeContext } from 'styled-components';
 import { Formik, FieldArray } from 'formik';
 import Loader from 'react-loader-spinner';
 
-import withApollo from '../../lib/withApollo';
 import Offering from '../Organisms/Offering';
 import Navbar from '../Organisms/Navbar';
 import DashboardSideBar from '../Organisms/DashboardSideBar';
@@ -107,8 +106,6 @@ const Wrapper = styled.section`
     color: ${({ theme }) => theme.colors.orange1};
   }
 `;
-
-
 
 const AddHouseTour = () => {
   const { profile } = useProfile();
@@ -331,8 +328,8 @@ const AddHouseTour = () => {
                         width={60}
                       />
                     ) : (
-                        'Submit'
-                      )}
+                      'Submit'
+                    )}
                   </CTA>
                 </section>
               </form>
@@ -345,4 +342,4 @@ const AddHouseTour = () => {
   );
 };
 
-export default withApollo()(AddHouseTour);
+export default AddHouseTour;

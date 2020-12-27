@@ -9,7 +9,6 @@ import HouseTourCard from '../Organisms/HouseTourCard';
 import Button from '../atoms/Button';
 import Footer from './Footer';
 import useHouseTours from '../../hooks/useHouseTours';
-import withApollo from '../../lib/withApollo';
 
 const Wrapper = styled.div`
   .recommended {
@@ -192,4 +191,4 @@ const HouseTours = () => {
   );
 };
 
-export default withApollo()(HouseTours);
+export default HouseTours;

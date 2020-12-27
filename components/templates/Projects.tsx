@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import Hero from '../Organisms/Hero';
 
-import withApollo from '../../lib/withApollo';
 import { useProjects } from '../../hooks/projects';
 import Navbar from '../Organisms/Navbar';
 import Offering from '../Organisms/Offering';
@@ -94,4 +93,4 @@ const Projects = () => {
   );
 };
 
-export default withApollo()(Projects);
+export default Projects;

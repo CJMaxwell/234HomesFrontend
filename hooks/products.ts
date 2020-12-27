@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useQuery, useLazyQuery } from '@apollo/react-hooks';
+import { useQuery, useLazyQuery } from '@apollo/client';
 import { PRODUCTS, USER_PRODUCTS } from '../graphql/queries/product';
 
 export const useRproducts = (id?: string) => {

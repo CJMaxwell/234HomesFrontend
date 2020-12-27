@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import Masonry from 'react-masonry-css';
 import Link from 'next/link';
 
-import withApollo from '../../lib/withApollo';
 import useGallery from '../../hooks/useGallery';
 import Offering from '../Organisms/Offering';
 import Navbar from '../Organisms/Navbar';
@@ -60,7 +59,7 @@ const Wrapper = styled.section`
 
 const Gallery = () => {
   const { galleries, loading } = useGallery();
-  console.log(galleries, '====', loading);
+
   return (
     <Wrapper>
       <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />
@@ -120,19 +119,15 @@ const Gallery = () => {
           </Link>
           {
             // @ts-ignore
-            galleries && galleries.map(gallery => (
-              <Link href={`gallery/${gallery.id}`}>
-                <div className="cursor-pointer">
-                  <GalleryItem
-                    imgUrl={gallery.media}
-                    title={gallery.title}
-                    height="20.65rem"
-                  />
-                </div>
-              </Link>
-            ))
+            galleries &&
+              galleries.map((gallery) => (
+                <Link href={`gallery/${gallery.id}`}>
+                  <div className="cursor-pointer">
+                    <GalleryItem imgUrl={gallery.media} title={gallery.title} height="20.65rem" />
+                  </div>
+                </Link>
+              ))
           }
-
         </Masonry>
         <div className="flex justify-center items-center loading">
           <img src="/img/gallery/loading.svg" className="text-center h-20 w-20" alt="Loading" />
@@ -143,4 +138,4 @@ const Gallery = () => {
   );
 };
 
-export default withApollo()(Gallery);
+export default Gallery;
