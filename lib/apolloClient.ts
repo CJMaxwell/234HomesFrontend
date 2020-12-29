@@ -28,7 +28,7 @@ function createApolloClient() {
     link: errLink.concat(
       createUploadLink({
         uri: `${process.env.NEXT_PUBLIC_SERVER_URI}/graphql`,
-        credentials: 'same-origin',
+        credentials: 'include',
       }),
     ),
   });
