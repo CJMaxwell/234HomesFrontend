@@ -25,10 +25,10 @@ function createApolloClient() {
   return new ApolloClient({
     ssrMode: true,
     cache: new InMemoryCache(),
+    credentials: 'include',
     link: errLink.concat(
       createUploadLink({
         uri: `${process.env.NEXT_PUBLIC_SERVER_URI}/graphql`,
-        credentials: 'include',
       }),
     ),
   });
