@@ -8,7 +8,7 @@ let apolloClient;
 const errLink = onError(
   ({
     // networkError,
-    graphQLErrors,
+    graphQLErrors = [],
   }) => {
     const errorCodes = graphQLErrors.map((err) => err.extensions.code);
     if (errorCodes.includes('UNAUTHENTICATED')) {
