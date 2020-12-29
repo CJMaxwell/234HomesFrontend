@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 
-import useAuth from '../../hooks/useAuth';
+import { useOnline } from '../../hooks/useAuth';
 import useProfile from '../../hooks/useProfile';
 import DropdownMenu from './DropdownMenu';
 
@@ -24,7 +24,7 @@ const Wrapper = styled.nav`
 `;
 
 const Navbar = () => {
-  const { online } = useAuth();
+  const { online } = useOnline();
   const { profile } = useProfile();
 
   const [dropdown, setDropdown] = useState(false);

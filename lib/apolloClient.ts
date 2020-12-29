@@ -1,19 +1,36 @@
 import { useMemo } from 'react';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
-import Cookies from 'js-cookie';
+import { onError } from '@apollo/client/link/error';
 import { createUploadLink } from 'apollo-upload-client';
+import Router from 'next/router';
 
 let apolloClient;
+const errLink = onError(
+  ({
+    // networkError,
+    graphQLErrors,
+  }) => {
+    const errorCodes = graphQLErrors.map((err) => err.extensions.code);
+    if (errorCodes.includes('UNAUTHENTICATED')) {
+      if (typeof window !== 'undefined') {
+        Router.push('/login');
+      } else {
+        console.error(graphQLErrors);
+      }
+    }
+  },
+);
 
 function createApolloClient() {
   return new ApolloClient({
+    ssrMode: true,
     cache: new InMemoryCache(),
-    link: createUploadLink({
-      uri: `${process.env.NEXT_PUBLIC_SERVER_URI}/graphql`,
-      headers: {
-        Authorization: Cookies.get('accessToken'),
-      },
-    }),
+    link: errLink.concat(
+      createUploadLink({
+        uri: `${process.env.NEXT_PUBLIC_SERVER_URI}/graphql`,
+        credentials: 'include',
+      }),
+    ),
   });
 }
 

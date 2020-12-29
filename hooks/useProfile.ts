@@ -42,9 +42,13 @@ export default function useProfile() {
   }
 
   function uploadBanner(file: any) {
-    bannerMutate({ variables: { file } }).then(() => {
-      //notify.show('Banner updated successfully', 'success');
-    });
+    bannerMutate({ variables: { file } })
+      .then(() => {
+        console.log('uploaded');
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }
 
   return {

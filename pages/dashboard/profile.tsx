@@ -3,8 +3,6 @@ import React from 'react';
 
 import DashboardProfile from '../../components/templates/DashboardProfile';
 
-import WithAuth from '../../hoc/WithAuth';
-
 const DashboardProfilePage: NextPage = () => {
   return (
     <>
@@ -13,4 +11,4 @@ const DashboardProfilePage: NextPage = () => {
   );
 };
 
-export default WithAuth(DashboardProfilePage);
+export default DashboardProfilePage;

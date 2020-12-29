@@ -3,8 +3,6 @@ import React from 'react';
 
 import Directory from '../../components/templates/Directory';
 
-import WithAuth from '../../hoc/WithAuth';
-
 const DirectoryPage: NextPage = () => {
   return (
     <>
@@ -13,4 +11,4 @@ const DirectoryPage: NextPage = () => {
   );
 };
 
-export default WithAuth(DirectoryPage);
+export default DirectoryPage;
