@@ -11,8 +11,7 @@ export const SEND_PHONE_VERIFICATION = gql`
 export const REGISTER_BY_PHONE = gql`
   mutation registerByPhone($input: RegisterByPhoneInput!) {
     registerByPhone(input: $input) {
-      accessToken
-      expiresAt
+      message
     }
   }
 `;
@@ -20,8 +19,15 @@ export const REGISTER_BY_PHONE = gql`
 export const LOGIN_BY_PHONE = gql`
   mutation loginByPhone($input: LoginByPhoneInput!) {
     loginByPhone(input: $input) {
-      accessToken
-      expiresAt
+      message
+    }
+  }
+`;
+
+export const LOG_OUT = gql`
+  mutation logOut {
+    logOut {
+      message
     }
   }
 `;

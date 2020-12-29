@@ -1,5 +1,4 @@
 import React from 'react';
-// import App from 'next/app';
 import Notifications from 'react-notify-toast';
 import { ApolloProvider } from '@apollo/client';
 import { ThemeProvider } from 'styled-components';
@@ -10,18 +9,6 @@ import { theme } from '../styles/theme';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import 'tippy.js/dist/tippy.css';
-
-// class MyApp extends App<any> {
-//   render() {
-//     const { Component, pageProps } = this.props;
-//     return (
-//       <ThemeProvider theme={theme}>
-//         <Notifications />
-//         <Component {...pageProps} />
-//       </ThemeProvider>
-//     );
-//   }
-// }
 
 export default function App({ Component, pageProps }) {
   const apolloClient = useApollo(pageProps.initialApolloState);

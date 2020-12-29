@@ -8,6 +8,7 @@ import SignUpNavbar from '../Organisms/SignUpNavbar';
 import Footer from './Footer';
 import phoneSignupSchema from '../../schema/phoneSignupSchema';
 import useSignUp from '../../hooks/useAuth';
+import { useLocalStorage } from '../../hooks/storage';
 
 interface Props {
   code?: string;
@@ -19,11 +20,13 @@ const MainWrapper = styled.div`
     height: 7.7244rem;
   }
 `;
+
 const Wrapper = styled.section<Props>`
-  background: url('${({ imgUrl }) => imgUrl}'), linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5));
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  background: url('${({ imgUrl }) => imgUrl}'),
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
 
   .code-input {
     display: flex !important;
@@ -39,14 +42,14 @@ const Wrapper = styled.section<Props>`
   .bg-signup {
     border: 1px solid ${({ theme }) => theme.colors.orange1};
     background-color: ${({ theme }) => theme.colors.orange1};
-  } 
+  }
   .form-wrap {
     border-radius: 32px;
   }
   .input-addon {
     padding-left: 0.95rem;
     color: ${({ theme }) => theme.colors.gray1};
-    font-weight: 600
+    font-weight: 600;
   }
   input::placeholder {
     text-align: center;
@@ -78,12 +81,26 @@ const ErrorMsg = styled.span`
   z-index: 999;
 `;
 
-const ReactCodeInput = dynamic(import('react-code-input'));
+const ReactCodeInput = dynamic(() => import('react-code-input'), { ssr: false });
 
-const Verify: React.FC<Props> = ({ code }) => {
+interface Data {
+  phoneNumber: string;
+  firstName: string;
+  lastName: string;
+  businessName: string;
+  accountType: string;
+  email: string;
+  city: string;
+  state: string;
+  dialCode: string;
+}
+
+const Verify: React.FC<Props> = () => {
   const theme = useContext(ThemeContext);
   const { registerByPhone, registerByPhoneLoading: loading } = useSignUp();
-  const { dialCode, phoneNumber, ...step1 } = JSON.parse(atob(code as string));
+  const { data, clear } = useLocalStorage<Data>('reg', {} as Data);
+
+  const { dialCode, phoneNumber, ...step1 } = data;
 
   return (
     <MainWrapper>
@@ -121,6 +138,8 @@ const Verify: React.FC<Props> = ({ code }) => {
                   },
                 },
               });
+
+              clear();
             }}
             validationSchema={phoneSignupSchema}
             validateOnBlur

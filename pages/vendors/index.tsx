@@ -2,14 +2,9 @@ import { NextPage } from 'next';
 import React from 'react';
 
 import Vendors from '../../components/templates/Vendors';
-import WithAuth from '../../hoc/WithAuth';
 
 const VendorPage: NextPage = () => {
-  return (
-    <>
-      <Vendors />
-    </>
-  );
+  return <Vendors />;
 };
 
-export default WithAuth(VendorPage);
+export default VendorPage;

@@ -10,6 +10,7 @@ import useCountries from '../../hooks/useCountries';
 import useSignup from '../../hooks/useAuth';
 import SignUpNavbar from '../Organisms/SignUpNavbar';
 import Footer from './Footer';
+import { useLocalStorage } from '../../hooks/storage';
 
 interface Props {
   imgUrl?: string;
@@ -21,7 +22,8 @@ const MainWrapper = styled.div`
   }
 `;
 const Wrapper = styled.section<Props>`
-  background: url('${({ imgUrl }) => imgUrl}'), linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5));
+  background: url('${({ imgUrl }) => imgUrl}'),
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -34,15 +36,15 @@ const Wrapper = styled.section<Props>`
   .bg-signup {
     border: 1px solid ${({ theme }) => theme.colors.orange1};
     background-color: ${({ theme }) => theme.colors.orange1};
-  } 
+  }
   .form-wrap {
     border-radius: 32px;
   }
- 
+
   .input-addon {
     padding-left: 0.95rem;
     color: ${({ theme }) => theme.colors.gray1};
-    font-weight: 600
+    font-weight: 600;
   }
   input::placeholder {
     text-align: center;
@@ -51,7 +53,6 @@ const Wrapper = styled.section<Props>`
     color: ${({ theme }) => theme.colors.gray11};
     font-size: 0.8rem;
   }
-
 
   .account-type {
     /* padding-top: 2.85rem; */
@@ -115,7 +116,7 @@ const Wrapper = styled.section<Props>`
   .input-addon {
     padding-left: 0.95rem;
     color: ${({ theme }) => theme.colors.gray1};
-    font-weight: 600
+    font-weight: 600;
   }
 `;
 
@@ -123,6 +124,7 @@ const Signup: React.FC<Props> = () => {
   const theme = useContext(ThemeContext);
   const { dialCodes } = useCountries();
   const { sendPhoneVerification, sendPhoneVerificationLoading: loading } = useSignup();
+  const { setData } = useLocalStorage('reg', {});
 
   return (
     <MainWrapper>
@@ -160,7 +162,7 @@ const Signup: React.FC<Props> = () => {
                 {},
               );
 
-              const code = btoa(JSON.stringify(form));
+              setData(form);
 
               sendPhoneVerification({
                 variables: {
@@ -168,10 +170,7 @@ const Signup: React.FC<Props> = () => {
                 },
               })
                 .then(() => {
-                  Router.push(
-                    // `/verify?phone=${encodeURIComponent(values.dialCode + values.phoneNumber)}`,
-                    `/verify?code=${code}`,
-                  );
+                  Router.push(`/verify`);
                 })
                 .catch((err) => {
                   notify.show(err.graphQLErrors?.[0].message, 'error');
@@ -185,8 +184,9 @@ const Signup: React.FC<Props> = () => {
                   <ul className="flex justify-center items-center">
                     <Tippy content="An Individual user is just a viewer on our website. If you have a skill or sell a product, then consider the Professional or Vendor option.">
                       <li
-                        className={`acc-type cursor-pointer ${values.accountType === 'individual' && 'active'
-                          }`}
+                        className={`acc-type cursor-pointer ${
+                          values.accountType === 'individual' && 'active'
+                        }`}
                         onClick={() => {
                           setFieldValue('accountType', 'individual');
                         }}
@@ -200,8 +200,9 @@ const Signup: React.FC<Props> = () => {
                     </Tippy>
                     <Tippy content="Tell us about yourself and your projects. We will show it to the whole world.">
                       <li
-                        className={`acc-type cursor-pointer ${values.accountType === 'professional' && 'active'
-                          }`}
+                        className={`acc-type cursor-pointer ${
+                          values.accountType === 'professional' && 'active'
+                        }`}
                         onClick={() => {
                           setFieldValue('accountType', 'professional');
                         }}
@@ -215,8 +216,9 @@ const Signup: React.FC<Props> = () => {
                     </Tippy>
                     <Tippy content="Sell products? Let's help you reach the right audience.">
                       <li
-                        className={`acc-type cursor-pointer ${values.accountType === 'vendor' && 'active'
-                          }`}
+                        className={`acc-type cursor-pointer ${
+                          values.accountType === 'vendor' && 'active'
+                        }`}
                         onClick={() => {
                           setFieldValue('accountType', 'vendor');
                         }}
@@ -363,8 +365,8 @@ const Signup: React.FC<Props> = () => {
                           width={60}
                         />
                       ) : (
-                          'Send me Code'
-                        )}
+                        'Send me Code'
+                      )}
                     </button>
                   </section>
                 </section>

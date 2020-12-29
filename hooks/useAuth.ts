@@ -1,54 +1,42 @@
-import { useMutation } from '@apollo/client';
+import { useMutation, useApolloClient } from '@apollo/client';
 import Router from 'next/router';
-import { useEffect, useState } from 'react';
 import { notify } from 'react-notify-toast';
-import Cookies from 'js-cookie';
 import {
   SEND_PHONE_VERIFICATION,
   REGISTER_BY_PHONE,
   LOGIN_BY_PHONE,
+  LOG_OUT,
 } from '../graphql/mutations/auth';
+import { useLocalStorage } from './storage';
 
-function useOnline() {
-  const [online, setOnline] = useState(false);
-  useEffect(() => {
-    const accessToken = Cookies.get('accessToken');
-    if (accessToken) {
-      setOnline(true);
-    }
-  }, []);
-  // const client = useApolloClient();
+export function useOnline() {
+  const { data: online, setData } = useLocalStorage<boolean>('online', false);
 
-  function logOut() {
-    // client.clearStore().then(() => {
-    Cookies.remove('accessToken');
-    Router.push('/login');
-    // });
-  }
+  const setOnline = async () => {
+    setData(true);
+  };
 
-  return { online, logOut };
+  return { online, setOnline } as const;
 }
 
 export default function useAuth() {
+  const { setOnline } = useOnline();
+  const { clear } = useLocalStorage('online', false);
+
   const [sendPhoneVerification, { loading: sendPhoneVerificationLoading }] = useMutation(
     SEND_PHONE_VERIFICATION,
   );
-
   const [registerByPhoneMutation, { loading: registerByPhoneLoading }] = useMutation(
     REGISTER_BY_PHONE,
   );
-
   const [loginByPhoneMutation, { loading: loginByPhoneLoading }] = useMutation(LOGIN_BY_PHONE);
-
-  const { online, logOut } = useOnline();
+  const [logoutMutute] = useMutation(LOG_OUT);
 
   const registerByPhone = (variables: any) => {
     registerByPhoneMutation(variables)
-      .then(({ data: { registerByPhone: response } }: any) => {
-        Cookies.set('accessToken', response.accessToken);
-        // Cookies.set('role', response.user.role);
-
-        if (variables.input.accountType !== 'individual') {
+      .then(() => {
+        setOnline();
+        if (variables?.input?.accountType !== 'individual') {
           Router.push('/membership-package');
         } else {
           Router.push('/dashboard');
@@ -61,8 +49,8 @@ export default function useAuth() {
 
   const loginByPhone = (variables: any) => {
     loginByPhoneMutation(variables)
-      .then(({ data: { loginByPhone: response } }) => {
-        Cookies.set('accessToken', response.accessToken);
+      .then(() => {
+        setOnline();
         Router.push('/dashboard');
       })
       .catch((err) => {
@@ -70,14 +58,21 @@ export default function useAuth() {
       });
   };
 
+  const client = useApolloClient();
+  const logOut = async () => {
+    clear();
+    await client.clearStore();
+    await logoutMutute();
+    Router.push('/login');
+  };
+
   return {
     sendPhoneVerification,
     sendPhoneVerificationLoading,
     registerByPhone,
     registerByPhoneLoading,
-    online,
     logOut,
     loginByPhoneLoading,
     loginByPhone,
-  };
+  } as const;
 }
