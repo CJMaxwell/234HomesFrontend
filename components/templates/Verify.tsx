@@ -20,13 +20,13 @@ const MainWrapper = styled.div`
     height: 7.7244rem;
   }
 `;
-// background: url('${({ imgUrl }) => imgUrl}'), linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5));
 
 const Wrapper = styled.section<Props>`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background: url('${({ imgUrl }) => imgUrl}'), linear-gradient(rgba(0, 0, 0, 0.5));
+  background: url('${({ imgUrl }) => imgUrl}'),
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
 
   .code-input {
     display: flex !important;
