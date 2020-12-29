@@ -10,7 +10,7 @@ import useCountries from '../../hooks/useCountries';
 import useSignup from '../../hooks/useAuth';
 import SignUpNavbar from '../Organisms/SignUpNavbar';
 import Footer from './Footer';
-import { useSessionStorage } from '../../hooks/storage';
+import { useLocalStorage } from '../../hooks/storage';
 
 interface Props {
   imgUrl?: string;
@@ -124,7 +124,7 @@ const Signup: React.FC<Props> = () => {
   const theme = useContext(ThemeContext);
   const { dialCodes } = useCountries();
   const { sendPhoneVerification, sendPhoneVerificationLoading: loading } = useSignup();
-  const { setData } = useSessionStorage('reg');
+  const { setData } = useLocalStorage('reg', {});
 
   return (
     <MainWrapper>

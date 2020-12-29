@@ -8,7 +8,7 @@ import SignUpNavbar from '../Organisms/SignUpNavbar';
 import Footer from './Footer';
 import phoneSignupSchema from '../../schema/phoneSignupSchema';
 import useSignUp from '../../hooks/useAuth';
-import { useSessionStorage } from '../../hooks/storage';
+import { useLocalStorage } from '../../hooks/storage';
 
 interface Props {
   code?: string;
@@ -83,10 +83,22 @@ const ErrorMsg = styled.span`
 
 const ReactCodeInput = dynamic(() => import('react-code-input'), { ssr: false });
 
+interface Data {
+  phoneNumber: string;
+  firstName: string;
+  lastName: string;
+  businessName: string;
+  accountType: string;
+  email: string;
+  city: string;
+  state: string;
+  dialCode: string;
+}
+
 const Verify: React.FC<Props> = () => {
   const theme = useContext(ThemeContext);
   const { registerByPhone, registerByPhoneLoading: loading } = useSignUp();
-  const { data, clear } = useSessionStorage('reg');
+  const { data, clear } = useLocalStorage<Data>('reg', {} as Data);
 
   const { dialCode, phoneNumber, ...step1 } = data;
 
