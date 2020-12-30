@@ -1,6 +1,7 @@
 import { useMutation, useApolloClient } from '@apollo/client';
 import Router from 'next/router';
 import { notify } from 'react-notify-toast';
+import Cookies from 'js-cookie';
 import {
   SEND_PHONE_VERIFICATION,
   REGISTER_BY_PHONE,
@@ -49,9 +50,14 @@ export default function useAuth() {
 
   const loginByPhone = (variables: any) => {
     loginByPhoneMutation(variables)
-      .then(() => {
-        setOnline();
-        Router.push('/dashboard');
+      .then(({ data: { loginByPhone: response } }) => {
+        Cookies.set('Authorization', response.accessToken, {
+          expires: 7323233,
+          path: '/',
+          domain: '.herokuapp.com',
+        });
+        // setOnline();
+        // Router.push('/dashboard');
       })
       .catch((err) => {
         notify.show(err.graphQLErrors?.[0].message, 'error');
