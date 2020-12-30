@@ -54,7 +54,7 @@ export default function useAuth() {
         Cookies.set('Authorization', response.accessToken, {
           // expires: ,
           path: '/',
-          domain: '.herokuapp.com',
+          domain: process.env.NEXT_PUBLIC_SERVER_URI,
         });
         // setOnline();
         Router.push('/dashboard');
