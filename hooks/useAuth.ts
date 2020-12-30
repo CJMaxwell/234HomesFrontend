@@ -57,7 +57,7 @@ export default function useAuth() {
           domain: '.herokuapp.com',
         });
         // setOnline();
-        // Router.push('/dashboard');
+        Router.push('/dashboard');
       })
       .catch((err) => {
         notify.show(err.graphQLErrors?.[0].message, 'error');
