@@ -51,16 +51,17 @@ export default function useAuth() {
   const loginByPhone = (variables: any) => {
     loginByPhoneMutation(variables)
       .then(({ data: { loginByPhone: response } }) => {
+        Cookies.set('token', response.token);
         console.log(response.accessToken);
-        Cookies.set(
-          'Authorization',
-          response.accessToken,
-          // {
-          // expires: ,
-          // path: '/',
-          // domain: process.env.NEXT_PUBLIC_SERVER_URI,
-          // }
-        );
+        // Cookies.set(
+        //   'Authorization',
+        //   response.accessToken,
+        //   // {
+        //   // expires: ,
+        //   // path: '/',
+        //   // domain: process.env.NEXT_PUBLIC_SERVER_URI,
+        //   // }
+        // );
         // setOnline();
         Router.push('/dashboard');
       })
