@@ -51,7 +51,7 @@ export default function useAuth() {
   const loginByPhone = (variables: any) => {
     loginByPhoneMutation(variables)
       .then(({ data: { loginByPhone: response } }) => {
-        Cookies.set('token', response.accessToken);
+        Cookies.set('token', response.accessToken, { domain: process.env.NEXT_PUBLIC_SERVER_URI });
         console.log(response.accessToken);
         // Cookies.set(
         //   'Authorization',
