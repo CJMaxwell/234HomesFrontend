@@ -52,11 +52,15 @@ export default function useAuth() {
     loginByPhoneMutation(variables)
       .then(({ data: { loginByPhone: response } }) => {
         console.log(response.accessToken);
-        Cookies.set('Authorization', response.accessToken, {
+        Cookies.set(
+          'Authorization',
+          response.accessToken,
+          // {
           // expires: ,
-          path: '/',
-          domain: process.env.NEXT_PUBLIC_SERVER_URI,
-        });
+          // path: '/',
+          // domain: process.env.NEXT_PUBLIC_SERVER_URI,
+          // }
+        );
         // setOnline();
         Router.push('/dashboard');
       })
