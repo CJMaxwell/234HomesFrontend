@@ -52,7 +52,7 @@ export default function useAuth() {
     loginByPhoneMutation(variables)
       .then(({ data: { loginByPhone: response } }) => {
         Cookies.set('Authorization', response.accessToken, {
-          expires: 7323233,
+          // expires: ,
           path: '/',
           domain: '.herokuapp.com',
         });
