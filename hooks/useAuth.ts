@@ -52,7 +52,7 @@ export default function useAuth() {
     loginByPhoneMutation(variables)
       .then(({ data: { loginByPhone: response } }) => {
         Cookies.set('Authorization', response.accessToken, {
-          // sameSite: 'None',
+          sameSite: 'None',
           domain: 'api.farminvestgroup.com',
           secure: true,
         });
