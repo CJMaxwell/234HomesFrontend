@@ -53,8 +53,8 @@ export default function useAuth() {
       .then(({ data: { loginByPhone: response } }) => {
         Cookies.set('Authorization', response.accessToken, {
           sameSite: 'None',
-          domain: 'api.farminvestgroup.com',
           secure: true,
+          path: '/',
         });
         Router.push('/dashboard');
       })
