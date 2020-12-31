@@ -66,6 +66,7 @@ export default function useAuth() {
         Router.push('/dashboard');
       })
       .catch((err) => {
+        console.log(err);
         notify.show(err.graphQLErrors?.[0].message, 'error');
       });
   };
