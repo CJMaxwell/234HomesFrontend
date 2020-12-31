@@ -50,19 +50,8 @@ export default function useAuth() {
 
   const loginByPhone = (variables: any) => {
     loginByPhoneMutation(variables)
-      .then(() => {
-        // Cookies.set('token', response.accessToken, { domain: '.herokuappp.com' });
-        // console.log(response.accessToken);
-        // Cookies.set(
-        //   'Authorization',
-        //   response.accessToken,
-        //   // {
-        //   // expires: ,
-        //   // path: '/',
-        //   // domain: process.env.NEXT_PUBLIC_SERVER_URI,
-        //   // }
-        // );
-        // setOnline();
+      .then(({ data: { loginByPhone: response } }) => {
+        Cookies.set('Authorization', response.accessToken);
         Router.push('/dashboard');
       })
       .catch((err) => {
