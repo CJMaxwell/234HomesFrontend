@@ -50,9 +50,9 @@ export default function useAuth() {
 
   const loginByPhone = (variables: any) => {
     loginByPhoneMutation(variables)
-      .then(({ data: { loginByPhone: response } }) => {
-        Cookies.set('token', response.accessToken, { domain: '.herokuappp.com' });
-        console.log(response.accessToken);
+      .then(() => {
+        // Cookies.set('token', response.accessToken, { domain: '.herokuappp.com' });
+        // console.log(response.accessToken);
         // Cookies.set(
         //   'Authorization',
         //   response.accessToken,
