@@ -43,7 +43,7 @@ function createApolloClient() {
   return new ApolloClient({
     ssrMode: true,
     cache: new InMemoryCache(),
-    credentials: 'include',
+    // credentials: 'include',
     link: from([authMiddleware, httpLink]),
   });
 }
