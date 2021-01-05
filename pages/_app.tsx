@@ -5,7 +5,6 @@ import { ThemeProvider } from 'styled-components';
 import { createUploadLink } from 'apollo-upload-client';
 import Router from 'next/router';
 import { onError } from '@apollo/client/link/error';
-import { useCookies } from '../hooks/storage';
 import { useApollo } from '../lib/apolloClient';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import '../styles/style.css';

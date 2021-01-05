@@ -22,7 +22,7 @@ export function useOnline() {
 
 export default function useAuth() {
   const { setOnline } = useOnline();
-  const { clear } = useLocalStorage('online', false);
+  const { clear: clearLocalStorage } = useLocalStorage('online', false);
 
   const [sendPhoneVerification, { loading: sendPhoneVerificationLoading }] = useMutation(
     SEND_PHONE_VERIFICATION,
@@ -35,7 +35,12 @@ export default function useAuth() {
 
   const registerByPhone = (variables: any) => {
     registerByPhoneMutation(variables)
-      .then(() => {
+      .then(({ data: { registerByPhone: response } }) => {
+        Cookies.set('Authorization', response.accessToken, {
+          // sameSite: 'None',
+          // secure: true,
+          path: '/',
+        });
         setOnline();
         if (variables?.input?.accountType !== 'individual') {
           Router.push('/membership-package');
@@ -51,9 +56,10 @@ export default function useAuth() {
   const loginByPhone = (variables: any) => {
     loginByPhoneMutation(variables)
       .then(({ data: { loginByPhone: response } }) => {
+        setOnline();
         Cookies.set('Authorization', response.accessToken, {
-          sameSite: 'None',
-          secure: true,
+          // sameSite: 'None',
+          // secure: true,
           path: '/',
         });
         Router.push('/dashboard');
@@ -66,7 +72,7 @@ export default function useAuth() {
 
   const client = useApolloClient();
   const logOut = async () => {
-    clear();
+    clearLocalStorage();
     await client.clearStore();
     await logoutMutute();
     Router.push('/login');

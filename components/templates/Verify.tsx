@@ -3,6 +3,7 @@ import styled, { ThemeContext } from 'styled-components';
 import { Formik } from 'formik';
 import Loader from 'react-loader-spinner';
 import dynamic from 'next/dynamic';
+import { notify } from 'react-notify-toast';
 
 import SignUpNavbar from '../Organisms/SignUpNavbar';
 import Footer from './Footer';
@@ -97,7 +98,7 @@ interface Data {
 
 const Verify: React.FC<Props> = () => {
   const theme = useContext(ThemeContext);
-  const { registerByPhone, registerByPhoneLoading: loading } = useSignUp();
+  const { registerByPhone, registerByPhoneLoading: loading, sendPhoneVerification } = useSignUp();
   const { data, clear } = useLocalStorage<Data>('reg', {} as Data);
 
   const { dialCode, phoneNumber, ...step1 } = data;
@@ -118,7 +119,24 @@ const Verify: React.FC<Props> = () => {
           <p className="enter-code px-8 text-center my-12">
             Please enter the verification code sent to your phone number.
             <span>
-              <a>Didn’t receive it?</a>
+              <a
+                href="#"
+                onClick={() => {
+                  sendPhoneVerification({
+                    variables: {
+                      phoneNumber: `${dialCode}${phoneNumber}`,
+                    },
+                  })
+                    .then(() => {
+                      notify.show('Verification code sent!', 'success');
+                    })
+                    .catch((err) => {
+                      notify.show(err.graphQLErrors?.[0].message, 'error');
+                    });
+                }}
+              >
+                Didn’t receive it?
+              </a>
             </span>
           </p>
           <Formik

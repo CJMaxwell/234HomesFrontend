@@ -11,7 +11,7 @@ export const SEND_PHONE_VERIFICATION = gql`
 export const REGISTER_BY_PHONE = gql`
   mutation registerByPhone($input: RegisterByPhoneInput!) {
     registerByPhone(input: $input) {
-      message
+      accessToken
     }
   }
 `;

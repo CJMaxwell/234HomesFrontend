@@ -23,6 +23,7 @@ const errLink = onError(
 );
 
 const authMiddleware = new ApolloLink((operation, forward) => {
+  console.log(Cookies.get('Authorization'), 'middleware');
   operation.setContext(({ headers = {} }) => ({
     headers: {
       ...headers,
