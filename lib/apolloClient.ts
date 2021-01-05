@@ -1,8 +1,9 @@
 import { useMemo } from 'react';
-import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { ApolloClient, InMemoryCache, ApolloLink, from } from '@apollo/client';
 import { onError } from '@apollo/client/link/error';
 import { createUploadLink } from 'apollo-upload-client';
 import Router from 'next/router';
+import Cookies from 'js-cookie';
 
 let apolloClient;
 const errLink = onError(
@@ -21,16 +22,29 @@ const errLink = onError(
   },
 );
 
+const authMiddleware = new ApolloLink((operation, forward) => {
+  operation.setContext(({ headers = {} }) => ({
+    headers: {
+      ...headers,
+      authorization: Cookies.get('Authorization') || null,
+    },
+  }));
+
+  return forward(operation);
+});
+
+const httpLink = errLink.concat(
+  createUploadLink({
+    uri: `${process.env.NEXT_PUBLIC_SERVER_URI}/graphql`,
+  }),
+);
+
 function createApolloClient() {
   return new ApolloClient({
     ssrMode: true,
     cache: new InMemoryCache(),
     credentials: 'include',
-    link: errLink.concat(
-      createUploadLink({
-        uri: `${process.env.NEXT_PUBLIC_SERVER_URI}/graphql`,
-      }),
-    ),
+    link: from([authMiddleware, httpLink]),
   });
 }
 

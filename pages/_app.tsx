@@ -6,7 +6,7 @@ import { createUploadLink } from 'apollo-upload-client';
 import Router from 'next/router';
 import { onError } from '@apollo/client/link/error';
 import { useCookies } from '../hooks/storage';
-// import { useApollo } from '../lib/apolloClient';
+import { useApollo } from '../lib/apolloClient';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import '../styles/style.css';
 import { theme } from '../styles/theme';
@@ -31,21 +31,21 @@ const errLink = onError(
 );
 
 export default function App({ Component, pageProps }) {
-  // const apolloClient = useApollo(pageProps.initialApolloState);
-  const { data: token } = useCookies('Authorization', '');
+  const client = useApollo(pageProps.initialApolloState);
+  // const { data: token } = useCookies('Authorization', '');
 
-  const client = new ApolloClient({
-    ssrMode: true,
-    cache: new InMemoryCache(),
-    headers: {
-      Authorization: token,
-    },
-    link: errLink.concat(
-      createUploadLink({
-        uri: `${process.env.NEXT_PUBLIC_SERVER_URI}/graphql`,
-      }),
-    ),
-  });
+  // const client = new ApolloClient({
+  //   ssrMode: true,
+  //   cache: new InMemoryCache(),
+  //   headers: {
+  //     Authorization: token,
+  //   },
+  //   link: errLink.concat(
+  //     createUploadLink({
+  //       uri: `${process.env.NEXT_PUBLIC_SERVER_URI}/graphql`,
+  //     }),
+  //   ),
+  // });
 
   return (
     <ThemeProvider theme={theme}>
