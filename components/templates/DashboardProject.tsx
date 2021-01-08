@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import Loader from 'react-loader-spinner';
 import Router from 'next/router';
@@ -49,7 +49,14 @@ const Wrapper = styled.section`
 const DashboardProject = () => {
   const theme = useContext(ThemeContext);
   const { profile, updateProfile, updateProfileLoading: profileLoading } = useProfile();
-  const { projects, loading } = useRprojects(profile?.id);
+  const { projects, loading, get } = useRprojects();
+
+  useEffect(() => {
+    if (profile) {
+      get(profile.id);
+    }
+  }, [profile, projects]);
+
   return (
     <Wrapper>
       <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />

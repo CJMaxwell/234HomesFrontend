@@ -1,16 +1,23 @@
 import { useEffect } from 'react';
-import { useQuery, useLazyQuery } from '@apollo/client';
+import { useLazyQuery } from '@apollo/client';
 import { PROJECTS, USER_PROJECTS } from '../graphql/queries/project';
 
-export const useRprojects = (id?: string) => {
-  const { data, loading } = useQuery(USER_PROJECTS, {
-    variables: { id },
-  });
+export const useRprojects = () => {
+  const [query, { data, loading }] = useLazyQuery(USER_PROJECTS);
+
+  const get = (userId: string) => {
+    query({
+      variables: {
+        id: userId,
+      },
+    });
+  };
 
   return {
-    projects: data?.projects || data?.userProjects,
+    projects: data?.userProjects,
     loading,
-  };
+    get,
+  } as const;
 };
 
 export const useProjects = () => {
