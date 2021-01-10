@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
 
@@ -209,7 +209,11 @@ const AboutProfessional: React.FC<Props> = ({ imgUrl }) => {
   const { id } = router.query;
 
   const { user, userLoading } = useUser(id as string);
-  const { projects, loading } = useRprojects(id as string);
+  const { projects, loading, get: getProjects } = useRprojects();
+
+  useEffect(() => {
+    getProjects(id as string);
+  }, []);
 
   return (
     <Wrapper>
