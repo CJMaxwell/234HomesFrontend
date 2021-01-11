@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import Router from 'next/router';
 import Loader from 'react-loader-spinner';
@@ -42,8 +42,14 @@ const Wrapper = styled.div`
 
 const DashboardProductListing = () => {
   const theme = useContext(ThemeContext);
-  const { profile, updateProfile, updateProfileLoading: profileLoading } = useProfile();
-  const { products, loading } = useRproducts(profile?.id);
+  const { profile } = useProfile();
+  const { get, products, loading } = useRproducts();
+
+  useEffect(() => {
+    if (profile?.id) {
+      get(profile.id);
+    }
+  }, [profile, products]);
 
   return (
     <Wrapper>

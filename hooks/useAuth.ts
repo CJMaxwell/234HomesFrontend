@@ -58,14 +58,11 @@ export default function useAuth() {
       .then(({ data: { loginByPhone: response } }) => {
         setOnline();
         Cookies.set('Authorization', response.accessToken, {
-          // sameSite: 'None',
-          // secure: true,
           path: '/',
         });
         Router.push('/dashboard');
       })
       .catch((err) => {
-        console.log(err);
         notify.show(err.graphQLErrors?.[0].message, 'error');
       });
   };

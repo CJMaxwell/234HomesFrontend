@@ -1,16 +1,23 @@
 import { useEffect } from 'react';
-import { useQuery, useLazyQuery } from '@apollo/client';
+import { useLazyQuery } from '@apollo/client';
 import { PRODUCTS, USER_PRODUCTS } from '../graphql/queries/product';
 
-export const useRproducts = (id?: string) => {
-  const { data, loading } = useQuery(USER_PRODUCTS, {
-    variables: { id },
-  });
+export const useRproducts = () => {
+  const [query, { data, loading }] = useLazyQuery(USER_PRODUCTS);
+
+  const get = (userId: string) => {
+    query({
+      variables: {
+        id: userId,
+      },
+    });
+  };
 
   return {
     products: data?.userProducts,
     loading,
-  };
+    get,
+  } as const;
 };
 
 export const useProducts = () => {
