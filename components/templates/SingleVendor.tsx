@@ -63,7 +63,7 @@ const SingleVendor: React.FC<Props> = ({ imgUrl }) => {
   const { id } = router.query;
 
   const { user, userLoading } = useUser(id as string);
-  const { products, loading } = useRproducts(id as string);
+  const { products, loading } = useRproducts();
 
   return (
     <Wrapper>
