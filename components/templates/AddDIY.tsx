@@ -192,7 +192,7 @@ const AddDIY = () => {
                     checked={values.featured}
                   />
                   {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                  <label htmlFor="featured">Featured</label>
+                  <label htmlFor="featured" className="profile-label">Featured</label>
                 </section>
 
                 <section className="flex justify-end mt-12 mb-16">

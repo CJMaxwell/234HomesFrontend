@@ -201,13 +201,14 @@ const AddProduct = () => {
                     <select
                       name="category"
                       required
-                      className="fieldset-input profile-desc"
+                      className="fieldset-input profile-desc w-full"
                       onChange={handleChange}
                       onBlur={handleBlur}
                       value={values.category}
                     >
                       <option value="">Select category</option>
                       <option value="Kitchen">Kitchen</option>
+                      <option value="Bathroom">Bathroom</option>
                     </select>
                   </fieldset>
                 </section>
@@ -269,7 +270,7 @@ const AddProduct = () => {
                   <fieldset className="w-1/2">
                     <legend className="profile-label">Colors</legend>
                     <select
-                      className="fieldset-input profile-desc"
+                      className="fieldset-input profile-desc w-full"
                       onChange={handleChange}
                       onBlur={handleBlur}
                       value={values.color}
@@ -285,7 +286,7 @@ const AddProduct = () => {
                   <fieldset className="w-1/2 mr-6">
                     <legend className="profile-label">City</legend>
                     <select
-                      className="fieldset-input profile-desc"
+                      className="fieldset-input profile-desc w-full"
                       onChange={handleChange}
                       onBlur={handleBlur}
                       value={values.city}
@@ -299,7 +300,7 @@ const AddProduct = () => {
                   <fieldset className="w-1/2">
                     <legend className="profile-label">State</legend>
                     <select
-                      className="fieldset-input profile-desc"
+                      className="fieldset-input profile-desc w-full"
                       onChange={handleChange}
                       onBlur={handleBlur}
                       value={values.state}
@@ -340,8 +341,8 @@ const AddProduct = () => {
                         width={60}
                       />
                     ) : (
-                      'Submit'
-                    )}
+                        'Submit'
+                      )}
                   </CTA>
                 </section>
               </form>

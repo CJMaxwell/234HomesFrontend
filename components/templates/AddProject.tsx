@@ -224,7 +224,7 @@ const AddProject = () => {
                     <select
                       name="category"
                       required
-                      className="fieldset-input profile-desc"
+                      className="fieldset-input profile-desc w-full"
                       onChange={handleChange}
                       onBlur={handleBlur}
                       value={values.category}
@@ -281,7 +281,7 @@ const AddProject = () => {
                   <fieldset className="w-1/2 mr-6">
                     <legend className="profile-label">Year</legend>
                     <select
-                      className="fieldset-input profile-desc"
+                      className="fieldset-input profile-desc w-full"
                       onChange={handleChange}
                       onBlur={handleBlur}
                       value={values.year}
@@ -295,7 +295,7 @@ const AddProject = () => {
                   <fieldset className="w-1/2">
                     <legend className="profile-label">Colors</legend>
                     <select
-                      className="fieldset-input profile-desc"
+                      className="fieldset-input profile-desc w-full"
                       onChange={handleChange}
                       onBlur={handleBlur}
                       value={values.color}
@@ -311,7 +311,7 @@ const AddProject = () => {
                   <fieldset className="w-1/2 mr-6">
                     <legend className="profile-label">City</legend>
                     <select
-                      className="fieldset-input profile-desc"
+                      className="fieldset-input profile-desc w-full"
                       onChange={handleChange}
                       onBlur={handleBlur}
                       value={values.city}
@@ -325,7 +325,7 @@ const AddProject = () => {
                   <fieldset className="w-1/2">
                     <legend className="profile-label">State</legend>
                     <select
-                      className="fieldset-input profile-desc"
+                      className="fieldset-input profile-desc w-full"
                       onChange={handleChange}
                       onBlur={handleBlur}
                       value={values.state}
@@ -366,8 +366,8 @@ const AddProject = () => {
                         width={60}
                       />
                     ) : (
-                      'Submit'
-                    )}
+                        'Submit'
+                      )}
                   </CTA>
                 </section>
               </form>

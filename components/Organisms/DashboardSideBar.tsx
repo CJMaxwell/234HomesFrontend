@@ -56,11 +56,6 @@ const DashboardSideBar: React.FC<Props> = ({ imgUrl }) => {
           }}
           type="file"
         />
-        {/* <img
-          className="rounded-full w-40 h-40"
-          src={profile?.profilePhoto || '/img/dashboard/dashboardperson.svg'}
-          alt={`${profile?.firstName} ${profile?.lastName}`}
-        /> */}
         <Avatar
           className="rounded-full w-40 h-40"
           imgUrl={profile?.profilePhoto || '/img/dashboard/dashboardperson.svg'}
@@ -124,30 +119,34 @@ const DashboardSideBar: React.FC<Props> = ({ imgUrl }) => {
               </li>
             </Link>
           )}
-          <Link href="/dashboard/house-tours">
-            <li className="flex items-center py-4 cursor-pointer">
-              <span className="pr-4">
-                <img src="/img/dashboard/dashboardbox.svg" alt="Box" />
-              </span>
-              <a>House Tours</a>
-            </li>
-          </Link>
-          <Link href="/dashboard/diy">
-            <li className="flex items-center py-4 cursor-pointer">
-              <span className="pr-4">
-                <img src="/img/dashboard/plan-your-home.svg" alt="DIY" />
-              </span>
-              <a>DIY</a>
-            </li>
-          </Link>
-          <Link href="/dashboard/users">
-            <li className="flex items-center py-4 cursor-pointer">
-              <span className="pr-4">
-                <img src="/img/users.svg" alt="users" />
-              </span>
-              <a>User Management</a>
-            </li>
-          </Link>
+          {profile?.accountType === 'admin' && (
+            <>
+              <Link href="/dashboard/house-tours">
+                <li className="flex items-center py-4 cursor-pointer">
+                  <span className="pr-4">
+                    <img src="/img/dashboard/dashboardbox.svg" alt="Box" />
+                  </span>
+                  <a>House Tours</a>
+                </li>
+              </Link>
+              <Link href="/dashboard/diy">
+                <li className="flex items-center py-4 cursor-pointer">
+                  <span className="pr-4">
+                    <img src="/img/dashboard/plan-your-home.svg" alt="DIY" />
+                  </span>
+                  <a>DIY</a>
+                </li>
+              </Link>
+              <Link href="/dashboard/users">
+                <li className="flex items-center py-4 cursor-pointer">
+                  <span className="pr-4">
+                    <img src="/img/users.svg" alt="users" />
+                  </span>
+                  <a>User Management</a>
+                </li>
+              </Link>
+            </>
+          )}
           <li className="flex items-center py-4 cursor-pointer">
             <span className="pr-4">
               <img src="/img/dashboard/dashboardsettings.svg" alt="Settingd" />

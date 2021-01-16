@@ -186,7 +186,7 @@ const AddHouseTour = () => {
                   <fieldset className="w-full">
                     <legend className="profile-label">Category</legend>
                     <select
-                      className="fieldset-input profile-desc"
+                      className="fieldset-input profile-desc w-full"
                       name="category"
                       onChange={handleChange}
                       onBlur={handleBlur}
@@ -214,7 +214,7 @@ const AddHouseTour = () => {
                 </section>
 
                 <section className="flex items-center justify-between pb-8">
-                  <div>
+                  <div className="flex items-center">
                     <input
                       id="featured"
                       name="featured"
@@ -226,11 +226,11 @@ const AddHouseTour = () => {
                       type="checkbox"
                     />
                     {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                    <label htmlFor="featured">Featured</label>
+                    <label htmlFor="featured" className="profile-label">Featured</label>
                   </div>
 
                   <button
-                    className="add-new"
+                    className="add-new text-sm"
                     type="button"
                     onClick={() => {
                       // setSlidesNum(slidesNum + 1);
@@ -328,8 +328,8 @@ const AddHouseTour = () => {
                         width={60}
                       />
                     ) : (
-                      'Submit'
-                    )}
+                        'Submit'
+                      )}
                   </CTA>
                 </section>
               </form>

@@ -170,7 +170,7 @@ const VendorProfileUpdate = () => {
             <fieldset className="w-1/2 mr-6">
               <legend className="profile-label">City</legend>
               <select
-                className="fieldset-input profile-desc"
+                className="fieldset-input profile-desc w-full"
                 onChange={handleChange}
                 onBlur={handleBlur}
                 name="city"
@@ -186,7 +186,7 @@ const VendorProfileUpdate = () => {
             <fieldset className="w-1/2">
               <legend className="profile-label">State</legend>
               <select
-                className="fieldset-input profile-desc"
+                className="fieldset-input profile-desc w-full"
                 onChange={handleChange}
                 onBlur={handleBlur}
                 name="state"

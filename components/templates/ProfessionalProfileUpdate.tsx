@@ -184,7 +184,7 @@ const ProfessionalProfileUpdate = () => {
             <fieldset className="w-1/2 mr-6">
               <legend className="profile-label">City</legend>
               <select
-                className="fieldset-input profile-desc"
+                className="fieldset-input profile-desc w-full"
                 onChange={handleChange}
                 onBlur={handleBlur}
                 name="city"
@@ -200,7 +200,7 @@ const ProfessionalProfileUpdate = () => {
             <fieldset className="w-1/2">
               <legend className="profile-label">State</legend>
               <select
-                className="fieldset-input profile-desc"
+                className="fieldset-input profile-desc w-full"
                 onChange={handleChange}
                 onBlur={handleBlur}
                 name="state"
@@ -286,7 +286,7 @@ const ProfessionalProfileUpdate = () => {
           <section className="flex items-center justify-between">
             <fieldset className="w-1/2 mr-6">
               <legend className="profile-label">Country Of College/University</legend>
-              <select className="fieldset-input profile-desc">
+              <select className="fieldset-input profile-desc w-full">
                 {countries.map(({ name, code }) => (
                   <option value={code} key={name}>
                     {name}
@@ -296,7 +296,7 @@ const ProfessionalProfileUpdate = () => {
             </fieldset>
             <fieldset className="w-1/2">
               <legend className="profile-label">College/University</legend>
-              <select className="fieldset-input profile-desc">
+              <select className="fieldset-input profile-desc w-full">
                 <option value="">Synergy University, Moscow</option>
               </select>
             </fieldset>
@@ -304,19 +304,19 @@ const ProfessionalProfileUpdate = () => {
           <section className="flex items-center justify-between pt-8">
             <fieldset className="w-1/3 mr-6">
               <legend className="profile-label">Title</legend>
-              <select className="fieldset-input profile-desc">
+              <select className="fieldset-input profile-desc w-full">
                 <option value="">Bachelor of Arts</option>
               </select>
             </fieldset>
             <fieldset className="w-1/3 mr-6">
               <legend className="profile-label">Major</legend>
-              <select className="fieldset-input profile-desc">
+              <select className="fieldset-input profile-desc w-full">
                 <option value="">Architecture</option>
               </select>
             </fieldset>
             <fieldset className="w-1/3">
               <legend className="profile-label">Year</legend>
-              <select className="fieldset-input profile-desc">
+              <select className="fieldset-input profile-desc w-full">
                 <option value="">2016</option>
               </select>
             </fieldset>
@@ -338,7 +338,7 @@ const ProfessionalProfileUpdate = () => {
             </fieldset>
             <fieldset className="w-1/3">
               <legend className="profile-label">Year</legend>
-              <select className="fieldset-input profile-desc">
+              <select className="fieldset-input profile-desc w-full">
                 <option value="">2016</option>
               </select>
             </fieldset>
@@ -374,8 +374,8 @@ const ProfessionalProfileUpdate = () => {
               {loading ? (
                 <Loader type="ThreeDots" color={theme.colors.orange1} height={20} width={60} />
               ) : (
-                'Update Profile'
-              )}
+                  'Update Profile'
+                )}
             </CTA>
           </section>
         </form>
