@@ -105,7 +105,7 @@ const DashboardProject = () => {
                     />
                   ))
                 }
-                <AddNewProject />
+                {/* <AddNewProject /> */}
               </section>
             )}
           </section>
