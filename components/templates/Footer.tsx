@@ -137,7 +137,7 @@ const Footer = () => {
               <input
                 type="text"
                 required
-                className="appearance-none block w-full bg-gray-700 text-white border border-gray-700 rounded-full py-3 px-3 mb-3 leading-tight focus:outline-none focus:bg-white"
+                className="appearance-none block w-full bg-gray-700 text-sm text-white border border-gray-700 rounded-full py-3 px-3 mb-3 leading-tight focus:outline-none focus:bg-white focus:text-gray-800"
                 placeholder="Enter email address"
               />
               <FormButton

@@ -63,7 +63,7 @@ const Navbar = () => {
         </li>
         <li>
           <Link href="/products">
-            <a className="block lg:inline-block lg:mt-0 text-black mr-6">Shop</a>
+            <a className="block lg:inline-block lg:mt-0 text-black mr-6">Products</a>
           </Link>
         </li>
         <li>
