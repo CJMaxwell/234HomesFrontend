@@ -43,6 +43,42 @@ const Wrapper = styled.section`
   .section-wrap {
     margin-bottom: 7.1rem;
   }
+
+  .profile-title,
+  .profile-desc {
+    color: ${({ theme }) => theme.colors.gray2};
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+  .upload-section {
+    border: 1px dashed ${({ theme }) => theme.colors.gray17};
+    border-radius: 7px;
+    padding: 2.55rem 5.25rem;
+  }
+  legend {
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  fieldset {
+    border: 1px solid ${({ theme }) => theme.colors.gray17};
+  }
+  .section-wrap {
+    margin-bottom: 7.1rem;
+  }
+  .fieldset-input {
+    padding: 0.7rem 1rem 1rem 1rem;
+  }
+  .profile-label {
+    color: ${({ theme }) => theme.colors.gray11};
+    font-size: 0.8rem;
+  }
+  textarea::placeholder,
+  input::placeholder {
+    color: ${({ theme }) => theme.colors.gray17};
+    font-size: 0.7rem;
+  }
   
 `;
 
@@ -162,71 +198,85 @@ const Editor: React.FC = () => {
                 </CTA>
               </section>
             </div>
-
-            <Div>
-              <DraftEditor
-                editorState={editorState}
-                onEditorStateChange={handleEditorChange}
-                wrapperClassName="wrapper-class"
-                editorClassName="editor-class"
-                toolbarClassName="toolbar-class"
-              />
-
-              <section className="flex justify-end items-center space-x-4 h-24">
-                <CTA
-                  type="submit"
-                  padding="5px 1rem"
-                  color={theme.colors.green1}
-                  borderColor={theme.colors.green1}
-                  disabled={loading}
-                >
-                  {loading ? (
-                    <Loader
-                      type="ThreeDots"
-                      color={theme.colors.orange1}
-                      height={20}
-                      width={60}
-                    />
-                  ) : (
-                      'Publish'
-                    )}
-                </CTA>
-                <CTA
-                  type="submit"
-                  padding="5px 1rem"
-                  color={theme.colors.blue2}
-                  borderColor={theme.colors.blue2}
-                  disabled={loading}
-                >
-                  {loading ? (
-                    <Loader
-                      type="ThreeDots"
-                      color={theme.colors.orange1}
-                      height={20}
-                      width={60}
-                    />
-                  ) : (
-                      'Save As Draft'
-                    )}
-                </CTA>
-                <CTA
-                  type="submit"
-                  padding="5px 1rem"
-                  disabled={loading}
-                >
-                  {loading ? (
-                    <Loader
-                      type="ThreeDots"
-                      color={theme.colors.orange1}
-                      height={20}
-                      width={60}
-                    />
-                  ) : (
-                      'Delete'
-                    )}
-                </CTA>
+            <form>
+              <section className="flex items-center justify-between pb-4">
+                <fieldset className="w-full">
+                  <legend className="profile-label">Title</legend>
+                  <input
+                    className="fieldset-input profile-desc w-full focus:outline-none"
+                    placeholder="Lorem ipsum dolor sit amet sed diam nonumy eirmod"
+                    name="title"
+                    required
+                  />
+                </fieldset>
               </section>
-            </Div>
+
+              <Div>
+                <DraftEditor
+                  editorState={editorState}
+                  onEditorStateChange={handleEditorChange}
+                  wrapperClassName="wrapper-class"
+                  editorClassName="editor-class"
+                  toolbarClassName="toolbar-class"
+                />
+
+                <section className="flex justify-end items-center space-x-4 h-24">
+                  <CTA
+                    type="submit"
+                    padding="5px 1rem"
+                    color={theme.colors.green1}
+                    borderColor={theme.colors.green1}
+                    disabled={loading}
+                  >
+                    {loading ? (
+                      <Loader
+                        type="ThreeDots"
+                        color={theme.colors.orange1}
+                        height={20}
+                        width={60}
+                      />
+                    ) : (
+                        'Publish'
+                      )}
+                  </CTA>
+                  <CTA
+                    type="submit"
+                    padding="5px 1rem"
+                    color={theme.colors.blue2}
+                    borderColor={theme.colors.blue2}
+                    disabled={loading}
+                  >
+                    {loading ? (
+                      <Loader
+                        type="ThreeDots"
+                        color={theme.colors.orange1}
+                        height={20}
+                        width={60}
+                      />
+                    ) : (
+                        'Save As Draft'
+                      )}
+                  </CTA>
+                  <CTA
+                    type="submit"
+                    padding="5px 1rem"
+                    disabled={loading}
+                  >
+                    {loading ? (
+                      <Loader
+                        type="ThreeDots"
+                        color={theme.colors.orange1}
+                        height={20}
+                        width={60}
+                      />
+                    ) : (
+                        'Delete'
+                      )}
+                  </CTA>
+                </section>
+              </Div>
+
+            </form>
 
           </section>
         </section>
