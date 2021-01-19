@@ -94,16 +94,20 @@ const DashboardStories = () => {
             <section className="grid grid-cols-3 gap-4">
               <DashboardStoryCard
                 imgUrl="/img/Bed_story.png"
+                title="Why you should hire a Designer for your next project"
               />
               <DashboardStoryCard
                 imgUrl="/img/Adora_NH_story.png"
                 sponsored
+                title="Nigerian contemporary homes"
               />
               <DashboardStoryCard
                 imgUrl="/img/AH_stroy.png"
+                title="The 7 elements of interior design"
               />
               <DashboardStoryCard
                 imgUrl="/img/Adora_N_story_H.png"
+                title="Things are not as expensive as you think..."
               />
             </section>
           </div>

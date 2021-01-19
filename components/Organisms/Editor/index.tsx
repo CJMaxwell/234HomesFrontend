@@ -274,7 +274,16 @@ const Editor: React.FC = () => {
                     </p>
                 </section>
               </section>
-
+              <section className="flex items-center pb-4">
+                <input
+                  type="checkbox"
+                  className="mr-2"
+                  name="featured"
+                  id="featured"
+                />
+                {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+                <label htmlFor="featured" className="profile-label">Featured</label>
+              </section>
               <Div>
                 <DraftEditor
                   editorState={editorState}

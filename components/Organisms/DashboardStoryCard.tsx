@@ -3,11 +3,7 @@ import styled from 'styled-components';
 
 interface Props {
   imgUrl?: string;
-  height?: string;
   title?: string;
-  category?: string;
-  user?: string;
-  PostDate?: string;
   sponsored?: boolean;
 }
 
@@ -48,9 +44,9 @@ const StoryImg = styled.div<Props>`
 `;
 
 const DashboardStoryCard: React.FC<Props> = ({
-  imgUrl = '',
-  title = '',
-  sponsored = '',
+  imgUrl,
+  title,
+  sponsored,
 }) => {
   return (
     <Wrapper>
@@ -64,7 +60,7 @@ const DashboardStoryCard: React.FC<Props> = ({
         </StoryImg>
         <div>
           <h1 className="capitalize title text-black text-sm font-semibold p-2">
-            Gonsetetur sadipscing elitr, sed diam nonumy eirmod
+            {title}
           </h1>
         </div>
 
