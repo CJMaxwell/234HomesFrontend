@@ -13,6 +13,8 @@ import Offering from '../Offering';
 import Navbar from '../Navbar';
 import DashboardSideBar from '../DashboardSideBar';
 import CTA from '../../atoms/CTA';
+import fileToDataURI from '../../../lib/fileToDataURI';
+import Img from '../../atoms/Img';
 
 const Wrapper = styled.section`
   .breadcrumb li:not(:last-child) {
@@ -67,6 +69,25 @@ const Wrapper = styled.section`
   .section-wrap {
     margin-bottom: 7.1rem;
   }
+  .upload-section {
+    border: 1px dashed ${({ theme }) => theme.colors.gray17};
+    border-radius: 7px;
+    padding: 2.55rem 5.25rem;
+  }
+  .img-type {
+    font-size: 0.8rem;
+    color: ${({ theme }) => theme.colors.gray11};
+  }
+  .drag-and-drop {
+    color: ${({ theme }) => theme.colors.gray1};
+    font-weight: 600;
+    font-size: 1.2rem;
+  }
+  .browse {
+    color: ${({ theme }) => theme.colors.orange1};
+    font-weight: 600;
+  }
+
   .fieldset-input {
     padding: 0.7rem 1rem 1rem 1rem;
   }
@@ -119,8 +140,9 @@ const Editor: React.FC = () => {
     // Deleting...
   };
 
-  const [loading, setLoading] = useState(false);
   const theme = useContext(ThemeContext);
+  const [loading, setLoading] = useState(false);
+  const [featuredImg, setFeaturedImg] = useState<any>();
 
   return (
     <Wrapper>
@@ -204,11 +226,53 @@ const Editor: React.FC = () => {
                   <legend className="profile-label">Title</legend>
                   <input
                     className="fieldset-input profile-desc w-full focus:outline-none"
-                    placeholder="Lorem ipsum dolor sit amet sed diam nonumy eirmod"
+                    placeholder="Title of the story..."
                     name="title"
                     required
                   />
                 </fieldset>
+              </section>
+
+              <section className="upload-section relative mb-4">
+                {featuredImg && <Img promise={fileToDataURI(featuredImg)} />}
+                <input
+                  className="file-upload absolute inset-0 w-full z-50 opacity-0 cursor-pointer"
+                  name="featuredImg"
+                  id="featuredImg"
+                  required
+                  onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                    // setFieldValue('file', event?.currentTarget?.files?.[0]);
+                    setFeaturedImg(event.target.files?.[0]);
+                  }}
+                  type="file"
+                />
+                <section className="flex justify-between items-center">
+                  <section>
+                    <h1 className="resolution">
+                      High Resolution <br /> Image
+                      </h1>
+                    <p className="img-type pt-4">
+                      PNG &amp; JPEGS <br />
+                        1200 px X 680 px
+                      </p>
+                  </section>
+                  <section>
+                    <h1 className="resolution">
+                      High Resolution <br />
+                        Video
+                      </h1>
+                    <p className="img-type pt-4">MP4, &lt; 4 Mins</p>
+                  </section>
+                </section>
+                <section className="flex justify-center items-center pt-20">
+                  <img src="/img/cloud-computing.svg" className="text-center" alt="Upload" />
+                </section>
+                <section className="w-full text-center">
+                  <h1 className="drag-and-drop">Drag and drop a featured image</h1>
+                  <p className="text-sm">
+                    Or <a className="browse pt-4">browse</a> to choose a file
+                    </p>
+                </section>
               </section>
 
               <Div>

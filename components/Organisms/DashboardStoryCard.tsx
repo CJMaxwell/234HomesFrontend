@@ -14,31 +14,7 @@ interface Props {
 const Wrapper = styled.section.attrs({
   className: "max-w-xs overflow-hidden rounded-lg border border-gray-200"
 })`
-  margin-bottom: 2.85rem;
 
-  /* .title {
-    width: 33.2rem;
-  } */
-  .category {
-    color: ${({ theme }) => theme.colors.yellow3};
-    font-size: 0.7rem;
-  }
-  .postdate,
-  .user {
-    font-size: 0.7rem;
-    color: ${({ theme }) => theme.colors.gray1};
-  }
-
-  .desc {
-    color: ${({ theme }) => theme.colors.gray11};
-    font-size: 0.8rem;
-    width: 33.65rem;
-    padding-top: 1.3rem;
-    padding-bottom: 1.3rem;
-  }
-  .line {
-    width: 33.65rem;
-  }
 `;
 
 const StoryImg = styled.div<Props>`
@@ -87,7 +63,7 @@ const DashboardStoryCard: React.FC<Props> = ({
             )}
         </StoryImg>
         <div>
-          <h1 className="capitalize title text-black font-semibold p-4">
+          <h1 className="capitalize title text-black text-sm font-semibold p-2">
             Gonsetetur sadipscing elitr, sed diam nonumy eirmod
           </h1>
         </div>
