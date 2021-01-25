@@ -341,8 +341,8 @@ const AddProduct = () => {
                         width={60}
                       />
                     ) : (
-                        'Submit'
-                      )}
+                      'Submit'
+                    )}
                   </CTA>
                 </section>
               </form>

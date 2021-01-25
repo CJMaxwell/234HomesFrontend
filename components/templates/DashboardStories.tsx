@@ -1,17 +1,16 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import Router from 'next/router';
+import Loader from 'react-loader-spinner';
 
 import Navbar from '../Organisms/Navbar';
 import Offering from '../Organisms/Offering';
 import DashboardStoryCard from '../Organisms/DashboardStoryCard';
-import Button from '../atoms/Button';
 import Footer from './Footer';
 import DashboardSideBar from '../Organisms/DashboardSideBar';
-import Loader from 'react-loader-spinner';
+import useStories from '../../hooks/useStories';
 
 const Wrapper = styled.div`
-
   .breadcrumb li:not(:last-child) {
     padding-right: 0.8rem;
   }
@@ -46,12 +45,15 @@ const Wrapper = styled.div`
   .stories-container {
     margin-top: 20rem;
   }
-  
 `;
 
 const DashboardStories = () => {
   const theme = useContext(ThemeContext);
-  const [loading, setLoading] = useState(false);
+  const { stories, storiesLoading: loading, getStories } = useStories();
+
+  useEffect(() => {
+    getStories({});
+  }, []);
 
   return (
     <Wrapper>
@@ -74,7 +76,6 @@ const DashboardStories = () => {
           </section>
 
           <div className="main w-3/4">
-
             <section className="flex items-center justify-between">
               <h1 className="py-10 profile-title">Stories</h1>
               <button
@@ -92,28 +93,14 @@ const DashboardStories = () => {
             )}
 
             <section className="grid grid-cols-3 gap-4">
-              <DashboardStoryCard
-                imgUrl="/img/Bed_story.png"
-                title="Why you should hire a Designer for your next project"
-              />
-              <DashboardStoryCard
-                imgUrl="/img/Adora_NH_story.png"
-                sponsored
-                title="Nigerian contemporary homes"
-              />
-              <DashboardStoryCard
-                imgUrl="/img/AH_stroy.png"
-                title="The 7 elements of interior design"
-              />
-              <DashboardStoryCard
-                imgUrl="/img/Adora_N_story_H.png"
-                title="Things are not as expensive as you think..."
-              />
+              {!loading &&
+                stories &&
+                stories.posts.map((post) => (
+                  <DashboardStoryCard key={post.id} imgUrl={post.banner} title={post.title} />
+                ))}
             </section>
           </div>
-
         </section>
-
       </div>
 
       <Footer />
