@@ -96,7 +96,12 @@ const DashboardStories = () => {
               {!loading &&
                 stories &&
                 stories.posts.map((post) => (
-                  <DashboardStoryCard key={post.id} imgUrl={post.banner} title={post.title} />
+                  <DashboardStoryCard
+                    key={post.id}
+                    imgUrl={post.banner}
+                    title={post.title}
+                    path={`/dashboard/stories/${post.id}`}
+                  />
                 ))}
             </section>
           </div>
