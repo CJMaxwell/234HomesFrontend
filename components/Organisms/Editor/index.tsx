@@ -3,7 +3,6 @@ import { Editor as DraftEditor } from 'react-draft-wysiwyg';
 import styled, { ThemeContext } from 'styled-components';
 import Loader from 'react-loader-spinner';
 import { Formik } from 'formik';
-
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 import Offering from '../Offering';
