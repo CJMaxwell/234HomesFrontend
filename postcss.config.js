@@ -9,7 +9,7 @@ module.exports = {
             content: ['./pages/**/*.tsx', './components/**/*.tsx'],
             whitelist: ['html', 'body'],
             defaultExtractor: (content) => content.match(/[\w-/:]+(?<!:)/g) || [],
-            whitelistPatterns: [/slick-/, /nprogress?-/, /ril__/, /tippy/],
+            whitelistPatterns: [/slick-/, /nprogress?-/, /ril__/, /tippy/, /react-draft-wysiwyg/],
             whitelistPatternsChildren: [/slick/, /nprogress/],
           }
         : false,
