@@ -7,7 +7,7 @@ const Img: React.FC<{ promise: Promise<string | ArrayBuffer | null | undefined> 
 
   useEffect(() => {
     promise.then((img) => setImage(img));
-  }, []);
+  }, [promise]);
 
   return (
     <img

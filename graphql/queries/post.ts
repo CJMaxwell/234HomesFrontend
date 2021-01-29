@@ -11,3 +11,25 @@ export const STORIES = gql`
     }
   }
 `;
+
+export const STORY = gql`
+  query post($id: String!) {
+    post(id: $id) {
+      id
+      title
+      slug
+      summary
+      banner
+      featured
+      status
+      body
+      createdAt
+      updatedAt
+      user {
+        id
+        firstName
+        lastName
+      }
+    }
+  }
+`;
