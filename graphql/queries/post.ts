@@ -11,3 +11,15 @@ export const STORIES = gql`
     }
   }
 `;
+
+export const STORY = gql`
+  query posts($input: PostSearchInput!) {
+    posts(input: $input) {
+      id
+      title
+      banner
+      status
+      featured
+    }
+  }
+`;

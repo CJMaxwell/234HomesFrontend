@@ -5,11 +5,11 @@ import Loader from 'react-loader-spinner';
 import { Formik } from 'formik';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
-import CTA from '../../atoms/CTA';
-import fileToDataURI from '../../../lib/fileToDataURI';
-import Img from '../../atoms/Img';
-import useEditor from '../../../hooks/useEditor';
-import DashboardLayout from '../../Layouts/DashboardLayout';
+import CTA from '../atoms/CTA';
+import fileToDataURI from '../../lib/fileToDataURI';
+import Img from '../atoms/Img';
+import useEditor from '../../hooks/useEditor';
+import DashboardLayout from '../Layouts/DashboardLayout';
 
 const Wrapper = styled.section`
   .profile-title {
@@ -94,7 +94,11 @@ const Div = styled.div`
   }
 `;
 
-const Editor: React.FC = () => {
+interface EditorProps {
+  mode?: 'edit' | 'create';
+  id?: string;
+}
+const Editor: React.FC<EditorProps> = ({ mode, id }) => {
   const theme = useContext(ThemeContext);
   const {
     editorState,
@@ -104,7 +108,7 @@ const Editor: React.FC = () => {
     featuredImg,
     setFeaturedImg,
     loading,
-  } = useEditor();
+  } = useEditor(id, mode);
   const formRef = useRef(null);
 
   const actions = (
@@ -119,8 +123,8 @@ const Editor: React.FC = () => {
         {loading ? (
           <Loader type="ThreeDots" color={theme.colors.orange1} height={20} width={60} />
         ) : (
-            'Publish'
-          )}
+          'Publish'
+        )}
       </CTA>
       <CTA
         type="button"
@@ -136,15 +140,15 @@ const Editor: React.FC = () => {
         {loading ? (
           <Loader type="ThreeDots" color={theme.colors.orange1} height={20} width={60} />
         ) : (
-            'Save As Draft'
-          )}
+          'Save As Draft'
+        )}
       </CTA>
       <CTA type="button" padding="5px 1rem" disabled={loading}>
         {loading ? (
           <Loader type="ThreeDots" color={theme.colors.orange1} height={20} width={60} />
         ) : (
-            'Cancel'
-          )}
+          'Cancel'
+        )}
       </CTA>
     </section>
   );
@@ -201,17 +205,17 @@ const Editor: React.FC = () => {
                   <section>
                     <h1 className="resolution">
                       High Resolution <br /> Image
-                        </h1>
+                    </h1>
                     <p className="img-type pt-4">
                       PNG &amp; JPEGS <br />
-                          1200 px X 680 px
-                        </p>
+                      1200 px X 680 px
+                    </p>
                   </section>
                   <section>
                     <h1 className="resolution">
                       High Resolution <br />
-                          Video
-                        </h1>
+                      Video
+                    </h1>
                     <p className="img-type pt-4">MP4, &lt; 4 Mins</p>
                   </section>
                 </section>
@@ -222,7 +226,7 @@ const Editor: React.FC = () => {
                   <h1 className="drag-and-drop">Drag and drop a featured image</h1>
                   <p className="text-sm">
                     Or <a className="browse pt-4">browse</a> to choose a file
-                      </p>
+                  </p>
                 </section>
               </section>
               <section className="flex items-center pb-4">
@@ -238,7 +242,7 @@ const Editor: React.FC = () => {
                 {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
                 <label htmlFor="featured" className="profile-label">
                   Featured
-                    </label>
+                </label>
               </section>
               <Div>
                 <DraftEditor
@@ -256,7 +260,6 @@ const Editor: React.FC = () => {
         </Formik>
       </Wrapper>
     </DashboardLayout>
-
   );
 };
 

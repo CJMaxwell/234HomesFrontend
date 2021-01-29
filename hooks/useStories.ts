@@ -28,12 +28,27 @@ const useStories = () => {
       });
   };
 
-  const [query, { loading: storiesLoading, data: stories }] = useLazyQuery(STORIES);
+  const [storiesQuery, { loading: storiesLoading, data: stories }] = useLazyQuery(STORIES);
+  const [storyQuery, { data: story, loading: storyLoading, error: storyErr }] = useLazyQuery(
+    STORIES,
+  );
+
+  if (storyErr) {
+    notify.show('Cannot fetch story', 'error');
+  }
 
   const getStories = (filter: { status?: boolean }) => {
-    query({
+    storiesQuery({
       variables: {
         input: filter,
+      },
+    });
+  };
+
+  const getStory = (id: string) => {
+    storyQuery({
+      variables: {
+        id,
       },
     });
   };
@@ -44,6 +59,9 @@ const useStories = () => {
     stories,
     storiesLoading,
     getStories,
+    getStory,
+    story,
+    storyLoading,
   };
 };
 

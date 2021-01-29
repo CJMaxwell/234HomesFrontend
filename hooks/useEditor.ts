@@ -6,15 +6,19 @@ import useStories from './useStories';
 const offlineStorageKey = 'unsaved:content';
 const initialData: RawDraftContentState = JSON.parse(sessionStorage.getItem(offlineStorageKey));
 
-const useEditor = () => {
+const useEditor = (id?: string, mode?: 'create' | 'edit') => {
+  const { addStory, loading } = useStories();
   const [editorState, setEditorState] = useState(() => {
-    return initialData
-      ? EditorState.createWithContent(convertFromRaw(initialData))
-      : EditorState.createEmpty();
+    if (mode === 'create') {
+      return initialData
+        ? EditorState.createWithContent(convertFromRaw(initialData))
+        : EditorState.createEmpty();
+    }
+
+    return EditorState.createEmpty();
   });
   const [isDirty, setIsDirty] = useState(false);
   const [featuredImg, setFeaturedImg] = useState<any>(null);
-  const { addStory, loading } = useStories();
 
   const convertContentToHTML = () => {
     const currentContentAsHTML = convertToHTML(editorState.getCurrentContent());
