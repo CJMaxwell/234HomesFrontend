@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Offering from '../Organisms/Offering';
 import Navbar from '../Organisms/Navbar';
 import Footer from './Footer';
+import Layout from '../Layouts/Layout';
 
 const Wrapper = styled.section`
   position: relative;
@@ -100,107 +101,104 @@ const Wrapper = styled.section`
 
 const About = () => {
   return (
-    <Wrapper>
-      <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />
-      <Navbar />
-      <hr />
-      <div className="general-padding container mx-auto">
-        <Offering />
-        <ul className="breadcrumb flex items-center uppercase">
-          <li>Company</li>
-          <li>
-            <img src="/img/direction.svg" alt="Breadcrumb navigation" />
-          </li>
-          <li>About +234Homes</li>
-        </ul>
-      </div>
-      <section className="who-we-are">
-        <div className="general-padding container mx-auto grid grid-cols-2 gap-4 py-20">
-          <div>
-            <h1 className="about-title title font-semibold">Who We are</h1>
-            <p className="description">
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-              invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
-              accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
-              sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
-              sadipscing
-            </p>
-          </div>
-          <div className="grid grid-cols-2 grid-rows-2 gap-4">
-            <div className="we-are-one row-span-2" />
-            <div className="we-are-two" />
-            <div className="we-are-three" />
-          </div>
-        </div>
-      </section>
-      <section className="promise-and-culture text-white">
-        <div className="general-padding container mx-auto flex about-people">
-          <div className="pr-32">
-            <h1 className="font-semibold title">Our Promise</h1>
-            <p className="pt-8">
-              Justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
-              Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing.
-            </p>
-          </div>
-          <div className="pr-32">
-            <h1 className="font-semibold title">Our Culture</h1>
-            <p className="pt-8">
-              Sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
-              kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum
-              dolor sit amet, consetetur sadipscing
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-big-idea">
-        <div className="w-full flex">
-          <div className="big-idea w-1/2" />
-          <div className="w-1/2  pt-20 idea-desc">
-            <h1 className="the-idea title font-semibold">The Big Idea</h1>
-            <p className="big-idea-desc pt-8">
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-              invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
-              accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
-              sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
-              sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
-              aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
-              rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-              amet.
-            </p>
-          </div>
-        </div>
-      </section>
-      <section className="Our-team mt-20 mb-24">
+    <Layout>
+      <Wrapper>
         <div className="general-padding container mx-auto">
-          <h1 className="team-title title  mb-12 font-semibold">Our Team</h1>
-          <div className="grid grid-cols-3 gap-8">
+          <ul className="breadcrumb flex items-center uppercase">
+            <li>Company</li>
+            <li>
+              <img src="/img/direction.svg" alt="Breadcrumb navigation" />
+            </li>
+            <li>About +234Homes</li>
+          </ul>
+        </div>
+        <section className="who-we-are">
+          <div className="general-padding container mx-auto grid grid-cols-2 gap-4 py-20">
             <div>
-              <div className="team-mate-one" />
-              <div>
-                <h4 className="name font-semibold pt-6 pb-2">Adora John Doe</h4>
-                <p className="role">Founder / CEO</p>
-              </div>
+              <h1 className="about-title title font-semibold">Who We are</h1>
+              <p className="description">
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+                invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+                accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+                sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
+                sadipscing
+            </p>
             </div>
-            <div>
-              <div className="team-mate-two" />
-              <div>
-                <h4 className="name font-semibold pt-6 pb-2">Chuma Anagbado</h4>
-                <p className="role">Managing Partner</p>
-              </div>
+            <div className="grid grid-cols-2 grid-rows-2 gap-4">
+              <div className="we-are-one row-span-2" />
+              <div className="we-are-two" />
+              <div className="we-are-three" />
             </div>
-            <div>
-              <div className="team-mate-three" />
+          </div>
+        </section>
+        <section className="promise-and-culture text-white">
+          <div className="general-padding container mx-auto flex about-people">
+            <div className="pr-32">
+              <h1 className="font-semibold title">Our Promise</h1>
+              <p className="pt-8">
+                Justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
+                Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing.
+            </p>
+            </div>
+            <div className="pr-32">
+              <h1 className="font-semibold title">Our Culture</h1>
+              <p className="pt-8">
+                Sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
+                kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum
+                dolor sit amet, consetetur sadipscing
+            </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-big-idea">
+          <div className="w-full flex">
+            <div className="big-idea w-1/2" />
+            <div className="w-1/2  pt-20 idea-desc">
+              <h1 className="the-idea title font-semibold">The Big Idea</h1>
+              <p className="big-idea-desc pt-8">
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+                invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+                accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+                sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
+                sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
+                rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
+                amet.
+            </p>
+            </div>
+          </div>
+        </section>
+        <section className="Our-team mt-20 mb-24">
+          <div className="general-padding container mx-auto">
+            <h1 className="team-title title  mb-12 font-semibold">Our Team</h1>
+            <div className="grid grid-cols-3 gap-8">
               <div>
-                <h4 className="name font-semibold pt-6 pb-2">Anita Okoro</h4>
-                <p className="role">Chief Financial Officer</p>
+                <div className="team-mate-one" />
+                <div>
+                  <h4 className="name font-semibold pt-6 pb-2">Adora John Doe</h4>
+                  <p className="role">Founder / CEO</p>
+                </div>
+              </div>
+              <div>
+                <div className="team-mate-two" />
+                <div>
+                  <h4 className="name font-semibold pt-6 pb-2">Chuma Anagbado</h4>
+                  <p className="role">Managing Partner</p>
+                </div>
+              </div>
+              <div>
+                <div className="team-mate-three" />
+                <div>
+                  <h4 className="name font-semibold pt-6 pb-2">Anita Okoro</h4>
+                  <p className="role">Chief Financial Officer</p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-      <Footer />
-    </Wrapper>
+        </section>
+      </Wrapper>
+    </Layout>
   );
 };
 
