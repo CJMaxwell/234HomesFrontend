@@ -2,30 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import Router from 'next/router';
 
-import Offering from '../Organisms/Offering';
-import Navbar from '../Organisms/Navbar';
-import DashboardSideBar from '../Organisms/DashboardSideBar';
-import Footer from './Footer';
+import DashboardLayout from '../Layouts/DashboardLayout';
 import CTA from '../atoms/CTA';
 // import useProfile from '../../hooks/useProfile';
 
 const Wrapper = styled.section`
-  .breadcrumb li:not(:last-child) {
-    padding-right: 0.8rem;
-  }
-  .breadcrumb {
-    margin-top: 3.175rem;
-    margin-bottom: 2.35rem;
-    color: ${({ theme }) => theme.colors.gray5};
-    font-size: 0.7rem;
-    text-transform: uppercase;
-  }
-  .main {
-    border: 1px solid ${({ theme }) => theme.colors.gray17};
-    border-radius: 7px;
-    margin-left: 1.7rem;
-    height: 27.8rem;
-  }
   .main-dashboard-desc {
     padding-left: 4.55rem;
     padding-right: 4.55rem;
@@ -53,23 +34,9 @@ const Wrapper = styled.section`
 
 const Dashboard = () => {
   return (
-    <Wrapper>
-      <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />
-      <Navbar />
-      <hr />
-      <div className="general-padding container mx-auto section-wrap">
-        <Offering />
-        <ul className="breadcrumb flex items-center uppercase">
-          <li>Home</li>
-          <li>
-            <img src="/img/direction.svg" alt="Breadcrumb navigation" />
-          </li>
-          <li>Dashboard</li>
-        </ul>
+    <DashboardLayout>
+      <Wrapper>
         <section className="flex justify-between">
-          <section className="w-1/4">
-            <DashboardSideBar />
-          </section>
           <section className="main text-center w-3/4">
             <h1 className="temp-access">Your account access is temporarily limited</h1>
             <p className="main-dashboard-desc flex justify-center">
@@ -89,9 +56,8 @@ const Dashboard = () => {
             </CTA>
           </section>
         </section>
-      </div>
-      <Footer />
-    </Wrapper>
+      </Wrapper>
+    </DashboardLayout>
   );
 };
 

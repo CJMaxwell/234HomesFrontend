@@ -3,10 +3,8 @@ import styled from 'styled-components';
 import Hero from '../Organisms/Hero';
 
 import { useProjects } from '../../hooks/projects';
-import Navbar from '../Organisms/Navbar';
 import Offering from '../Organisms/Offering';
 import ProjectListingCard from '../Organisms/ProjectListingCard';
-import Footer from './Footer';
 
 const Wrapper = styled.section`
   .filter {
@@ -37,9 +35,6 @@ const Projects = () => {
 
   return (
     <Wrapper>
-      <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />
-      <Navbar />
-      <hr />
       <div className="general-padding container mx-auto">
         <Offering />
       </div>
@@ -88,7 +83,6 @@ const Projects = () => {
             ))}
         </div>
       </div>
-      <Footer />
     </Wrapper>
   );
 };

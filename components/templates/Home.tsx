@@ -12,6 +12,7 @@ import ProfessionalCard from '../Organisms/ProfessionalCard';
 import DIYCard from '../Organisms/DIYCard';
 import MostViewedProducts from '../Organisms/MostViewedProducts';
 import TopRatedVendor from '../Organisms/TopRatedVendor';
+import Layout from '../Layouts/Layout';
 
 const HomeBannerBtn = styled(Button)`
   border-radius: 34px;
@@ -220,9 +221,7 @@ const Home = () => {
   const [tab, setTab] = useState('professional');
 
   return (
-    <div>
-      <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />
-      <Navbar />
+    <Layout>
       <HomeBanner className="flex justify-center items-center">
         <div>
           <div className="home-banner-tabs">
@@ -490,8 +489,7 @@ const Home = () => {
           )}
         </div>
       </Directory>
-      <Footer />
-    </div>
+    </Layout>
   );
 };
 

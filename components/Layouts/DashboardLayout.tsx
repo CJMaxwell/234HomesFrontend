@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import Offering from '../Organisms/Offering';
-import Navbar from '../Organisms/Navbar';
 import DashboardSideBar from '../Organisms/DashboardSideBar';
+import Navbar from '../Organisms/Navbar';
 
 const Wrapper = styled.section`
   .breadcrumb li:not(:last-child) {
