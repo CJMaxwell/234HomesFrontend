@@ -157,8 +157,11 @@ const Editor: React.FC<EditorProps> = ({
         )}
       </CTA>
       <CTA type="button" padding="5px 1rem" disabled={loading}>
+        {/* eslint-disable-next-line no-nested-ternary */}
         {loading ? (
           <Loader type="ThreeDots" color={theme.colors.orange1} height={20} width={60} />
+        ) : id ? (
+          'Delete'
         ) : (
           'Cancel'
         )}
