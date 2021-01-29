@@ -3,22 +3,25 @@ import { convertToHTML } from 'draft-convert';
 import { useState, useEffect } from 'react';
 import useStories from './useStories';
 
-const offlineStorageKey = 'unsaved:content';
-const initialData: RawDraftContentState = JSON.parse(sessionStorage.getItem(offlineStorageKey));
+interface InitialData {
+  banner?: File;
+  title?: string;
+  featured?: boolean;
+  body?: RawDraftContentState;
+}
 
-const useEditor = (id?: string, mode?: 'create' | 'edit') => {
+const useEditor = (
+  { body: initialBody, banner, ...initialMetaData }: InitialData,
+  offlineStorageKey: string,
+) => {
   const { addStory, loading } = useStories();
   const [editorState, setEditorState] = useState(() => {
-    if (mode === 'create') {
-      return initialData
-        ? EditorState.createWithContent(convertFromRaw(initialData))
-        : EditorState.createEmpty();
-    }
-
-    return EditorState.createEmpty();
+    return initialBody
+      ? EditorState.createWithContent(convertFromRaw(initialBody))
+      : EditorState.createEmpty();
   });
   const [isDirty, setIsDirty] = useState(false);
-  const [featuredImg, setFeaturedImg] = useState<any>(null);
+  const [featuredImg, setFeaturedImg] = useState<any>(() => banner);
 
   const convertContentToHTML = () => {
     const currentContentAsHTML = convertToHTML(editorState.getCurrentContent());
@@ -42,14 +45,14 @@ const useEditor = (id?: string, mode?: 'create' | 'edit') => {
     setIsDirty(false);
   };
 
-  const handleSaveDraft = (metaData: { title: string; featured: boolean }) => {
+  const handleSaveDraft = (metaData: { id?: string; title: string; featured: boolean }) => {
     const body = convertContentToHTML();
     addStory(featuredImg, { ...metaData, status: 'draft', body });
     setIsDirty(false);
     clearOfflineData();
   };
 
-  const handlePublish = (metaData: { title: string; featured: boolean }) => {
+  const handlePublish = (metaData: { id?: string; title: string; featured: boolean }) => {
     const body = convertContentToHTML();
     addStory(featuredImg, { ...metaData, status: 'published', body });
     setIsDirty(false);
@@ -63,8 +66,6 @@ const useEditor = (id?: string, mode?: 'create' | 'edit') => {
   useEffect(() => {
     const interval = setInterval(() => {
       if (isDirty) {
-        console.log('hey');
-
         storeOffline(editorState);
       }
     }, 5000); // Every one minute
@@ -80,6 +81,7 @@ const useEditor = (id?: string, mode?: 'create' | 'edit') => {
     featuredImg,
     setFeaturedImg,
     loading,
+    initialMetaData,
   };
 };
 

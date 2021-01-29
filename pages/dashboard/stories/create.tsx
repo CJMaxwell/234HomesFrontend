@@ -1,9 +1,16 @@
 import dynamic from 'next/dynamic';
+import DashboardLayout from '../../../components/Layouts/DashboardLayout';
 
-const Editor = dynamic(() => import('../../../components/Organisms/Editor'), { ssr: false });
+const CreateStory = dynamic(() => import('../../../components/templates/CreateStory'), {
+  ssr: false,
+});
 
-const CreatePage: React.FC = () => {
-  return <Editor />;
+const CreateStoryPage: React.FC = () => {
+  return (
+    <DashboardLayout>
+      <CreateStory />
+    </DashboardLayout>
+  );
 };
 
-export default CreatePage;
+export default CreateStoryPage;

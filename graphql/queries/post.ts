@@ -13,13 +13,23 @@ export const STORIES = gql`
 `;
 
 export const STORY = gql`
-  query posts($input: PostSearchInput!) {
-    posts(input: $input) {
+  query post($id: String!) {
+    post(id: $id) {
       id
       title
+      slug
+      summary
       banner
-      status
       featured
+      status
+      body
+      createdAt
+      updatedAt
+      user {
+        id
+        firstName
+        lastName
+      }
     }
   }
 `;

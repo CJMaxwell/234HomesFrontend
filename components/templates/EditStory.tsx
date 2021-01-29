@@ -1,21 +1,19 @@
 import { RawDraftContentState } from 'draft-js';
+
 import useEditor from '../../hooks/useEditor';
+
 import Editor from '../Organisms/Editor';
 
 const offlineStorageKey = 'unsaved:content';
 
-const CreateStory: React.FC = () => {
-  const initialContent: RawDraftContentState = JSON.parse(
-    sessionStorage.getItem(offlineStorageKey),
-  );
+interface InitialData {
+  banner?: File;
+  title?: string;
+  featured?: boolean;
+  body?: RawDraftContentState;
+}
 
-  const initialData = {
-    title: '',
-    banner: null,
-    body: initialContent,
-    featured: false,
-  };
-
+const EditStory: React.FC<{ initialData?: InitialData }> = ({ initialData }) => {
   const {
     loading,
     handlePublish,
@@ -41,4 +39,4 @@ const CreateStory: React.FC = () => {
   );
 };
 
-export default CreateStory;
+export default EditStory;

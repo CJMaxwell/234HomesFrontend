@@ -1,15 +1,15 @@
-import React, { useContext, useRef } from 'react';
+import React, { Dispatch, useContext, useRef } from 'react';
+import { EditorState } from 'draft-js';
+import { notify } from 'react-notify-toast';
 import { Editor as DraftEditor } from 'react-draft-wysiwyg';
 import styled, { ThemeContext } from 'styled-components';
 import Loader from 'react-loader-spinner';
+import { useRouter } from 'next/router';
 import { Formik } from 'formik';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-
 import CTA from '../atoms/CTA';
 import fileToDataURI from '../../lib/fileToDataURI';
 import Img from '../atoms/Img';
-import useEditor from '../../hooks/useEditor';
-import DashboardLayout from '../Layouts/DashboardLayout';
 
 const Wrapper = styled.section`
   .profile-title {
@@ -94,21 +94,34 @@ const Div = styled.div`
   }
 `;
 
+type TAction = (metaData: { id?: string; title?: string; featured?: boolean }) => void;
 interface EditorProps {
-  mode?: 'edit' | 'create';
-  id?: string;
+  loading: boolean;
+  handleSaveDraft: TAction;
+  handlePublish: TAction;
+  handleEditorChange: (state: any) => void;
+  editorState: EditorState;
+  featuredImg: any;
+  setFeaturedImg: Dispatch<any>;
+  initialMetadata: {
+    title?: string;
+    featured?: boolean;
+  };
 }
-const Editor: React.FC<EditorProps> = ({ mode, id }) => {
+
+const Editor: React.FC<EditorProps> = ({
+  loading,
+  handleEditorChange,
+  handleSaveDraft,
+  handlePublish,
+  editorState,
+  featuredImg,
+  setFeaturedImg,
+  initialMetadata = { title: '', featured: false },
+}) => {
+  const router = useRouter();
+  const { id } = router.query;
   const theme = useContext(ThemeContext);
-  const {
-    editorState,
-    handleEditorChange,
-    handleSaveDraft,
-    handlePublish,
-    featuredImg,
-    setFeaturedImg,
-    loading,
-  } = useEditor(id, mode);
   const formRef = useRef(null);
 
   const actions = (
@@ -134,7 +147,7 @@ const Editor: React.FC<EditorProps> = ({ mode, id }) => {
         disabled={loading}
         onClick={() => {
           const { title, featured } = formRef.current.values;
-          handleSaveDraft({ title, featured });
+          handleSaveDraft({ id: id as string, title, featured });
         }}
       >
         {loading ? (
@@ -154,112 +167,111 @@ const Editor: React.FC<EditorProps> = ({ mode, id }) => {
   );
 
   return (
-    <DashboardLayout>
-      <Wrapper>
-        <div className="flex items-center justify-between">
-          <h1 className="py-10 profile-title">Create a story</h1>
-          {actions}
-        </div>
-
-        <Formik
-          onSubmit={(payload) => {
-            handlePublish(payload);
-          }}
-          initialValues={{
-            title: '',
-            featured: false,
-          }}
-          innerRef={formRef}
-        >
-          {({ values, handleChange, handleBlur, handleSubmit }) => (
-            <form onSubmit={handleSubmit}>
-              <section className="flex items-center justify-between pb-4">
-                <fieldset className="w-full">
-                  <legend className="profile-label">Title</legend>
-                  <input
-                    className="fieldset-input profile-desc w-full focus:outline-none"
-                    placeholder="Title of the story..."
-                    name="title"
-                    value={values.title}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    required
-                  />
-                </fieldset>
-              </section>
-
-              <section className="upload-section relative mb-4">
-                {featuredImg && <Img promise={fileToDataURI(featuredImg)} />}
+    <Wrapper>
+      <Formik
+        onSubmit={(payload) => {
+          if (!featuredImg) {
+            notify.show('Banner is required for publishing', 'error');
+            return;
+          }
+          handlePublish({ id: id as string, ...payload });
+        }}
+        initialValues={{
+          ...initialMetadata,
+        }}
+        innerRef={formRef}
+      >
+        {({ values, handleChange, handleBlur, handleSubmit }) => (
+          <form onSubmit={handleSubmit}>
+            <div className="flex items-center justify-between">
+              <h1 className="py-10 profile-title">Create a story</h1>
+              {actions}
+            </div>
+            <section className="flex items-center justify-between pb-4">
+              <fieldset className="w-full">
+                <legend className="profile-label">Title</legend>
                 <input
-                  className="file-upload absolute inset-0 w-full z-50 opacity-0 cursor-pointer"
-                  name="featuredImg"
-                  id="featuredImg"
+                  className="fieldset-input profile-desc w-full focus:outline-none"
+                  placeholder="Title of the story..."
+                  name="title"
+                  value={values.title}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
                   required
-                  onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                    // setFieldValue('file', event?.currentTarget?.files?.[0]);
-                    setFeaturedImg(event.target.files?.[0]);
-                  }}
-                  type="file"
                 />
-                <section className="flex justify-between items-center">
-                  <section>
-                    <h1 className="resolution">
-                      High Resolution <br /> Image
-                    </h1>
-                    <p className="img-type pt-4">
-                      PNG &amp; JPEGS <br />
-                      1200 px X 680 px
-                    </p>
-                  </section>
-                  <section>
-                    <h1 className="resolution">
-                      High Resolution <br />
-                      Video
-                    </h1>
-                    <p className="img-type pt-4">MP4, &lt; 4 Mins</p>
-                  </section>
-                </section>
-                <section className="flex justify-center items-center pt-20">
-                  <img src="/img/cloud-computing.svg" className="text-center" alt="Upload" />
-                </section>
-                <section className="w-full text-center">
-                  <h1 className="drag-and-drop">Drag and drop a featured image</h1>
-                  <p className="text-sm">
-                    Or <a className="browse pt-4">browse</a> to choose a file
+              </fieldset>
+            </section>
+
+            <section className="upload-section relative mb-4">
+              {featuredImg && <Img promise={fileToDataURI(featuredImg)} />}
+              <input
+                className="file-upload absolute inset-0 w-full z-50 opacity-0 cursor-pointer"
+                name="featuredImg"
+                id="featuredImg"
+                accept="image/png, .jpeg, .jpg, image/gif"
+                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                  setFeaturedImg(event.target.files?.[0]);
+                }}
+                type="file"
+              />
+              <section className="flex justify-between items-center">
+                <section>
+                  <h1 className="resolution">
+                    High Resolution <br /> Image
+                  </h1>
+                  <p className="img-type pt-4">
+                    PNG &amp; JPEGS <br />
+                    1200 px X 680 px
                   </p>
                 </section>
+                <section>
+                  <h1 className="resolution">
+                    High Resolution <br />
+                    Video
+                  </h1>
+                  <p className="img-type pt-4">MP4, &lt; 4 Mins</p>
+                </section>
               </section>
-              <section className="flex items-center pb-4">
-                <input
-                  type="checkbox"
-                  className="mr-2"
-                  name="featured"
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  id="featured"
-                  checked={values.featured}
-                />
-                {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                <label htmlFor="featured" className="profile-label">
-                  Featured
-                </label>
+              <section className="flex justify-center items-center pt-20">
+                <img src="/img/cloud-computing.svg" className="text-center" alt="Upload" />
               </section>
-              <Div>
-                <DraftEditor
-                  editorState={editorState}
-                  onEditorStateChange={handleEditorChange}
-                  wrapperClassName="wrapper-class"
-                  editorClassName="editor-class"
-                  toolbarClassName="toolbar-class"
-                />
+              <section className="w-full text-center">
+                <h1 className="drag-and-drop">Drag and drop a featured image</h1>
+                <p className="text-sm">
+                  Or <a className="browse pt-4">browse</a> to choose a file
+                </p>
+              </section>
+            </section>
+            <section className="flex items-center pb-4">
+              <input
+                type="checkbox"
+                className="mr-2"
+                name="featured"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                id="featured"
+                checked={values.featured}
+              />
+              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+              <label htmlFor="featured" className="profile-label">
+                Featured
+              </label>
+            </section>
+            <Div>
+              <DraftEditor
+                editorState={editorState}
+                onEditorStateChange={handleEditorChange}
+                wrapperClassName="wrapper-class"
+                editorClassName="editor-class"
+                toolbarClassName="toolbar-class"
+              />
 
-                <div className="flex justify-end">{actions}</div>
-              </Div>
-            </form>
-          )}
-        </Formik>
-      </Wrapper>
-    </DashboardLayout>
+              <div className="flex justify-end">{actions}</div>
+            </Div>
+          </form>
+        )}
+      </Formik>
+    </Wrapper>
   );
 };
 

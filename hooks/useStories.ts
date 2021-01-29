@@ -2,7 +2,7 @@ import { useMutation, useLazyQuery } from '@apollo/client';
 import { notify } from 'react-notify-toast';
 import Router from 'next/router';
 import { ADD_STORY } from '../graphql/mutations/post';
-import { STORIES } from '../graphql/queries/post';
+import { STORIES, STORY } from '../graphql/queries/post';
 
 const useStories = () => {
   const [addStoryMutate, { loading }] = useMutation(ADD_STORY);
@@ -24,14 +24,14 @@ const useStories = () => {
         }
       })
       .catch((err) => {
-        notify.show('Stories could not be added.', 'error');
+        const message =
+          input.status === 'draft' ? 'Story can be saved as draft' : 'Story cannot be published';
+        notify.show(message, 'error');
       });
   };
 
   const [storiesQuery, { loading: storiesLoading, data: stories }] = useLazyQuery(STORIES);
-  const [storyQuery, { data: story, loading: storyLoading, error: storyErr }] = useLazyQuery(
-    STORIES,
-  );
+  const [storyQuery, { data: story, loading: storyLoading, error: storyErr }] = useLazyQuery(STORY);
 
   if (storyErr) {
     notify.show('Cannot fetch story', 'error');
