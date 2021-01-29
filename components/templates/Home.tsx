@@ -4,8 +4,6 @@ import Link from 'next/link';
 import Router from 'next/router';
 
 import Button from '../atoms/Button';
-import Navbar from '../Organisms/Navbar';
-import Footer from './Footer';
 import SiteLink from '../atoms/SiteLink';
 import PostCard from '../Organisms/PostCard';
 import ProfessionalCard from '../Organisms/ProfessionalCard';

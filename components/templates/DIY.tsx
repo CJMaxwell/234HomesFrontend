@@ -1,13 +1,11 @@
 import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import Router from 'next/router';
 
-import Navbar from '../Organisms/Navbar';
 import Offering from '../Organisms/Offering';
 import Button from '../atoms/Button';
-import Footer from './Footer';
 import DIYPostCard from '../Organisms/DIYPostCard';
 import useDIY from '../../hooks/useDIY';
+import Layout from '../Layouts/Layout';
 
 const Wrapper = styled.div`
   .recommended {
@@ -108,62 +106,60 @@ const DIY = () => {
   const { diys, loading } = useDIY();
 
   return (
-    <Wrapper>
-      <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />
-      <Navbar />
-      <hr />
-      <div className="general-padding container mx-auto">
-        <Offering />
-      </div>
-      <TopBanner>
+    <Layout>
+      <Wrapper>
         <div className="general-padding container mx-auto">
-          <h6 className="uppercase title pt-12">Do-IT-YOURSELF</h6>
-          <div className="text-center pb-10">
-            <h1 className="capitalize heading-intro font-semibold">DIY Projects For The Home</h1>
-            <p className="pt-4 para-intro">
-              Skip store bought decorations and personalize your space with items that you make
-              yourself. Browse beautiful and easy-to-follow DIY projects for every room in your
-              home.
+          <Offering />
+        </div>
+        <TopBanner>
+          <div className="general-padding container mx-auto">
+            <h6 className="uppercase title pt-12">Do-IT-YOURSELF</h6>
+            <div className="text-center pb-10">
+              <h1 className="capitalize heading-intro font-semibold">DIY Projects For The Home</h1>
+              <p className="pt-4 para-intro">
+                Skip store bought decorations and personalize your space with items that you make
+                yourself. Browse beautiful and easy-to-follow DIY projects for every room in your
+                home.
             </p>
-          </div>
-          <ImgBanner>
-            <FeaturedWrapper className="px-8 py-10">
-              <h4 className="uppercase featured text-white font-semibold text-center py-2">
-                featured
+            </div>
+            <ImgBanner>
+              <FeaturedWrapper className="px-8 py-10">
+                <h4 className="uppercase featured text-white font-semibold text-center py-2">
+                  featured
               </h4>
-              <h3 className="featured-heading font-semibold pt-8 text-white capitalize">
-                elitr sed diam nonumy eirmod tempor invidunt ut labore et
+                <h3 className="featured-heading font-semibold pt-8 text-white capitalize">
+                  elitr sed diam nonumy eirmod tempor invidunt ut labore et
               </h3>
-              <FeatButton
-                // onClick={() => Router.push('/single-diy')}
-                className="featured-button uppercase mt-10"
-              >
-                WAtch Now
+                <FeatButton
+                  // onClick={() => Router.push('/single-diy')}
+                  className="featured-button uppercase mt-10"
+                >
+                  WAtch Now
               </FeatButton>
-            </FeaturedWrapper>
-          </ImgBanner>
-        </div>
-      </TopBanner>
-      <div className="general-padding container mx-auto mb-32 stories-container">
-        <div className="flex justify-between items-center">
-          <h1 className="uppercase latest font-semibold">Latest</h1>
-          <div className="flex items-center">
-            <span className="sort-by">Sort By</span>
-            <select className="recommended">
-              <option value="Recommended">Recommended</option>
-            </select>
+              </FeaturedWrapper>
+            </ImgBanner>
           </div>
+        </TopBanner>
+        <div className="general-padding container mx-auto mb-32 stories-container">
+          <div className="flex justify-between items-center">
+            <h1 className="uppercase latest font-semibold">Latest</h1>
+            <div className="flex items-center">
+              <span className="sort-by">Sort By</span>
+              <select className="recommended">
+                <option value="Recommended">Recommended</option>
+              </select>
+            </div>
+          </div>
+          {diys && (
+            <section className="grid grid-cols-3 gap-8 mb-20 mt-10">
+              {diys.map((diy: any) => (
+                <DIYPostCard imgUrl={diy.thumbnail} title={diy.title} path={`/diy/${diy.id}`} />
+              ))}
+            </section>
+          )}
         </div>
-        {diys && (
-          <section className="grid grid-cols-3 gap-8 mb-20 mt-10">
-            {diys.map((diy: any) => (
-              <DIYPostCard imgUrl={diy.thumbnail} title={diy.title} path={`/diy/${diy.id}`} />
-            ))}
-          </section>
-        )}
-      </div>
-      <Footer />
-    </Wrapper>
+      </Wrapper>
+    </Layout>
   );
 };
 

@@ -5,9 +5,6 @@ import Loader from 'react-loader-spinner';
 import { Formik } from 'formik';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
-import Offering from '../Offering';
-import Navbar from '../Navbar';
-import DashboardSideBar from '../DashboardSideBar';
 import CTA from '../../atoms/CTA';
 import fileToDataURI from '../../../lib/fileToDataURI';
 import Img from '../../atoms/Img';
@@ -146,7 +143,7 @@ const Editor: React.FC = () => {
         {loading ? (
           <Loader type="ThreeDots" color={theme.colors.orange1} height={20} width={60} />
         ) : (
-            'Delete'
+            'Cancel'
           )}
       </CTA>
     </section>

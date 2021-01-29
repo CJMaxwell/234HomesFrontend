@@ -3,12 +3,10 @@ import styled, { ThemeContext } from 'styled-components';
 import Loader from 'react-loader-spinner';
 
 import useProfessionals from '../../hooks/useProfessionals';
-import Navbar from '../Organisms/Navbar';
 import Hero from '../Organisms/Hero';
-import Favourite from '../molecules/Favourite';
 import Offering from '../Organisms/Offering';
 import ProfessionalCard from '../Organisms/ProfessionalCard';
-import Footer from './Footer';
+import Layout from '../Layouts/Layout';
 
 const Categories = styled.section`
   background-color: ${({ theme }) => theme.colors.orange4};
@@ -43,12 +41,7 @@ const Directory = () => {
   const { professionals, loading, search } = useProfessionals();
 
   return (
-    <section>
-      <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />
-      <div className="container mx-auto">
-        <Navbar />
-      </div>
-      <hr />
+    <Layout>
       <div className="general-padding container mx-auto">
         <Offering />
       </div>
@@ -117,22 +110,21 @@ const Directory = () => {
           {
             // @ts-ignore
             professionals &&
-              professionals.map((professional: any) => (
-                <ProfessionalCard
-                  name={`${professional.firstName} ${professional.lastName}`}
-                  occupation={professional.occupation}
-                  location={`${professional.city}, ${professional.state}`}
-                  phone={professional.phoneNumber}
-                  profilePhoto={professional.profilePhoto || '/img/dashboard/dashboardperson.svg'}
-                  key={professional.id}
-                  path={`/directory/${professional.id}`}
-                />
-              ))
+            professionals.map((professional: any) => (
+              <ProfessionalCard
+                name={`${professional.firstName} ${professional.lastName}`}
+                occupation={professional.occupation}
+                location={`${professional.city}, ${professional.state}`}
+                phone={professional.phoneNumber}
+                profilePhoto={professional.profilePhoto || '/img/dashboard/dashboardperson.svg'}
+                key={professional.id}
+                path={`/directory/${professional.id}`}
+              />
+            ))
           }
         </section>
       </Main>
-      <Footer />
-    </section>
+    </Layout>
   );
 };
 

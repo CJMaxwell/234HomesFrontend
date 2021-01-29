@@ -37,7 +37,7 @@ const Dashboard = () => {
     <DashboardLayout>
       <Wrapper>
         <section className="flex justify-between">
-          <section className="main text-center w-3/4">
+          <section className="text-center w-full">
             <h1 className="temp-access">Your account access is temporarily limited</h1>
             <p className="main-dashboard-desc flex justify-center">
               Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor

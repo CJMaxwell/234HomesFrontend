@@ -2,14 +2,12 @@ import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import { useRouter } from 'next/router';
 
-import Navbar from '../Organisms/Navbar';
 import Offering from '../Organisms/Offering';
 import UserCard from '../molecules/UserCard';
 import MostTalkedDIY from '../Organisms/MostTalkedDIY';
-import Footer from './Footer';
 import useDIY from '../../hooks/useDIY';
-
 import YouTubeContainer from '../Organisms/YouTubeContainer';
+import Layout from '../Layouts/Layout';
 
 const Main = styled.section`
   width: 47.5rem;
@@ -61,66 +59,64 @@ const SingleDIY = () => {
   const { diy, loading } = useDIY(id as string);
 
   return (
-    <MainWrap>
-      <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />
-      <Navbar />
-      <hr />
-      <div className="general-padding container mx-auto">
-        <Offering />
-      </div>
-      <section className="general-padding container mx-auto py-10">
-        <ul className="flex items-center breadcrumb mb-12">
-          <li>Do-It-Yourself</li>
-          <li>
-            <img src="/img/direction.svg" alt="Breadcrumb navigation" />
-          </li>
-          <li>{diy?.title}</li>
-        </ul>
-        {diy && <YouTubeContainer url={diy.video} thumbnail={diy.thumbnail} />}
-      </section>
-
-      <Main className="container mx-auto mb-16">
-        <h1 className="capitalize main-title text-4xl font-semibold py-12">{diy?.title}</h1>
-        <div className="pb-12">
-          {diy && (
-            <UserCard
-              user={`${diy.createdBy?.firstName} ${diy.createdBy?.lastName}`}
-              imgUrl={diy.createdBy?.profilePhoto}
-            />
-          )}
+    <Layout>
+      <MainWrap>
+        <div className="general-padding container mx-auto">
+          <Offering />
         </div>
-        <article>
-          <p className="inline-desc">{diy?.body}</p>
-        </article>
-        <section className="flex items-center mt-16">
-          <span className="signup-comment font-semibold pr-2 capitalize">Sign Up to Comment</span>
-          <img src="/img/comment_ss.svg" alt="comment" />
+        <section className="general-padding container mx-auto py-10">
+          <ul className="flex items-center breadcrumb mb-12">
+            <li>Do-It-Yourself</li>
+            <li>
+              <img src="/img/direction.svg" alt="Breadcrumb navigation" />
+            </li>
+            <li>{diy?.title}</li>
+          </ul>
+          {diy && <YouTubeContainer url={diy.video} thumbnail={diy.thumbnail} />}
         </section>
-        <section className="mt-10">
-          <div className="flex items-center">
-            <h1 className="conversation uppercase pr-1">CONVERSATION</h1>
-            <span className="number-comments">(0) Comments</span>
+
+        <Main className="container mx-auto mb-16">
+          <h1 className="capitalize main-title text-4xl font-semibold py-12">{diy?.title}</h1>
+          <div className="pb-12">
+            {diy && (
+              <UserCard
+                user={`${diy.createdBy?.firstName} ${diy.createdBy?.lastName}`}
+                imgUrl={diy.createdBy?.profilePhoto}
+              />
+            )}
           </div>
-          <textarea
-            className="border border-gray-200 mt-5 outline-none w-full h-20 pt-4 pl-6 rounded-md"
-            name="discussion"
-            id="discussion"
-            placeholder="Join the discussion…"
-          />
+          <article>
+            <p className="inline-desc">{diy?.body}</p>
+          </article>
+          <section className="flex items-center mt-16">
+            <span className="signup-comment font-semibold pr-2 capitalize">Sign Up to Comment</span>
+            <img src="/img/comment_ss.svg" alt="comment" />
+          </section>
+          <section className="mt-10">
+            <div className="flex items-center">
+              <h1 className="conversation uppercase pr-1">CONVERSATION</h1>
+              <span className="number-comments">(0) Comments</span>
+            </div>
+            <textarea
+              className="border border-gray-200 mt-5 outline-none w-full h-20 pt-4 pl-6 rounded-md"
+              name="discussion"
+              id="discussion"
+              placeholder="Join the discussion…"
+            />
+          </section>
+        </Main>
+        <hr />
+        <h1 className="mt-12 mb-8 text-center font-semibold most-talked">Most Talked About</h1>
+        <section className="container mx-auto general-padding grid grid-cols-3 gap-8 mb-20">
+          <MostTalkedDIY imgUrl="/img/Image__Sss__9.png" />
+          <MostTalkedDIY imgUrl="/img/Adora_NH_ss.png" />
+          <MostTalkedDIY imgUrl="/img/Adora_NH---ss.png" />
+          <MostTalkedDIY imgUrl="/img/sidekix-media-I_QC1JICzA0-un.png" />
+          <MostTalkedDIY imgUrl="/img/amber-79ePIEybmzQ-unsplash.png" />
+          <MostTalkedDIY imgUrl="/img/Adora_NH_single_story.png" />
         </section>
-      </Main>
-      <hr />
-      <h1 className="mt-12 mb-8 text-center font-semibold most-talked">Most Talked About</h1>
-      <section className="container mx-auto general-padding grid grid-cols-3 gap-8 mb-20">
-        <MostTalkedDIY imgUrl="/img/Image__Sss__9.png" />
-        <MostTalkedDIY imgUrl="/img/Adora_NH_ss.png" />
-        <MostTalkedDIY imgUrl="/img/Adora_NH---ss.png" />
-        <MostTalkedDIY imgUrl="/img/sidekix-media-I_QC1JICzA0-un.png" />
-        <MostTalkedDIY imgUrl="/img/amber-79ePIEybmzQ-unsplash.png" />
-        <MostTalkedDIY imgUrl="/img/Adora_NH_single_story.png" />
-      </section>
-      <Footer />
-    </MainWrap>
+      </MainWrap>
+    </Layout>
   );
 };
 

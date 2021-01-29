@@ -5,12 +5,11 @@ import { useRouter } from 'next/router';
 
 import useProject from '../../hooks/useProject';
 import useProfile from '../../hooks/useProfile';
-import Navbar from '../Organisms/Navbar';
 import Offering from '../Organisms/Offering';
 import ProjectSlider from '../Organisms/ProjectSlider';
 import UserCard from '../molecules/UserCard';
 import ProjectListingCard from '../Organisms/ProjectListingCard';
-import Footer from './Footer';
+import Layout from '../Layouts/Layout';
 
 const Wrapper = styled.section`
   .breadcrumb {
@@ -116,89 +115,87 @@ const SingleProject = () => {
   const { id } = router.query;
   const { project, projectLoading: loading } = useProject(id as string);
   return (
-    <Wrapper>
-      <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />
-      <Navbar />
-      <hr />
-      <div className="general-padding container mx-auto">
-        <Offering />
-      </div>
-      <section className="general-padding container mx-auto py-10">
-        <ul className="flex items-center breadcrumb">
-          <li>Projects</li>
-          <li>
-            <img src="/img/direction.svg" alt="Breadcrumb navigation" />
-          </li>
-          <li>{project?.title}</li>
-        </ul>
-        <section className="pt-20">
-          <Slider {...settings}>
-            {banners.map((banner) => (
-              <div key={banner.id} className="w-full">
-                <ProjectSlider imgUrl={banner.url} />
-              </div>
-            ))}
-          </Slider>
-        </section>
+    <Layout>
+      <Wrapper>
+        <div className="general-padding container mx-auto">
+          <Offering />
+        </div>
+        <section className="general-padding container mx-auto py-10">
+          <ul className="flex items-center breadcrumb">
+            <li>Projects</li>
+            <li>
+              <img src="/img/direction.svg" alt="Breadcrumb navigation" />
+            </li>
+            <li>{project?.title}</li>
+          </ul>
+          <section className="pt-20">
+            <Slider {...settings}>
+              {banners.map((banner) => (
+                <div key={banner.id} className="w-full">
+                  <ProjectSlider imgUrl={banner.url} />
+                </div>
+              ))}
+            </Slider>
+          </section>
 
-        <Main className="container mx-auto mb-16">
-          <h1 className="capitalize main-title text-4xl font-semibold py-12">{project?.title}</h1>
-          <div>
-            <UserCard />
-          </div>
-          <section className="flex items-center mt-8">
-            <span className="signup-comment font-semibold pr-2 capitalize">Sign Up to Comment</span>
-            <img src="/img/comment_ss.svg" alt="comment" />
-          </section>
-          <section className="mt-10">
-            <div className="flex items-center">
-              <h1 className="conversation uppercase pr-1">CONVERSATION</h1>
-              <span className="number-comments">(0) Comments</span>
+          <Main className="container mx-auto mb-16">
+            <h1 className="capitalize main-title text-4xl font-semibold py-12">{project?.title}</h1>
+            <div>
+              <UserCard />
             </div>
-            <textarea
-              className="border border-gray-200 mt-5 outline-none w-full h-20 pt-4 pl-6 rounded-md"
-              name="discussion"
-              id="discussion"
-              placeholder="Join the discussion…"
-            />
-          </section>
-        </Main>
-      </section>
-      <h1 className="mt-12 mb-8 text-center font-semibold most-talked">Similiar Projects</h1>
-      <section className="container mx-auto general-padding grid grid-cols-3 gap-8 mb-20">
-        <ProjectListingCard
-          title="Lorem Ipsum et"
-          category="Kitchen"
-          imgUrl="/img/Image__Sss__9.png"
-        />
-        <ProjectListingCard
-          title="Lorem Ipsum et"
-          category="Living Room"
-          imgUrl="/img/Adora_NH_ss.png"
-        />
-        <ProjectListingCard
-          title="Lorem Ipsum et"
-          category="Bedroom"
-          imgUrl="/img/Adora_NH---ss.png"
-        />
-        <ProjectListingCard
-          title="Lorem Ipsum et"
-          category="Bathroom"
-          imgUrl="/img/sidekix-media-I_QC1JICzA0-un.png"
-        />
-        <ProjectListingCard
-          title="Lorem Ipsum et"
-          category="Bedroom"
-          imgUrl="/img/amber-79ePIEybmzQ-unsplash.png"
-        />
-        <ProjectListingCard
-          title="Lorem Ipsum et"
-          category="Kitchen"
-          imgUrl="/img/Adora_NH_single_story.png"
-        />
-      </section>
-      <Footer />
-    </Wrapper>
+            <section className="flex items-center mt-8">
+              <span className="signup-comment font-semibold pr-2 capitalize">Sign Up to Comment</span>
+              <img src="/img/comment_ss.svg" alt="comment" />
+            </section>
+            <section className="mt-10">
+              <div className="flex items-center">
+                <h1 className="conversation uppercase pr-1">CONVERSATION</h1>
+                <span className="number-comments">(0) Comments</span>
+              </div>
+              <textarea
+                className="border border-gray-200 mt-5 outline-none w-full h-20 pt-4 pl-6 rounded-md"
+                name="discussion"
+                id="discussion"
+                placeholder="Join the discussion…"
+              />
+            </section>
+          </Main>
+        </section>
+        <h1 className="mt-12 mb-8 text-center font-semibold most-talked">Similiar Projects</h1>
+        <section className="container mx-auto general-padding grid grid-cols-3 gap-8 mb-20">
+          <ProjectListingCard
+            title="Lorem Ipsum et"
+            category="Kitchen"
+            imgUrl="/img/Image__Sss__9.png"
+          />
+          <ProjectListingCard
+            title="Lorem Ipsum et"
+            category="Living Room"
+            imgUrl="/img/Adora_NH_ss.png"
+          />
+          <ProjectListingCard
+            title="Lorem Ipsum et"
+            category="Bedroom"
+            imgUrl="/img/Adora_NH---ss.png"
+          />
+          <ProjectListingCard
+            title="Lorem Ipsum et"
+            category="Bathroom"
+            imgUrl="/img/sidekix-media-I_QC1JICzA0-un.png"
+          />
+          <ProjectListingCard
+            title="Lorem Ipsum et"
+            category="Bedroom"
+            imgUrl="/img/amber-79ePIEybmzQ-unsplash.png"
+          />
+          <ProjectListingCard
+            title="Lorem Ipsum et"
+            category="Kitchen"
+            imgUrl="/img/Adora_NH_single_story.png"
+          />
+        </section>
+      </Wrapper>
+    </Layout>
   );
 };
 

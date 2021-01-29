@@ -3,12 +3,11 @@ import Slider from 'react-slick';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
 
-import Navbar from '../Organisms/Navbar';
 import Offering from '../Organisms/Offering';
 import MostTalkedHouseTours from '../Organisms/MostTalkedHouseTours';
-import Footer from './Footer';
 import HouseTourImage from '../atoms/HouseTourImage';
 import useHouseTours from '../../hooks/useHouseTours';
+import Layout from '../Layouts/Layout';
 
 const Wrapper = styled.section`
   .breadcrumb {
@@ -67,49 +66,47 @@ const SingleHouseTour = () => {
   const { houseTour, loading } = useHouseTours(id as string);
 
   return (
-    <Wrapper>
-      <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />
-      <Navbar />
-      <hr />
-      <div className="general-padding container mx-auto">
-        <Offering />
-      </div>
-      <section className="general-padding container mx-auto py-10">
-        <ul className="flex items-center breadcrumb">
-          <li>House Tours</li>
-          <li>
-            <img src="/img/direction.svg" alt="Breadcrumb navigation" />
-          </li>
-          <li>{houseTour?.title}</li>
-        </ul>
-        {houseTour && (
-          <section className="pt-20">
-            <Slider {...settings}>
-              {houseTour.slides.map((slide: any, index: number) => (
-                <div key={slide.photo} className="w-full">
-                  <HouseTourImage
-                    imgUrl={slide.photo}
-                    index={index + 1}
-                    total={houseTour.slides.length}
-                    desc={slide.description}
-                  />
-                </div>
-              ))}
-            </Slider>
-          </section>
-        )}
-      </section>
-      <h1 className="mt-12 mb-8 text-center font-semibold most-talked">Most Talked About</h1>
-      <section className="container mx-auto general-padding grid grid-cols-3 gap-8 mb-20">
-        <MostTalkedHouseTours imgUrl="/img/Image__Sss__9.png" />
-        <MostTalkedHouseTours imgUrl="/img/Adora_NH_ss.png" />
-        <MostTalkedHouseTours imgUrl="/img/Adora_NH---ss.png" />
-        <MostTalkedHouseTours imgUrl="/img/sidekix-media-I_QC1JICzA0-un.png" />
-        <MostTalkedHouseTours imgUrl="/img/amber-79ePIEybmzQ-unsplash.png" />
-        <MostTalkedHouseTours imgUrl="/img/Adora_NH_single_story.png" />
-      </section>
-      <Footer />
-    </Wrapper>
+    <Layout>
+      <Wrapper>
+        <div className="general-padding container mx-auto">
+          <Offering />
+        </div>
+        <section className="general-padding container mx-auto py-10">
+          <ul className="flex items-center breadcrumb">
+            <li>House Tours</li>
+            <li>
+              <img src="/img/direction.svg" alt="Breadcrumb navigation" />
+            </li>
+            <li>{houseTour?.title}</li>
+          </ul>
+          {houseTour && (
+            <section className="pt-20">
+              <Slider {...settings}>
+                {houseTour.slides.map((slide: any, index: number) => (
+                  <div key={slide.photo} className="w-full">
+                    <HouseTourImage
+                      imgUrl={slide.photo}
+                      index={index + 1}
+                      total={houseTour.slides.length}
+                      desc={slide.description}
+                    />
+                  </div>
+                ))}
+              </Slider>
+            </section>
+          )}
+        </section>
+        <h1 className="mt-12 mb-8 text-center font-semibold most-talked">Most Talked About</h1>
+        <section className="container mx-auto general-padding grid grid-cols-3 gap-8 mb-20">
+          <MostTalkedHouseTours imgUrl="/img/Image__Sss__9.png" />
+          <MostTalkedHouseTours imgUrl="/img/Adora_NH_ss.png" />
+          <MostTalkedHouseTours imgUrl="/img/Adora_NH---ss.png" />
+          <MostTalkedHouseTours imgUrl="/img/sidekix-media-I_QC1JICzA0-un.png" />
+          <MostTalkedHouseTours imgUrl="/img/amber-79ePIEybmzQ-unsplash.png" />
+          <MostTalkedHouseTours imgUrl="/img/Adora_NH_single_story.png" />
+        </section>
+      </Wrapper>
+    </Layout>
   );
 };
 

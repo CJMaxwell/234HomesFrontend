@@ -3,11 +3,10 @@ import styled, { ThemeContext } from 'styled-components';
 import Loader from 'react-loader-spinner';
 
 import useVendor from '../../hooks/useVendor';
-import Navbar from '../Organisms/Navbar';
 import Hero from '../Organisms/Hero';
-import Footer from './Footer';
 import Offering from '../Organisms/Offering';
 import SingleVendorCard from '../Organisms/SingleVendorCard';
+import Layout from '../Layouts/Layout';
 
 const Main = styled.main`
   .filter {
@@ -37,12 +36,7 @@ const Vendors = () => {
   const theme = useContext(ThemeContext);
   const { vendors, loading, search } = useVendor();
   return (
-    <div>
-      <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />
-      <div className="container mx-auto">
-        <Navbar />
-      </div>
-      <hr />
+    <Layout>
       <div className="general-padding container mx-auto">
         <Offering />
       </div>
@@ -85,26 +79,24 @@ const Vendors = () => {
           {
             // @ts-ignore
             vendors &&
-              vendors.map((vendor: any) => (
-                <SingleVendorCard
-                  imgUrl={`${
-                    vendor.banner ||
-                    '/img/vendors/single-vendor-sidekix-media-I_QC1JICzA0-unsplash.png'
+            vendors.map((vendor: any) => (
+              <SingleVendorCard
+                imgUrl={`${vendor.banner ||
+                  '/img/vendors/single-vendor-sidekix-media-I_QC1JICzA0-unsplash.png'
                   }`}
-                  height="10.3rem"
-                  name={vendor.businessName}
-                  occupation={vendor.occupation}
-                  location={`${vendor.city}, ${vendor.state}`}
-                  phone={vendor.phoneNumber}
-                  key={vendor.id}
-                  path={`/vendors/${vendor.id}`}
-                />
-              ))
+                height="10.3rem"
+                name={vendor.businessName}
+                occupation={vendor.occupation}
+                location={`${vendor.city}, ${vendor.state}`}
+                phone={vendor.phoneNumber}
+                key={vendor.id}
+                path={`/vendors/${vendor.id}`}
+              />
+            ))
           }
         </section>
       </Main>
-      <Footer />
-    </div>
+    </Layout>
   );
 };
 

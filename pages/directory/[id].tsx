@@ -1,13 +1,13 @@
 import { NextPage } from 'next';
 
-import AboutProfessional from '../../components/templates/AboutProfessional';
+import SingleDirectory from '../../components/templates/SingleDirectory';
 
-const AboutProfessionalPage: NextPage = () => {
+const SingleDirectoryPage: NextPage = () => {
   return (
     <>
-      <AboutProfessional />
+      <SingleDirectory />
     </>
   );
 };
 
-export default AboutProfessionalPage;
+export default SingleDirectoryPage;

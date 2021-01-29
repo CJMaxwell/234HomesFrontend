@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Offering from '../Organisms/Offering';
 import Navbar from '../Organisms/Navbar';
 import Footer from './Footer';
+import Layout from '../Layouts/Layout';
 
 const Wrapper = styled.section`
   position: relative;
@@ -123,118 +124,116 @@ const Wrapper = styled.section`
 
 const Careers = () => {
   return (
-    <Wrapper>
-      <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />
-      <Navbar />
-      <hr />
-      <div className="general-padding container mx-auto">
-        <Offering />
-        <ul className="breadcrumb flex items-center uppercase">
-          <li>Company</li>
-          <li>
-            <img src="/img/direction.svg" alt="Breadcrumb navigation" />
-          </li>
-          <li>Careers</li>
-        </ul>
-      </div>
+    <Layout>
+      <Wrapper>
+        <div className="general-padding container mx-auto">
+          {/* <Offering /> */}
+          <ul className="breadcrumb flex items-center uppercase">
+            <li>Company</li>
+            <li>
+              <img src="/img/direction.svg" alt="Breadcrumb navigation" />
+            </li>
+            <li>Careers</li>
+          </ul>
+        </div>
 
-      <section className="join">
-        <div className="general-padding container mx-auto flex items-start justify-between cont">
+        <section className="join">
+          <div className="general-padding container mx-auto flex items-start justify-between cont">
+            <div>
+              <h1 className="title pb-8">Join Our Passionate Team</h1>
+              <p className="join-desc content">
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+                invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+                accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+                sanctus est.
+            </p>
+            </div>
+            <div className="bg-join-side w-full" />
+          </div>
+        </section>
+        <section className="bg-possibility text-white">
+          <div className="w-full flex">
+            <div className="bg-possible w-1/2" />
+            <div className="w-1/2  pt-20 idea-desc">
+              <h1 className="love-monday font-semibold">It’s possible to love Monday mornings!</h1>
+              <p className="big-idea-desc pt-8 content">
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+                invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+                accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+                sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.
+            </p>
+            </div>
+          </div>
+        </section>
+        <section className="apply flex justify-center items-center apply-wrapper">
           <div>
-            <h1 className="title pb-8">Join Our Passionate Team</h1>
-            <p className="join-desc content">
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-              invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
-              accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
-              sanctus est.
+            <section className="text-center">
+              <h1 className="apply-title">Apply Today</h1>
+              <p className="apply-intro">
+                We’re looking for success driven candidates! Feeling up to the challenge? Please fill
+                out the form below &amp; upload your resume and cover letter.
             </p>
-          </div>
-          <div className="bg-join-side w-full" />
-        </div>
-      </section>
-      <section className="bg-possibility text-white">
-        <div className="w-full flex">
-          <div className="bg-possible w-1/2" />
-          <div className="w-1/2  pt-20 idea-desc">
-            <h1 className="love-monday font-semibold">It’s possible to love Monday mornings!</h1>
-            <p className="big-idea-desc pt-8 content">
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-              invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
-              accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
-              sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.
-            </p>
-          </div>
-        </div>
-      </section>
-      <section className="apply flex justify-center items-center apply-wrapper">
-        <div>
-          <section className="text-center">
-            <h1 className="apply-title">Apply Today</h1>
-            <p className="apply-intro">
-              We’re looking for success driven candidates! Feeling up to the challenge? Please fill
-              out the form below &amp; upload your resume and cover letter.
-            </p>
-          </section>
-          <form className="apply-form">
-            <div className="flex justify-between items-center">
-              <input
-                type="text"
-                name="firstName"
-                placeholder="First Name"
-                className="bg-input px-4 input-element focus:outline-none"
-              />
-              <input
-                type="text"
-                name="LastName"
-                placeholder="Last Name"
-                className="bg-input px-4 input-element focus:outline-none"
-              />
-            </div>
-            <div className="pt-5 flex justify-between items-center">
-              <input
-                type="text"
-                name="phoneNumber"
-                placeholder="Phone Number"
-                className="bg-input px-4 input-element focus:outline-none"
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                className="bg-input px-4 input-element focus:outline-none"
-              />
-            </div>
-            <div className="pt-5 apply-form">
-              <input
-                type="text"
-                placeholder="Desired Position"
-                name="desiredPosition"
-                className="bg-input px-4 w-full h-8 focus:outline-none"
-              />
-            </div>
-            <div className="pt-5 apply-form">
-              <div className="w-full flex items-center">
+            </section>
+            <form className="apply-form">
+              <div className="flex justify-between items-center">
                 <input
                   type="text"
-                  name="resume"
-                  className="bg-input h-8 w-full inline-block px-4 focus:outline-none"
-                  placeholder="Attach Resume"
+                  name="firstName"
+                  placeholder="First Name"
+                  className="bg-input px-4 input-element focus:outline-none"
                 />
-                <button type="button" className="uppercase browse-btn text-center text-white">
-                  Browse
-                </button>
+                <input
+                  type="text"
+                  name="LastName"
+                  placeholder="Last Name"
+                  className="bg-input px-4 input-element focus:outline-none"
+                />
               </div>
-            </div>
-            <div className="text-center pt-8">
-              <button className="apply-submit text-white" type="submit">
-                Submit
+              <div className="pt-5 flex justify-between items-center">
+                <input
+                  type="text"
+                  name="phoneNumber"
+                  placeholder="Phone Number"
+                  className="bg-input px-4 input-element focus:outline-none"
+                />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  className="bg-input px-4 input-element focus:outline-none"
+                />
+              </div>
+              <div className="pt-5 apply-form">
+                <input
+                  type="text"
+                  placeholder="Desired Position"
+                  name="desiredPosition"
+                  className="bg-input px-4 w-full h-8 focus:outline-none"
+                />
+              </div>
+              <div className="pt-5 apply-form">
+                <div className="w-full flex items-center">
+                  <input
+                    type="text"
+                    name="resume"
+                    className="bg-input h-8 w-full inline-block px-4 focus:outline-none"
+                    placeholder="Attach Resume"
+                  />
+                  <button type="button" className="uppercase browse-btn text-center text-white">
+                    Browse
+                </button>
+                </div>
+              </div>
+              <div className="text-center pt-8">
+                <button className="apply-submit text-white" type="submit">
+                  Submit
               </button>
-            </div>
-          </form>
-        </div>
-      </section>
-      <Footer />
-    </Wrapper>
+              </div>
+            </form>
+          </div>
+        </section>
+      </Wrapper>
+    </Layout>
   );
 };
 
