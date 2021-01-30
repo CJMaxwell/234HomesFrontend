@@ -132,21 +132,20 @@ const Stories = () => {
         <div className="general-padding container mx-auto">
           <Offering />
         </div>
-        {
-          featuredStory && featuredStory.featuredPosts.map((ft: any) => (
-            <TopBanner>
-              <div className="general-padding container mx-auto">
-                <h6 className="uppercase title pt-12">Stories</h6>
-                <div className="text-center pb-10">
-                  <h1 className="capitalize heading-intro font-semibold">
-                    {ft.title}
+
+        <TopBanner>
+          <div className="general-padding container mx-auto">
+            <h6 className="uppercase title pt-12">Stories</h6>
+            <div className="text-center pb-10">
+              <h1 className="capitalize heading-intro font-semibold">
+                The Girl in the Goethe House
                   </h1>
-                  <p className="pt-4 para-intro">
-                    {
-                      ft.summary
-                    }
-                  </p>
-                </div>
+              <p className="pt-4 para-intro">
+                The convent was closed decades ago, and the Goethe House has been abandoned for over a century. The only building on the estate that is still occupied is half a mile away; the former Catholic girls’ school, now converted to a nursing home for ailing and aging nuns.
+              </p>
+            </div>
+            {
+              featuredStory && featuredStory.featuredPosts.map((ft: any) => (
                 <ImgBanner url={ft.banner}>
                   <FeaturedWrapper className="px-8 py-10">
                     <h4 className="uppercase featured text-white font-semibold text-center py-2">
@@ -168,11 +167,12 @@ const Stories = () => {
                     </FeatButton>
                   </FeaturedWrapper>
                 </ImgBanner>
-              </div>
-            </TopBanner>
+              ))
+            }
+          </div>
+        </TopBanner>
 
-          ))
-        }
+
 
         <div className="general-padding container mx-auto mb-32 stories-container">
           <div className="flex justify-between items-center">

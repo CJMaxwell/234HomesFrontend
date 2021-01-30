@@ -41,3 +41,19 @@ export const HOUSE_TOUR = gql`
     }
   }
 `;
+
+export const FEATURED_HOUSE_TOUR = gql`
+  query featuredHouseTours {
+    featuredHouseTours {
+      id
+      title
+      summary
+      category
+      slides {
+        photo
+        description
+      }
+      createdAt
+    }
+  }
+`;

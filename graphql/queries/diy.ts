@@ -37,3 +37,13 @@ export const DIYS = gql`
     }
   }
 `;
+
+export const FEATUREDDIYS = gql`
+  query featuredDiys {
+    featuredDiys {
+      id
+      title
+      thumbnail
+    }
+  }
+`;

@@ -1,12 +1,19 @@
 import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import moment from 'moment';
+import Router from 'next/router';
 
 import Offering from '../Organisms/Offering';
 import HouseTourCard from '../Organisms/HouseTourCard';
 import Button from '../atoms/Button';
 import useHouseTours from '../../hooks/useHouseTours';
 import Layout from '../Layouts/Layout';
+import useFeaturedHouseTours from '../../hooks/useFeaturedHouseTours';
+
+
+interface Props {
+  url?: string;
+}
 
 const Wrapper = styled.div`
   .recommended {
@@ -56,10 +63,10 @@ const TopBanner = styled.div`
   }
 `;
 
-const ImgBanner = styled.div`
+const ImgBanner = styled.div<Props>`
   /* width: 59.9rem; */
   height: 33.7rem;
-  background: url('/img/AH-house-tours-banner.png');
+  background: url('${({ url }) => url}');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -104,6 +111,7 @@ const FeatButton = styled(Button)`
 const HouseTours = () => {
   const theme = useContext(ThemeContext);
   const { houseTours, loading } = useHouseTours();
+  const { fHTLoading, featuredHT } = useFeaturedHouseTours();
 
   return (
     <Layout>
@@ -120,24 +128,32 @@ const HouseTours = () => {
                 more.
             </h1>
             </div>
-            <ImgBanner>
-              <FeaturedWrapper className="px-8 py-10">
-                <h4 className="uppercase featured font-semibold text-center py-2">featured</h4>
-                <h3 className="featured-heading font-semibold pt-8 capitalize">
-                  elitr sed diam nonumy eirmod tempor invidunt ut labore et
-              </h3>
-                <p className="pt-5 featured-desc pb-8">
-                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-                  tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-              </p>
-                <FeatButton
-                  // onClick={() => Router.push('/single-house-tour')}
-                  className="featured-button uppercase"
+            {
+              featuredHT && featuredHT.map((fHT: any) => (
+                <ImgBanner
+                  url={
+                    fHT.slides[0].photo
+                  }
+                  key={fHT.id}
                 >
-                  Read Story
+                  <FeaturedWrapper className="px-8 py-10">
+                    <h4 className="uppercase featured font-semibold text-center py-2">featured</h4>
+                    <h3 className="featured-heading font-semibold pt-8 capitalize">
+                      {fHT.title}
+                    </h3>
+                    <p className="pt-5 featured-desc pb-8">
+                      {fHT.summary}
+                    </p>
+                    <FeatButton
+                      onClick={() => Router.push(`/house-tours/${fHT.id}`)}
+                      className="featured-button uppercase"
+                    >
+                      Read Story
               </FeatButton>
-              </FeaturedWrapper>
-            </ImgBanner>
+                  </FeaturedWrapper>
+                </ImgBanner>
+              ))
+            }
           </div>
         </TopBanner>
 

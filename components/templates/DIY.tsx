@@ -1,11 +1,17 @@
 import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
+import Router from 'next/router';
 
 import Offering from '../Organisms/Offering';
 import Button from '../atoms/Button';
 import DIYPostCard from '../Organisms/DIYPostCard';
 import useDIY from '../../hooks/useDIY';
 import Layout from '../Layouts/Layout';
+import useFeaturedDIY from '../../hooks/useFeaturedDIY';
+
+interface Props {
+  url?: string;
+}
 
 const Wrapper = styled.div`
   .recommended {
@@ -60,10 +66,10 @@ const TopBanner = styled.div`
   }
 `;
 
-const ImgBanner = styled.div`
+const ImgBanner = styled.div<Props>`
   /* width: 59.9rem; */
   height: 33.7rem;
-  background: url('/img/Adora_NH_baner_HT.png');
+  background: url('${({ url }) => url}');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -104,6 +110,7 @@ const FeatButton = styled(Button)`
 const DIY = () => {
   const theme = useContext(ThemeContext);
   const { diys, loading } = useDIY();
+  const { fDiyLoading, featuredDiy } = useFeaturedDIY();
 
   return (
     <Layout>
@@ -122,22 +129,27 @@ const DIY = () => {
                 home.
             </p>
             </div>
-            <ImgBanner>
-              <FeaturedWrapper className="px-8 py-10">
-                <h4 className="uppercase featured text-white font-semibold text-center py-2">
-                  featured
-              </h4>
-                <h3 className="featured-heading font-semibold pt-8 text-white capitalize">
-                  elitr sed diam nonumy eirmod tempor invidunt ut labore et
-              </h3>
-                <FeatButton
-                  // onClick={() => Router.push('/single-diy')}
-                  className="featured-button uppercase mt-10"
-                >
-                  WAtch Now
+            {
+              featuredDiy && featuredDiy.map((featDIY: any) => (
+                <ImgBanner url={featDIY.thumbnail}>
+                  <FeaturedWrapper className="px-8 py-10">
+                    <h4 className="uppercase featured text-white font-semibold text-center py-2">
+                      featured
+                    </h4>
+                    <h3 className="featured-heading font-semibold pt-8 text-white capitalize">
+                      {featDIY.title}
+                    </h3>
+                    <FeatButton
+                      onClick={() => Router.push(`/diy/${featDIY.id}`)}
+                      className="featured-button uppercase mt-10"
+                    >
+                      WAtch Now
               </FeatButton>
-              </FeaturedWrapper>
-            </ImgBanner>
+                  </FeaturedWrapper>
+                </ImgBanner>
+              ))
+            }
+
           </div>
         </TopBanner>
         <div className="general-padding container mx-auto mb-32 stories-container">
