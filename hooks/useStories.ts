@@ -37,7 +37,7 @@ const useStories = () => {
     notify.show('Cannot fetch story', 'error');
   }
 
-  const getStories = (filter: { status?: boolean }) => {
+  const getStories = (filter: { status?: string }) => {
     storiesQuery({
       variables: {
         input: filter,

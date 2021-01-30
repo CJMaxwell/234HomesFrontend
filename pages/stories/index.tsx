@@ -1,11 +1,11 @@
 import { NextPage } from 'next';
 
-import Story from '../components/templates/Story';
+import Stories from '../../components/templates/Stories';
 
 const StoryPage: NextPage = () => {
   return (
     <>
-      <Story />
+      <Stories />
     </>
   );
 };

@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
+import moment from 'moment';
 
 const User = styled.div`
   .name,
@@ -12,6 +13,7 @@ interface Props {
   imgUrl?: string;
   height?: string;
   user?: string;
+  postDate?: string;
 }
 
 const Avatar = styled.div<Props>`
@@ -24,6 +26,7 @@ const Avatar = styled.div<Props>`
 const UserCard: React.FC<Props> = ({
   imgUrl = '/img/profileImg.jpg',
   user = 'Mohammed Ismail',
+  postDate
 }) => {
   const theme = useContext(ThemeContext);
 
@@ -32,7 +35,7 @@ const UserCard: React.FC<Props> = ({
       <Avatar className="h-10 w-10 rounded-full" imgUrl={imgUrl} />
       {/* <img src="/img/profileImg.jpg" className="h-10 w-10 rounded-full inline-block" alt="User" /> */}
       <span className="name font-semibold px-4">{user}</span>
-      <span className="postDate">June 11, 2020</span>
+      <span className="postDate">{moment(postDate).format('ll')}</span>
     </User>
   );
 };

@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -9,6 +10,8 @@ interface Props {
   user?: string;
   PostDate?: string;
   sponsored?: boolean;
+  summary?: string;
+  path?: string;
 }
 
 const Wrapper = styled.section`
@@ -75,43 +78,48 @@ const StoryImg = styled.div<Props>`
 `;
 
 const StoryCard: React.FC<Props> = ({
-  imgUrl = '',
-  height = '',
-  user = '',
-  title = '',
-  category = '',
-  PostDate = '',
-  sponsored = '',
+  imgUrl,
+  height,
+  user,
+  title,
+  category,
+  PostDate,
+  sponsored,
+  summary,
+  path
 }) => {
   return (
-    <Wrapper>
-      <div className="line mt-8 mb-8">
-        <hr />
-      </div>
-      <div className="flex justify-between">
-        <div>
-          <h6 className="uppercase category">{category}</h6>
-          <h1 className="capitalize title text-black text-2xl font-semibold pt-4">
-            Gonsetetur sadipscing elitr, sed diam nonumy eirmod
-          </h1>
-          <p className="desc">
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-            invidunt ut labore…
-          </p>
-          <div className="">
-            <span className="user font-semibold">by {user}</span> |
-            <span className="postdate"> {PostDate}</span>
+    <Link href={path}>
+      <a>
+        <Wrapper>
+          <div className="line mt-8 mb-8">
+            <hr />
           </div>
-        </div>
-        <StoryImg imgUrl={imgUrl}>
-          {sponsored ? (
-            <div className="sponsored text-white relative py-2 px-4">Sponsored</div>
-          ) : (
-              <div />
-            )}
-        </StoryImg>
-      </div>
-    </Wrapper>
+          <div className="flex justify-between">
+            <div>
+              <h6 className="uppercase category">{category}</h6>
+              <h1 className="capitalize title text-black text-2xl font-semibold pt-4">
+                {title}
+              </h1>
+              <p className="desc">
+                {summary}
+              </p>
+              <div className="">
+                {/* <span className="user font-semibold">by {user}</span> | */}
+                <span className="postdate"> {PostDate}</span>
+              </div>
+            </div>
+            <StoryImg imgUrl={imgUrl}>
+              {sponsored ? (
+                <div className="sponsored text-white relative py-2 px-4">Sponsored</div>
+              ) : (
+                  <div />
+                )}
+            </StoryImg>
+          </div>
+        </Wrapper>
+      </a>
+    </Link>
   );
 };
 

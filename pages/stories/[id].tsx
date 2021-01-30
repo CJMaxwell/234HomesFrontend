@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 
-import SingleStory from '../components/templates/SingleStory';
+import SingleStory from '../../components/templates/SingleStory';
 
 const SingleStoryPage: NextPage = () => {
   return (

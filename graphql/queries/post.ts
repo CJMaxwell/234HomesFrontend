@@ -8,6 +8,8 @@ export const STORIES = gql`
       banner
       status
       featured
+      summary
+      createdAt
     }
   }
 `;

@@ -1,7 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import Router from 'next/router';
+import moment from 'moment'
+import Loader from 'react-loader-spinner';
 
+import useStories from '../../hooks/useStories';
 import Offering from '../Organisms/Offering';
 import StoryCard from '../Organisms/StoryCard';
 import Button from '../atoms/Button';
@@ -103,11 +106,23 @@ const FeatButton = styled(Button)`
   font-size: 0.7rem;
 `;
 
-const Story = () => {
+const Stories = () => {
   const theme = useContext(ThemeContext);
+  const { stories, storiesLoading, getStories } = useStories();
+
+  useEffect(() => {
+    getStories({
+      status: 'published'
+    })
+  }, [])
 
   return (
     <Layout>
+      {/* {storiesLoading && (
+        <section className="flex justify-center items-center mt-40">
+          <Loader type="TailSpin" color={theme.colors.orange1} height={80} width={80} />
+        </section>
+      )} */}
       <Wrapper>
         <div className="general-padding container mx-auto">
           <Offering />
@@ -156,43 +171,21 @@ const Story = () => {
               </select>
             </div>
           </div>
-          <StoryCard
-            imgUrl="/img/Bed_story.png"
-            user="Wuraola Gbotemi"
-            PostDate="June 11, 2020"
-            category="INTERIOR DESIGN"
-          />
-          <StoryCard
-            imgUrl="/img/Adora_NH_story.png"
-            sponsored
-            user="Wuraola Gbotemi"
-            PostDate="June 11, 2020"
-            category="LIFESTYLE"
-          />
-          <StoryCard
-            imgUrl="/img/AH_stroy.png"
-            user="Wuraola Gbotemi"
-            PostDate="June 11, 2020"
-            category="INTERIOR DESIGN"
-          />
-          <StoryCard
-            imgUrl="/img/Adora_N_story_H.png"
-            user="Wuraola Gbotemi"
-            PostDate="June 11, 2020"
-            category="LIFESTYLE"
-          />
-          <StoryCard
-            imgUrl="/img/AH_story.png"
-            user="Wuraola Gbotemi"
-            PostDate="June 11, 2020"
-            category="LIFESTYLE"
-          />
-          <StoryCard
-            imgUrl="/img/A_story_H.png"
-            user="Wuraola Gbotemi"
-            PostDate="June 11, 2020"
-            category="HOME DECOR"
-          />
+          {
+            stories && stories.posts.map((story: any) => (
+              <StoryCard
+                key={story.id}
+                imgUrl={story.banner}
+                title={story.title}
+                summary={story.summary}
+                user="Wuraola Gbotemi"
+                PostDate={moment(story.createdAt).format('ll')}
+                category="INTERIOR DESIGN"
+                path={`stories/${story.id}`}
+              />
+            ))
+          }
+
           <hr className="mt-20" />
           <div className="flex items-center justify-between mt-8">
             <div className="flex items-center">
@@ -214,4 +207,4 @@ const Story = () => {
   );
 };
 
-export default Story;
+export default Stories;
