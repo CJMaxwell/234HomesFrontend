@@ -2,7 +2,7 @@ import { useMutation, useLazyQuery } from '@apollo/client';
 import { notify } from 'react-notify-toast';
 import Router from 'next/router';
 import { ADD_STORY } from '../graphql/mutations/post';
-import { STORIES, STORY } from '../graphql/queries/post';
+import { STORIES, STORY, FEATUREDSTORY } from '../graphql/queries/post';
 
 const useStories = () => {
   const [addStoryMutate, { loading }] = useMutation(ADD_STORY);
@@ -32,6 +32,7 @@ const useStories = () => {
 
   const [storiesQuery, { loading: storiesLoading, data: stories }] = useLazyQuery(STORIES);
   const [storyQuery, { data: story, loading: storyLoading, error: storyErr }] = useLazyQuery(STORY);
+  const [getFeaturedStory, { data: featuredStory, loading: featuredStoryLoading, error: featuredStoryErr }] = useLazyQuery(FEATUREDSTORY);
 
   if (storyErr) {
     notify.show('Cannot fetch story', 'error');
@@ -62,6 +63,9 @@ const useStories = () => {
     getStory,
     story,
     storyLoading,
+    featuredStory,
+    featuredStoryLoading,
+    getFeaturedStory
   };
 };
 

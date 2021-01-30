@@ -12,3 +12,15 @@ export const VENDORS = gql`
     }
   }
 `;
+
+export const TOPVENDORS = gql`
+  query topVendors {
+    topVendors {
+      id
+      businessName
+      banner
+      address
+      phoneNumber    
+    }
+  }
+`;

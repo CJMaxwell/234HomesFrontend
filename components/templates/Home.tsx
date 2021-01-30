@@ -11,6 +11,7 @@ import DIYCard from '../Organisms/DIYCard';
 import MostViewedProducts from '../Organisms/MostViewedProducts';
 import TopRatedVendor from '../Organisms/TopRatedVendor';
 import Layout from '../Layouts/Layout';
+import useTopVendor from '../../hooks/useTopVendor';
 
 const HomeBannerBtn = styled(Button)`
   border-radius: 34px;
@@ -217,6 +218,7 @@ const Directory = styled.div`
 const Home = () => {
   const theme = useContext(ThemeContext);
   const [tab, setTab] = useState('professional');
+  const { loading, vendors } = useTopVendor();
 
   return (
     <Layout>
@@ -455,34 +457,18 @@ const Home = () => {
 
           {tab === 'vendors' && (
             <div className="grid grid-cols-4 gap-4 mt-4">
-              <TopRatedVendor
-                imgUrl="/img/vendors/sidekix-media-I_QC1JICzA0-unsplash.png"
-                height="15rem"
-                name="Nick Interior LTD"
-                location="77, Central Park South, Ikeja, Lagos"
-                phone="0812 456 8900, 0812 456 8900"
-              />
-              <TopRatedVendor
-                imgUrl="/img/vendors/francesca-tosolini-tHkJAMcO3QE-unsplash.png"
-                height="15rem"
-                name="Lorem Furniture"
-                location="77, Central Park South, Ikeja, Lagos"
-                phone="0812 456 8900, 0812 456 8900"
-              />
-              <TopRatedVendor
-                imgUrl="/img/vendors/francesca-tosolini-w1RE0lBbREo-unsplash.png"
-                height="15rem"
-                name="Chuma & Sons LTD"
-                location="77, Central Park South, Ikeja, Lagos"
-                phone="0812 456 8900, 0812 456 8900"
-              />
-              <TopRatedVendor
-                imgUrl="/img/vendors/two-white-rod-pocket-curtains-910458.png"
-                height="15rem"
-                name="Consetetur Designs"
-                location="77, Central Park South, Ikeja, Lagos"
-                phone="0812 456 8900, 0812 456 8900"
-              />
+              {
+                vendors && vendors.map((vendor: any) => (
+                  <TopRatedVendor
+                    imgUrl={vendor.banner}
+                    height="15rem"
+                    name={vendor.businessName}
+                    location={vendor.address}
+                    phone={vendor.phoneNumber}
+                    path={`/vendors/${vendor.id}`}
+                  />
+                ))
+              }
             </div>
           )}
         </div>

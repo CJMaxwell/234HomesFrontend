@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import Router from 'next/router';
+import Link from 'next/link';
 
 interface Props {
   imgUrl?: string;
@@ -41,36 +41,41 @@ const TopRatedVendor: React.FC<Props> = ({
   width,
   location,
   phone,
+  path
 }) => {
   const theme = useContext(ThemeContext);
 
   return (
-    <Main className="max-w-sm rounded-sm">
-      <div className="text-center">
-        <ImgContainer imgUrl={imgUrl} height={height} width={width} />
-      </div>
-      <Wrapper className="py-4 px-4">
-        <div className="text-sm">
-          <h1 className="font-semibold heading-text">{name}</h1>
-        </div>
-        <div>
-          <div className="text-xs pt-2 flex items-center">
-            <img src="/img/home-professional-location.svg" alt="Location" />
-            <span className="pl-2">{location}</span>
+    <Link href={path}>
+      <a>
+        <Main className="max-w-sm rounded-sm">
+          <div className="text-center">
+            <ImgContainer imgUrl={imgUrl} height={height} width={width} />
           </div>
-          <div className="text-xs pt-2 flex items-center">
-            <img src="/img/home-professional-phone.svg" alt="phone" />
-            <span className="pl-2">{phone}</span>
-          </div>
-        </div>
-        <button
-          onClick={() => Router.push('/professional-about')}
-          className="uppercase border-gray-600 text-gray-600 py-1 mt-4 w-full bg-white rounded-sm block text-center"
-        >
-          Send A Message
+          <Wrapper className="py-4 px-4">
+            <div className="text-sm">
+              <h1 className="font-semibold heading-text">{name}</h1>
+            </div>
+            <div>
+              <div className="text-xs pt-2 flex items-center">
+                <img src="/img/home-professional-location.svg" alt="Location" />
+                <span className="pl-2">{location}</span>
+              </div>
+              <div className="text-xs pt-2 flex items-center">
+                <img src="/img/home-professional-phone.svg" alt="phone" />
+                <span className="pl-2">{phone}</span>
+              </div>
+            </div>
+            <button
+              // onClick={() => Router.push('/professional-about')}
+              className="uppercase border-gray-600 text-gray-600 py-1 mt-4 w-full bg-white rounded-sm block text-center"
+            >
+              Send A Message
         </button>
-      </Wrapper>
-    </Main>
+          </Wrapper>
+        </Main>
+      </a>
+    </Link>
   );
 };
 

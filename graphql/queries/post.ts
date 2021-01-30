@@ -35,3 +35,16 @@ export const STORY = gql`
     }
   }
 `;
+
+export const FEATUREDSTORY = gql`
+  query featuredPosts {
+    featuredPosts {
+      id
+      title
+      summary
+      banner
+      body
+      createdAt
+    }
+  }
+`;
