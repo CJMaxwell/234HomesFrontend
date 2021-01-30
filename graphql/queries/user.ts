@@ -76,3 +76,19 @@ export const USERS = gql`
     }
   }
 `;
+
+export const FEATURED_PROFESSIONALS = gql`
+  query featuredProfessionals {
+    featuredProfessionals {
+      id
+      firstName
+      lastName
+      phoneNumber
+      profilePhoto
+      occupation
+      banner
+      city
+      state
+    }
+  }
+`;

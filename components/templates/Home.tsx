@@ -12,6 +12,10 @@ import MostViewedProducts from '../Organisms/MostViewedProducts';
 import TopRatedVendor from '../Organisms/TopRatedVendor';
 import Layout from '../Layouts/Layout';
 import useTopVendor from '../../hooks/useTopVendor';
+import useFeaturedHouseTours from '../../hooks/useFeaturedHouseTours';
+import useFeaturedProfessionals from '../../hooks/useFeaturedProfessionals';
+import useMostViewedProducts from '../../hooks/useMostViewedProducts';
+
 
 const HomeBannerBtn = styled(Button)`
   border-radius: 34px;
@@ -219,6 +223,10 @@ const Home = () => {
   const theme = useContext(ThemeContext);
   const [tab, setTab] = useState('professional');
   const { loading, vendors } = useTopVendor();
+  const { fHTLoading, featuredHT } = useFeaturedHouseTours();
+  const { featProLoading, featPros } = useFeaturedProfessionals();
+  const { mvps, mvpsLoading } = useMostViewedProducts();
+
 
   return (
     <Layout>
@@ -277,39 +285,39 @@ const Home = () => {
           </Link>
         </div>
       </Connect>
+      {
+        featuredHT && featuredHT.map((fHT: any) => (
+          <HouseTour key={fHT.id} className="relative">
+            <div className="container mx-auto general-padding flex wrapper">
+              <div className="text-white w-1/2 description">
+                <h3 className="pb-6">House Tour</h3>
+                <h1 className="font-bold text-4xl leading-none pb-4">
+                  {fHT.title}
+                </h1>
+                <p className="pb-16 text-sm">
+                  {fHT.summary}
+                </p>
+                <div className="pb-32">
+                  <LinkButton onClick={() => Router.push('/house-tours')}>Get Inspired</LinkButton>
+                </div>
+              </div>
 
-      <HouseTour className="relative">
-        <div className="container mx-auto general-padding flex wrapper">
-          <div className="text-white w-1/2 description">
-            <h3 className="pb-6">House Tour</h3>
-            <h1 className="font-bold text-4xl leading-none pb-4">
-              Lorem ipsum dolor <br />
-              sit amet
-            </h1>
-            <p className="pb-16 text-sm">
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-              invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-            </p>
-            <div className="pb-32">
-              <LinkButton onClick={() => Router.push('/house-tours')}>Get Inspired</LinkButton>
+              <div className="z-50 w-1/2 prev-next flex justify-end">
+                <NextPrev className="inline-flex justify-center items-center">
+                  <img src="/img/arrow-left.svg" alt="Previous" />
+                </NextPrev>
+                <NextPrev className="inline-flex justify-center items-center">
+                  <img src="/img/arrow-right.svg" alt="Next" />
+                </NextPrev>
+              </div>
+
+              <div className="explore absolute w-1/2 right-0">
+                <img src={fHT.slides[0].photo} className="w-full h-full object-cover" alt="Sample house" />
+              </div>
             </div>
-          </div>
-
-          <div className="z-50 w-1/2 prev-next flex justify-end">
-            <NextPrev className="inline-flex justify-center items-center">
-              <img src="/img/arrow-left.svg" alt="Previous" />
-            </NextPrev>
-            <NextPrev className="inline-flex justify-center items-center">
-              <img src="/img/arrow-right.svg" alt="Next" />
-            </NextPrev>
-          </div>
-
-          <div className="explore absolute w-1/2 right-0">
-            <img src="/img/AH.png" className="w-full h-full object-cover" alt="Sample house" />
-          </div>
-        </div>
-      </HouseTour>
-
+          </HouseTour>
+        ))
+      }
       <Stories className="container mx-auto general-padding mt-12 bg-white">
         <div className="flex justify-between items-center">
           <h1 className="font-semibold text-gray-700">Stories</h1>
@@ -422,36 +430,36 @@ const Home = () => {
           </div>
           {tab === 'professional' && (
             <div className="grid grid-cols-4 gap-4 mb-12">
-              <ProfessionalCard
-                name="Babatunde Maxwell"
-                occupation="Interior Designer"
-                location="Ikeja, Lagos"
-                phone="0803 456 7890"
-              />
-              <ProfessionalCard
-                name="Alexandria Vladimir"
-                occupation="Painter"
-                location="Barnawa, Kaduna"
-                phone="0809 053 4405"
-              />
-              <ProfessionalCard
-                name="Micheal Jonna"
-                occupation="Carpenter"
-                location="Wuse, Abuja"
-                phone="0812 456 8900"
-              />
-              <ProfessionalCard
-                name="Wuraola Gbotemi"
-                occupation="Plumber"
-                location="Maitama, Abuja"
-                phone="0809 053 4405"
-              />
+              {
+                featPros && featPros.map((featPro: any) => (
+                  <ProfessionalCard
+                    key={featPro.id}
+                    profilePhoto={featPro.banner}
+                    name={`${featPro.firstName} ${featPro.lastName}`}
+                    occupation={featPro.occupation}
+                    location={`${featPro.city}, ${featPro.state}`}
+                    phone={featPro.phoneNumber}
+                    path={`/directory/${featPro.id}`}
+                  />
+                ))
+              }
             </div>
           )}
           {tab === 'products' && (
             <div className="grid grid-cols-2 gap-4">
-              <MostViewedProducts imgUrl="/img/BArt.png" />
-              <MostViewedProducts imgUrl="/img/B-18-B.png" />
+              {
+                mvps && mvps.map((mvp: any) => (
+                  <MostViewedProducts
+                    key={mvp.id}
+                    imgUrl={mvp.media}
+                    city={mvp.city}
+                    category={mvp.category}
+                    title={mvp.title}
+                    desc={mvp.description}
+                    width="1.5rem"
+                  />
+                ))
+              }
             </div>
           )}
 

@@ -50,3 +50,16 @@ export const PRODUCTS = gql`
     }
   }
 `;
+
+export const MOST_VIEWED_PRODUCTS = gql`
+  query mostViewedProducts {
+    mostViewedProducts {
+      id
+      title
+      category
+      city
+      description
+      media
+    }
+  }
+`;

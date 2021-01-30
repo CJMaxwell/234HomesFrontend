@@ -25,7 +25,7 @@ const ProfessionalCard: React.FC<Props> = ({
   occupation,
   location,
   phone,
-  path = '/professional-about',
+  path,
 }) => {
   const theme = useContext(ThemeContext);
 

@@ -8,6 +8,10 @@ interface Props {
   width?: string;
   logo?: string;
   ad?: boolean;
+  desc?: string;
+  title?: string;
+  city?: string;
+  category?: string;
 }
 
 const Wrapper = styled.section`
@@ -53,8 +57,8 @@ const ProductImg = styled.div<Props>`
   background-repeat: no-repeat;
   background-size:cover;
   background-position: center;
-  height: 13.05rem;
-  width: 13.55rem;
+  /* height: 13.05rem; */
+  width: 80rem;
   overflow: hidden;
 
   .ad {
@@ -71,11 +75,15 @@ const ProductImg = styled.div<Props>`
 `;
 
 const MostViewedProducts: React.FC<Props> = ({
-  imgUrl = '',
-  height = '',
-  width = '',
-  logo = '',
+  imgUrl,
+  height,
+  width,
+  logo,
   ad = false,
+  title,
+  city,
+  category,
+  desc
 }) => {
   const theme = useContext(ThemeContext);
 
@@ -85,19 +93,19 @@ const MostViewedProducts: React.FC<Props> = ({
         <ProductImg imgUrl={imgUrl} height={height} width={width}>
           {ad ? <div className="ad text-white relative py-2 px-4">Top Ad</div> : <div />}
         </ProductImg>
-        <div className="pl-8 pr-32">
+        <div className="px-8">
           <div>
             <h1 className="title font-semibold capitalize text-xl">
-              Lorem ipsum dolor sit amet, consetetur
+              {title}
             </h1>
             <p className="pt-6 description">
-              Sed ut perspiciatis unde omnis <br /> iste natus error sit voluptatem...
+              {desc}
             </p>
           </div>
           <div className="pt-8 flex items-center">
             <div className="flex items-center pr-8">
               <img src="/img/pro-loc-sign.svg" className="loc-pin" alt="Location pin" />
-              <p className="pl-2 vendor-loc">Shomolu, Home Accessories</p>
+              <p className="pl-2 vendor-loc">{city}, {category}</p>
             </div>
             <div className="flex items-center">
               <img src="/img/views.svg" className="view" alt="Location pin" />
