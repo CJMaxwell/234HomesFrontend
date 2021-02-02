@@ -1,5 +1,6 @@
-import { useMutation, useQuery } from '@apollo/client';
+import { useMutation, useQuery, useLazyQuery } from '@apollo/client';
 import { useState, useEffect } from 'react';
+import Cookies from 'js-cookie';
 import { notify } from 'react-notify-toast';
 import { UPDATE_PROFILE, UPLOAD_PROFILE_PHOTO, UPLOAD_BANNER } from '../graphql/mutations/profile';
 import { IProfile } from '../@types';
@@ -28,9 +29,18 @@ export default function useProfile() {
       });
   }
 
-  const { data, refetch, loading: getProfileLoading } = useQuery<Query>(PROFILE);
+  const [getProfile, { loading: getProfileLoading, data, refetch }] = useLazyQuery<Query>(PROFILE);
 
   useEffect(() => {
+    if (typeof window === undefined) {
+      return;
+    }
+    const canMakeRequest = Cookies.get('Authorization');
+
+    if (canMakeRequest) {
+      getProfile();
+    }
+
     setProfile(data?.profile);
   }, [data]);
 

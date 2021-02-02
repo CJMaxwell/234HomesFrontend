@@ -14,8 +14,7 @@ const errLink = onError(
     const errorCodes = graphQLErrors.map((err) => err.extensions.code);
     if (errorCodes.includes('UNAUTHENTICATED')) {
       if (typeof window !== 'undefined') {
-        // Router.push('/login');
-        console.error('i happe');
+        Router.push('/login');
       } else {
         console.error(graphQLErrors);
       }
