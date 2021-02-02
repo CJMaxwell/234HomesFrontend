@@ -119,14 +119,7 @@ const DashboardSideBar: React.FC<Props> = ({ imgUrl }) => {
               </li>
             </Link>
           )}
-          <Link href="/dashboard/stories/">
-            <li className="flex items-center py-4 cursor-pointer">
-              <span className="pr-4">
-                <img src="/img/dashboard/dashboardbox.svg" alt="Box" />
-              </span>
-              <a>Stories</a>
-            </li>
-          </Link>
+
           {profile?.accountType === 'admin' && (
             <>
               <Link href="/dashboard/house-tours">
@@ -145,7 +138,7 @@ const DashboardSideBar: React.FC<Props> = ({ imgUrl }) => {
                   <a>DIY</a>
                 </li>
               </Link>
-              <Link href="/dashboard/stories/create">
+              <Link href="/dashboard/stories/">
                 <li className="flex items-center py-4 cursor-pointer">
                   <span className="pr-4">
                     <img src="/img/dashboard/dashboardbox.svg" alt="Box" />
