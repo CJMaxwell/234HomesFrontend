@@ -74,12 +74,12 @@ const DashboardSideBar: React.FC<Props> = ({ imgUrl }) => {
               <a>My Profile</a>
             </li>
           </Link>
-          <li className="flex items-center py-4 cursor-pointer">
+          {/* <li className="flex items-center py-4 cursor-pointer">
             <span className="pr-4">
               <img src="/img/dashboard/dashboardblog.svg" alt="Messages" />
             </span>
             <a>Messages</a>
-          </li>
+          </li> */}
           {profile?.accountType === 'professional' && (
             <Link href="/dashboard/projects">
               <li className="flex items-center py-4 cursor-pointer">
@@ -91,14 +91,14 @@ const DashboardSideBar: React.FC<Props> = ({ imgUrl }) => {
             </Link>
           )}
 
-          <Link href="/saved-item">
+          {/* <Link href="/saved-item">
             <li className="flex items-center py-4 cursor-pointer">
               <span className="pr-4">
                 <img src="/img/dashboard/dashboardheart.svg" alt="Heart" />
               </span>
               <a>Saved Ideas</a>
             </li>
-          </Link>
+          </Link> */}
           {profile?.accountType === 'individual' && (
             <Link href="/plan-your-home">
               <li className="flex items-center py-4 cursor-pointer">
@@ -156,12 +156,12 @@ const DashboardSideBar: React.FC<Props> = ({ imgUrl }) => {
               </Link>
             </>
           )}
-          <li className="flex items-center py-4 cursor-pointer">
+          {/* <li className="flex items-center py-4 cursor-pointer">
             <span className="pr-4">
               <img src="/img/dashboard/dashboardsettings.svg" alt="Settingd" />
             </span>
             <a>Settings</a>
-          </li>
+          </li> */}
         </ul>
         <section className="text-center p-12">
           <button type="button" className="uppercase log-out" onClick={logOut}>
