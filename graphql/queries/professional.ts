@@ -4,8 +4,7 @@ export const PROFESSIONALS = gql`
   query professionals($where: UserSearchInput) {
     professionals(where: $where) {
       id
-      firstName
-      lastName
+      businessName
       phoneNumber
       profilePhoto
       city

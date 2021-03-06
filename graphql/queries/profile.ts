@@ -22,14 +22,6 @@ export const PROFILE = gql`
       occupation
       experienceLevel
       skills
-      education {
-        id
-        title
-        major
-        year
-        country
-        institution
-      }
       createdAt
       updatedAt
     }

@@ -233,7 +233,7 @@ const Signup: React.FC<Props> = () => {
                   </ul>
                 </section>
 
-                {values.accountType !== 'vendor' && (
+                {values.accountType !== 'vendor' && values.accountType !== 'professional'  && (
                   <section className="flex items-center pt-4 justify-between">
                     <fieldset className="w-1/2 mr-6">
                       <legend className="profile-label">First Name</legend>
@@ -260,7 +260,7 @@ const Signup: React.FC<Props> = () => {
                   </section>
                 )}
 
-                {values.accountType === 'vendor' && (
+                {values.accountType !== 'individual' && (
                   <section className="flex items-center justify-between pt-4">
                     <fieldset className="w-full">
                       <legend className="profile-label">Business Name</legend>
@@ -275,6 +275,7 @@ const Signup: React.FC<Props> = () => {
                     </fieldset>
                   </section>
                 )}
+                
                 <section className="flex items-center justify-between py-4">
                   <fieldset className="w-1/2 mr-6">
                     <legend className="profile-label">Email</legend>

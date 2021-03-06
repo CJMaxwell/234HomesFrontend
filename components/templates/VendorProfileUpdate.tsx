@@ -1,74 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import { Formik } from 'formik';
 import Loader from 'react-loader-spinner';
 
-import Offering from '../Organisms/Offering';
-import Navbar from '../Organisms/Navbar';
+
 import CTA from '../atoms/CTA';
-import Skill from '../atoms/Skill';
-import Footer from './Footer';
 import Img from '../atoms/Img';
 import fileToDataURI from '../../lib/fileToDataURI';
 import useProfile from '../../hooks/useProfile';
-import DashboardSideBar from '../Organisms/DashboardSideBar';
 import useCountries from '../../hooks/useCountries';
-
-const Wrapper = styled.section`
-  .breadcrumb li:not(:last-child) {
-    padding-right: 0.8rem;
-  }
-  .breadcrumb {
-    margin-top: 3.175rem;
-    margin-bottom: 2.35rem;
-    color: ${({ theme }) => theme.colors.gray5};
-    font-size: 0.7rem;
-    text-transform: uppercase;
-  }
-  .main {
-    border: 1px solid ${({ theme }) => theme.colors.gray17};
-    border-radius: 7px;
-    margin-left: 1.7rem;
-    padding: 0 2.65rem;
-  }
-  legend {
-    margin-left: 10px;
-    margin-right: 10px;
-    padding-left: 5px;
-    padding-right: 5px;
-  }
-  fieldset {
-    border: 1px solid ${({ theme }) => theme.colors.gray17};
-  }
-  .section-wrap {
-    margin-bottom: 7.1rem;
-  }
-  .fieldset-input {
-    padding: 0.7rem 1rem 1rem 1rem;
-  }
-  .profile-title {
-    text-transform: uppercase;
-  }
-  .profile-title,
-  .profile-desc {
-    color: ${({ theme }) => theme.colors.gray2};
-    font-size: 0.8rem;
-    font-weight: 600;
-  }
-  .profile-label {
-    color: ${({ theme }) => theme.colors.gray11};
-    font-size: 0.8rem;
-  }
-  .add-new {
-    font-size: 0.7rem;
-    color: ${({ theme }) => theme.colors.orange1};
-    opacity: 0.5;
-  }
-  .cta {
-    margin-top: 2.75rem;
-    margin-bottom: 5.25rem;
-  }
-`;
 
 const VendorProfileUpdate = () => {
   const {
@@ -80,6 +20,8 @@ const VendorProfileUpdate = () => {
   } = useProfile();
   const theme = useContext(ThemeContext);
   const { countries } = useCountries();
+  const [file, setFile] = useState<any>();
+
 
   return (
     <Formik
@@ -96,7 +38,7 @@ const VendorProfileUpdate = () => {
       initialValues={{
         businessName: profile?.businessName || '',
         website: profile?.website || '',
-        // email: profile?.email || '',
+        email: profile?.email || '',
         // phoneNumber: profile?.phoneNumber || '',
         address: profile?.address || '',
         city: profile?.city || '',
@@ -138,8 +80,8 @@ const VendorProfileUpdate = () => {
               <input
                 className="fieldset-input profile-desc w-full outline-none"
                 name="email"
-                // onChange={handleChange}
-                // onBlur={handleBlur}
+                onChange={handleChange}
+                onBlur={handleBlur}
                 value={profile?.email}
               />
             </fieldset>
@@ -148,8 +90,7 @@ const VendorProfileUpdate = () => {
               <input
                 className="fieldset-input profile-desc w-full outline-none"
                 name="phoneNumber"
-                // onChange={handleChange}
-                // onBlur={handleBlur}
+                disabled
                 value={profile?.phoneNumber}
               />
             </fieldset>
@@ -214,7 +155,48 @@ const VendorProfileUpdate = () => {
           </section>
 
           <section className="upload-section relative mt-8">
-            {/* {slide.photo && <Img promise={fileToDataURI(slide.photo)} />} */}
+            {file && <Img promise={fileToDataURI(file)} />}
+            <input
+              className="file-upload absolute inset-0 w-full z-50 opacity-0 cursor-pointer"
+              name="file"
+              id="file"
+              required
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                // setFieldValue('file', event?.currentTarget?.files?.[0]);
+                setFile(event.target.files?.[0]);
+              }}
+              type="file"
+            />
+            <section className="flex justify-between items-center">
+              <section>
+                <h1 className="resolution">
+                  High Resolution <br /> Image
+                </h1>
+                <p className="img-type pt-4">
+                  PNG &amp; JPEGS <br />
+                  1200 px X 680 px
+                </p>
+              </section>
+              <section>
+                <h1 className="resolution">
+                  High Resolution <br />
+                  Video
+                </h1>
+                <p className="img-type pt-4">MP4, &lt; 4 Mins</p>
+              </section>
+            </section>
+            <section className="flex justify-center items-center pt-20">
+              <img src="/img/cloud-computing.svg" className="text-center" alt="Upload" />
+            </section>
+            <section className="w-full text-center">
+              <h1 className="drag-and-drop">Drag and drop an images</h1>
+              <p>
+                Or <a className="browse pt-4">browse</a> to choose a file
+              </p>
+            </section>
+          </section>
+
+          {/* <section className="upload-section relative mt-8">
             <input
               className="file-upload absolute inset-0 w-full z-50 opacity-0 cursor-pointer"
               name="file"
@@ -237,7 +219,7 @@ const VendorProfileUpdate = () => {
                 Or <a className="browse">browse</a> to choose a file
               </p>
             </section>
-          </section>
+          </section> */}
 
           <section className="flex justify-end items-center cta">
             <CTA type="submit" padding="0.8rem 1.25rem" className="outline-none" disabled={loading}>

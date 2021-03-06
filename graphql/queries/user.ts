@@ -19,20 +19,6 @@ export const USER = gql`
       occupation
       experienceLevel
       skills
-      education {
-        id
-        title
-        major
-        year
-        country
-        institution
-      }
-      certifications {
-        id
-        title
-        institution
-        year
-      }
       createdAt
     }
   }
@@ -58,20 +44,6 @@ export const USERS = gql`
       occupation
       experienceLevel
       skills
-      education {
-        id
-        title
-        major
-        year
-        country
-        institution
-      }
-      certifications {
-        id
-        title
-        institution
-        year
-      }
       createdAt
     }
   }
@@ -81,8 +53,7 @@ export const FEATURED_PROFESSIONALS = gql`
   query featuredProfessionals {
     featuredProfessionals {
       id
-      firstName
-      lastName
+      businessName
       phoneNumber
       profilePhoto
       occupation

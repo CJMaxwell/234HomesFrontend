@@ -238,7 +238,6 @@ const AddProject = () => {
                 <section className="flex items-center justify-between pt-8">
                   <fieldset className="w-full pb-4 px-4 tags">
                     <legend className="profile-label">Tags</legend>
-                    {/* <p className="fieldset-input profile-desc">Lorem ipsum dolor sit amet sed diam nonumy eirmod</p> */}
                     {values.tags.map((tag) => (
                       <Skill key={`selectedTag${tag}`}>
                         <button
