@@ -2,12 +2,13 @@ import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import { Formik } from 'formik';
 import Loader from 'react-loader-spinner';
-import Link from 'next/link';
 
 import SignUpNavbar from '../Organisms/SignUpNavbar';
 import Footer from './Footer';
 import useCountries from '../../hooks/useCountries';
-import useAuth from '../../hooks/useAuth';
+import useProfile from '../../hooks/useProfile';
+import { useLocalStorage } from '../../hooks/storage';
+
 
 interface Props {
   imgUrl?: string;
@@ -48,49 +49,48 @@ const Wrapper = styled.section<Props>`
   input::placeholder {
     text-align: center;
   }
-  .reset-password {
-    color: ${({ theme }) => theme.colors.orange1};
+  .reset-intro {
     font-size: 0.7rem;
-    padding-top: 0.5rem;
   }
   .social-icons {
     padding: 0.8rem 0.5rem;
   }
 `;
 
-const Login: React.FC<Props> = () => {
+const ForgotPassword: React.FC<Props> = () => {
   const { dialCodes } = useCountries();
-  const { loginByPhone, loginByPhoneLoading: loading } = useAuth();
+  const { initiateResetPassword, initiateResetPasswordLoading: loading } = useProfile();
   const theme = useContext(ThemeContext);
+  const { setData } = useLocalStorage('resetPassword', {});
 
   return (
     <MainWrapper>
       <img src="/img/color-pattern.png" alt="+234Homes Colour pattern" />
       <div className="signup-nav">
-        <SignUpNavbar type="login" />
+        <SignUpNavbar type="forgotPassword" />
       </div>
       <Wrapper
         className="flex justify-center py-16"
         imgUrl="/img/square-glass-top-coffee-table-and-two-white-leather-2-seat.png"
       >
         <div className="w-full signup bg-white rounded pb-16">
-          <h1 className="text-2xl font-semibold text-center my-10">Sign In</h1>
-          <hr className="mb-20" />
+          <h1 className="text-2xl font-semibold text-center my-10">Forgot Your Password?</h1>
+          <hr className="mb-4" />
+          <p className="px-6 text-center mb-10 text-sm">Enter your phone number and we'll send you a code to reset your password.</p>
           <Formik
             initialValues={{
               phoneNumber: '',
               dialCode: '+234',
-              password: '',
+              // password: '',
             }}
             onSubmit={({ dialCode, ...values }) => {
-              loginByPhone({
-                variables: {
-                  input: {
-                    ...values,
-                    phoneNumber: dialCode + values.phoneNumber,
-                  },
-                },
-              });
+              const resetData = {
+                phoneNumber: dialCode + values.phoneNumber
+              }
+              setData(resetData);
+
+
+              initiateResetPassword(dialCode + values.phoneNumber);
             }}
           >
             {({ values, handleChange, handleBlur, handleSubmit }) => (
@@ -122,30 +122,6 @@ const Login: React.FC<Props> = () => {
                     placeholder="Enter Your Phone Number"
                   />
                 </div>
-                <div className="border border-gray-500 form-wrap h-12 mt-5 pr-4 justify-between flex items-center">
-                  <div className="input-addon pr-4">
-                    <img
-                      src="/img/password-phone.svg"
-                      className="inline-block w-4 h-6"
-                      alt="Sign up with phone"
-                    />
-                  </div>
-                  <input
-                    className="appearance-none outline-none w-full h-full leading-tight pr-4"
-                    name="password"
-                    type="password"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.password}
-                    required
-                    placeholder="Password"
-                  />
-                </div>
-                <p className="flex justify-end reset-password">
-                  <Link href="/forgot-password">
-                    <a>Reset password</a>
-                  </Link>
-                </p>
                 <div className="text-center form-wrap signIn mt-8 h-12">
                   <button
                     type="submit"
@@ -155,7 +131,7 @@ const Login: React.FC<Props> = () => {
                     {loading ? (
                       <Loader type="ThreeDots" color={theme.colors.white} height={20} width={60} />
                     ) : (
-                      'Sign In'
+                      'Continue'
                     )}
                   </button>
                 </div>
@@ -180,4 +156,4 @@ const Login: React.FC<Props> = () => {
   );
 };
 
-export default Login;
+export default ForgotPassword;

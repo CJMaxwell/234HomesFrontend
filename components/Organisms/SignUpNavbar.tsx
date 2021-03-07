@@ -3,7 +3,7 @@ import Link from 'next/link';
 import styled from 'styled-components';
 
 interface Props {
-  type?: 'login' | 'register';
+  type?: 'login' | 'register' | 'forgotPassword';
 }
 const SignIn = styled.a`
   color: ${({ theme }) => theme.colors.yellow2};
@@ -32,6 +32,7 @@ const SignUpNavbar: React.FC<Props> = ({ type = 'register' }) => {
       </Link>
       <LoginWrap>
         {type === 'login' && <span>Don't Have An Account?</span>}
+        {type === 'forgotPassword' && <span>Remembered your password?</span>}
         {type === 'register' && <span>Already Have An Account?</span>}{' '}
         {type === 'login' && (
           <Link href="/signup">
@@ -39,6 +40,11 @@ const SignUpNavbar: React.FC<Props> = ({ type = 'register' }) => {
           </Link>
         )}
         {type === 'register' && (
+          <Link href="/login">
+            <SignIn>Log In</SignIn>
+          </Link>
+        )}
+        {type === 'forgotPassword' && (
           <Link href="/login">
             <SignIn>Log In</SignIn>
           </Link>

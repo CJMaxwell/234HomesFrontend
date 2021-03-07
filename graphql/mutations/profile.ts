@@ -43,3 +43,19 @@ export const UPLOAD_BANNER = gql`
     }
   }
 `;
+
+export const INITIATE_RESET_PASSWORD = gql`
+  mutation initiateResetPassword($phoneNumber: String!) {
+    initiateResetPassword(phoneNumber: $phoneNumber){
+      message
+    }
+  }
+`;
+
+export const RESET_PASSWORD = gql`
+  mutation resetpassword($input:ResetPasswordInput!){
+    resetPassword(input: $input){
+      message
+    }
+  }
+`;
