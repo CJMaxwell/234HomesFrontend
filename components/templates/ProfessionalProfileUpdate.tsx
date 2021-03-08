@@ -6,10 +6,8 @@ import Loader from 'react-loader-spinner';
 import CTA from '../atoms/CTA';
 import Skill from '../atoms/Skill';
 import useProfile from '../../hooks/useProfile';
-import useCountries from '../../hooks/useCountries';
 import Img from '../atoms/Img';
 import fileToDataURI from '../../lib/fileToDataURI';
-
 
 const Skillset = styled.section`
   .collection li {
@@ -23,17 +21,17 @@ const Skillset = styled.section`
 `;
 
 const ProfessionalProfileUpdate = () => {
-  const {
-    profile,
-    updateProfile,
-    updateProfileLoading: loading,
-    uploadBanner,
-    bannerLoading,
-  } = useProfile();
+  const { profile, updateProfile, updateProfileLoading: loading } = useProfile();
   const theme = useContext(ThemeContext);
-  const { countries } = useCountries();
   const [file, setFile] = useState<any>();
-  const [tags, setTags] = useState<Array<string>>(['Interior Design','Decoration','Painting','Lighting','Living Room','Bathroom']);
+  const [skills, setSkills] = useState<Array<string>>([
+    'Interior Design',
+    'Decoration',
+    'Painting',
+    'Lighting',
+    'Living Room',
+    'Bathroom',
+  ]);
 
   return (
     <Formik
@@ -61,7 +59,7 @@ const ProfessionalProfileUpdate = () => {
         bio: profile?.bio || '',
         occupation: profile?.occupation || '',
         experienceLevel: profile?.experienceLevel || 0,
-        tags: [],
+        skills: [],
         // education: profile?.education || [],
       }}
     >
@@ -239,20 +237,20 @@ const ProfessionalProfileUpdate = () => {
           <section className="flex items-center justify-between pt-8">
             <fieldset className="w-full pb-4 px-4 tags">
               <legend className="profile-label">Key skills</legend>
-              {values.tags.map((tag) => (
-                <Skill key={`selectedTag${tag}`}>
+              {values.skills.map((skill) => (
+                <Skill key={`selectedTag${skill}`}>
                   <button
                     className="focus:outline-none"
                     type="button"
                     onClick={() => {
                       setFieldValue(
-                        'tags',
-                        values.tags.filter((t) => t !== tag),
+                        'skills',
+                        values.skills.filter((s) => s !== skill),
                       );
-                      setTags([...tags, tag]);
+                      setSkills([...skills, skill]);
                     }}
                   >
-                    {tag}
+                    {skill}
                   </button>
                 </Skill>
               ))}
@@ -260,105 +258,22 @@ const ProfessionalProfileUpdate = () => {
           </section>
           <Skillset>
             <ul className="flex items-center collection">
-              {tags.map((tag) => (
-                <li className="cursor-pointer" key={`availableTags${tag}`}>
+              {skills.map((skill) => (
+                <li className="cursor-pointer" key={`availableTags${skill}`}>
                   <button
                     className="focus:outline-none"
                     type="button"
                     onClick={() => {
-                      setFieldValue('tags', Array.from(new Set([...values.tags, tag])));
-                      setTags(tags.filter((t) => t !== tag));
+                      setFieldValue('tags', Array.from(new Set([...values.skills, skill])));
+                      setSkills(skills.filter((s) => s !== skill));
                     }}
                   >
-                    {tag}
+                    {skill}
                   </button>
                 </li>
               ))}
             </ul>
           </Skillset>
-
-          {/* <section>
-            <section className="flex justify-between items-center mt-8 mb-4">
-              <h1 className="profile-label">Key skills</h1>
-              <button className="add-new" type="button">
-                Add new
-              </button>
-            </section>
-            <Skill>Interior Design</Skill>
-            <Skill>Decoration</Skill>
-            <Skill>Painting</Skill>
-            <Skill>Lighting</Skill>
-            <Skill>Living Room</Skill>
-            <Skill>Bathroom</Skill>
-          </section> */}
-          {/*
-          <section className="educ-info flex justify-between items-center mt-8 mb-4">
-            <h1 className="profile-label">Education</h1>
-            <button className="add-new" type="button">
-              Add new
-            </button>
-          </section>
-          <section className="flex items-center justify-between">
-            <fieldset className="w-1/2 mr-6">
-              <legend className="profile-label">Country Of College/University</legend>
-              <select className="fieldset-input profile-desc w-full">
-                {countries.map(({ name, code }) => (
-                  <option value={code} key={name}>
-                    {name}
-                  </option>
-                ))}
-              </select>
-            </fieldset>
-            <fieldset className="w-1/2">
-              <legend className="profile-label">College/University</legend>
-              <select className="fieldset-input profile-desc w-full">
-                <option value="">Synergy University, Moscow</option>
-              </select>
-            </fieldset>
-          </section>
-          <section className="flex items-center justify-between pt-8">
-            <fieldset className="w-1/3 mr-6">
-              <legend className="profile-label">Title</legend>
-              <select className="fieldset-input profile-desc w-full">
-                <option value="">Bachelor of Arts</option>
-              </select>
-            </fieldset>
-            <fieldset className="w-1/3 mr-6">
-              <legend className="profile-label">Major</legend>
-              <select className="fieldset-input profile-desc w-full">
-                <option value="">Architecture</option>
-              </select>
-            </fieldset>
-            <fieldset className="w-1/3">
-              <legend className="profile-label">Year</legend>
-              <select className="fieldset-input profile-desc w-full">
-                <option value="">2016</option>
-              </select>
-            </fieldset>
-          </section>
-
-           <section className=" flex justify-between items-center mt-8 mb-4">
-            <h1 className="profile-label">Certifications</h1>
-            <button className="add-new" type="button">
-              Add new
-            </button>
-          </section> 
-          <section className="flex items-center justify-between">
-            <fieldset className="w-1/3 mr-6">
-              <legend className="profile-label">Certificate Awarded</legend>
-              <p className="fieldset-input profile-desc">Social Media Management</p>
-            </fieldset>
-            <fieldset className="w-1/3 mr-6">
-              <legend className="profile-label">Certified From</legend>
-              <p className="fieldset-input profile-desc">Social Media Management</p>
-            </fieldset>
-            <fieldset className="w-1/3">
-              <legend className="profile-label">Year</legend>
-              <select className="fieldset-input profile-desc w-full">
-                <option value="">2016</option>
-              </select>
-            </fieldset>
-          </section>*/}
 
           <section className="upload-section relative mt-8">
             {file && <Img promise={fileToDataURI(file)} />}
@@ -401,39 +316,14 @@ const ProfessionalProfileUpdate = () => {
               </p>
             </section>
           </section>
-          
-          {/* <section className="upload-section relative mt-8">
-            <input
-              className="file-upload absolute inset-0 w-full z-50 opacity-0 cursor-pointer"
-              name="file"
-              id="file"
-              required
-              onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                uploadBanner(event.target.files?.[0]);
-              }}
-              type="file"
-            />
-            <section className="text-center">
-              <h1 className="resolution">High Resolution Image</h1>
-              <p className="img-type">PNG &amp; JPEGS 1200 px X 680 px</p>
-            </section>
-            <section className="flex justify-center items-center pt-20">
-              <img src="/img/cloud-computing.svg" className="text-center" alt="Upload" />
-            </section>
-            <section className="w-full text-center pt-4">
-              <h1 className="drag-and-drop">Drag and drop an images</h1>
-              <p>
-                Or <a className="browse">browse</a> to choose a file
-              </p>
-            </section>
-          </section> */}
+
           <section className="flex justify-end items-center cta">
             <CTA type="submit" padding="0.8rem 1.25rem" className="outline-none" disabled={loading}>
               {loading ? (
                 <Loader type="ThreeDots" color={theme.colors.orange1} height={20} width={60} />
               ) : (
-                  'Update Profile'
-                )}
+                'Update Profile'
+              )}
             </CTA>
           </section>
         </form>
