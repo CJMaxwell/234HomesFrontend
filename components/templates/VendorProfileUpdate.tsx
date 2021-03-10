@@ -68,6 +68,7 @@ const VendorProfileUpdate = () => {
               <input
                 className="fieldset-input profile-desc w-full outline-none"
                 name="website"
+                type="url"
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.website}
@@ -80,6 +81,7 @@ const VendorProfileUpdate = () => {
               <input
                 className="fieldset-input profile-desc w-full outline-none"
                 name="email"
+                type="email"
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={profile?.email}
