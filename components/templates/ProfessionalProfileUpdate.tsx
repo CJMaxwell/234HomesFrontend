@@ -66,30 +66,6 @@ const ProfessionalProfileUpdate = () => {
       {({ values, handleChange, handleBlur, handleSubmit, setFieldValue }) => (
         <form className="main w-3/4" onSubmit={handleSubmit}>
           <h1 className="py-10 profile-title">Personal Info</h1>
-          {/* <section className="flex items-center justify-between">
-            <fieldset className="w-1/2 mr-6">
-              <legend className="profile-label">First Name</legend>
-              <input
-                className="fieldset-input profile-desc w-full outline-none"
-                name="firstName"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.firstName}
-                required
-              />
-            </fieldset>
-            <fieldset className="w-1/2">
-              <legend className="profile-label">Last Name</legend>
-              <input
-                className="fieldset-input profile-desc w-full outline-none"
-                name="lastName"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.lastName}
-                required
-              />
-            </fieldset>
-          </section> */}
           <section className="flex items-center justify-between">
             <fieldset className="w-full">
               <legend className="profile-label">Business Name</legend>
@@ -264,7 +240,7 @@ const ProfessionalProfileUpdate = () => {
                     className="focus:outline-none"
                     type="button"
                     onClick={() => {
-                      setFieldValue('tags', Array.from(new Set([...values.skills, skill])));
+                      setFieldValue('skills', Array.from(new Set([...values.skills, skill])));
                       setSkills(skills.filter((s) => s !== skill));
                     }}
                   >
