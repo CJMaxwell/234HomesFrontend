@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import Loader from 'react-loader-spinner';
 
-import useProfessionals from '../../hooks/useProfessionals';
+import useVendorProfessionals from '../../hooks/useVendorProfessionals';
 import Hero from '../Organisms/Hero';
 import Offering from '../Organisms/Offering';
 import ProfessionalCard from '../Organisms/ProfessionalCard';
@@ -38,7 +38,7 @@ const Main = styled.main`
 
 const Directory = () => {
   const theme = useContext(ThemeContext);
-  const { professionals, loading, search } = useProfessionals();
+  const { professionals, loading, search } = useVendorProfessionals();
 
   return (
     <Layout>
@@ -110,17 +110,17 @@ const Directory = () => {
           {
             // @ts-ignore
             professionals &&
-            professionals.map((professional: any) => (
-              <ProfessionalCard
-                name={`${professional.firstName} ${professional.lastName}`}
-                occupation={professional.occupation}
-                location={`${professional.city}, ${professional.state}`}
-                phone={professional.phoneNumber}
-                profilePhoto={professional.profilePhoto || '/img/dashboard/dashboardperson.svg'}
-                key={professional.id}
-                path={`/directory/${professional.id}`}
-              />
-            ))
+              professionals.map((professional: any) => (
+                <ProfessionalCard
+                  name={professional.businessName}
+                  occupation={professional.occupation}
+                  location={`${professional.city}, ${professional.state}`}
+                  phone={professional.phoneNumber}
+                  profilePhoto={professional.profilePhoto || '/img/dashboard/dashboardperson.svg'}
+                  key={professional.id}
+                  path={`/directory/${professional.id}`}
+                />
+              ))
           }
         </section>
       </Main>
