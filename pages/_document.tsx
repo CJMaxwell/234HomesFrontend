@@ -37,6 +37,11 @@ export default class MyDocument extends Document {
             rel="stylesheet"
           />
           <meta charSet="utf-8" />
+          <script
+            data-ad-client="ca-pub-7333832835169964"
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+          />
         </Head>
         <body>
           <Main />
