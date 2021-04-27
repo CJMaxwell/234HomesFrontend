@@ -25,11 +25,11 @@ interface HeroBannerProps {
 
 const HeroBanner = styled.section<HeroBannerProps>`
   height: 16.425rem;
-  background-image: url('${({ imgUrl }) =>
-    imgUrl}'), linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5));
+  background-image: url('${({ imgUrl }) => imgUrl}'),
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
   background-blend-mode: overlay;
   background-repeat: no-repeat;
-  background-size:cover;
+  background-size: cover;
   background-position: center;
 
   h1 {
@@ -39,7 +39,6 @@ const HeroBanner = styled.section<HeroBannerProps>`
     color: ${({ theme }) => theme.colors.white};
     padding-bottom: 1.4rem;
     font-family: 'Raleway', sans-serif;
-
   }
 
   .form-elements-wrap {
@@ -47,9 +46,9 @@ const HeroBanner = styled.section<HeroBannerProps>`
     background: ${({ theme }) => theme.colors.white};
     padding-left: 20px;
     height: 3.15rem;
-    box-sizing: border-box; 
+    box-sizing: border-box;
   }
-  
+
   .map-pin {
     display: inline-block;
     padding-right: 0.5rem;

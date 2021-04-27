@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
 
-import useUser from '../../hooks/useUser';
+// import useUser from '../../hooks/useUser';
+import useProfile from '../../hooks/useProfile';
 import { useRprojects } from '../../hooks/projects';
 import Button from '../atoms/Button';
 import ProjectCard from '../Organisms/ProjectCard';
@@ -127,9 +128,6 @@ const Wrapper = styled.div`
     }
   }
 
-  aside {
-    height: 70rem;
-  }
   .aside-title {
     color: ${({ theme }) => theme.colors.gray5};
   }
@@ -182,11 +180,16 @@ const Wrapper = styled.div`
     font-size: 0.7rem;
     font-weight: 500;
   }
+  .active-link {
+    border-bottom: 2px solid ${({ theme }) => theme.colors.gray4};
+    padding-bottom: 0.5rem;
+  }
 `;
 
 const Hero = styled.section<Props>`
   height: 16.425rem;
-  background: url('${({ imgUrl }) => imgUrl}');
+  background: url('${({ imgUrl }) => imgUrl}'),
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -201,7 +204,9 @@ const YourHome: React.FC<Props> = ({ imgUrl }) => {
   const router = useRouter();
   const { id } = router.query;
 
-  const { user, userLoading } = useUser(id as string);
+  const [tab, setTab] = useState('about');
+  const { profile, getProfileLoading } = useProfile();
+  // const { user, userLoading } = useUser(id as string);
   const { projects, loading, get: getProjects } = useRprojects();
 
   useEffect(() => {
@@ -221,27 +226,23 @@ const YourHome: React.FC<Props> = ({ imgUrl }) => {
             <li>Your Home</li>
           </ul>
         </div>
-        {user && (
+        {profile && (
           <section>
-            <Hero
-              imgUrl={`${user.banner || '/img/Hero.png'}`}
-              className="rounded-md border-white mb-16"
-            >
-              <div className="flex justify-between hero-detail px-10">
+            <Hero imgUrl={`${profile.banner || '/img/Hero.png'}`} className="border-white mb-16">
+              <div className="flex justify-around hero-detail px-10">
                 <div className="flex items-center">
                   <div className="pr-8 relative">
                     <img
-                      src={user.profilePhoto || '/img/dashboard/dashboardperson.svg'}
+                      src={profile.profilePhoto || '/img/dashboard/dashboardperson.svg'}
                       className="h-32 w-32 rounded-full"
                       alt="Professional"
                     />
                   </div>
-
                   <div>
-                    <h1 className="prof-name font-semibold">{`${user.firstName} ${user.lastName}`}</h1>
+                    <h1 className="prof-name font-semibold text-white">{profile.businessName}</h1>
                     <div className="flex items-center">
                       <img src="/img/pin.svg" className="pr-2 prof-pin" alt="Location pin" />
-                      <span className="prof-location">{`${user.city}, ${user.state}`}</span>
+                      <span className="prof-location">{`${profile.city}, ${profile.state}`}</span>
                     </div>
                   </div>
                 </div>
@@ -252,29 +253,84 @@ const YourHome: React.FC<Props> = ({ imgUrl }) => {
                 </div>
               </div>
             </Hero>
-            <div className="general-padding container mx-auto mb-48">
-              <section className="grid grid-cols-6">
-                <aside className="col-span-2 px-6 pt-8 rounded border border-gray-200 mr-12">
-                  <div className="mb-10">
-                    <h3 className="aside-title">Phone Number</h3>
+            <div className="px-48 container mx-auto mb-48">
+              <section className="flex justify-between items-center pb-10 pt-5">
+                <ul className="text-gray-700 flex text-sm">
+                  <li className="pr-8">
+                    <a
+                      onClick={() => setTab('about')}
+                      className={`${tab === 'about' && 'active-link'}`}
+                    >
+                      About
+                    </a>
+                  </li>
+                  <li className="pr-8">
+                    <a
+                      onClick={() => setTab('projects')}
+                      className={`${tab === 'projects' && 'active-link'}`}
+                    >
+                      Projects
+                    </a>
+                  </li>
+                  <li className="pr-8">
+                    <a
+                      onClick={() => setTab('products')}
+                      className={`${tab === 'products' && 'active-link'}`}
+                    >
+                      Products
+                    </a>
+                  </li>
+                  <li className="pr-8">
+                    <a
+                      onClick={() => setTab('reviews')}
+                      className={`${tab === 'reviews' && 'active-link'}`}
+                    >
+                      Reviews
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      onClick={() => setTab('saved-ideas')}
+                      className={`${tab === 'saved-ideas' && 'active-link'}`}
+                    >
+                      Saved Ideas
+                    </a>
+                  </li>
+                </ul>
+              </section>
+
+              {tab === 'about' && (
+                <section className="px-6 pt-8 rounded border border-gray-200 mr-12">
+                  <section className="about mb-8">
+                    <h1 className="prof-title">About Me</h1>
+                    <article className="pt-4 short-desc">
+                      {profile.bio}
+                      <div className="flex items-center pt-4">
+                        <span className="show-more pr-1">Show more</span>
+                        <img src="/img/show-more.svg" alt="Show More" />
+                      </div>
+                    </article>
+                  </section>
+                  <div className="mb-2">
+                    {/* <h3 className="aside-title">Phone Number</h3> */}
                     <p className="flex items-center pt-3">
                       <span className="icon-wrapper">
                         <img className="h-6 w-6" src="/img/phone-call.svg" alt="phone icon" />
                       </span>
-                      <span className="detail">{user.phoneNumber}</span>
+                      <span className="detail">{profile.phoneNumber}</span>
                     </p>
                   </div>
-                  <div className="mb-10">
-                    <h3 className="aside-title">Email</h3>
+                  <div className="mb-2">
+                    {/* <h3 className="aside-title">Email</h3> */}
                     <p className="flex items-center pt-3">
                       <span className="icon-wrapper">
                         <img className="h-6 w-6" src="/img/email.svg" alt="email icon" />
                       </span>
-                      <span className="detail">{user.email}</span>
+                      <span className="detail">{profile.email}</span>
                     </p>
                   </div>
-                  <div className="mb-10">
-                    <h3 className="aside-title">Personal Website</h3>
+                  <div className="mb-2">
+                    {/* <h3 className="aside-title">Personal Website</h3> */}
                     <p className="flex items-center pt-3">
                       <span className="icon-wrapper">
                         <img
@@ -283,10 +339,10 @@ const YourHome: React.FC<Props> = ({ imgUrl }) => {
                           alt="internet icon"
                         />
                       </span>
-                      <span className="detail">{user.website}</span>
+                      <span className="detail">{profile.website}</span>
                     </p>
                   </div>
-                  <div className="rating mb-10">
+                  <div className="rating mb-2">
                     <h3 className="aside-title">Rating</h3>
                     <div className="pt-3 flex items-center">
                       <span className="pr-1 h-4 w-4">
@@ -306,7 +362,7 @@ const YourHome: React.FC<Props> = ({ imgUrl }) => {
                       </span>
                     </div>
                   </div>
-                  <div className="mb-10">
+                  <div className="mb-2">
                     <h3 className="aside-title">Key Skills</h3>
                     <div className="w-3/4">
                       <span className="mt-2 inline-block bg-skill rounded-full px-3 py-1 text-sm font-semibold mr-2">
@@ -344,73 +400,43 @@ const YourHome: React.FC<Props> = ({ imgUrl }) => {
                       </div>
                     </div>
                   </div>
-                  <div className="education mt-12">
-                    <h1 className="edu-title">Education</h1>
-                    <div>
-                      <h2 className="qualification">B.A. - Architecture</h2>
-                      <p className="description">Obafemi Awolowo University, Ife Graduated 2014</p>
-                    </div>
+                </section>
+              )}
+              {tab === 'projects' && (
+                <section className="projects mt-10">
+                  <div className="flex items-center justify-between mb-8">
+                    <h1 className="project ab-prof-title">Projects</h1>
+                    <select
+                      className="project-category border border-gray-300 px-5 py-2"
+                      name="category"
+                      id="category"
+                    >
+                      <option value="Category">Category</option>
+                    </select>
                   </div>
-                  <div className="certifications mt-12">
-                    <h1 className="cert-title">Certifications</h1>
-                    <div>
-                      <h2 className="qualification">First Certificate English (FCE)</h2>
-                      <p className="description">Certified from Cambridge University 2010</p>
-                    </div>
-                    <div>
-                      <h2 className="qualification">Social Media Marketing Cert.</h2>
-                      <p className="description">Online Marketing Academy 2016</p>
-                    </div>
-                    <div>
-                      <h2 className="qualification">Web Design & Development</h2>
-                      <p className="description">UMassOnline 2011</p>
-                    </div>
+                  <div className="grid grid-cols-3 gap-4">
+                    {projects &&
+                      projects.length > 0 &&
+                      // @ts-ignore
+                      projects.map((project) => (
+                        <ProjectCard imgUrl={project.media} title={project.title} />
+                      ))}
+                    {projects && projects.length === 0 && (
+                      <div className="px-8 pt-8">No project created</div>
+                    )}
                   </div>
-                </aside>
-                <main className="col-span-4 px-12 pt-8 rounded border border-gray-200">
-                  <section className="about mb-8">
-                    <h1 className="prof-title">About Me</h1>
-                    <article className="pt-4 short-desc">
-                      {user.bio}
-                      <div className="flex items-center pt-4">
-                        <span className="show-more pr-1">Show more</span>
-                        <img src="/img/show-more.svg" alt="Show More" />
-                      </div>
-                    </article>
-                  </section>
-                  <hr />
-                  <section className="projects mt-10">
-                    <div className="flex items-center justify-between mb-8">
-                      <h1 className="project ab-prof-title">Projects</h1>
-                      <select
-                        className="project-category border border-gray-300 px-5 py-2"
-                        name="category"
-                        id="category"
-                      >
-                        <option value="Category">Category</option>
-                      </select>
-                    </div>
-                    <div className="grid grid-cols-3 gap-4">
-                      {projects &&
-                        projects.length > 0 &&
-                        // @ts-ignore
-                        projects.map((project) => (
-                          <ProjectCard imgUrl={project.media} title={project.title} />
-                        ))}
-                      {projects && projects.length === 0 && (
-                        <div className="px-8 pt-8">No project created</div>
-                      )}
-                    </div>
-                    <div className="w-full text-center">
-                      <button
-                        type="button"
-                        className="uppercase my-8 load-more-projects font-semibold"
-                      >
-                        Load more projects
-                      </button>
-                    </div>
-                  </section>
-                  <hr />
+                  <div className="w-full text-center">
+                    <button
+                      type="button"
+                      className="uppercase my-8 load-more-projects font-semibold"
+                    >
+                      Load more projects
+                    </button>
+                  </div>
+                </section>
+              )}
+              {tab === 'reviews' && (
+                <section className="col-span-4 px-12 pt-8 rounded border border-gray-200">
                   <section className="reviews mt-10">
                     <div className="flex justify-between items-center">
                       <h4 className="review-title ab-prof-title">Reviews</h4>
@@ -539,8 +565,8 @@ const YourHome: React.FC<Props> = ({ imgUrl }) => {
                       </button>
                     </div>
                   </section>
-                </main>
-              </section>
+                </section>
+              )}
             </div>
           </section>
         )}
