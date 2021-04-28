@@ -309,7 +309,6 @@ const YourHome: React.FC<Props> = ({ imgUrl }) => {
                   </li>
                 </ul>
               </section>
-
               {tab === 'about' && (
                 <section className="px-6 pt-8 rounded border border-gray-200 mr-12">
                   <section className="about mb-8">
@@ -585,7 +584,6 @@ const YourHome: React.FC<Props> = ({ imgUrl }) => {
                   </section>
                 </section>
               )}
-
               {tab === 'saved-ideas' && (
                 <section className="p-6 rounded border border-gray-200">
                   <h1 className="pb-4 profile-title font-semibold">Saved Items</h1>
