@@ -113,7 +113,7 @@ const SingleProject = () => {
   const { profile, uploadProfilePhoto } = useProfile();
   const router = useRouter();
   const { id } = router.query;
-  const { project, projectLoading: loading } = useProject(id as string);
+  const { projects, projectsLoading } = useProject(id as string);
   return (
     <Layout>
       <Wrapper>
@@ -126,7 +126,7 @@ const SingleProject = () => {
             <li>
               <img src="/img/direction.svg" alt="Breadcrumb navigation" />
             </li>
-            <li>{project?.title}</li>
+            {/* <li>{project?.title}</li> */}
           </ul>
           <section className="pt-20">
             <Slider {...settings}>
@@ -139,12 +139,14 @@ const SingleProject = () => {
           </section>
 
           <Main className="container mx-auto mb-16">
-            <h1 className="capitalize main-title text-4xl font-semibold py-12">{project?.title}</h1>
+            {/* <h1 className="capitalize main-title text-4xl font-semibold py-12">{project?.title}</h1> */}
             <div>
               <UserCard />
             </div>
             <section className="flex items-center mt-8">
-              <span className="signup-comment font-semibold pr-2 capitalize">Sign Up to Comment</span>
+              <span className="signup-comment font-semibold pr-2 capitalize">
+                Sign Up to Comment
+              </span>
               <img src="/img/comment_ss.svg" alt="comment" />
             </section>
             <section className="mt-10">
