@@ -1,13 +1,13 @@
 import { useQuery } from '@apollo/client';
-import { PROJECT } from '../graphql/queries/project';
+import { USER_PROJECTS } from '../graphql/queries/project';
 
 export default function useProject(id = '') {
-  const { data, loading: projectLoading } = useQuery(PROJECT, {
+  const { data, loading: projectsLoading } = useQuery(USER_PROJECTS, {
     variables: { id },
   });
 
   return {
-    project: data?.project,
-    projectLoading,
+    projects: data?.project,
+    projectsLoading,
   };
 }

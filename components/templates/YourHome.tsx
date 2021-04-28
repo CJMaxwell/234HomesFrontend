@@ -7,9 +7,11 @@ import useProfile from '../../hooks/useProfile';
 import { useRprojects } from '../../hooks/projects';
 import Button from '../atoms/Button';
 import ProjectCard from '../Organisms/ProjectCard';
+import DashboardProjectCard from '../Organisms/DashboardProjectCard';
 import ReviewCard from '../Organisms/ReviewCard';
 import Offering from '../Organisms/Offering';
 import Layout from '../Layouts/Layout';
+import SavedItemCard from '../Organisms/SavedItemCard';
 
 interface Props {
   imgUrl?: string;
@@ -130,6 +132,7 @@ const Wrapper = styled.div`
 
   .aside-title {
     color: ${({ theme }) => theme.colors.gray5};
+    font-size: 0.85rem;
   }
   .internet {
     padding: 4px;
@@ -207,11 +210,13 @@ const YourHome: React.FC<Props> = ({ imgUrl }) => {
   const [tab, setTab] = useState('about');
   const { profile, getProfileLoading } = useProfile();
   // const { user, userLoading } = useUser(id as string);
-  const { projects, loading, get: getProjects } = useRprojects();
+  const { projects, loading, get } = useRprojects();
 
   useEffect(() => {
-    getProjects(id as string);
-  }, []);
+    if (profile) {
+      get(profile.id);
+    }
+  }, [profile, projects]);
 
   return (
     <Layout>
@@ -264,22 +269,28 @@ const YourHome: React.FC<Props> = ({ imgUrl }) => {
                       About
                     </a>
                   </li>
-                  <li className="pr-8">
-                    <a
-                      onClick={() => setTab('projects')}
-                      className={`${tab === 'projects' && 'active-link'}`}
-                    >
-                      Projects
-                    </a>
-                  </li>
-                  <li className="pr-8">
-                    <a
-                      onClick={() => setTab('products')}
-                      className={`${tab === 'products' && 'active-link'}`}
-                    >
-                      Products
-                    </a>
-                  </li>
+                  {profile.accountType === 'professional' && (
+                    <li className="pr-8">
+                      <a
+                        onClick={() => setTab('projects')}
+                        className={`${tab === 'projects' && 'active-link'}`}
+                      >
+                        Projects
+                      </a>
+                    </li>
+                  )}
+
+                  {profile.accountType === 'vendor' && (
+                    <li className="pr-8">
+                      <a
+                        onClick={() => setTab('products')}
+                        className={`${tab === 'products' && 'active-link'}`}
+                      >
+                        Products
+                      </a>
+                    </li>
+                  )}
+
                   <li className="pr-8">
                     <a
                       onClick={() => setTab('reviews')}
@@ -304,11 +315,14 @@ const YourHome: React.FC<Props> = ({ imgUrl }) => {
                   <section className="about mb-8">
                     <h1 className="prof-title">About Me</h1>
                     <article className="pt-4 short-desc">
-                      {profile.bio}
-                      <div className="flex items-center pt-4">
+                      {profile.bio}I am a team player. I am outgoing, dedicated, and open-minded. I
+                      get across to people and adjust to changes with ease. I believe that a person
+                      should work on developing their professional skills and learning new things
+                      all the time.
+                      {/* <div className="flex items-center pt-4">
                         <span className="show-more pr-1">Show more</span>
                         <img src="/img/show-more.svg" alt="Show More" />
-                      </div>
+                      </div> */}
                     </article>
                   </section>
                   <div className="mb-2">
@@ -342,9 +356,9 @@ const YourHome: React.FC<Props> = ({ imgUrl }) => {
                       <span className="detail">{profile.website}</span>
                     </p>
                   </div>
-                  <div className="rating mb-2">
+                  <div className="rating mb-2 flex items-center space-x-2">
                     <h3 className="aside-title">Rating</h3>
-                    <div className="pt-3 flex items-center">
+                    <div className="flex items-center">
                       <span className="pr-1 h-4 w-4">
                         <img src="/img/star-vendor.svg" alt="Rating" />
                       </span>
@@ -362,9 +376,9 @@ const YourHome: React.FC<Props> = ({ imgUrl }) => {
                       </span>
                     </div>
                   </div>
-                  <div className="mb-2">
-                    <h3 className="aside-title">Key Skills</h3>
-                    <div className="w-3/4">
+                  <div className="mb-2 flex items-center">
+                    <h3 className="aside-title pr-4">Skills</h3>
+                    <div className="w-1/2">
                       <span className="mt-2 inline-block bg-skill rounded-full px-3 py-1 text-sm font-semibold mr-2">
                         Interior Design
                       </span>
@@ -385,7 +399,7 @@ const YourHome: React.FC<Props> = ({ imgUrl }) => {
                       </span>
                     </div>
                   </div>
-                  <div>
+                  <div className="w-1/2 mb-10">
                     <h3 className="aside-title">100%</h3>
                     <div className="h-1 w-full bg-achieve mt-2" />
                     <div className="flex items-center justify-between pt-3">
@@ -403,18 +417,28 @@ const YourHome: React.FC<Props> = ({ imgUrl }) => {
                 </section>
               )}
               {tab === 'projects' && (
-                <section className="projects mt-10">
+                <section className="projects rounded border border-gray-200 p-6 mt-10">
                   <div className="flex items-center justify-between mb-8">
                     <h1 className="project ab-prof-title">Projects</h1>
-                    <select
-                      className="project-category border border-gray-300 px-5 py-2"
-                      name="category"
-                      id="category"
-                    >
-                      <option value="Category">Category</option>
-                    </select>
                   </div>
-                  <div className="grid grid-cols-3 gap-4">
+                  {projects && (
+                    <section className="grid grid-cols-3 gap-4 mb-16">
+                      {
+                        // @ts-ignore
+                        projects.map((project) => (
+                          <DashboardProjectCard
+                            imgUrl={project.media}
+                            title={project.title}
+                            tags={project.tags}
+                            location={` | ${project.state}`}
+                            key={project?.id}
+                          />
+                        ))
+                      }
+                      {/* <AddNewProject /> */}
+                    </section>
+                  )}
+                  {/* <div className="grid grid-cols-3 gap-4">
                     {projects &&
                       projects.length > 0 &&
                       // @ts-ignore
@@ -424,7 +448,7 @@ const YourHome: React.FC<Props> = ({ imgUrl }) => {
                     {projects && projects.length === 0 && (
                       <div className="px-8 pt-8">No project created</div>
                     )}
-                  </div>
+                  </div> */}
                   <div className="w-full text-center">
                     <button
                       type="button"
@@ -436,14 +460,8 @@ const YourHome: React.FC<Props> = ({ imgUrl }) => {
                 </section>
               )}
               {tab === 'reviews' && (
-                <section className="col-span-4 px-12 pt-8 rounded border border-gray-200">
-                  <section className="reviews mt-10">
-                    <div className="flex justify-between items-center">
-                      <h4 className="review-title ab-prof-title">Reviews</h4>
-                      <button type="button" className="uppercase leave-review">
-                        Leave a review
-                      </button>
-                    </div>
+                <section className="col-span-4 p-6 rounded border border-gray-200">
+                  <section className="reviews">
                     <div className="flex items-center">
                       <div className="customer-review font-semibold pr-2">15 Customer Reviews</div>
                       <div className="flex justify-between items-center star-listing">
@@ -466,7 +484,7 @@ const YourHome: React.FC<Props> = ({ imgUrl }) => {
                       <span className="rating-count pl-1">5</span>
                     </div>
                   </section>
-                  <section className="user-rating flex justify-between items-center mt-10 mb-16">
+                  <section className="user-rating flex justify-between items-center mt-6 mb-16">
                     <div className="user-rating-container">
                       <div className="grid grid-cols-12 gap-2 items-center pb-2">
                         <div className="col-span-2 top-rated">5 Stars</div>
@@ -564,6 +582,34 @@ const YourHome: React.FC<Props> = ({ imgUrl }) => {
                         Load more Reviews
                       </button>
                     </div>
+                  </section>
+                </section>
+              )}
+
+              {tab === 'saved-ideas' && (
+                <section className="p-6 rounded border border-gray-200">
+                  <h1 className="pb-4 profile-title font-semibold">Saved Items</h1>
+                  <section className="grid grid-cols-3 gap-4 mb-12">
+                    <SavedItemCard
+                      imgUrl="/img/projects/bathroom-cabinet-candles-faucet.png"
+                      title="Uncategorized"
+                      tag="Everyone"
+                    />
+                    <SavedItemCard
+                      imgUrl="/img/projects/pink-and-purple-wallpaper.png"
+                      title="Kitchens Ideas"
+                      tag="Everyone"
+                    />
+                    <SavedItemCard
+                      imgUrl="/img/saved/francesca-tosolini-w1RE0lBbREo-unsplash.png"
+                      title="Bedrooms Ideas"
+                      tag="Everyone"
+                    />
+                    <SavedItemCard
+                      imgUrl="/img/projects/person-holding-black-pen.png"
+                      title="DIY Videos"
+                      tag="Private"
+                    />
                   </section>
                 </section>
               )}
