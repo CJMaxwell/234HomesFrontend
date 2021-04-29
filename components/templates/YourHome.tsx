@@ -12,7 +12,7 @@ import Offering from '../Organisms/Offering';
 import Layout from '../Layouts/Layout';
 import SavedItemCard from '../Organisms/SavedItemCard';
 import { theme } from '../../styles/theme';
-import CTA from '../atoms/CTA';
+import AnchorCTA from '../atoms/AnchorCTA';
 
 interface Props {
   imgUrl?: string;
@@ -316,13 +316,13 @@ const YourHome: React.FC<Props> = ({ imgUrl }) => {
                     <section className="flex items-center justify-between cursor-pointer">
                       <h1 className="prof-title">About Me</h1>
                       <Link href="/dashboard/profile">
-                        <CTA
+                        <AnchorCTA
                           className="focus:outline-none flex items-center justify-between"
                           padding="0.8rem 1.75rem;"
                         >
                           <FaEdit color={theme.colors.orange1} size={20} />
                           <span className="pl-2">Edit Profile</span>
-                        </CTA>
+                        </AnchorCTA>
                       </Link>
                     </section>
                     <article className="pt-4 short-desc">
@@ -432,13 +432,13 @@ const YourHome: React.FC<Props> = ({ imgUrl }) => {
                   <div className="flex items-center justify-between mb-8">
                     <h1 className="project ab-prof-title">Projects</h1>
                     <Link href="/dashboard/add-project">
-                      <CTA
+                      <AnchorCTA
                         className="focus:outline-none flex items-center justify-between"
                         padding="0.8rem 1.75rem;"
                       >
                         <img src="/img/add-new.svg" alt="Add new" className="inline-block pr-2" />
                         <span className="pl-2">Add Project</span>
-                      </CTA>
+                      </AnchorCTA>
                     </Link>
                   </div>
                   {projects && (
@@ -610,13 +610,13 @@ const YourHome: React.FC<Props> = ({ imgUrl }) => {
                   <section className="pb-4 flex items-center justify-between">
                     <h1 className="profile-title font-semibold">Saved Items</h1>
                     <Link href="/create-saved-item">
-                      <CTA
+                      <AnchorCTA
                         className="focus:outline-none flex items-center justify-between"
                         padding="0.8rem 1.75rem;"
                       >
                         <img src="/img/add-new.svg" alt="Add new" className="inline-block pr-2" />
                         <span className="pl-2">Create A List</span>
-                      </CTA>
+                      </AnchorCTA>
                     </Link>
                   </section>
                   <section className="grid grid-cols-3 gap-4 mb-12">

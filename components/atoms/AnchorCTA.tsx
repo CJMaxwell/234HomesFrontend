@@ -6,7 +6,7 @@ interface Props {
   borderColor?: string;
 }
 
-const CTA = styled.button<Props>`
+const AnchorCTA = styled.a<Props>`
   border: 1px solid ${({ theme, borderColor }) => borderColor || theme.colors.orange1};
   border-radius: 32px;
   color: ${({ theme, color }) => color || theme.colors.orange1};
@@ -16,4 +16,4 @@ const CTA = styled.button<Props>`
   font-weight: 600;
 `;
 
-export default CTA;
+export default AnchorCTA;
