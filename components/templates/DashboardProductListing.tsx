@@ -43,11 +43,11 @@ const Wrapper = styled.div`
 const DashboardProductListing = () => {
   const theme = useContext(ThemeContext);
   const { profile } = useProfile();
-  const { get, products, loading } = useRproducts();
+  const { getUserProducts, products, loading } = useRproducts();
 
   useEffect(() => {
     if (profile?.id) {
-      get(profile.id);
+      getUserProducts(profile.id);
     }
   }, [profile, products]);
 

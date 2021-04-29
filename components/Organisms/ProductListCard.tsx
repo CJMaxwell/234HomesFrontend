@@ -57,10 +57,11 @@ const ProductImg = styled.div<Props>`
   background-image: url('${({ imgUrl }) => imgUrl}');
   background-blend-mode: overlay;
   background-repeat: no-repeat;
-  background-size:cover;
+  background-size: cover;
   background-position: center;
   height: 10.25rem;
-  width: 9.65rem;
+  width: 100%;
+  max-width: 12rem;
   overflow: hidden;
 
   .ad {
@@ -72,14 +73,13 @@ const ProductImg = styled.div<Props>`
     font-size: 0.7rem;
     font-weight: 600;
     border-radius: 0px 1.1rem 1.1rem 0px;
-    
   }
 `;
 const Logo = styled.div<Props>`
   overflow: hidden;
   background-image: url('${({ logo }) => logo}');
   background-repeat: no-repeat;
-  background-size:cover;
+  background-size: cover;
   background-position: center;
   height: 5rem;
   width: 5rem;

@@ -5,7 +5,7 @@ import { PRODUCTS, USER_PRODUCTS } from '../graphql/queries/product';
 export const useRproducts = () => {
   const [query, { data, loading }] = useLazyQuery(USER_PRODUCTS);
 
-  const get = (userId: string) => {
+  const getUserProducts = (userId: string) => {
     query({
       variables: {
         id: userId,
@@ -16,7 +16,7 @@ export const useRproducts = () => {
   return {
     products: data?.userProducts,
     loading,
-    get,
+    getUserProducts,
   } as const;
 };
 
