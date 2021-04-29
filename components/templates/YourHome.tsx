@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { useRouter } from 'next/router';
+import { FaEdit } from 'react-icons/fa';
+import Link from 'next/link';
 
-// import useUser from '../../hooks/useUser';
 import useProfile from '../../hooks/useProfile';
 import { useRprojects } from '../../hooks/projects';
 import Button from '../atoms/Button';
-import ProjectCard from '../Organisms/ProjectCard';
 import DashboardProjectCard from '../Organisms/DashboardProjectCard';
 import ReviewCard from '../Organisms/ReviewCard';
 import Offering from '../Organisms/Offering';
 import Layout from '../Layouts/Layout';
 import SavedItemCard from '../Organisms/SavedItemCard';
+import { theme } from '../../styles/theme';
+import CTA from '../atoms/CTA';
 
 interface Props {
   imgUrl?: string;
@@ -187,6 +188,10 @@ const Wrapper = styled.div`
     border-bottom: 2px solid ${({ theme }) => theme.colors.gray4};
     padding-bottom: 0.5rem;
   }
+
+  .add-button {
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+  }
 `;
 
 const Hero = styled.section<Props>`
@@ -204,12 +209,8 @@ const HeroButton = styled(Button)`
 `;
 
 const YourHome: React.FC<Props> = ({ imgUrl }) => {
-  const router = useRouter();
-  const { id } = router.query;
-
   const [tab, setTab] = useState('about');
   const { profile, getProfileLoading } = useProfile();
-  // const { user, userLoading } = useUser(id as string);
   const { projects, loading, get } = useRprojects();
 
   useEffect(() => {
@@ -312,7 +313,18 @@ const YourHome: React.FC<Props> = ({ imgUrl }) => {
               {tab === 'about' && (
                 <section className="px-6 pt-8 rounded border border-gray-200 mr-12">
                   <section className="about mb-8">
-                    <h1 className="prof-title">About Me</h1>
+                    <section className="flex items-center justify-between cursor-pointer">
+                      <h1 className="prof-title">About Me</h1>
+                      <Link href="/dashboard/profile">
+                        <CTA
+                          className="focus:outline-none flex items-center justify-between"
+                          padding="0.8rem 1.75rem;"
+                        >
+                          <FaEdit color={theme.colors.orange1} size={20} />
+                          <span className="pl-2">Edit Profile</span>
+                        </CTA>
+                      </Link>
+                    </section>
                     <article className="pt-4 short-desc">
                       {profile.bio}I am a team player. I am outgoing, dedicated, and open-minded. I
                       get across to people and adjust to changes with ease. I believe that a person
@@ -419,6 +431,15 @@ const YourHome: React.FC<Props> = ({ imgUrl }) => {
                 <section className="projects rounded border border-gray-200 p-6 mt-10">
                   <div className="flex items-center justify-between mb-8">
                     <h1 className="project ab-prof-title">Projects</h1>
+                    <Link href="/dashboard/add-project">
+                      <CTA
+                        className="focus:outline-none flex items-center justify-between"
+                        padding="0.8rem 1.75rem;"
+                      >
+                        <img src="/img/add-new.svg" alt="Add new" className="inline-block pr-2" />
+                        <span className="pl-2">Add Project</span>
+                      </CTA>
+                    </Link>
                   </div>
                   {projects && (
                     <section className="grid grid-cols-3 gap-4 mb-16">
@@ -586,7 +607,18 @@ const YourHome: React.FC<Props> = ({ imgUrl }) => {
               )}
               {tab === 'saved-ideas' && (
                 <section className="p-6 rounded border border-gray-200">
-                  <h1 className="pb-4 profile-title font-semibold">Saved Items</h1>
+                  <section className="pb-4 flex items-center justify-between">
+                    <h1 className="profile-title font-semibold">Saved Items</h1>
+                    <Link href="/create-saved-item">
+                      <CTA
+                        className="focus:outline-none flex items-center justify-between"
+                        padding="0.8rem 1.75rem;"
+                      >
+                        <img src="/img/add-new.svg" alt="Add new" className="inline-block pr-2" />
+                        <span className="pl-2">Create A List</span>
+                      </CTA>
+                    </Link>
+                  </section>
                   <section className="grid grid-cols-3 gap-4 mb-12">
                     <SavedItemCard
                       imgUrl="/img/projects/bathroom-cabinet-candles-faucet.png"

@@ -66,12 +66,12 @@ const DashboardSideBar: React.FC<Props> = ({ imgUrl }) => {
       </h1>
       <section>
         <ul className="px-4">
-          <Link href="/dashboard/profile">
+          <Link href="/dashboard">
             <li className="flex items-center py-4 cursor-pointer">
               <span className="pr-4">
                 <img src="/img/dashboard/dashboarduser.svg" alt="User" />
               </span>
-              <a>My Profile</a>
+              <a>Your 234Home</a>
             </li>
           </Link>
           {/* <li className="flex items-center py-4 cursor-pointer">

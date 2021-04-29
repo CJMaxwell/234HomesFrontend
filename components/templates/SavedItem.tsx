@@ -63,9 +63,9 @@ const SavedItem = () => {
             <section className="flex items-center justify-between">
               <h1 className="py-10 profile-title font-semibold">Saved Items</h1>
               <CTA
-                onClick={() => Router.push('/create-saved-item')}
-                type="button"
-                className="update-profile focus:outline-none"
+                // onClick={() => Router.push('/create-saved-item')}
+                // type="button"
+                className="focus:outline-none"
                 padding="0.8rem 1.75rem;"
               >
                 <img src="/img/add-new.svg" alt="Add new" className="inline-block pr-2" />
